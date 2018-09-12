@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateoOfficesDoctorsTable extends Migration
+class CreateDoctorOfficeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateoOfficesDoctorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('offices_doctors', function (Blueprint $table) {
+        Schema::create('doctor_office', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateoOfficesDoctorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offices_doctors');
+        Schema::dropIfExists('doctor_office');
     }
 }
