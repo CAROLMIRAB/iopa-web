@@ -20,7 +20,6 @@ class CreateDoctorsTable extends Migration
             $table->mediumText('excerpt')->nullable();
             $table->integer('specialty_id')->unsigned();
 
-           
             $table->timestamps();
 
             $table->foreign('specialty_id')->references('id')->on('specialties')
