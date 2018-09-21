@@ -16,7 +16,7 @@ class PageController extends Controller
     {
         $this->postRepo = $postRepo;
     }
-    
+
     /**
      * Show Blog
      * 
