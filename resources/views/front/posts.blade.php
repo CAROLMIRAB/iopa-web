@@ -4,6 +4,23 @@
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>Lista de artículos</h1>
+
+            @foreach ($posts as $post)
+                <div class="panel panel-default">
+                    <div class="panel panel-default">
+                    {{ $post->name }}
+                    </div>
+                    <div class="panel-body">
+                        @if($post->file)
+                            <img src="{{ $post->name }}" class="img-responsive">
+                        @endif
+                        {{ $post->excerpt }}
+                        <a href="#" class="pull-right">Leer más</a>
+                        <div >
+                    </div>
+                </div>
+            @endforeach
+            {{ $posts->render() }}
     </div>
 </div>    
 @endsection
