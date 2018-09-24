@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\Post::class, function (Faker $faker) {
     $title = $faker->sentence(4);
     return [
         'user_id' => rand(1,30),
@@ -12,6 +12,6 @@ $factory->define(Model::class, function (Faker $faker) {
         'excerpt' => $faker->text(200),
         'body' => $faker->text(500),
         'file' => $faker->imageUrl($width = 1200, $height = 400),
-        'status' => $faker->randomElement('DRAFT','PUBLISHED'),
+        'status' => $faker->randomElements('DRAFT','PUBLISHED'),
     ];
 });
