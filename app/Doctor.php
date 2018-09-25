@@ -15,7 +15,7 @@ class Doctor extends Model
 
     public function specialty()
     {
-        return $this->belongTo(Specialty::tag);
+        return $this->belongTo(Specialty::class);
     }
 
     public function offices()

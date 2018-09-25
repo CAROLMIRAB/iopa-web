@@ -26,4 +26,10 @@ class PageController extends Controller
         $posts = $this->postRepo->showPosts();
         return view('front.posts', compact('posts'));
     }
+
+    public function viewMorePost($slug)
+    {
+       $post = $this->postRepo->viewPostSlug($slug);
+       return view('front.post', compact('post'));
+    }
 }

@@ -23,7 +23,7 @@ class Post extends Model
      */
     public function user()
     {
-        return $this->belongTo(User::tag);
+        return $this->belongTo(User::class);
     }
 
     /*
@@ -31,7 +31,7 @@ class Post extends Model
      */
     public function category()
     {
-        return $this->belongTo(Category::tag);
+        return $this->belongTo(Category::class);
     }
 
      /*
