@@ -24,6 +24,6 @@ class PageController extends Controller
     public function blog()
     {
         $posts = $this->postRepo->showPosts();
-        return view('front.posts', compact($posts));
+        return view('front.posts', compact('posts'));
     }
 }

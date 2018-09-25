@@ -7,16 +7,15 @@
 
             @foreach ($posts as $post)
                 <div class="panel panel-default">
-                    <div class="panel panel-default">
+                    <div class="panel-heading">
                     {{ $post->name }}
                     </div>
                     <div class="panel-body">
                         @if($post->file)
-                            <img src="{{ $post->name }}" class="img-responsive">
+                            <img src="{{ $post->file }}" class="img-responsive">
                         @endif
                         {{ $post->excerpt }}
                         <a href="#" class="pull-right">Leer más</a>
-                        <div >
                     </div>
                 </div>
             @endforeach
