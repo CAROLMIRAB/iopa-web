@@ -1,21 +1,40 @@
 .cta-group {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
     max-width: 750px;
     margin: 0 auto;
     position: relative;
     margin-top: -50px;
     margin-bottom: 20px;
     z-index: 1;
-    div {
+    @media(max-width:768px){
+      margin-top: 10px;
+    }
+   
+
+
+    .cta-group-item {
+      width: 33.33%;
+      float: left;
       color: #fff;
       text-align: center;
       text-transform: uppercase;
       font-weight: bold;
-      background: $theme04;
-      border-radius: 10px;
-      padding: 15px;
+      padding:5px;
+      @media(max-width:450px){
+        width: 100%;
+      }
+      
+      .cta-content{
+        padding: 15px;
+        background: $theme04;
+        border-radius: 10px;
+        @media(max-width:700px){
+          height: 152px;
+        }
+        @media(max-width:450px){
+          height: auto;
+          padding: 5px;
+        }
+      }
       .cta-icon {
         width: 60px;
         height: 60px;
@@ -23,22 +42,21 @@
         margin: 10px auto;
         border-radius: 0;
         &.phone {
-          background: #fff url("../img/icons/icon-phoneoffice.png") center
+          background: $theme04 url("../../img/icons/icon-phoneoffice.png") center
             no-repeat;
           background-size: 100% 100%;
         }
         &.lab {
-          background: #fff url("../img/icons/icon-lab.png") center no-repeat;
+          background: $theme04 url("../img/icons/icon-lab.png") center no-repeat;
           background-size: 100% 100%;
         }
         &.hands {
-          background: #fff url("../img/icons/icon-hands.png") center no-repeat;
+          background: $theme04 url("../img/icons/icon-hands.png") center no-repeat;
           background-size: 100% 100%;
         }
       }
     }
   }
-  
   .ui-top-posts {
     /* justify-content: center;
     display: grid;

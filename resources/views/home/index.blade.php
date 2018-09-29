@@ -4,20 +4,29 @@
     
 @include('home.slider')
 
+
 <div class="cta-group">
-    <div>
-        <div class="cta-icon phone"></div>
-        Presupuestos
+    <div class="cta-group-item">
+        <div class="cta-content">
+            <div class="cta-icon phone"></div>
+            Presupuestos
+        </div>
     </div>
-    <div>
-        <div class="cta-icon lab"></div>
-        Exámenes y Cirugías
+    <div class="cta-group-item">
+        <div class="cta-content">
+            <div class="cta-icon lab"></div>
+            Exámenes y Cirugías
+        </div>
     </div>
-    <div>
-        <div class="cta-icon hands"></div>
-        Aranceles y Convenios
+    <div class="cta-group-item">
+        <div class="cta-content">
+            <div class="cta-icon hands"></div>
+            Aranceles y Convenios
+        </div>
     </div>
 </div>
+
+<div class="clearfix"></div>
 
 <section>
     <div class="section-title">
@@ -68,41 +77,7 @@
     </div>
 </section>
 
-<section>
-    <div class="ui-partners">
-        <div class="section-title">
-            <h3>CONVENIOS</h3>
-        </div>
-        <div class="container">
-            <div class="ui-slick-carousel partners" id="slickPartners">
-                <div>
-                    <img src="{{ asset('/img/partners/partner01.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner04.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner02.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner03.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner04.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner01.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner03.jpg') }}" alt="">
-                </div>
-                <div>
-                    <img src="{{ asset('/img/partners/partner01.jpg') }}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{-- @include('home.partners') --}}
 
 @endsection
 	

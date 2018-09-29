@@ -21,9 +21,9 @@ const app = new Vue({
     el: '#app'
 });
  */
-/* import slick from "slick-carousel";
+ //import slick from "slick-carousel";
 
-window.Slick = require('slick-carousel'); */
+window.Slick = require('slick-carousel'); 
 
 
 
