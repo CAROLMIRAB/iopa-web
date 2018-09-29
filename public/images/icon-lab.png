@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "/img/icon-lab.png?520d9c454e3dc135f04cb23d3f85655e";

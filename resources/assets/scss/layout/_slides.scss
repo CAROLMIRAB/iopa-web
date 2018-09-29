@@ -1,0 +1,32 @@
+.ui-slider{
+    position: relative;
+    .ui-slide{
+
+        .carousel-caption{
+            color: #fff;
+            text-align: left;
+            max-width: 450px;
+            left: 0;
+            top: 100px;
+            bottom: auto;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background:rgba($theme,.7);
+            padding: 20px 10px 20px 80px;
+           h2{
+               font-size: 34px;
+                text-transform: uppercase;
+                text-shadow: none !important;
+                font-weight: bold;
+                line-height: 30px;
+                text-transform: uppercase;
+                 text-shadow: none!important;
+            }
+            p{
+                text-shadow: none!important;
+            }
+        }
+
+    }
+
+}

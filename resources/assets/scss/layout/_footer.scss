@@ -1,0 +1,44 @@
+.ui-footer {
+  color: rgba(#eee, 0.7);
+  font-size: 13px;
+  font-weight: 200;
+  background: #355971;
+  padding: 15px 0;
+  .ui-list {
+    margin: 0;
+    padding: 0;
+    > li {
+      margin-bottom: 5px;
+    }
+    &.suc {
+      margin: 0 0 0 30px;
+    }
+  }
+  a {
+    color: #eee;
+  }
+  .ui-footer-title {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 25px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      width: 150px;
+      left: 0;
+      border-bottom: 2px solid rgba(#eee, 0.5);
+    }
+  }
+  .superintendencia {
+    border-radius: 10px;
+  }
+  .ui-copyright{
+      a{
+          opacity: .7;
+      }
+  }
+}

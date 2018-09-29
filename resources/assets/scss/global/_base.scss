@@ -1,0 +1,55 @@
+/*--------------------------------------
+	[GENERAL]
+  --------------------------------------*/
+html {
+  font-size: $font-size;
+}
+body {
+  font-family: $font-family;
+  color: $font-color;
+  font-size: 1em;
+  background: $background;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-header;
+}
+.clearfix {
+  clear: both;
+}
+.bold {
+  font-weight: bold;
+}
+.text-white {
+  color: #fff;
+}
+section {
+  position: relative;
+}
+.section-title {
+  color: #878787;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px 0;
+  background: #f2f2f2;
+  margin-bottom: 15px;
+  h3 {
+    margin: 0;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      border-bottom: 1px solid rgba(#878787, 0.7);
+      bottom: -5px;
+    }
+  }
+}
+
