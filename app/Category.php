@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = [
-        'name',
-        'slug',
-        'body' 
-    ]; 
+    protected $fillable = ['name', 'slug','body']; 
 
     /*
     Relation with post

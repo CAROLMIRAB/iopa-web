@@ -23,8 +23,8 @@ class CreatePostsTable extends Migration
             $table->mediumText('excerpt')->nullable();
             $table->text('body');
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
+            $table->json('tags');
             $table->string('file', 128)->nullable();
-
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

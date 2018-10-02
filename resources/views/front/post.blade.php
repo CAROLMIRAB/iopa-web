@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Categoría
-                    <a href="">{{ $post->category->name }}</a>
+                    <a href="">{{ $post->category }}</a>
                     </div>
                     <div class="panel-body">
                         @if($post->file)
@@ -20,12 +20,13 @@
                     {!! $post->body !!}
                     <hr>
                     Etiquetas
-                    @foreach($post->tags as $tag)
-                    <a href="#"></a>
+                    <?php $user = json_decode($post->tags) ?>
+                    @foreach ($user as $item)
+                    <a href="">{{ $item }}</a>
                     @endforeach
+               
                 </div>
         
-            {{ $posts->render() }}
     </div>
 </div>    
 @endsection

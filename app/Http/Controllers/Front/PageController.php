@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\FrontPage\Repositories\PostRepo;
+use App\Category;
+use App\Tag;
+use App\Post;
 
 
 class PageController extends Controller
@@ -27,9 +30,9 @@ class PageController extends Controller
         return view('front.posts', compact('posts'));
     }
 
-    public function viewMorePost($slug)
+    public function post($slug)
     {
-       $post = $this->postRepo->viewPostSlug($slug);
+       $post = $this->postRepo->viewPostSlug($slug); 
        return view('front.post', compact('post'));
     }
 }

@@ -2,7 +2,12 @@
 
 namespace App\FrontPage\Repositories;
 
+use Illuminate\Support\Facades\DB;
+use App\Category;
+use App\Tag;
 use App\Post;
+
+
 
 
 class PostRepo
@@ -15,7 +20,10 @@ class PostRepo
 
     public function viewPostSlug($slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::select('posts.name', 'posts.slug', 'excerpt', 'posts.body', DB::raw('categories.name as category'), 'status','tags','file' )
+        ->leftJoin('categories', 'categories.id', '=', 'posts.category_id')
+        ->where('posts.slug', $slug)
+        ->first();
         return $post;
     }
 }
