@@ -52,12 +52,15 @@ mix.webpackConfig({
  |
  */
 
+
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/scss/app.scss', 'public/css');
 
-
-   mix.styles([
+mix.styles([
     'public/scss/packages.front.css',
+    '../../../node_modules/font-awesome/css/font-awesome.css',
+    'node_modules/slick-carousel/slick/slick.css',
+    'node_modules/slick-carousel/slick/slick-theme.css',
     'node_modules/dropzone/dist/dropzone.css',
     'node_modules/croppie/croppie.css',
     'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css',

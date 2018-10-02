@@ -11,9 +11,21 @@
 |
 */
 
-Route::redirect('/', 'blog');
+//Route::get('/home', function () {
+   // return view('home.index');
+//});
+
+//Route::redirect('/', 'blog');
+
+Route::get('home', [
+    'as' => 'home',
+    'uses' => 'Front\PageController@home'
+]);
+
 
 Auth::routes();
+
+Route::get('blog', 'Front\PageController@blog')->name('blog');
 
 Route::get('blog', 'Front\PageController@blog')->name('blog');
 
