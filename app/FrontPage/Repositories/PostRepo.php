@@ -18,4 +18,10 @@ class PostRepo
         $post = Post::where('slug', $slug)->first();
         return $post;
     }
+
+    public function showPostHome()
+    {
+        $post = Post::orderBy('created_at', 'desc')->take(3)->get();
+        return $post;
+    }
 }

@@ -1,8 +1,8 @@
-@extends('layouts.iopa')
+@extends('front.layouts.iopa')
 
 @section('content')
     
-@include('home.slider')
+@include('front.home.slider')
 
 
 <div class="cta-group">
@@ -36,7 +36,7 @@
         <div class="ui-top-posts">
             <div class="row">        
             
-                @include('home.posts')
+                @include('front.home.posts', array('posts' => $posts))
 
             </div>
         </div>

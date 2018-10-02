@@ -17,6 +17,11 @@ class PageController extends Controller
         $this->postRepo = $postRepo;
     }
 
+    public function home()
+    {
+       $posts = $this->postRepo->showPostHome();
+       return view('front.home.index', compact('posts'));
+    }
     /**
      * Show Blog
      * 
@@ -33,9 +38,5 @@ class PageController extends Controller
        return view('front.post', compact('post'));
     }
 
-    public function homePosts($slug)
-    {
-       $post = $this->postRepo->viewPostSlug($slug);
-       return view('front.post', compact('post'));
-    }
+   
 }

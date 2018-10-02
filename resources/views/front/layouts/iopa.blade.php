@@ -24,14 +24,14 @@
 </head>
 <body>
     
-    @include('shared.header')
+    @include('front.shared.header')
 
 
 
     @yield('content')
 
 
-    @include('shared.footer')
+    @include('front.shared.footer')
 
     @yield('scripts')
 </body>
