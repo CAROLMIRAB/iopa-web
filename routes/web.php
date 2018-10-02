@@ -15,7 +15,7 @@ Route::get('/home', function () {
     return view('home.index');
 });
 
-Route::redirect('/', 'blog');
+//Route::redirect('/', 'blog');
 
 Auth::routes();
 
