@@ -32,4 +32,10 @@ class PageController extends Controller
        $post = $this->postRepo->viewPostSlug($slug);
        return view('front.post', compact('post'));
     }
+
+    public function homePosts($slug)
+    {
+       $post = $this->postRepo->viewPostSlug($slug);
+       return view('front.post', compact('post'));
+    }
 }
