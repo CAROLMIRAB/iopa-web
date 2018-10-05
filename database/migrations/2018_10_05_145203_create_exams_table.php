@@ -20,6 +20,7 @@ class CreateExamsTable extends Migration
             $table->text('description');
             $table->text('preparation');
             $table->text('indications');
+            $table->string('file', 128)->nullable();
             $table->timestamps();
         });
     }

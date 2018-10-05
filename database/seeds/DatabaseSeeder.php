@@ -19,6 +19,5 @@ class DatabaseSeeder extends Seeder
         $this->call(DoctorsTableSeeder::class);
         $this->call(ExamsTableSeeder::class);
         
-        // $this->call(UsersTableSeeder::class);
     }
 }
