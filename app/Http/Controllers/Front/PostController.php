@@ -10,18 +10,25 @@ use App\Tag;
 use App\Post;
 
 
-class PageController extends Controller
+class PostController extends Controller
 {
 
     private $postRepo;
 
+    /**
+     * Class construct 
+     * 
+     * @return void
+     */
     public function __construct(PostRepo $postRepo)
     {
         $this->postRepo = $postRepo;
     }
 
     /**
+     * Show three post home
      * 
+     * @return view
      */
     public function homePosts()
     {
@@ -30,8 +37,9 @@ class PageController extends Controller
     }
 
     /**
-     * Show Blog
+     * Show all posts view blog
      * 
+     * @return view
      */
     public function viewAllPosts()
     {
@@ -40,7 +48,9 @@ class PageController extends Controller
     }
 
     /**
-     * View 
+     * View full post content
+     * 
+     * @return view
      */
     public function viewFullPost($slug)
     {

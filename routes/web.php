@@ -19,15 +19,15 @@
 
 Route::get('home', [
     'as' => 'home',
-    'uses' => 'Front\PageController@homePost'
+    'uses' => 'Front\PostController@homePost'
 ]);
 
 
 Auth::routes();
 
-Route::get('blog', 'Front\PageController@viewAllPosts')->name('blog');
+Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 
-Route::get('blog', 'Front\PageController@viewAllPosts')->name('blog');
+Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 
-Route::get('blog/{slug}', 'Front\PageController@viewFullPost')->name('post');
+Route::get('blog/{slug}', 'Front\PostController@viewFullPost')->name('post');
 
