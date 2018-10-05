@@ -32,4 +32,8 @@ class PostRepo
         $post = Post::orderBy('created_at', 'desc')->take(3)->get();
         return $post;
     }
+
+    
+
+
 }
