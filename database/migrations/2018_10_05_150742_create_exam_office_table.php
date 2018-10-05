@@ -15,7 +15,16 @@ class CreateExamOfficeTable extends Migration
     {
         Schema::create('exam_office', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('exam_id')->unsigned();
+            $table->integer('office_id')->unsigned();
+            
+            $table->foreign('exam_id')->references('id')->on('exams')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            
+            $table->foreign('office_id')->references('id')->on('offices')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
