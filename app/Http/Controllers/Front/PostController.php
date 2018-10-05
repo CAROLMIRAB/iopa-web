@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\FrontPage\Repositories\PostRepo;
-use App\Category;
-use App\Tag;
-use App\Post;
 
 
 class PostController extends Controller
@@ -25,16 +22,7 @@ class PostController extends Controller
         $this->postRepo = $postRepo;
     }
 
-    /**
-     * Show three post home
-     * 
-     * @return view
-     */
-    public function homePosts()
-    {
-       $posts = $this->postRepo->showPostHome();
-       return view('front.home.index', compact('posts'));
-    }
+   
 
     /**
      * Show all posts view blog
