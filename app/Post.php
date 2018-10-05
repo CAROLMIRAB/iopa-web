@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    protected $fillable = ['user_id', 'category_id', 'name','slug','excerpt','body','status','file'];    
+    protected $fillable = ['user_id', 'category_id', 'name','slug','excerpt','body','status','file', 'tags'];    
     
   
 
@@ -27,11 +27,5 @@ class Post extends Model
         return $this->belongTo(User::class);
     }
 
-     /*
-    Relation with tags
-     */
-   /* public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }*/
+ 
 }

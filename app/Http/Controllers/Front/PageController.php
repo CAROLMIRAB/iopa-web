@@ -20,26 +20,32 @@ class PageController extends Controller
         $this->postRepo = $postRepo;
     }
 
-    public function home()
+    /**
+     * 
+     */
+    public function homePosts()
     {
        $posts = $this->postRepo->showPostHome();
        return view('front.home.index', compact('posts'));
     }
+
     /**
      * Show Blog
      * 
      */
-    public function blog()
+    public function viewAllPosts()
     {
         $posts = $this->postRepo->showPosts();
         return view('front.posts', compact('posts'));
     }
 
-    public function post($slug)
+    /**
+     * View 
+     */
+    public function viewFullPost($slug)
     {
        $post = $this->postRepo->viewPostSlug($slug); 
        return view('front.post', compact('post'));
     }
-
    
 }
