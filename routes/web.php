@@ -17,10 +17,17 @@ Route::get('home', [
     'uses' => 'Front\HomeController@home'
 ]);
 
+Route::get('theme', [
+    'as' => 'theme',
+    'uses' => 'Front\PostController@viewTheme'
+]);
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+
+});
 
 Auth::routes();
 
-Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 
 Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 

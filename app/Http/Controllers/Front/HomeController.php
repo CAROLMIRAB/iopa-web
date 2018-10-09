@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct(PostRepo $postRepo)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->postRepo = $postRepo;
     }
 

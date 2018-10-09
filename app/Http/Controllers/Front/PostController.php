@@ -46,4 +46,8 @@ class PostController extends Controller
        return view('front.post', compact('post'));
     }
    
+    public function viewTheme()
+    {
+       return view('back.theme');
+    }
 }
