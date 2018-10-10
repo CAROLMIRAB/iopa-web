@@ -48,6 +48,16 @@ class PostController extends Controller
    
     public function viewTheme()
     {
-       return view('back.theme');
+       return view('back.posts.create');
+    }
+
+    public function viewCreatePost()
+    {
+       return view('back.posts.create');
+    }
+
+    public function saveCreatePost()
+    {
+       //return view('back.posts.create');
     }
 }

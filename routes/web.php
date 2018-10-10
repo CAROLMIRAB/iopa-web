@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 
 Route::get('home', [
@@ -22,7 +22,27 @@ Route::get('theme', [
     'uses' => 'Front\PostController@viewTheme'
 ]);
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+
+Route::group(['prefix' => 'posts'], function () {
+
+    Route::get('create', [
+        'as' => 'create',
+        'uses' => 'Front\PostController@viewCreatePost'
+    ]);
+
+    Route::get('store', [
+        'as' => 'posts.store',
+        'uses' => 'Front\PostController@saveCreatePost'
+    ]);
+
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
+
+    Route::get('create', [
+        'as' => 'create',
+        'uses' => 'Front\PostController@createPost'
+    ]);
 
 });
 

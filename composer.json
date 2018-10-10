@@ -10,7 +10,8 @@
         "jgrossi/corcel": "2.5.*",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-newsletter": "^4.2"
+        "spatie/laravel-newsletter": "^4.2",
+        "laravelcollective/html": "~5.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
