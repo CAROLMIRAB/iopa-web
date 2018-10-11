@@ -61,21 +61,18 @@
 @endsection
  
 @section('scripts')
-<script src="{{ asset('vendor/stringToSlug/jquery.stringToSlug.min.js') }}"></script>
-<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('vendor/stringToSlug/dist/jquery.stringtoslug.min.js') }}"></script>
 <script src="{{ asset('vendor/summernote/summernote.min.js') }}"></script>
 <script>
 	$(document).ready(function(){
-	    $("#name, #slug").stringToSlug({
+	    $("#name").stringToSlug({
 	        callback: function(text){
 	            $('#slug').val(text);
 	        }
 	    });
-	    CKEDITOR.config.height = 400;
-		CKEDITOR.config.width  = 'auto';
-		CKEDITOR.replace('body');
+	 
 
-		 $('#summernote').summernote();
+		 $('#body').summernote();
 	});
 
 </script>

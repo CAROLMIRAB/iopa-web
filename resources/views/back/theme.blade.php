@@ -85,7 +85,8 @@
 
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="{{ asset('back/vendor/jquery/dist/jquery.min.js') }}"></script>
+  <!--<script src="{{ asset('back/vendor/jquery/dist/jquery.min.js') }}"></script>-->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
   <script src="{{ asset('back/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <!-- Optional JS -->
   <script src="{{ asset('back/vendor/chart.js/dist/Chart.min.js') }}"></script>
