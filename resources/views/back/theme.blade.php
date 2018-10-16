@@ -11,9 +11,11 @@
   <!-- Icons -->
   <link href="{{ asset('back/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
   <link href="{{ asset('back/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('vendor/summernote/summernote.css') }}">
   <!-- Argon CSS -->
+  <link href="{{ asset('back/vendor/summernote/summernote.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('back/vendor/amsify-suggestags/css/amsify.suggestags.css') }}" rel="stylesheet">
   <link type="text/css" href="{{ asset('back/css/argon.css?v=1.0.0') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('back/css/styles.css') }}" rel="stylesheet">
 </head>
 
 <body>

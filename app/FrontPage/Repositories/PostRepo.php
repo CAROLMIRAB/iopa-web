@@ -33,7 +33,12 @@ class PostRepo
         return $post;
     }
 
-    
+    public function createPost($data)
+    {
+        $post = new Post();
+        $post->fill($data);
+        return $post;
+    }
 
 
 }

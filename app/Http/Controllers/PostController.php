@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\FrontPage\Repositories\PostRepo;
 
-
 class PostController extends Controller
 {
 
@@ -46,18 +45,19 @@ class PostController extends Controller
        return view('front.post', compact('post'));
     }
    
-    public function viewTheme()
-    {
-       return view('back.posts.create');
-    }
-
+    /**
+     * View post create
+     * 
+     * @return view
+     */
     public function viewCreatePost()
     {
        return view('back.posts.create');
     }
 
-    public function saveCreatePost()
+    public function saveCreatePost(Request $request)
     {
-       //return view('back.posts.create');
+       $post = $this->postRepo->createPost($request->all());
+       return $post;
     }
 }

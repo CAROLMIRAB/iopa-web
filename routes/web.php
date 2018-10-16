@@ -22,16 +22,27 @@ Route::get('theme', [
     'uses' => 'Front\PostController@viewTheme'
 ]);
 
+Route::get('entradas/{slug}', [
+    'as' => 'post.viewpost',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
+Route::get('entradas', [
+    'as' => 'post.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
 
 Route::group(['prefix' => 'posts'], function () {
-
+   
+ 
     Route::get('create', [
-        'as' => 'create',
+        'as' => 'post.createview',
         'uses' => 'Front\PostController@viewCreatePost'
     ]);
 
     Route::get('store', [
-        'as' => 'posts.store',
+        'as' => 'post.store',
         'uses' => 'Front\PostController@saveCreatePost'
     ]);
 

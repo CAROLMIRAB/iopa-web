@@ -1,0 +1,30 @@
+.note-editor.note-frame{
+    border: 1px solid #cad1d7;
+    border-radius: .375rem;
+
+}
+
+.note-popover.popover{
+    display: none;
+}
+
+.slug {
+    border: 0;
+    display: inline;
+    font-size: 10px;
+    color: #525f7f;
+  }
+
+  .url-example{
+      display: inline;
+      font-size: 10px;
+
+  }
+
+  #btn-save{
+      width: 100%;
+  }
+
+ 
+  
+ 
