@@ -38,12 +38,12 @@ Route::group(['prefix' => 'posts'], function () {
  
     Route::get('create', [
         'as' => 'post.createview',
-        'uses' => 'Front\PostController@viewCreatePost'
+        'uses' => 'Back\PostController@viewCreatePost'
     ]);
 
-    Route::get('store', [
+    Route::post('store', [
         'as' => 'post.store',
-        'uses' => 'Front\PostController@saveCreatePost'
+        'uses' => 'Back\PostController@saveCreatePost'
     ]);
 
 });
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 
     Route::get('create', [
         'as' => 'create',
-        'uses' => 'Front\PostController@createPost'
+        'uses' => 'Back\PostController@createPost'
     ]);
 
 });

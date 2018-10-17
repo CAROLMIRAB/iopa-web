@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<form action="{{ route('post.store') }}" method="post" id="posts" enctype="multipart/form-data">
+			<form action="{{ route('post.store') }}" method="post" id="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
 					<input type="text" name="name" id="name" class="form-control" data-slugit-target="#slug">
@@ -38,7 +38,6 @@
 					<label for="tags">{{ __('Etiquetas') }}</label>
 					<input type="text" id="tags" name="tags" class="form-control">
 				</div>
-			</form>
 		</div>
 	</div>
 </div>
@@ -48,25 +47,25 @@
 			<div class="row align-items-center">
 				<div class="col">
 					<div class="form-group">
-						<button id="btn-save" class="btn btn-lg btn-primary">{{ __('Guardar Cambios') }}</button>
+						<button id="btn-save" class="btn btn-lg btn-primary" type="submit">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="card-body">
-			<form method="post" id="post-img" enctype="multipart/form-data">
-				<div class="form-group">
-					<label for="status">{{ __('Estado') }}</label>
-					<select id="status" name="status" class="form-control">
+			<!--<form method="post" id="post-img" enctype="multipart/form-data">-->
+			<div class="form-group">
+				<label for="status">{{ __('Estado') }}</label>
+				<select id="status" name="status" class="form-control">
 							<option value="PUBLISHED">Publicado</option>
 							<option value="DRAFT">Borrador</option>
 						</select>
-				</div>
-				<div class="form-group">
-					<label for="image">{{ __('Imagen') }}</label>
-					<input type="file" name="image" id="image" class="form-control" accept="image/png, image/jpeg">
-				</div>
-
+			</div>
+			<div class="form-group">
+				<label for="image">{{ __('Imagen') }}</label>
+				<input type="file" name="image" id="image" class="form-control" accept="image/png, image/jpeg">
+			</div>
+			{{ csrf_field() }}
 			</form>
 		</div>
 	</div>
@@ -77,7 +76,10 @@
 <script src="{{ asset('back/vendor/stringToSlug/jquery.slugit.min.js') }}"></script>
 <script src="{{ asset('back/vendor/summernote/summernote.min.js') }}"></script>
 <script src="{{ asset('back/vendor/amsify-suggestags/js/jquery.amsify.suggestags.js') }}"></script>
+<script src="{{ asset('back/js/posts.js') }}"></script>
+
 <script>
+	//Posts.storePost();
 	$(document).ready(function(){
 		$('#name').slugit({
   		event: 'blur'

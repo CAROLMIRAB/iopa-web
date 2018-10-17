@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\FrontPage\Repositories\PostRepo;
+
 
 class PostController extends Controller
 {
@@ -20,8 +22,6 @@ class PostController extends Controller
     {
         $this->postRepo = $postRepo;
     }
-
-   
 
     /**
      * Show all posts view blog
@@ -41,23 +41,8 @@ class PostController extends Controller
      */
     public function viewFullPost($slug)
     {
-       $post = $this->postRepo->viewPostSlug($slug); 
-       return view('front.post', compact('post'));
-    }
-   
-    /**
-     * View post create
-     * 
-     * @return view
-     */
-    public function viewCreatePost()
-    {
-       return view('back.posts.create');
+        $post = $this->postRepo->viewPostSlug($slug);
+        return view('front.post', compact('post'));
     }
 
-    public function saveCreatePost(Request $request)
-    {
-       $post = $this->postRepo->createPost($request->all());
-       return $post;
-    }
 }
