@@ -10,7 +10,9 @@ class Doctor extends Model
         'name', 
         'phone', 
         'excerpt', 
-        'specialty_id'
+        'specialty_id',
+        'file'
+       
     ]; 
 
     public function specialty()
