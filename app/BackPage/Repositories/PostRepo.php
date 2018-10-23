@@ -4,7 +4,6 @@ namespace App\BackPage\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\Category;
-use App\Tag;
 use App\Post;
 
 
@@ -17,9 +16,10 @@ class PostRepo
     {
         $post = new Post();
         $post->fill($data);
+        $post->save();
         return $post;
     }
-    
+
     public function showPosts()
     {
         $posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
@@ -39,6 +39,12 @@ class PostRepo
     {
         $post = Post::orderBy('created_at', 'desc')->take(3)->get();
         return $post;
+    }
+
+    public function allCategories()
+    {
+       $category = Category::orderBy('name', 'asc')->get();
+       return $category;
     }
 
   

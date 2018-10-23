@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
+Route::get('', function(){
+    return redirect('admin/post/create');
+});
 
 Route::get('home', [
     'as' => 'home',
@@ -33,15 +35,15 @@ Route::get('entradas', [
 ]);
 
 
-Route::group(['prefix' => 'posts'], function () {
+Route::group(['prefix' => 'admin'], function () {
    
  
-    Route::get('create', [
+    Route::get('post/create', [
         'as' => 'post.createview',
         'uses' => 'Back\PostController@viewCreatePost'
     ]);
 
-    Route::post('store', [
+    Route::post('post/store', [
         'as' => 'post.store',
         'uses' => 'Back\PostController@saveCreatePost'
     ]);

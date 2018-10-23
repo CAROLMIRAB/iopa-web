@@ -29,7 +29,7 @@
         var AmsifySuggestags = function() {
             this.selector      = null;
             this.name          = null;
-            this.defaultLabel  = 'Type here';
+            this.defaultLabel  = 'Separe con comas';
             this.classes       = {
               sTagsArea     : '.amsify-suggestags-area',
               inputArea     : '.amsify-suggestags-input-area',
@@ -351,9 +351,9 @@
 
             fixCSS : function() {
               if(settings.type == 'amsify') {
-                $(this.selectors.inputArea).addClass(this.classes.inputAreaDef.substring(1)).css({'padding': '5px 5px'});
+                $(this.selectors.inputArea).addClass(this.classes.inputAreaDef.substring(1)).css({'padding': '.625rem .75rem'});
               } else if(settings.type == 'materialize') {
-                $(this.selectors.inputArea).addClass(this.classes.inputAreaDef.substring(1)).css({'height': 'auto', 'padding': '5px 5px'});
+                $(this.selectors.inputArea).addClass(this.classes.inputAreaDef.substring(1)).css({'height': 'auto', 'padding': '.625rem .75rem'});
                 $(this.selectors.sTagsInput).css({'margin': '0', 'height': 'auto'});
               }
             },

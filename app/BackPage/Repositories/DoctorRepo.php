@@ -1,16 +1,27 @@
 <?php
 
-namespace App\FrontPage\Repositories;
+namespace App\BackPage\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Post;
+use App\Doctor;
 
 
 
 
-class PostRepo
+
+class DoctorRepo
 {
+
+    public function createDoctor($data)
+    {
+        $post = new Doctor();
+        $post->fill($data);
+        $post->save();
+        return $post;
+    }
+
     public function showPosts()
     {
         $posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
@@ -32,7 +43,13 @@ class PostRepo
         return $post;
     }
 
+    public function allCategories()
+    {
+       $category = Category::orderBy('name', 'asc')->get();
+       return $category;
+    }
 
+  
 
 
 }

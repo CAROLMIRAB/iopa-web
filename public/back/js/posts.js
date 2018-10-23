@@ -2,33 +2,76 @@ var Posts = function () {
 
     return {
 
-        storePost: function () {
-            var route = $("#post").data('route');
-            var inputFileImage = document.getElementById("image");
-            var file = inputFileImage.files[0];
-            var data = new FormData();
-            data.append('archivo', file);
+        slug: function () {
+            $('#name').slugit({
+                event: 'blur'
+            });
+        },
 
-            //console.log($("#post").serialize() + "&" + $("#post-img").serialize());
+        editHTML: function () {
+            $('#body').summernote({
+                height: 200
+            });
+        },
 
-            $("#btn-save").click(function () {
-                console.log($("#post").serialize() + "&" + $("#post-img").serialize()+"&"+ data);
-
-                $.ajax({
-                    url: route,
-                    type: 'post',
-                    data: $("#post").serialize() + "&" + $("#post-img").serialize(),
-                    dataType: 'json'
-
-
-                }).done(function (json) {
-                    console.log(json);
-
-                }).fail(function (json) {
-                    //Core.swalError(json.responseJSON);
-                });
-
+        eliminateMessages: function () {
+            $('#name').blur(function () {
+                if (!$(this).val() == '') {
+                    $('#name + p').html('');
+                }
             })
+
+            $('#excerpt').blur(function () {
+                if (!$(this).val() == '') {
+                    $('#excerpt + p').html('');
+                }
+            })
+
+        },
+
+        imageUpload: function () {
+            var input = document.querySelector("input[name=image]"),
+                img = document.querySelector(".image-preview");
+
+            input.addEventListener("change", function () {
+                var file = this.files[0],
+                    reader = new FileReader();
+
+                reader.addEventListener("load", function (e) {
+                    if (img.style.opacity == 0) {
+                        img.src = e.target.result;
+                        img.style.opacity = 1;
+                    }
+                    else {
+                        img.style.opacity = 0;
+                        setTimeout(function () {
+                            img.src = e.target.result;
+                            img.style.opacity = 1;
+                        }, 2250);
+                    }
+                }, false);
+
+                reader.readAsDataURL(file);
+            }, false);
+
+        },
+
+        imageUpload2: function (image) {
+            $.uploadPreview({
+                input_field: "#image",
+                preview_box: "#image-preview",
+                label_field: "#image-label",
+                label_default: image,
+                label_selected: image
+            });
+
+        },
+
+        tagsInput: function () {
+            $('input[name="tags"]').amsifySuggestags({
+                type: 'amsify',
+                suggestions: ['Black', 'White', 'Red', 'Blue', 'Green', 'Orange']
+            });
         },
 
         datePicker: function () {

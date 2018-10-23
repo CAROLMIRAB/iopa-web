@@ -5,22 +5,22 @@ namespace App\Http\Controllers\Back;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\BackPage\Repositories\PostRepo;
+use App\BackPage\Repositories\DoctorRepo;
 use Validator;
 
-class PostController extends Controller
+class DoctorController extends Controller
 {
 
-    private $postRepo;
+    private $doctorRepo;
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(PostRepo $postRepo)
+    public function __construct(DoctorRepo $doctorRepo)
     {
-        $this->postRepo = $postRepo;
+        $this->doctorRepo = $doctorRepo;
     }
 
     /**
