@@ -38,9 +38,14 @@ Route::get('entradas', [
 Route::group(['prefix' => 'admin'], function () {
    
  
-    Route::get('post/create', [
+    Route::get('post/nuevo', [
         'as' => 'post.createview',
         'uses' => 'Back\PostController@viewCreatePost'
+    ]);
+
+    Route::get('doctor/nuevo', [
+        'as' => 'doctor.createview',
+        'uses' => 'Back\DoctorController@viewCreateDoctor'
     ]);
 
     Route::post('post/store', [

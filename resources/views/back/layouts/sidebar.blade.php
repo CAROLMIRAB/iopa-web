@@ -70,7 +70,7 @@
           </div>
           <div class="col-6 collapse-close">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main"
-              aria-expanded="false" aria-label="Toggle sidenav">
+              aria-expanded="true" aria-label="Toggle sidenav">
                 <span></span>
                 <span></span>
               </button>
@@ -82,22 +82,27 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="./index.html">
-              <i class="ni ni-tv-2 text-primary"></i> Dashboard
+              <i class="ni ni-tv-2 text-primary"></i> Panel
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./examples/icons.html">
-              <i class="ni ni-planet text-blue"></i> Icons
+        <a class="nav-link" href="{{ route('post.createview') }}">
+              <i class="ni ni-planet text-primary"></i> Noticias
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('doctor.createview') }}">
+              <i class="ni ni-circle-08 text-primary"></i> Doctores
             </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./examples/maps.html">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
+              <i class="ni ni-pin-3 text-orange"></i> Sucursales
             </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./examples/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i> User profile
+              <i class="ni ni-single-02 text-yellow"></i> User Profile
             </a>
         </li>
         <li class="nav-item">

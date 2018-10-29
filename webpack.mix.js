@@ -2,10 +2,11 @@ let mix = require('laravel-mix');
 
 
 mix.webpackConfig({
+       
     module: {
-        rules: [
+       rules: [
             {
-                test: /\.(woff2?|ttf|eot|svg|otf)$/,
+                test: /\.(woff2?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
                 options: {
                     name: path => {
@@ -53,15 +54,32 @@ mix.webpackConfig({
  */
 
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/scss/app.scss', 'public/css');
+mix.styles([
+    'node_modules/bootstrap/dist/css/bootstrap.css',
+    'plugins/nucleo/css/nucleo.css',
+    'plugins/nucleo/css/nucleo-svg.css',
+    'plugins/summernote/summernote.css',
+    'plugins/amsify-suggestags/css/amsify.suggestags.css'
+], 'public/back/css/build.back.min.css').version();
 
 mix.styles([
-    'public/scss/packages.front.css',
-    '../../../node_modules/font-awesome/css/font-awesome.css',
-    'node_modules/slick-carousel/slick/slick.css',
-    'node_modules/slick-carousel/slick/slick-theme.css',
-    'node_modules/dropzone/dist/dropzone.css',
-    'node_modules/croppie/croppie.css',
-    'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css',
-], 'public/front/css/build.front.min.css').version();
+    'resources/assets/back/css/argon.css',
+    'resources/assets/back/css/styles.css'
+], 'public/back/css/custom.back.min.css').version();
+
+
+mix.scripts([
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/bootstrap/dist/js/bootstrap.js',
+    'node_modules/sweetalert2/dist/sweetalert2.js',
+    'plugins/stringToSlug/jquery.slugit.min.js',
+    'plugins/summernote/summernote.min.js',
+    'plugins/amsify-suggestags/js/jquery.amsify.suggestags.js',
+    'plugins/upload-preview/uploadPreview.min.js'
+], 'public/back/js/build.back.min.js').version();
+
+mix.scripts([
+    'resources/assets/back/js/argon.min.js',
+    'resources/assets/back/js/doctor.js',
+    'resources/assets/back/js/post.js'
+], 'public/back/js/custom.back.min.js').version();

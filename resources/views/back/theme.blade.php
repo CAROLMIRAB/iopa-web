@@ -9,13 +9,10 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
-  <link href="{{ asset('back/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-  <link href="{{ asset('back/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-  <!-- Argon CSS -->
-  <link href="{{ asset('back/vendor/summernote/summernote.css') }}" rel="stylesheet">
-  <link type="text/css" href="{{ asset('back/vendor/amsify-suggestags/css/amsify.suggestags.css') }}" rel="stylesheet">
-  <link type="text/css" href="{{ asset('back/css/argon.css?v=1.0.0') }}" rel="stylesheet">
-  <link type="text/css" href="{{ asset('back/css/styles.css') }}" rel="stylesheet">
+  
+  <link href="{{ asset('back/css/build.back.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('back/css/custom.back.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -87,14 +84,10 @@
 
   <!-- Argon Scripts -->
   <!-- Core -->
-  <!--<script src="{{ asset('back/vendor/jquery/dist/jquery.min.js') }}"></script>-->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-  <script src="{{ asset('back/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>--> 
+  <script src="{{ asset('back/js/build.back.min.js') }}"></script>
   <!-- Optional JS -->
-  <script src="{{ asset('back/vendor/chart.js/dist/Chart.min.js') }}"></script>
-  <script src="{{ asset('back/vendor/chart.js/dist/Chart.extension.js') }}"></script>
-  <!-- Argon JS -->
-  <script src="{{ asset('back/js/argon.js?v=1.0.0') }}"></script>
+  <script src="{{ asset('back/js/custom.back.min.js') }}"></script>
   @yield('scripts')
 </body>
 

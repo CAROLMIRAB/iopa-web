@@ -31,8 +31,8 @@ class DoctorController extends Controller
      */
     public function viewCreateDoctor()
     {
-        $categories = $this->postRepo->allCategories();
-        return view('back.posts.create', compact('categories'));
+        //$categories = $this->doctorRepo->allCategories();
+        return view('back.doctors.create');
     }
 
     /**

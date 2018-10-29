@@ -89,12 +89,6 @@
 @endsection
  
 @section('scripts')
-<script src="{{ asset('back/vendor/stringToSlug/jquery.slugit.min.js') }}"></script>
-<script src="{{ asset('back/vendor/summernote/summernote.min.js') }}"></script>
-<script src="{{ asset('back/vendor/amsify-suggestags/js/jquery.amsify.suggestags.js') }}"></script>
-<script src="{{ asset('back/vendor/upload-preview/uploadPreview.min.js') }}"></script>
-<script src="{{ asset('back/js/posts.js') }}"></script>
-
 <script>
 	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
 	$(document).ready(function(){

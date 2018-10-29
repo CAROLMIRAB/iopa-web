@@ -3,8 +3,8 @@
 namespace App\BackPage\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\Category;
-use App\Post;
+use App\Specialty;
+use App\Office;
 use App\Doctor;
 
 
@@ -21,17 +21,23 @@ class DoctorRepo
 
     public function showDoctors()
     {
-        $doctor = Doctor::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->get();
+        $doctor = Doctor::orderBy('id', 'DESC')->get();
         return $doctor;
     }
 
-    
+    public function showAllSpecialty()
+    {
+        $spacialty = Specialty::orderBy('name', 'ASC')->get();
+        return $specialty;
+    }
 
-  
 
 
 
-  
+
+
+
+
 
 
 }
