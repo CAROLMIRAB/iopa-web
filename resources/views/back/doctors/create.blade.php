@@ -7,7 +7,7 @@
 			<div class="row align-items-center">
 				<div class="col">
 					<h6 class="text-uppercase text-muted ls-1 mb-1">Medico</h6>
-					<h2 class="mb-0">{{ _('Agregar Nuevo Medico') }}</h2>
+					<h2 class="mb-0">{{ _('Nuevo Medico') }}</h2>
 				</div>
 			</div>
 		</div>
@@ -28,7 +28,9 @@
 				<div class="form-group">
 					<label for="specialty_id">{{ __('Especilidad') }}</label>
 					<select name="specialty_id" id="specialty_id" class="form-control"> 
-							
+						@foreach ($specialties as $esp)
+								<option value="{{ $esp->id }}"> {{ $esp->name }}</option>
+							@endforeach	
 					</select>
 				</div>
 		</div>
@@ -50,8 +52,9 @@
 			<div class="form-group">
 				<label for="image">{{ __('Imagen') }}</label>
 				<div id="image-preview" style="border: #619DC9 3px dashed;">
-					<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
-					<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
+					<label for="image-upload" id="image-label"></label>
+					<img class="" id="image_doctor" />
+					
 				</div>
 			</div>
 			{{ csrf_field() }}

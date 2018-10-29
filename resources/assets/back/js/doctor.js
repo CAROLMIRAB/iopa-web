@@ -17,14 +17,8 @@ var Doctors = function () {
 
         },
 
-        imageUpload: function (image) {
-            $.uploadPreview({
-                input_field: "#image",
-                preview_box: "#image-preview",
-                label_field: "#image-label",
-                label_default: image,
-                label_selected: image
-            });
+        imageUploadDoctor: function (image) {
+           $('#image_doctor').croppie();
         },
     }
 }();

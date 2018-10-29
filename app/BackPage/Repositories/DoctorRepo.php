@@ -25,9 +25,9 @@ class DoctorRepo
         return $doctor;
     }
 
-    public function showAllSpecialty()
+    public function showAllSpecialties()
     {
-        $spacialty = Specialty::orderBy('name', 'ASC')->get();
+        $specialty = Specialty::orderBy('name', 'ASC')->get();
         return $specialty;
     }
 
