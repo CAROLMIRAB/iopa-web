@@ -13,7 +13,7 @@
 		</div>
 		<div class="card-body">
 			<form action="{{ route('post.store') }}" method="post" id="post" enctype="multipart/form-data">
-		
+
 				<div class="form-group">
 					<label for="name">{{ __('Nombre') }}</label>
 					<input type="text" name="name" id="name" class="form-control @if ($errors->valid->has('name')) is-invalid @endif " data-slugit-target="#slug">					@if ($errors->valid->has('name'))
@@ -33,6 +33,7 @@
 							@endforeach	
 					</select>
 				</div>
+			</form>
 		</div>
 	</div>
 </div>
@@ -48,20 +49,16 @@
 			</div>
 		</div>
 		<div class="card-body">
-		
+
 			<div class="form-group">
 				<label for="image">{{ __('Imagen') }}</label>
-				<div id="image-preview" style="border: #619DC9 3px dashed;">
-					<label for="image-upload" id="image-label"></label>
-					<img class="" id="image_doctor" />
-					
-				</div>
+				<input type="file" id="image">
+				<div id="upload-demo"></div>
+				<div id="preview-crop-image" style="background:#9d9d9d;width:300px;padding:50px 50px;height:300px;"></div>
+				<button class="btn btn-primary btn-block upload-image" style="margin-top:2%">Upload Image</button>
 			</div>
 			{{ csrf_field() }}
-			</form>
 		</div>
-
-
 	</div>
 </div>
 @endsection
@@ -69,12 +66,16 @@
 @section('scripts')
 
 <script>
-	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
-	$(document).ready(function(){
-	
-	Doctors.imageUpload(image); 
-	Doctors.eliminateMessages();
+	$.ajaxSetup({
+		headers: {
+    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 
+	$(document).ready(function(){
+
+		Doctors.imageUploadDoctor("{{ route('') }}"); 
+		Doctors.eliminateMessages();
 	});
 
 </script>

@@ -23,7 +23,7 @@ class DoctorController extends Controller
         $this->doctorRepo = $doctorRepo;
     }
 
- 
+
     /**
      * View post create
      * 
@@ -43,45 +43,23 @@ class DoctorController extends Controller
     public function saveCreateDoctor(Request $request)
     {
         try {
-            
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'excerpt' => 'required',
                 'specialty_id' => 'required',
-            ],[
+            ], [
                 'name.required' => __('El título es requerido'),
                 'excerpt.required' => __('Debe escribir un extracto'),
                 'specialty_id' => 'required',
             ]);
-    
+
             if ($validator->fails()) {
                 return redirect()->back()
-                            ->withErrors($validator, 'valid')
-                            ->withInput();
+                    ->withErrors($validator, 'valid')
+                    ->withInput();
             }
 
-            $image_url = "";
-          
-            if ($request->file('image')) {
-
-                $input = [];
-
-                $image = $request->file('image');
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
-
-                $destinationPath = public_path('/uploads/thumbnail');
-                $img = \Image::make($image->getRealPath());
-                $img->resize(100, 100, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $input['imagename']);
-
-
-                $destinationPath = public_path('/uploads/images');
-                $image->move($destinationPath, $input['imagename']);
-
-                $image_url = \URL::to('/') . "/uploads/images/" . $input['imagename'];
-            }
 
             $data = array(
                 'name' => $request->name,
@@ -107,5 +85,19 @@ class DoctorController extends Controller
 
             return $data;
         }
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $image = $request->image;
+
+        list($type, $image) = explode(';', $image);
+        list(, $image)      = explode(',', $image);
+        $image = base64_decode($image);
+        $image_name= time().'.png';
+        $path = public_path('upload/'.$image_name);
+
+        file_put_contents($path, $image);
+        return response()->json(['status'=>true]);
     }
 }

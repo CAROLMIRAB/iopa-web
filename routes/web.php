@@ -11,7 +11,7 @@
 |
  */
 Route::get('', function(){
-    return redirect('admin/post/create');
+    return redirect('admin/post/nuevo');
 });
 
 Route::get('home', [
@@ -48,9 +48,16 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\DoctorController@viewCreateDoctor'
     ]);
 
+
+
     Route::post('post/store', [
         'as' => 'post.store',
         'uses' => 'Back\PostController@saveCreatePost'
+    ]);
+
+    Route::post('doctor/store-img', [
+        'as' => 'doctor.storeimg',
+        'uses' => 'Back\DoctorController@uploadImage'
     ]);
 
 });
