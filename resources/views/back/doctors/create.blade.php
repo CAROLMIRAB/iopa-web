@@ -1,7 +1,7 @@
 @extends('back.theme') 
 @section('content')
 
-<div class="col-xl-8 mb-5 mb-xl-0">
+<div class="col-xl-6 mb-6 mb-xl-0">
 	<div class="card shadow">
 		<div class="card-header bg-transparent">
 			<div class="row align-items-center">
@@ -13,13 +13,16 @@
 		</div>
 		<div class="card-body">
 			<form action="{{ route('post.store') }}" method="post" id="post" enctype="multipart/form-data">
-
 				<div class="form-group">
 					<label for="name">{{ __('Nombre') }}</label>
 					<input type="text" name="name" id="name" class="form-control @if ($errors->valid->has('name')) is-invalid @endif " data-slugit-target="#slug">					@if ($errors->valid->has('name'))
 					<p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
 				</div>
-
+				<div class="form-group">
+					<label for="phone">{{ __('Teléfono') }}</label>
+					<input type="text" name="phone" id="phone" class="form-control @if ($errors->valid->has('phone')) is-invalid @endif " data-slugit-target="#slug">					@if ($errors->valid->has('phone'))
+					<p class="invalid-feedback">{{ $errors->valid->first('phone') }}</p> @endif
+				</div>
 				<div class="form-group">
 					<label for="excerpt">{{ __('Extracto') }}</label>
 					<textarea id="excerpt" name="excerpt" class="form-control @if ($errors->valid->has('excerpt')) is-invalid @endif "></textarea>					@if ($errors->valid->has('excerpt'))
@@ -33,11 +36,12 @@
 							@endforeach	
 					</select>
 				</div>
+				<input class="hidden" id="imgurl" type="hidden">
 			</form>
 		</div>
 	</div>
 </div>
-<div class="col-xl-4 mb-5 mb-xl-0">
+<div class="col-xl-6 mb-6 mb-xl-0">
 	<div class="card shadow">
 		<div class="card-header bg-transparent">
 			<div class="row align-items-center">
@@ -49,24 +53,36 @@
 			</div>
 		</div>
 		<div class="card-body">
+			<input type="file" id="fileInput" class="form-control" accept="image/*" />
+			<div id="canvas-div" style="max-height: 400px; height:400px">
+				<canvas id="canvas">
 
-			<div class="form-group">
-				<label for="image">{{ __('Imagen') }}</label>
-				<input type="file" id="image">
-				<div id="upload-demo"></div>
-				<div id="preview-crop-image" style="background:#9d9d9d;width:300px;padding:50px 50px;height:300px;"></div>
-				<button class="btn btn-primary btn-block upload-image" style="margin-top:2%">Upload Image</button>
+				</canvas>
+				<div id="preview-img"></div>
 			</div>
-			{{ csrf_field() }}
+			<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+			<div class="buttons-upload" style="float: left; width: 100%">
+				<div style="float: left; width: 60%; display: inline-block;">
+					<div style="float: left; width: 20%; display: inline-block;">
+
+					</div>
+					<div style="float: left; width: 20%; display: inline-block;"></div>
+				</div>
+				<button type="button" id="btnCrop" class="btn btn-lg btn-primary" value="Aceptar" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Cargando Imagen...">
+				Cortar y Guardar
+				</button>
+				<div class="preview" style="display: table-cell; width: 100%">
+
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 @endsection
  
 @section('scripts')
 
-<script>
-	$.ajaxSetup({
+	<script>
+		$.ajaxSetup({
 		headers: {
     	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		}
@@ -74,9 +90,8 @@
 
 	$(document).ready(function(){
 
-		Doctors.imageUploadDoctor("{{ route('') }}"); 
+		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
 	});
-
-</script>
+	</script>
 @endsection

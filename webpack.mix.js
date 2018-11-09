@@ -59,7 +59,8 @@ mix.styles([
     'plugins/nucleo/css/nucleo.css',
     'plugins/nucleo/css/nucleo-svg.css',
     'plugins/summernote/summernote.css',
-    'node_modules/croppie/croppie.css'
+    'plugins/amsify-suggestags/css/amsify.suggestags.css',
+    'node_modules/cropper/dist/cropper.css'
 ], 'public/back/css/build.back.min.css').version();
 
 mix.styles([
@@ -76,7 +77,7 @@ mix.scripts([
     'plugins/summernote/summernote.min.js',
     'plugins/amsify-suggestags/js/jquery.amsify.suggestags.js',
     'plugins/upload-preview/uploadPreview.min.js',
-    'node_modules/croppie/croppie.js'
+    'node_modules/cropper/dist/cropper.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([

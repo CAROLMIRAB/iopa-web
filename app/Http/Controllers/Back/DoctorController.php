@@ -89,15 +89,34 @@ class DoctorController extends Controller
 
     public function uploadImage(Request $request)
     {
-        $image = $request->image;
+        try {
+            $input = [];
+            $image_str = $request->img;
+            if ($image_str) {
 
-        list($type, $image) = explode(';', $image);
-        list(, $image)      = explode(',', $image);
-        $image = base64_decode($image);
-        $image_name= time().'.png';
-        $path = public_path('upload/'.$image_name);
+                $png_url = "doctor-" . time() . ".png";
+                $path = public_path('/uploads/images/') . $png_url;
+                $base64Image = explode(',', $image_str);
+                $image = \Image::make($base64Image[1])->encode('jpg', 75);
+                $image->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path);
 
-        file_put_contents($path, $image);
-        return response()->json(['status'=>true]);
+                $image_url = \URL::to('/') . "/uploads/images/" . $png_url;
+
+                $data = [
+                    'status' => true,
+                    'message' => __('Imagen subida'),
+                    'img' => $image_url
+                ];
+                return response()->json($data);
+            }
+        } catch (\Exception $ex) {
+            $data = [
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se subía la imagen. Por favor intente nuevamente'),
+            ];
+            return $ex;
+        }
     }
 }

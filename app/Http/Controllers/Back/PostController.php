@@ -131,8 +131,7 @@ class PostController extends Controller
 
             $data = [
                 'title' => __('Publicación fallida'),
-                'message' => __('Ocurrió un error mientras se publicaba su vehículo. Por favor intente nuevamente'),
-                'close' => __('Cerrar')
+                'message' => __('Ocurrió un error mientras se publicaba su post. Por favor intente nuevamente'),
             ];
 
             return $ex;
