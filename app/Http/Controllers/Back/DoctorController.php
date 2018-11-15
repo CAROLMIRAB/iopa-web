@@ -43,7 +43,7 @@ class DoctorController extends Controller
     public function saveCreateDoctor(Request $request)
     {
         try {
-
+            $image_url = $request->imgurl;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'excerpt' => 'required',
@@ -60,7 +60,6 @@ class DoctorController extends Controller
                     ->withInput();
             }
 
-
             $data = array(
                 'name' => $request->name,
                 'excerpt' => $request->excerpt,
@@ -73,7 +72,7 @@ class DoctorController extends Controller
                 $post = $this->doctorRepo->createDoctor($data);
             }
 
-            return redirect()->back();
+           return redirect()->back();
 
         } catch (\Exception $ex) {
 

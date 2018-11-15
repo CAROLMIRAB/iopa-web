@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<form action="{{ route('post.store') }}" method="post" id="post" enctype="multipart/form-data">
+			<form action="{{ route('doctor.store') }}" method="post" id="doctor-form" >
 				<div class="form-group">
 					<label for="name">{{ __('Nombre') }}</label>
 					<input type="text" name="name" id="name" class="form-control @if ($errors->valid->has('name')) is-invalid @endif " data-slugit-target="#slug">					@if ($errors->valid->has('name'))
@@ -36,7 +36,12 @@
 							@endforeach	
 					</select>
 				</div>
-				<input class="hidden" id="imgurl" type="hidden">
+				<input class="hidden" id="imgurl" name="imgurl" type="hidden">
+
+				<div class="form-group">
+					<button id="btn-save" class="btn btn-lg btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+				</div>
+				{{ csrf_field() }}
 			</form>
 		</div>
 	</div>
@@ -46,12 +51,11 @@
 		<div class="card-header bg-transparent">
 			<div class="row align-items-center">
 				<div class="col">
-					<div class="form-group">
-						<button id="btn-save" class="btn btn-lg btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>
+	
 		<div class="card-body">
 			<input type="file" id="fileInput" class="form-control" accept="image/*" />
 			<div id="canvas-div" style="max-height: 400px; height:400px">
@@ -74,6 +78,7 @@
 				<div class="preview" style="display: table-cell; width: 100%">
 
 				</div>
+			
 			</div>
 		</div>
 	</div>

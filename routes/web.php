@@ -55,6 +55,11 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\PostController@saveCreatePost'
     ]);
 
+    Route::post('doctor/store', [
+        'as' => 'doctor.store',
+        'uses' => 'Back\DoctorController@saveCreateDoctor'
+    ]);
+
     Route::post('doctor/store-img', [
         'as' => 'doctor.storeimg',
         'uses' => 'Back\DoctorController@uploadImage'
