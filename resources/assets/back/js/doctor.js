@@ -14,17 +14,15 @@ var Doctors = function () {
                     $('#excerpt + p').html('');
                 }
             })
-
         },
 
         imageUploadDoctor: function (route) {
+
             var canvas = $("#canvas"),
                 context = canvas.get(0).getContext("2d"),
                 $result = $('#result');
 
-
             $('#fileInput').on('change', function () {
-                $('#preview-img').hide();
                 if (this.files && this.files[0]) {
                     if (this.files[0].type.match(/^image\//)) {
                         $('#btnCrop').prop('disabled', false);
@@ -44,17 +42,12 @@ var Doctors = function () {
                                 context.drawImage(img, 0, 0, width, height);
                                 var cropper = canvas.cropper({
                                     aspectRatio: 1/1,
-                                    cropBoxResizable: false,
-                                    resizable: false,
                                     background: true,
-                                    cropBoxResizable: false,
                                     autoCropArea: 1,
                                     viewMode: 1,
                                     width: 500,
                                     height: 500
                                 });
-
-                            
                             };
                             img.src = evt.target.result;
                         };
@@ -82,12 +75,11 @@ var Doctors = function () {
                         img: croppedImageDataURL,
                     },
                 }).done(function (data) {
-                    var imgurl = data.img;
-                    console.log(imgurl);
-                    $('.cropper-container').hide();
-                    $('#imgurl').val(imgurl);
-                    $('#preview-img').html('<img src="' + imgurl + '" class="images-preview img-fluid"  >');
-                    $('#preview-img').show();
+                    var imgurl = data.img_url;
+                    $('#imgurl').val(data.img_name);
+                    $("#avatar-doctor").attr("src", imgurl);
+                    $('#modal-notification').modal('hide');
+
                 }).fail(function (data) {
                     var obj = data;
                     $('#btnCrop').button('reset');

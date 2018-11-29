@@ -76,7 +76,6 @@
     cursor: pointer;
     font-size: 50px !important;
     color: #2d4a9b;
-    /*background-color: #bdc3c7;*/
     width: 200px;
     height: 50px;
     line-height: 50px;
@@ -96,14 +95,62 @@
   font-size: unset;  
   }
 
-  #btnCrop{
-    width: 100%;
-  }
-
   html,body{
     overflow-x: hidden;
 }
 
 .navbar {
   margin-bottom: unset;
+}
+
+
+.modal.in .modal-dialog {
+transform: translate(0,0);
+}
+
+.fade.in {
+  background: rgb(0, 0, 0, 0.3);
+}
+
+.card-profile-image img{
+  box-shadow: 0 0 2rem 0 rgba(136,152,170,.8)!important;
+}
+
+.overlay-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: red;
+}
+
+.card-profile-image:hover .overlay-img {
+  opacity: 1;
+}
+
+.icon-img{
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  transform: translate(-50%, -29.5%);
+  -ms-transform: translate(-50%, -29.5%);
+  text-align: center;
+  background: #666666;
+  padding: 2.7rem;
+  opacity: 0.6;
+}
+
+.icon-img i{
+font-size: 6rem;
+}
+
+.fa-user:hover {
+  color: #eee;
 }

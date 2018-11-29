@@ -95,7 +95,7 @@
 	Posts.slug();
 	Posts.editHTML();
 	Posts.tagsInput();		
-	Posts.imageUpload2(image); 
+	Posts.imageUpload(image); 
 	Posts.eliminateMessages();
 	});
 

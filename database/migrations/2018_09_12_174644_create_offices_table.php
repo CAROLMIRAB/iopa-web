@@ -18,7 +18,7 @@ class CreateOfficesTable extends Migration
 
             $table->string('name');
             $table->string('photo');
-            $table->string('map');
+            $table->text('map');
             $table->string('phone');
             $table->string('address');
 

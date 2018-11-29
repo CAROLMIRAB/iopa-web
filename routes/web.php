@@ -34,21 +34,22 @@ Route::get('entradas', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
-
 Route::group(['prefix' => 'admin'], function () {
    
- 
     Route::get('post/nuevo', [
         'as' => 'post.createview',
         'uses' => 'Back\PostController@viewCreatePost'
     ]);
 
-    Route::get('doctor/nuevo', [
+    Route::get('medico/nuevo', [
         'as' => 'doctor.createview',
         'uses' => 'Back\DoctorController@viewCreateDoctor'
     ]);
 
-
+    Route::get('sucursal/nueva', [
+        'as' => 'office.createview',
+        'uses' => 'Back\OfficeController@viewCreateOffice'
+    ]);
 
     Route::post('post/store', [
         'as' => 'post.store',
@@ -60,9 +61,19 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\DoctorController@saveCreateDoctor'
     ]);
 
+    Route::post('office/store', [
+        'as' => 'office.store',
+        'uses' => 'Back\OfficeController@saveCreateOffice'
+    ]);
+
     Route::post('doctor/store-img', [
         'as' => 'doctor.storeimg',
         'uses' => 'Back\DoctorController@uploadImage'
+    ]);
+
+    Route::post('office/store-img', [
+        'as' => 'office.storeimg',
+        'uses' => 'Back\OfficeController@uploadImage'
     ]);
 
 });
@@ -76,8 +87,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 
 });
 
-Auth::routes();
 
+Auth::routes();
 
 Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 

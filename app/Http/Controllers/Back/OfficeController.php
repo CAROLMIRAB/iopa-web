@@ -5,34 +5,32 @@ namespace App\Http\Controllers\Back;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\BackPage\Repositories\DoctorRepo;
+use App\BackPage\Repositories\OfficeRepo;
 use Validator;
 
-class DoctorController extends Controller
+class OfficeController extends Controller
 {
 
-    private $doctorRepo;
+    private $officeRepo;
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(DoctorRepo $doctorRepo)
+    public function __construct(OfficeRepo $officeRepo)
     {
-        $this->doctorRepo = $doctorRepo;
+        $this->officeRepo = $officeRepo;
     }
-
 
     /**
      * View post create
      * 
      * @return view
      */
-    public function viewCreateDoctor()
+    public function viewCreateOffice()
     {
-        $specialties = $this->doctorRepo->showAllSpecialties();
-        return view('back.doctors.create', compact('specialties'));
+        return view('back.offices.create');
     }
 
     /**
@@ -40,18 +38,20 @@ class DoctorController extends Controller
      * 
      * @return view
      */
-    public function saveCreateDoctor(Request $request)
+    public function saveCreateOffice(Request $request)
     {
         try {
             $image_url = $request->imgurl;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'excerpt' => 'required',
-                'specialty_id' => 'required',
+                'map' => 'required',
+                'phone' => 'required',
+                'address' => 'required'
             ], [
-                'name.required' => __('El título es requerido'),
-                'excerpt.required' => __('Debe escribir un extracto'),
-                'specialty_id' => 'required',
+                'name.required' => _('El nombre de la sucursal es requerido'),
+                'map.required' => _('El mapa de la sucursal es requerido'),
+                'phone.required' => _('El teléfono de la sucursal es requerido'),
+                'address.required' => _('La dirección de la sucursal es requerido')
             ]);
 
             if ($validator->fails()) {
@@ -60,22 +60,28 @@ class DoctorController extends Controller
                     ->withInput();
             }
 
-            if (!empty($image_url)) {
-                
-                $full = \URL::to('/') . '/uploads/images/' . $image_url;
-        
-                $data = array(
-                    'name' => $request->name,
-                    'excerpt' => $request->excerpt,
-                    'phone' => $request->phone,
-                    'specialty_id' => $request->specialty_id,
-                    'file' => $image_url
-                );
-              
-                $post = $this->doctorRepo->createDoctor($data);
-              
+            if ($request->file('image')) {
 
+                $input = [];
+
+                $image = $request->file('image');
+                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+
+                $destinationPath = public_path('/uploads/thumbnail');
+                $img = \Image::make($image->getRealPath());
+    
+                $destinationPath = public_path('/uploads/images');
+                $image->move($destinationPath, $input['imagename']);
+
+                $image_url = \URL::to('/') . "/uploads/images/" . $input['imagename'];
             }
+
+            $post = $this->officeRepo->createOffice($data);
+
+            $img = \Image::make($temp);
+            $img->save($full);
+
+
 
             return redirect()->back();
 
@@ -99,7 +105,7 @@ class DoctorController extends Controller
             if ($image_str) {
 
                 $png_url = "doctor-" . time() . ".png";
-                $path = public_path('/uploads/images/') . $png_url;
+                $path = public_path('/uploads/temp/') . $png_url;
                 $base64Image = explode(',', $image_str);
                 $image = \Image::make($base64Image[1])->encode('jpg', 75);
                 $image->resize(500, 500, function ($constraint) {
