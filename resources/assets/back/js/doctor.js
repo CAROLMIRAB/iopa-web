@@ -32,11 +32,11 @@ var Doctors = function () {
                     };
                 },
                 templateResult: function(item){
-                    return item.name || item.text;
+                    return item.name;
                 },
                 templateSelection: function(item){
             
-                    return item.name || item.text;
+                    return item.name;
                 },
                 escapeMarkup: function (markup) { return markup; },
                 ajax: {
