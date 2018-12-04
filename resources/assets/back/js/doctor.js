@@ -35,7 +35,6 @@ var Doctors = function () {
                     return item.name;
                 },
                 templateSelection: function(item){
-            
                     return item.name;
                 },
                 escapeMarkup: function (markup) { return markup; },
