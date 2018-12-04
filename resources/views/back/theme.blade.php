@@ -33,21 +33,12 @@
   @include('back.layouts.header')
     <!-- Page content -->
     <div class="container-fluid mt--7">
-      <div class="row">
+    
         @yield('content')
-      </div>
-     
+ 
+  @include('back.layouts.footer')
     </div>
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-          <div class="col-xl-12">
-            <div class="copyright text-center text-xl-left text-muted">
-              © 2018 <a href="http://agenciaporter.cl/" class="font-weight-bold ml-1" target="_blank">Porter Advertising</a>
-            </div>
-          </div>
-         
-        </div>
-      </footer>
+
   </div>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

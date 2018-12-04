@@ -1,5 +1,6 @@
 var Doctors = function () {
 
+
     return {
 
         eliminateMessages: function () {
@@ -14,6 +15,49 @@ var Doctors = function () {
                     $('#excerpt + p').html('');
                 }
             })
+        },
+
+        selectOffice: function () {
+            var $officeSearch = $('#office');
+            $officeSearch.select2({
+                multiple: true,
+                placeholder: "...",
+                maximumSelectionSize: 6,
+                minimumInputLength: 1,
+                tokenSeparators: [",", " "],
+                createTag: function(item) {
+                    return {
+                        id: item.term,
+                        text: item.term,
+                    };
+                },
+                templateResult: function(item){
+                    return item.name || item.text;
+                },
+                templateSelection: function(item){
+            
+                    return item.name || item.text;
+                },
+                escapeMarkup: function (markup) { return markup; },
+                ajax: {
+                    url: $officeSearch.data('route'),
+                    dataType: "json",
+                    global: false,
+                    cache: true,
+                    delay: 250,
+                    data: function(params) { 
+                        return {  
+                            q: params.term
+                        };
+                    },
+                    processResults: function (data) {
+            
+                        return {
+                            results: data.data.tags,
+                        };
+                    }
+                }
+            });
         },
 
         imageUploadDoctor: function (route) {
@@ -41,7 +85,7 @@ var Doctors = function () {
                                 context.canvas.width = width;
                                 context.drawImage(img, 0, 0, width, height);
                                 var cropper = canvas.cropper({
-                                    aspectRatio: 1/1,
+                                    aspectRatio: 1 / 1,
                                     background: true,
                                     autoCropArea: 1,
                                     viewMode: 1,

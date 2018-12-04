@@ -76,6 +76,11 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@uploadImage'
     ]);
 
+    Route::get('office/find-office', [
+        'as' => 'office.find-office',
+        'uses' => 'Back\OfficeController@findOffice'
+    ]);
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {

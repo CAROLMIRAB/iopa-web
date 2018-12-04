@@ -19,4 +19,10 @@ class OfficeRepo
         return $doctor;
     }
 
+    public function findOffices()
+    {
+        $offices = Office::select('id', 'name')->orderBy('name', 'asc')->get();
+        return $offices;
+    }
+
 }

@@ -56,6 +56,7 @@ mix.webpackConfig({
 
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
+    'node_modules/select2/dist/css/select2.css',
     'plugins/nucleo/css/nucleo.css',
     'plugins/nucleo/css/nucleo-svg.css',
     'plugins/summernote/summernote.css',
@@ -72,6 +73,7 @@ mix.styles([
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.js',
+    'node_modules/select2/dist/js/select2.min.js',
     'node_modules/sweetalert2/dist/sweetalert2.js',
     'plugins/stringToSlug/jquery.slugit.min.js',
     'plugins/summernote/summernote.min.js',

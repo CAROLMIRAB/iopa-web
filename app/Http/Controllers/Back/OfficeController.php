@@ -24,7 +24,7 @@ class OfficeController extends Controller
     }
 
     /**
-     * View post create
+     * View office create
      * 
      * @return view
      */
@@ -33,8 +33,25 @@ class OfficeController extends Controller
         return view('back.offices.create');
     }
 
+     /**
+     * Office find office
+     * 
+     * @return var
+     */
+    public function findOffice()
+    {
+        $offices = $this->officeRepo->findOffices();
+        $data = [
+            'code' => 200,
+            'data' => [
+                'tags' =>  $offices 
+            ]
+        ];
+        return response()->json($data);
+    }
+
     /**
-     * Stored post
+     * Stored office
      * 
      * @return view
      */

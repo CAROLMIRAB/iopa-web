@@ -13,7 +13,6 @@
 					<div class="col-4 text-right">
 						<button class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
-
 				</div>
 			</div>
 			<div class="card-body">
@@ -56,10 +55,8 @@
 
 							<div class="form-group">
 								<label for="office">{{ __('Sucursal') }}</label>
-								<select name="office" id="office" class="form-control"> 
-										@foreach ($offices as $off)
-												<option value="{{ $off->id }}"> {{ $off->name }}</option>
-											@endforeach	
+								<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 
+									
 										</select>
 							</div>
 						</div>
@@ -172,6 +169,7 @@
 
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
+		Doctors.selectOffice();
 	});
 
 </script>
