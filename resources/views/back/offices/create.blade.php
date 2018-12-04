@@ -74,5 +74,6 @@
 		Offices.imageUpload(image); 
 		Offices.eliminateMessages();
 	});
+	
 	</script>
 @endsection

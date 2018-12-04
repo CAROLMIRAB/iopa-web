@@ -25,14 +25,15 @@ class DoctorController extends Controller
 
 
     /**
-     * View post create
+     * View doctor create
      * 
      * @return view
      */
     public function viewCreateDoctor()
     {
         $specialties = $this->doctorRepo->showAllSpecialties();
-        return view('back.doctors.create', compact('specialties'));
+        $offices = $this->doctorRepo->showAllOffices();
+        return view('back.doctors.create', compact('specialties', 'offices'));
     }
 
     /**
@@ -46,10 +47,12 @@ class DoctorController extends Controller
             $image_url = $request->imgurl;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'lastname' => 'required',
                 'excerpt' => 'required',
                 'specialty_id' => 'required',
             ], [
-                'name.required' => __('El título es requerido'),
+                'name.required' => __('El nombre es requerido'),
+                'lastname.required' => __('El apellido es requerido'),
                 'excerpt.required' => __('Debe escribir un extracto'),
                 'specialty_id' => 'required',
             ]);
@@ -61,18 +64,19 @@ class DoctorController extends Controller
             }
 
             if (!empty($image_url)) {
-                
+
                 $full = \URL::to('/') . '/uploads/images/' . $image_url;
         
                 $data = array(
                     'name' => $request->name,
+                    'lastname' => $request->lastname,
                     'excerpt' => $request->excerpt,
                     'phone' => $request->phone,
                     'specialty_id' => $request->specialty_id,
-                    'file' => $image_url
+                    'file' => $full
                 );
               
-                $post = $this->doctorRepo->createDoctor($data);
+                $post = $this->doctorRepo->createDoctor($data,  $request->office);
               
 
             }

@@ -65,23 +65,33 @@ class OfficeController extends Controller
                 $input = [];
 
                 $image = $request->file('image');
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+                $input['imagename'] = 'office_' . time() . '.' . $image->getClientOriginalExtension();
 
                 $destinationPath = public_path('/uploads/thumbnail');
                 $img = \Image::make($image->getRealPath());
-    
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $input['imagename']);
+
+
                 $destinationPath = public_path('/uploads/images');
                 $image->move($destinationPath, $input['imagename']);
 
                 $image_url = \URL::to('/') . "/uploads/images/" . $input['imagename'];
+
             }
 
-            $post = $this->officeRepo->createOffice($data);
+            $data = array(
+                'name' => $request->name,
+                'photo' => $image_url,
+                'map' => $request->map,
+                'address' => $request->address,
+                'phone' => $request->phone
+            );
 
-            $img = \Image::make($temp);
-            $img->save($full);
-
-
+            if (!empty($image_url)) {
+                $post = $this->officeRepo->createOffice($data);
+            }
 
             return redirect()->back();
 

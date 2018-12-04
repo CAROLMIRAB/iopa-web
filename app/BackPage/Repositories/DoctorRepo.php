@@ -11,11 +11,14 @@ use App\Doctor;
 class DoctorRepo
 {
 
-    public function createDoctor($data)
+    public function createDoctor($data, $offices)
     {
         $doctor = new Doctor();
         $doctor->fill($data);
         $doctor->save();
+
+        $doctor->offices()->attach($offices);
+        
         return $doctor;
     }
 
@@ -29,6 +32,12 @@ class DoctorRepo
     {
         $specialty = Specialty::orderBy('name', 'ASC')->get();
         return $specialty;
+    }
+
+    public function showAllOffices()
+    {
+        $office = Office::orderBy('name', 'ASC')->get();
+        return $office;
     }
 
 
