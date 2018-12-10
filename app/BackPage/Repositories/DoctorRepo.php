@@ -18,7 +18,6 @@ class DoctorRepo
         $doctor->save();
 
         $doctor->offices()->attach($offices);
-        
         return $doctor;
     }
 

@@ -64,24 +64,24 @@ class PostController extends Controller
     public function saveCreatePost(Request $request)
     {
         try {
-            
+
             $validator = Validator::make($request->all(), [
                 'category_id' => 'required',
                 'name' => 'required',
                 'slug' => 'required',
                 'excerpt' => 'required',
                 'body' => 'required',
-            ],[
+            ], [
                 'category_id' => 'required',
                 'name.required' => __('El título es requerido'),
                 'excerpt.required' => __('Debe escribir un extracto'),
                 'body.required' => __('Debe escribir algo en el blog'),
             ]);
-    
+
             if ($validator->fails()) {
                 return redirect()->back()
-                            ->withErrors($validator, 'valid')
-                            ->withInput();
+                    ->withErrors($validator, 'valid')
+                    ->withInput();
             }
 
             $image_url = "";
@@ -136,5 +136,26 @@ class PostController extends Controller
 
             return $ex;
         }
+    }
+
+    function titleAndSlug(Request $request)
+    {
+        $slug = str_slug($request->title, '-');
+        $slug_search = $this->postRepo->findSlug($slug);
+        if (!empty($slug_search)) {
+            $slug_response = $slug . '-2';
+        } else {
+            $slug_response = $slug;
+        }
+
+        $data = [
+            'status' => 'success',
+            'message' => __(''),
+            'data' => [
+                'slug' => $slug_response
+            ]
+        ];
+
+        return response()->json($data);
     }
 }

@@ -38,9 +38,9 @@ class OfficeController extends Controller
      * 
      * @return var
      */
-    public function findOffice()
+    public function findOffice(Request $request)
     {
-        $offices = $this->officeRepo->findOffices();
+        $offices = $this->officeRepo->findOffices($request->q);
         $data = [
             'code' => 200,
             'data' => [

@@ -56,6 +56,11 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\PostController@saveCreatePost'
     ]);
 
+    Route::post('post/slug-create', [
+        'as' => 'post.slug-create',
+        'uses' => 'Back\PostController@titleAndSlug'
+    ]);
+
     Route::post('doctor/store', [
         'as' => 'doctor.store',
         'uses' => 'Back\DoctorController@saveCreateDoctor'

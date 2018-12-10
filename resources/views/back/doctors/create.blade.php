@@ -54,7 +54,7 @@
 						<div class="col-lg-12">
 
 							<div class="form-group">
-								<label for="office">{{ __('Sucursal') }}</label>
+								<label for="office">{{ __('Sucursales') }}</label>
 								<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 
 									
 										</select>

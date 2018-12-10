@@ -3,9 +3,28 @@ var Posts = function () {
     return {
 
         slug: function () {
-            $('#name').slugit({
-                event: 'blur'
-            });
+            var route = $('#slug').data('route');
+
+            $('#name').focusout(function () {
+                var title = $('#name').val();
+               
+                    $.ajax({
+                        type: 'post',
+                        url: route,
+                        dataType: "json",
+                        data: {
+                            title: title
+                        },
+                    }).done(function (data) {
+                        $('#slug').val(data.data.slug);
+
+                    }).fail(function (data) {
+
+                    }).always(function () {
+
+                    });
+                }).change();
+           
         },
 
         editHTML: function () {

@@ -118,8 +118,8 @@ var Doctors = function () {
                         img: croppedImageDataURL,
                     },
                 }).done(function (data) {
-                    var imgurl = data.img_url;
-                    $('#imgurl').val(data.img_name);
+                    var imgurl = data.data.img_url;
+                    $('#imgurl').val(data.data.img_name);
                     $("#avatar-doctor").attr("src", imgurl);
                     $('#modal-notification').modal('hide');
 

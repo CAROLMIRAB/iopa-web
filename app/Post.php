@@ -7,10 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    protected $fillable = ['user_id', 'category_id', 'name','slug','excerpt','body','status','file', 'tags'];    
+    protected $fillable = [
+        'user_id', 
+        'category_id', 
+        'name',
+        'slug',
+        'excerpt',
+        'body',
+        'status',
+        'file', 
+        'tags'
+    ];    
     
-  
-
     /*
     Relation with category
      */

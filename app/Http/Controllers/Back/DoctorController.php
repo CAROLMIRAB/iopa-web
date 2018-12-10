@@ -65,19 +65,19 @@ class DoctorController extends Controller
 
             if (!empty($image_url)) {
 
-                $full = \URL::to('/') . '/uploads/images/' . $image_url;
-        
+                //$full = \URL::to('/') . '/uploads/images/' . $image_url;
+
                 $data = array(
                     'name' => $request->name,
                     'lastname' => $request->lastname,
                     'excerpt' => $request->excerpt,
                     'phone' => $request->phone,
                     'specialty_id' => $request->specialty_id,
-                    'file' => $full
+                    'file' => $image_url
                 );
-              
-                $post = $this->doctorRepo->createDoctor($data,  $request->office);
-              
+
+                $post = $this->doctorRepo->createDoctor($data, $request->office);
+
 
             }
 
@@ -87,7 +87,7 @@ class DoctorController extends Controller
 
             $data = [
                 'title' => __('Publicación fallida'),
-                'message' => __('Ocurrió un error mientras se publicaba su vehículo. Por favor intente nuevamente'),
+                'message' => __('Ocurrió un error mientras se publicaba. Por favor intente nuevamente'),
                 'close' => __('Cerrar')
             ];
 
@@ -114,10 +114,12 @@ class DoctorController extends Controller
                 $image_name = $png_url;
 
                 $data = [
-                    'status' => true,
+                    'status' => 'success',
                     'message' => __('Imagen subida'),
-                    'img_url' => $image_url,
-                    'img_name' => $image_name
+                    'data' => [
+                        'img_url' => $image_url,
+                        'img_name' => $image_name
+                    ]
                 ];
                 return response()->json($data);
             }

@@ -17,7 +17,7 @@
 			<div class="card-body">
 				<div class="form-group">
 					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ route('post.viewposts') }}/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly>
+						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('post.slug-create') }}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -89,6 +89,11 @@
  
 @section('scripts')
 <script>
+	$.ajaxSetup({
+		headers: {
+    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
 	$(document).ready(function(){
 	Posts.slug();
