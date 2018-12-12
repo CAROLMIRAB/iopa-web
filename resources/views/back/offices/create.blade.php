@@ -5,10 +5,14 @@
 		<div class="card shadow">
 			<div class="card-header bg-transparent">
 				<div class="row align-items-center">
-					<div class="col">
-						<h6 class="text-uppercase text-muted ls-1 mb-1">Post</h6>
-						<h2 class="mb-0">{{ _('Agregar Nueva Sucursal') }}</h2>
+					<div class="col-8">
+						<h6 class="text-uppercase text-muted ls-1 mb-1">Sucursal</h6>
+						<h2 class="mb-0">{{ _('Nueva Sucursal') }}</h2>
 					</div>
+					<div class="col-4 text-right">
+						<button id="btn-save" class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+					</div>
+
 				</div>
 			</div>
 			<div class="card-body">
@@ -37,15 +41,7 @@
 	</div>
 	<div class="col-xl-4 mb-5 mb-xl-0">
 		<div class="card shadow">
-			<div class="card-header bg-transparent">
-				<div class="row align-items-center">
-					<div class="col">
-						<div class="form-group">
-							<button id="btn-save" class="btn btn-lg btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 			<div class="card-body">
 
 				<div class="form-group">
@@ -74,5 +70,6 @@
 		Offices.imageUpload(image); 
 		Offices.eliminateMessages();
 	});
+
 </script>
 @endsection
