@@ -3,7 +3,7 @@
 namespace App\BackPage\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\Specialty;
+use App\Configuration;
 
 
 
