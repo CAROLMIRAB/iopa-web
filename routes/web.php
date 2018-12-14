@@ -29,6 +29,7 @@ Route::get('entradas/{slug}', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
+
 Route::get('entradas', [
     'as' => 'post.viewposts',
     'uses' => 'Front\PostController@viewFullPost'
@@ -64,6 +65,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('post/slug-create', [
         'as' => 'post.slug-create',
         'uses' => 'Back\PostController@titleAndSlug'
+    ]);
+
+    Route::post('surgery/slug-create', [
+        'as' => 'surgery.slug-create',
+        'uses' => 'Back\SurgeryController@titleAndSlug'
     ]);
 
     Route::post('doctor/store', [

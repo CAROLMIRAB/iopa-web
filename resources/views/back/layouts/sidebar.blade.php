@@ -101,8 +101,8 @@
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./examples/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i> User Profile
+          <a class="nav-link" href="{{ route('surgery.createview') }}">
+              <i class="ni ni-single-02 text-yellow"></i> Cirugías 
             </a>
         </li>
         <li class="nav-item">

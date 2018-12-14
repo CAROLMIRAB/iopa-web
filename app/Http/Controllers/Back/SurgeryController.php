@@ -30,7 +30,7 @@ class SurgeryController extends Controller
      */
     public function viewCreateSurgery()
     {
-        return view('back.surgery.create');
+        return view('back.surgeries.create');
     }
 
     /**
@@ -118,7 +118,7 @@ class SurgeryController extends Controller
     function titleAndSlug(Request $request)
     {
         $slug = str_slug($request->title, '-');
-        $slug_search = $this->postRepo->findSlug($slug);
+        $slug_search = $this->surgeryRepo->findSlug($slug);
         if (!empty($slug_search)) {
             $slug_response = $slug . '-2';
         } else {

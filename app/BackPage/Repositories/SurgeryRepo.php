@@ -19,4 +19,10 @@ class SurgeryRepo
         return $surgery;
     }
 
+    public function findSlug($slug)
+    {
+        $surgery = Surgery::select('slug')->where('slug', $slug)->first();
+        return $surgery;
+    }
+
 }

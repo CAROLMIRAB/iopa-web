@@ -1,6 +1,6 @@
 @extends('back.theme') 
 @section('content')
-<form action="{{ route('post.store') }}" method="post" id="surgery" enctype="multipart/form-data" class="row">
+<form action="{{ route('surgery.store') }}" method="post" id="surgery" enctype="multipart/form-data" class="row">
 	<div class="col-xl-12 mb-5 mb-xl-0">
 		<div class="card shadow">
 			<div class="card-header bg-transparent">
@@ -16,8 +16,8 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ route('post.viewposts') }}/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('post.slug-create') }}">
+					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/</span>
+						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('surgery.slug-create') }}">
 					</div>
 				</div>
 				<div class="form-group">
