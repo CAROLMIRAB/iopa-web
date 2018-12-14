@@ -86,5 +86,6 @@ mix.scripts([
     'resources/assets/back/js/argon.min.js',
     'resources/assets/back/js/doctor.js',
     'resources/assets/back/js/post.js',
-    'resources/assets/back/js/office.js'
+    'resources/assets/back/js/office.js',
+    'resources/assets/back/js/surgery.js'
 ], 'public/back/js/custom.back.min.js').version();

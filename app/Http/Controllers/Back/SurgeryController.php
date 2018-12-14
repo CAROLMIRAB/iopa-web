@@ -43,15 +43,12 @@ class SurgeryController extends Controller
         try {
 
             $validator = Validator::make($request->all(), [
-                'category_id' => 'required',
                 'name' => 'required',
                 'slug' => 'required',
-                'excerpt' => 'required',
                 'body' => 'required',
             ], [
-                'category_id' => 'required',
+                'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
                 'name.required' => __('El título es requerido'),
-                'excerpt.required' => __('Debe escribir un extracto'),
                 'body.required' => __('Debe escribir algo en el blog'),
             ]);
 
@@ -60,10 +57,6 @@ class SurgeryController extends Controller
                     ->withErrors($validator, 'valid')
                     ->withInput();
             }
-
-            $image_url = "";
-            $tags = explode(",", $request->tags);
-
 
             if ($request->file('image')) {
 
@@ -87,15 +80,11 @@ class SurgeryController extends Controller
             }
 
             $data = array(
-                'user_id' => 2,
-                'category_id' => $request->category_id,
                 'name' => $request->name,
                 'slug' => $request->slug,
-                'excerpt' => $request->excerpt,
                 'body' => $request->body,
                 'status' => $request->status,
-                'file' => $image_url,
-                'tags' => json_encode($tags)
+                'file' => $image_url
             );
 
             if (!empty($image_url)) {

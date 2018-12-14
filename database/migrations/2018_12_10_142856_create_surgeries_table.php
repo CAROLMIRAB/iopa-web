@@ -18,6 +18,8 @@ class CreateSurgeriesTable extends Migration
             $table->string('name', 128);
             $table->text('body');
             $table->string('slug', 128)->unique();
+            $table->string('file', 128)->nullable();
+            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
         });
     }
