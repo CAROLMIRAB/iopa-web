@@ -11,16 +11,16 @@ use Validator;
 class SurgeryController extends Controller
 {
 
-    private $postRepo;
+    private $surgeryRepo;
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(PostRepo $postRepo)
+    public function __construct(SurgeryRepo $surgeryRepo)
     {
-        $this->postRepo = $postRepo;
+        $this->surgeryRepo = $surgeryRepo;
     }
 
     /**
@@ -28,32 +28,9 @@ class SurgeryController extends Controller
      * 
      * @return view
      */
-    public function viewAllPosts()
+    public function viewCreateSurgery()
     {
-        $posts = $this->postRepo->showPosts();
-        return view('front.posts', compact('posts'));
-    }
-
-    /**
-     * View full post content
-     * 
-     * @return view
-     */
-    public function viewFullPost($slug)
-    {
-        $post = $this->postRepo->viewPostSlug($slug);
-        return view('front.post', compact('post'));
-    }
-
-    /**
-     * View post create
-     * 
-     * @return view
-     */
-    public function viewCreatePost()
-    {
-        $categories = $this->postRepo->allCategories();
-        return view('back.posts.create', compact('categories'));
+        return view('back.surgery.create');
     }
 
     /**
@@ -61,7 +38,7 @@ class SurgeryController extends Controller
      * 
      * @return view
      */
-    public function saveCreatePost(Request $request)
+    public function saveCreateSurgery(Request $request)
     {
         try {
 

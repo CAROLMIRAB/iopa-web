@@ -51,6 +51,11 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@viewCreateOffice'
     ]);
 
+    Route::get('cirugia/nueva', [
+        'as' => 'surgery.createview',
+        'uses' => 'Back\SurgeryController@viewCreateSurgery'
+    ]);
+
     Route::post('post/store', [
         'as' => 'post.store',
         'uses' => 'Back\PostController@saveCreatePost'
@@ -84,6 +89,16 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('office/find-office', [
         'as' => 'office.find-office',
         'uses' => 'Back\OfficeController@findOffice'
+    ]);
+
+    Route::post('doctor/store', [
+        'as' => 'doctor.store',
+        'uses' => 'Back\DoctorController@saveCreateDoctor'
+    ]);
+
+    Route::post('surgery/store', [
+        'as' => 'surgery.store',
+        'uses' => 'Back\SurgeryController@saveCreateSurgery'
     ]);
 
 });

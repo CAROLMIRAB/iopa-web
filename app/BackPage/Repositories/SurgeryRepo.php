@@ -9,41 +9,14 @@ use App\Office;
 class SurgeryRepo
 {
 
-    public function createDoctor($data, $offices)
+    public function createSurgery($data, $offices)
     {
-        $doctor = new Doctor();
-        $doctor->fill($data);
-        $doctor->save();
+        $surgery = new Surgery();
+        $surgery->fill($data);
+        $surgery->save();
 
-        $doctor->offices()->attach($offices);
-        return $doctor;
+        $surgery->offices()->attach($offices);
+        return $surgery;
     }
-
-    public function showDoctors()
-    {
-        $doctor = Doctor::orderBy('id', 'DESC')->get();
-        return $doctor;
-    }
-
-    public function showAllSpecialties()
-    {
-        $specialty = Specialty::orderBy('name', 'ASC')->get();
-        return $specialty;
-    }
-
-    public function showAllOffices()
-    {
-        $office = Office::orderBy('name', 'ASC')->get();
-        return $office;
-    }
-
-
-
-
-
-
-
-
-
 
 }
