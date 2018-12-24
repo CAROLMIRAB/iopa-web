@@ -1,6 +1,5 @@
 var Doctors = function () {
 
-
     return {
 
         eliminateMessages: function () {
@@ -132,6 +131,63 @@ var Doctors = function () {
 
             });
 
+        },
+
+        allDoctors: function () {
+            var route = $('.datatable-doctors').data('route');
+            var table = $('.datatable-doctors').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "ajax": route,
+                "responsive": true,
+                "order": [[ 4, "desc" ]],
+                columns: [
+                    {
+                        data: 'file',
+                        width: "100px",
+                        render: function (data, type, row, meta) {
+                            var concat = '<a class="avatar avatar-sm"><img src="' + data + '" class="rounded-circle "></a>';
+                            return concat;
+                        }
+                    },
+                    {
+                        data: 'name',
+                        width: "100px",
+                        render: function (data, type, row, meta) {
+                            var concat = '<a href="' + row.route + '">' + data + '</a>';
+                            return concat;
+                        }
+                    },
+                    {
+                        data: 'phone',
+                        width: "100px"
+                    },
+                   
+                    {
+                        data: 'created',
+                        width: "120px"
+                    },
+                    {
+                        data: 'route',
+                        width: "120px",
+                        visible: false
+                    }
+
+                ],
+                columnDefs: [
+                    { className: "cdatatable-td", targets: [0] },
+                    { className: "cdatatable-td", targets: [1] },
+                    { className: "cdatatable-td", targets: [2] },
+                    { className: "cdatatable-td", targets: [3] },
+                    { className: "cdatatable-td", targets: [4] }
+                ],
+                fnInitComplete: function () {
+
+                    $(".datatable-posts").css("width", "100%");
+                },
+                "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
+            });
+            table.columns.adjust().draw();
         },
     }
 }();

@@ -7,24 +7,25 @@ var Posts = function () {
 
             $('#name').focusout(function () {
                 var title = $('#name').val();
-               
-                    $.ajax({
-                        type: 'post',
-                        url: route,
-                        dataType: "json",
-                        data: {
-                            title: title
-                        },
-                    }).done(function (data) {
-                        $('#slug').val(data.data.slug);
+                var id_post = $('#id_post').val();
+                $.ajax({
+                    type: 'post',
+                    url: route,
+                    dataType: "json",
+                    data: {
+                        title: title,
+                        id_post: id_post,
+                    },
+                }).done(function (data) {
+                    $('#slug').val(data.data.slug);
 
-                    }).fail(function (data) {
+                }).fail(function (data) {
 
-                    }).always(function () {
+                }).always(function () {
 
-                    });
-                }).change();
-           
+                });
+            }).change();
+
         },
 
         editHTML: function () {
@@ -64,6 +65,79 @@ var Posts = function () {
                 type: 'amsify',
                 suggestions: ['Black', 'White', 'Red', 'Blue', 'Green', 'Orange']
             });
+        },
+
+        allPosts: function () {
+            var route = $('.datatable-posts').data('route');
+            var table = $('.datatable-posts').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "ajax": route,
+                "responsive": true,
+                "order": [[ 4, "desc" ]],
+                columns: [
+                    {
+                        data: 'title',
+                        width: "100px",
+                        render: function (data, type, row, meta) {
+                            var concat = '<a href="' + row.route + '">' + data + '</a>';
+                            return concat;
+                        }
+                    },
+                    {
+                        data: 'category',
+                        width: "100px"
+                    },
+                    {
+                        data: 'tags',
+                        width: "100px",
+                        render: function (data, type, row, meta) {
+                            var concat = "";
+                            console.log(row);
+                            jQuery.each(data, function (i, val) {
+                                concat += '<span class="badge badge-info">' + val + '</span>'
+                            });
+                            return concat;
+                        }
+                    },
+                    {
+                        data: 'status',
+                        width: "80px",
+                        render: function (data, type, row, meta) {
+                            var button;
+                            if (data == "DRAFT") {
+                                button = '<span class="badge badge-default">Borrador</span>';
+                            } else {
+                                button = '<span class="badge badge-success">Publicado</span>';
+                            }
+                            return button;
+                        }
+                    },
+                    {
+                        data: 'created',
+                        width: "120px"
+                    },
+                    {
+                        data: 'route',
+                        width: "120px",
+                        visible: false
+                    }
+
+                ],
+                columnDefs: [
+                    { className: "cdatatable-td", targets: [0] },
+                    { className: "cdatatable-td", targets: [1] },
+                    { className: "cdatatable-td", targets: [2] },
+                    { className: "cdatatable-td", targets: [3] },
+                    { className: "cdatatable-td", targets: [4] }
+                ],
+                fnInitComplete: function () {
+
+                    $(".datatable-posts").css("width", "100%");
+                },
+                "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
+            });
+            table.columns.adjust().draw();
         },
 
         datePicker: function () {

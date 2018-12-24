@@ -19,13 +19,15 @@ class PostRepo
 
     public function showPosts()
     {
-        $posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
+        $posts = Post::select('posts.name', 'posts.slug', 'excerpt', 'posts.body', DB::raw('categories.name as category'), 'status', 'tags', 'file', 'posts.created_at')
+            ->leftJoin('categories', 'categories.id', '=', 'posts.category_id')
+            ->get();
         return $posts;
     }
 
     public function viewPostSlug($slug)
     {
-        $post = Post::select('posts.name', 'posts.slug', 'excerpt', 'posts.body', DB::raw('categories.name as category'), 'status', 'tags', 'file')
+        $post = Post::select('posts.id','posts.name', 'posts.slug', 'excerpt', 'posts.body', DB::raw('categories.name as category'), 'status', 'tags', 'file', 'posts.category_id')
             ->leftJoin('categories', 'categories.id', '=', 'posts.category_id')
             ->where('posts.slug', $slug)
             ->first();
@@ -50,5 +52,9 @@ class PostRepo
         return $post;
     }
 
+    public function editPostById($id, $data)
+    {
+        $result = \DB::table('posts')->where('id', $id)->update($data);
+    }
 
 }

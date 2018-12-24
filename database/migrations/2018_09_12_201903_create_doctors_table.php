@@ -21,6 +21,8 @@ class CreateDoctorsTable extends Migration
             $table->mediumText('excerpt')->nullable();
             $table->integer('specialty_id')->unsigned();
             $table->string('file', 128)->nullable();
+            $table->string('slug', 128)->unique();
+
 
             $table->timestamps();
 

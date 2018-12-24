@@ -86,12 +86,12 @@
             </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{{ route('post.createview') }}">
+        <a class="nav-link" href="{{ route('post.view-all-posts') }}">
               <i class="ni ni-planet text-primary"></i> Noticias
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('doctor.createview') }}">
+          <a class="nav-link" href="{{ route('doctor.view-all-doctors') }}">
               <i class="ni ni-circle-08 text-primary"></i> Doctores
             </a>
         </li>
@@ -106,7 +106,7 @@
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./examples/tables.html">
+        <a class="nav-link" href="{{ route('post.view-all-posts') }}">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
         </li>

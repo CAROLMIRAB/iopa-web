@@ -46,10 +46,12 @@ class SurgeryController extends Controller
                 'name' => 'required',
                 'slug' => 'required',
                 'body' => 'required',
+                'image' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
                 'name.required' => __('El título es requerido'),
                 'body.required' => __('Debe escribir algo en el blog'),
+                'image.required' => __('Debe agregar una imagen destacada')
             ]);
 
             if ($validator->fails()) {
@@ -88,7 +90,7 @@ class SurgeryController extends Controller
             );
 
             if (!empty($image_url)) {
-                $post = $this->postRepo->createPost($data);
+                $surgery = $this->surgeryRepo->createPost($data);
             }
 
             return redirect()->back();

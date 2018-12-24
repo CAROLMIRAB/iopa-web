@@ -12,7 +12,8 @@ class Doctor extends Model
         'phone', 
         'excerpt', 
         'specialty_id',
-        'file'
+        'file',
+        'slug'
        
     ]; 
 

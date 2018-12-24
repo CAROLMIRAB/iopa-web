@@ -42,6 +42,12 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\PostController@viewCreatePost'
     ]);
 
+    Route::get('post/editar/{slug}', [
+        'as' => 'post.editview',
+        'uses' => 'Back\PostController@viewEditPost'
+    ]);
+
+
     Route::get('medico/nuevo', [
         'as' => 'doctor.createview',
         'uses' => 'Back\DoctorController@viewCreateDoctor'
@@ -62,9 +68,34 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\PostController@saveCreatePost'
     ]);
 
+    Route::post('post/edit', [
+        'as' => 'post.edit',
+        'uses' => 'Back\PostController@editPost'
+    ]);
+
     Route::post('post/slug-create', [
         'as' => 'post.slug-create',
         'uses' => 'Back\PostController@titleAndSlug'
+    ]);
+
+    Route::get('post/all-posts', [
+        'as' => 'post.all-posts',
+        'uses' => 'Back\PostController@allPosts'
+    ]);
+
+    Route::get('post', [
+        'as' => 'post.view-all-posts',
+        'uses' => 'Back\PostController@viewAllPosts'
+    ]);
+
+    Route::get('doctor/all-doctors', [
+        'as' => 'doctor.all-doctors',
+        'uses' => 'Back\DoctorController@allDoctors'
+    ]);
+
+    Route::get('medicos', [
+        'as' => 'doctor.view-all-doctors',
+        'uses' => 'Back\DoctorController@viewAllDoctors'
     ]);
 
     Route::post('surgery/slug-create', [

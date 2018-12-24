@@ -7,20 +7,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\DoctorRepo;
 use Validator;
+use App\BackPage\Collections\DoctorCollection;
+use Yajra\DataTables\DataTables;
 
 class DoctorController extends Controller
 {
 
     private $doctorRepo;
+    private $doctorCollection;
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(DoctorRepo $doctorRepo)
+    public function __construct(DoctorRepo $doctorRepo, DoctorCollection $doctorCollection)
     {
         $this->doctorRepo = $doctorRepo;
+        $this->doctorCollection = $doctorCollection;
     }
 
 
@@ -37,6 +41,36 @@ class DoctorController extends Controller
     }
 
     /**
+     * Show all posts blog
+     * 
+     * @return $post
+     */
+    public function allDoctors()
+    {
+        $doctors = $this->doctorRepo->showAllDoctors();
+        $doctor = $this->doctorCollection->allDoctorCollect($doctors);
+        $data = [
+            'title' => __('Publicación fallida'),
+            'message' => __('No se pudo obtener los post'),
+            'data' => $doctor
+        ];
+
+    
+        return Datatables::of($doctor)->make(true);
+
+    }
+
+      /**
+     * Show all posts view blog
+     * 
+     * @return view
+     */
+    public function viewAllDoctors()
+    {
+        return view('back.doctors.doctors');
+    }
+
+    /**
      * Stored post
      * 
      * @return view
@@ -44,6 +78,7 @@ class DoctorController extends Controller
     public function saveCreateDoctor(Request $request)
     {
         try {
+            $slug = str_slug($request->title, '-');
             $image_url = $request->imgurl;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -73,7 +108,8 @@ class DoctorController extends Controller
                     'excerpt' => $request->excerpt,
                     'phone' => $request->phone,
                     'specialty_id' => $request->specialty_id,
-                    'file' => $image_url
+                    'file' => $image_url,
+                    'slug' => $slug
                 );
 
                 $post = $this->doctorRepo->createDoctor($data, $request->office);

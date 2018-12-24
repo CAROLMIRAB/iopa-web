@@ -176,3 +176,91 @@ font-size: 6rem;
   margin-top: 5px;
   padding: 4px 5px;
 }
+
+.datatable-posts{
+  word-wrap: break-word;
+  width: 800px;
+}
+
+table.dataTable .thead-light th {
+  color: #8898aa;
+  background-color: #f6f9fc;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  vertical-align: middle;
+  border-color: #e9ecef;
+  font-size: .65rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e9ecef;
+}
+table.dataTable .thead-light th{
+  font-size: .8125rem;
+  white-space: nowrap;
+  padding: 1rem;
+}
+
+table.dataTable td{
+  font-size: .8125rem;
+  padding: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{ 
+  z-index: 1;
+  color: #fff !important;
+  border-color: #2d4a9b;
+  background: #2d4a9b;
+  font-size: .875rem;
+  border-radius: 50%!important;
+  align-items: center;
+  justify-content: center;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{ 
+  z-index: 1;
+  font-size: .875rem;
+  border-radius: 50%!important;
+  align-items: center;
+  justify-content: center;
+  color: #8898aa;
+  border: 1px solid #dee2e6;
+  background-color: #fff;
+}
+
+table.dataTable.no-footer{
+  border-bottom:1px solid #e9ecef;
+}
+.dataTables_wrapper .dataTables_filter, 
+.dataTables_wrapper .dataTables_info, 
+.dataTables_wrapper .dataTables_length, 
+.dataTables_wrapper .dataTables_paginate, 
+.dataTables_wrapper .dataTables_processing{
+  color: #525f7f;
+  font-size: .97rem;
+}
+
+.dataTables_wrapper .dataTables_filter input{
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all .2s cubic-bezier(.68,-.55,.265,1.55);
+  color: #8898aa;
+  border: 1px solid #cad1d7;
+  border-radius: .375rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  box-shadow: none;
+}
+.dataTables_wrapper select{
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all .2s cubic-bezier(.68,-.55,.265,1.55);
+    color: #8898aa;
+    border: 1px solid #cad1d7;
+    border-radius: .375rem;
+    background-color: #fff;
+    background-clip: padding-box;
+    box-shadow: none;
+  }

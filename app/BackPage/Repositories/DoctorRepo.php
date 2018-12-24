@@ -27,6 +27,15 @@ class DoctorRepo
         return $doctor;
     }
 
+    public function showAllDoctors()
+    {
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
+        ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
+        ->orderBy('id', 'DESC')
+        ->get();
+        return $doctor;
+    }
+
     public function showAllSpecialties()
     {
         $specialty = Specialty::orderBy('name', 'ASC')->get();
