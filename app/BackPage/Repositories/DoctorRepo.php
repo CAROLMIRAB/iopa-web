@@ -29,10 +29,20 @@ class DoctorRepo
 
     public function showAllDoctors()
     {
-        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at', 'doctors.slug')
         ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
         ->orderBy('id', 'DESC')
         ->get();
+        return $doctor;
+    }
+
+    public function showDoctorSlug($slug)
+    {
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
+        ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
+        ->orderBy('id', 'DESC')
+        ->where('doctors.slug', $slug)
+        ->first();
         return $doctor;
     }
 
@@ -47,6 +57,17 @@ class DoctorRepo
         $office = Office::orderBy('name', 'ASC')->get();
         return $office;
     }
+
+    public function showOfficesDoctor($id)
+    {
+        $office = Office::with('doctors')
+        ->where('doctor.id', $id)
+        ->orderBy('name', 'ASC')
+        ->get();
+        return $office;
+    }
+
+  
 
 
 

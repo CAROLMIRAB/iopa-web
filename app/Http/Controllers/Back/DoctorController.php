@@ -41,9 +41,23 @@ class DoctorController extends Controller
     }
 
     /**
-     * Show all posts blog
+     * View doctor edit
      * 
-     * @return $post
+     * @return view
+     */
+    public function viewEditDoctor($slug)
+    {
+        $doctor = $this->doctorRepo->showDoctorSlug($slug);
+        $specialties = $this->doctorRepo->showAllSpecialties();
+        $offices = $this->doctorRepo->showAllOffices($doctor->id);
+
+        return view('back.doctors.edit', compact('specialties', 'offices', 'doctor'));
+    }
+
+    /**
+     * Show all doctors blog
+     * 
+     * @return $doctors
      */
     public function allDoctors()
     {
@@ -145,6 +159,13 @@ class DoctorController extends Controller
                 $image->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($path);
+
+
+                $destinationPath = public_path('/uploads/thumbnail'). $png_url;
+                $img = \Image::make($base64Image[1])->encode('jpg', 75);
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath);
 
                 $image_url = \URL::to('/') . "/uploads/images/" . $png_url;
                 $image_name = $png_url;

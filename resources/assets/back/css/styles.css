@@ -219,6 +219,10 @@ table.dataTable td{
   justify-content: center;
 }
 
+.navbar-vertical.navbar-expand-md .navbar-brand-img{
+  max-height: 4.5rem !important;
+}
+
 .dataTables_wrapper .dataTables_paginate .paginate_button{ 
   z-index: 1;
   font-size: .875rem;
@@ -263,4 +267,8 @@ table.dataTable.no-footer{
     background-color: #fff;
     background-clip: padding-box;
     box-shadow: none;
+  }
+
+  .mt--7, .my--7{
+    margin-top: -10rem!important;
   }

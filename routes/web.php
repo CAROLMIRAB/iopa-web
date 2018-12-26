@@ -97,6 +97,16 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'doctor.view-all-doctors',
         'uses' => 'Back\DoctorController@viewAllDoctors'
     ]);
+    
+    Route::get('doctor/editar/{slug}', [
+        'as' => 'doctor.editview',
+        'uses' => 'Back\DoctorController@viewEditDoctor'
+    ]);
+
+    Route::post('doctor/edit', [
+        'as' => 'doctor.edit',
+        'uses' => 'Back\DoctorController@viewEditDoctor'
+    ]);
 
     Route::post('surgery/slug-create', [
         'as' => 'surgery.slug-create',

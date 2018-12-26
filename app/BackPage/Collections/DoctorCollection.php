@@ -19,13 +19,13 @@ class DoctorCollection
             $date_create->setTimezone('America/Santiago');
             $doctor->created = $date_create->format('d/m/Y h:i A');
            // $image = \URL::to('/') . "/uploads/images/" . $doctor->file;
-            //$route = route('doctor.editview', $doctor->slug);
+            $route = route('doctor.editview', $doctor->slug);
             $alldoctors->push([
                 'name' => $doctor->lastname.", ".$doctor->name,
                 'phone' => $doctor->phone,
                 'file' => $doctor->file,
                 'created' => $doctor->created,
-                'route' => ""
+                'route' => $route
             ]);
         }
         return $alldoctors;
