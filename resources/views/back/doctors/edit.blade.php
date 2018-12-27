@@ -57,9 +57,7 @@
                             <div class="form-group">
                                 <label for="office">{{ __('Sucursales') }}</label>
                                 <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 
-                                    @foreach ($offices as $office)
-                                <option value="{{ $office->id }}"> {{ $office->name }}</option>
-                                @endforeach	
+                                 
 										</select>
                             </div>
                         </div>
@@ -169,10 +167,11 @@
 	});
 
 	$(document).ready(function(){
-
+        var data = JSON.parse("{{ $offices }}");
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
-		Doctors.selectOffice();
+        Doctors.selectOffice(datajson);
+       
 	});
 
 </script>

@@ -16,8 +16,9 @@ var Doctors = function () {
             })
         },
 
-        selectOffice: function () {
+        selectOffice: function (datajson) {
             var $officeSearch = $('#office');
+      
             $officeSearch.select2({
                 multiple: true,
                 placeholder: "...",
@@ -56,6 +57,9 @@ var Doctors = function () {
                     }
                 }
             });
+
+            var newOption = new Option(data.name, data.id, false, false);
+            $officeSearch.append(newOption).trigger('change');
         },
 
         imageUploadDoctor: function (route) {
