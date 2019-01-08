@@ -16,25 +16,34 @@ var Doctors = function () {
             })
         },
 
+        selectOfficeEdit: function () {
+            $("#office").select2({
+                tags: false,
+                multiple: true,
+                tokenSeparators: [',', ' ']
+            })
+        },
+
         selectOffice: function (datajson) {
             var $officeSearch = $('#office');
-      
+
             $officeSearch.select2({
                 multiple: true,
+                tags: false,
                 placeholder: "...",
                 maximumSelectionSize: 6,
                 minimumInputLength: 1,
                 tokenSeparators: [",", " "],
-                createTag: function(item) {
+                createTag: function (item) {
                     return {
                         id: item.term,
                         text: item.term,
                     };
                 },
-                templateResult: function(item){
+                templateResult: function (item) {
                     return item.name;
                 },
-                templateSelection: function(item){
+                templateSelection: function (item) {
                     return item.name;
                 },
                 escapeMarkup: function (markup) { return markup; },
@@ -44,13 +53,13 @@ var Doctors = function () {
                     global: false,
                     cache: true,
                     delay: 250,
-                    data: function(params) { 
-                        return {  
+                    data: function (params) {
+                        return {
                             q: params.term
                         };
                     },
                     processResults: function (data) {
-            
+
                         return {
                             results: data.data.tags,
                         };
@@ -58,8 +67,6 @@ var Doctors = function () {
                 }
             });
 
-            var newOption = new Option(data.name, data.id, false, false);
-            $officeSearch.append(newOption).trigger('change');
         },
 
         imageUploadDoctor: function (route) {
@@ -144,7 +151,7 @@ var Doctors = function () {
                 "serverSide": false,
                 "ajax": route,
                 "responsive": true,
-                "order": [[ 4, "desc" ]],
+                "order": [[4, "desc"]],
                 columns: [
                     {
                         data: 'file',
@@ -166,7 +173,7 @@ var Doctors = function () {
                         data: 'phone',
                         width: "100px"
                     },
-                   
+
                     {
                         data: 'created',
                         width: "120px"

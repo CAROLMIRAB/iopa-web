@@ -55,6 +55,7 @@ class PostRepo
     public function editPostById($id, $data)
     {
         $result = \DB::table('posts')->where('id', $id)->update($data);
+        return $result;
     }
 
 }

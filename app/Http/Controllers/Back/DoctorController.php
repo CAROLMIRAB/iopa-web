@@ -49,9 +49,10 @@ class DoctorController extends Controller
     {
         $doctor = $this->doctorRepo->showDoctorSlug($slug);
         $specialties = $this->doctorRepo->showAllSpecialties();
-        $offices = $this->doctorRepo->showAllOffices($doctor->id);
+        $offices = $this->doctorRepo->showAllOffices();
+        $officesdoctor = $this->doctorRepo->showOfficesDoctor($doctor->id);
 
-        return view('back.doctors.edit', compact('specialties', 'offices', 'doctor'));
+        return view('back.doctors.edit', compact('specialties', 'offices', 'doctor', 'officesdoctor'));
     }
 
     /**
@@ -69,12 +70,12 @@ class DoctorController extends Controller
             'data' => $doctor
         ];
 
-    
+
         return Datatables::of($doctor)->make(true);
 
     }
 
-      /**
+    /**
      * Show all posts view blog
      * 
      * @return view
@@ -145,6 +146,72 @@ class DoctorController extends Controller
         }
     }
 
+    /**
+     * Stored post
+     * 
+     * @return view
+     */
+    public function editDoctor(Request $request)
+    {
+        try {
+          
+            $slug = str_slug($request->name, '-');
+            $image_url = $request->imgurl;
+            $offices = array_values($request->office);
+         
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'lastname' => 'required',
+                'excerpt' => 'required',
+                'specialty_id' => 'required',
+            ], [
+                'name.required' => __('El nombre es requerido'),
+                'lastname.required' => __('El apellido es requerido'),
+                'excerpt.required' => __('Debe escribir un extracto'),
+                'specialty_id' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator, 'valid')
+                    ->withInput();
+            }
+            if (!empty($image_url)) {
+
+                $data = array(
+                    'name' => $request->name,
+                    'lastname' => $request->lastname,
+                    'excerpt' => $request->excerpt,
+                    'phone' => $request->phone,
+                    'specialty_id' => $request->specialty_id,
+                    'file' => $image_url,
+                    'slug' => $slug
+                );
+            
+                $offices = array_map(
+                    function ($value) {
+                        return (int)$value;
+                    },
+                    $offices
+                );
+                
+                $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices);
+            }
+
+            return redirect()->back();
+
+        } catch (\Exception $ex) {
+
+            $data = [
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se publicaba. Por favor intente nuevamente'),
+                'close' => __('Cerrar')
+            ];
+
+            return $data;
+        }
+    }
+
     public function uploadImage(Request $request)
     {
         try {
@@ -161,7 +228,7 @@ class DoctorController extends Controller
                 })->save($path);
 
 
-                $destinationPath = public_path('/uploads/thumbnail'). $png_url;
+                $destinationPath = public_path('/uploads/thumbnail') . $png_url;
                 $img = \Image::make($base64Image[1])->encode('jpg', 75);
                 $img->resize(100, 100, function ($constraint) {
                     $constraint->aspectRatio();

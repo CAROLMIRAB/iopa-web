@@ -105,7 +105,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('doctor/edit', [
         'as' => 'doctor.edit',
-        'uses' => 'Back\DoctorController@viewEditDoctor'
+        'uses' => 'Back\DoctorController@editDoctor'
     ]);
 
     Route::post('surgery/slug-create', [
@@ -138,10 +138,6 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@findOffice'
     ]);
 
-    Route::post('doctor/store', [
-        'as' => 'doctor.store',
-        'uses' => 'Back\DoctorController@saveCreateDoctor'
-    ]);
 
     Route::post('surgery/store', [
         'as' => 'surgery.store',

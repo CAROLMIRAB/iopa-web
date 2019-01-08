@@ -30,19 +30,19 @@ class DoctorRepo
     public function showAllDoctors()
     {
         $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at', 'doctors.slug')
-        ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
-        ->orderBy('id', 'DESC')
-        ->get();
+            ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
+            ->orderBy('id', 'DESC')
+            ->get();
         return $doctor;
     }
 
     public function showDoctorSlug($slug)
     {
         $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
-        ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
-        ->orderBy('id', 'DESC')
-        ->where('doctors.slug', $slug)
-        ->first();
+            ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
+            ->orderBy('id', 'DESC')
+            ->where('doctors.slug', $slug)
+            ->first();
         return $doctor;
     }
 
@@ -60,22 +60,22 @@ class DoctorRepo
 
     public function showOfficesDoctor($id)
     {
-        $office = Office::with('doctors')
-        ->where('doctor.id', $id)
-        ->orderBy('name', 'ASC')
-        ->get();
+        $office = Office::leftJoin('doctor_office', 'offices.id', '=', 'doctor_office.office_id')
+            ->where('doctor_office.doctor_id', $id)
+            ->orderBy('name', 'ASC')
+            ->get();
         return $office;
     }
 
-  
-
-
-
-
-
-
-
-
-
-
+    public function editDoctorById($data, $id, $offices)
+    {
+       
+        $doctor = \DB::table('doctors')->where('id', $id)->update($data);
+      
+        $doc = Doctor::find($id);
+ 
+        $doc->offices()->sync([1,5]);
+        
+        return $doctor;
+    }
 }

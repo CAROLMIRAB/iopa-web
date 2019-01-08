@@ -1,7 +1,7 @@
 @extends('back.theme') 
 @section('content')
 
-<form action="{{ route('doctor.store') }}" method="post" id="doctor-form" class="row">
+<form action="{{ route('doctor.edit') }}" method="post" id="doctor-form" class="row">
     <div class="col-xl-8 order-xl-1">
         <div class="card shadow">
             <div class="card-header bg-transparent">
@@ -56,14 +56,20 @@
 
                             <div class="form-group">
                                 <label for="office">{{ __('Sucursales') }}</label>
-                                <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 
-                                 
-										</select>
+                                <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"> 
+                                    @foreach ($officesdoctor as $od)
+                                        <option selected="selected" value="{{ $od->id }}">{{ $od->name }}</option>
+                                    @endforeach
+                                    @foreach ($offices as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <input class="hidden" id="imgurl" name="imgurl" type="hidden"> {{ csrf_field() }}
+            <input class="hidden" id="imgurl" name="imgurl" type="hidden" value="{{ $doctor->file }}">
+                 {{ csrf_field() }}
 
             </div>
         </div>
@@ -76,7 +82,7 @@
                 <div class="col-lg-3 order-lg-2">
                     <div class="card-profile-image">
                         <a data-toggle="modal" data-target="#modal-notification" id="btnmodal">
-							<img src="{{ asset('images/avatar.jpg') }}" class="rounded-circle" id="avatar-doctor">
+							<img src="{{ $doctor->file }}" class="rounded-circle" id="avatar-doctor">
 							</a>
                         <div class="overlay-img " data-toggle="modal" data-target="#modal-notification" id="btnmodal">
                             <span class="icon-img rounded-circle" title="Imagen Médico">
@@ -101,7 +107,7 @@
                 <div class="text-center">
                     <div class="form-group">
                         <label for="excerpt">{{ __('Ficha Médico') }}</label>
-                        <textarea id="excerpt" name="excerpt" class="form-control @if ($errors->valid->has('excerpt')) is-invalid @endif "></textarea>                        @if ($errors->valid->has('excerpt'))
+                        <textarea id="excerpt" name="excerpt" class="form-control @if ($errors->valid->has('excerpt')) is-invalid @endif ">{{$doctor->excerpt}}</textarea>                        @if ($errors->valid->has('excerpt'))
                         <p class="invalid-feedback">{{ $errors->valid->first('excerpt') }}</p> @endif
                     </div>
 
@@ -109,6 +115,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" value="{{ $doctor->id }}" name="id_doctor">
 </form>
 
 <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
@@ -167,10 +174,9 @@
 	});
 
 	$(document).ready(function(){
-        var data = JSON.parse("{{ $offices }}");
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
-		Doctors.eliminateMessages();
-        Doctors.selectOffice(datajson);
+        Doctors.eliminateMessages();
+        Doctors.selectOfficeEdit();
        
 	});
 
