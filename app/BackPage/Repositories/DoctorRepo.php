@@ -71,11 +71,9 @@ class DoctorRepo
     {
        
         $doctor = \DB::table('doctors')->where('id', $id)->update($data);
-      
         $doc = Doctor::find($id);
+        $doc->offices()->sync($offices);
  
-        $doc->offices()->sync([1,5]);
-        
         return $doctor;
     }
 }

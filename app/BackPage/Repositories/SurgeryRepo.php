@@ -26,4 +26,12 @@ class SurgeryRepo
         return $surgery;
     }
 
+    public function showAllSurgeries()
+    {
+        $surgery = Surgery::select('id', 'name', 'body', 'slug', 'file')
+            ->orderBy('name', 'DESC')
+            ->get();
+        return $surgery;
+    }
+
 }

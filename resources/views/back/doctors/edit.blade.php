@@ -8,7 +8,7 @@
                 <div class="row align-items-center">
                     <div class="col-8">
                         <h6 class="text-uppercase text-muted ls-1 mb-1">Medico</h6>
-                        <h2 class="mb-0">{{ _('Nuevo Medico') }}</h2>
+                        <h2 class="mb-0">{{ _('Editar Medico') }}</h2>
                     </div>
                     <div class="col-4 text-right">
                         <button class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
@@ -58,7 +58,7 @@
                                 <label for="office">{{ __('Sucursales') }}</label>
                                 <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"> 
                                     @foreach ($officesdoctor as $od)
-                                        <option selected="selected" value="{{ $od->id }}">{{ $od->name }}</option>
+                                        <option selected="selected" value="{{ $od->office_id }}">{{ $od->name }}</option>
                                     @endforeach
                                     @foreach ($offices as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>

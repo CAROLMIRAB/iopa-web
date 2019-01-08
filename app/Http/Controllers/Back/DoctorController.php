@@ -56,7 +56,7 @@ class DoctorController extends Controller
     }
 
     /**
-     * Show all doctors blog
+     * Show all doctors 
      * 
      * @return $doctors
      */
@@ -76,7 +76,7 @@ class DoctorController extends Controller
     }
 
     /**
-     * Show all posts view blog
+     * Show all doctors view 
      * 
      * @return view
      */
@@ -114,8 +114,6 @@ class DoctorController extends Controller
             }
 
             if (!empty($image_url)) {
-
-                //$full = \URL::to('/') . '/uploads/images/' . $image_url;
 
                 $data = array(
                     'name' => $request->name,
@@ -157,7 +155,7 @@ class DoctorController extends Controller
           
             $slug = str_slug($request->name, '-');
             $image_url = $request->imgurl;
-            $offices = array_values($request->office);
+            $offices = $request->office;
          
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -187,7 +185,7 @@ class DoctorController extends Controller
                     'file' => $image_url,
                     'slug' => $slug
                 );
-            
+              
                 $offices = array_map(
                     function ($value) {
                         return (int)$value;
@@ -198,7 +196,7 @@ class DoctorController extends Controller
                 $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices);
             }
 
-            return redirect()->back();
+            return redirect()->route('doctor.editview', $slug);
 
         } catch (\Exception $ex) {
 

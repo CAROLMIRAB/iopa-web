@@ -58,10 +58,7 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@viewCreateOffice'
     ]);
 
-    Route::get('cirugia/nueva', [
-        'as' => 'surgery.createview',
-        'uses' => 'Back\SurgeryController@viewCreateSurgery'
-    ]);
+ 
 
     Route::post('post/store', [
         'as' => 'post.store',
@@ -98,7 +95,7 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\DoctorController@viewAllDoctors'
     ]);
     
-    Route::get('doctor/editar/{slug}', [
+    Route::get('medicos/editar/{slug}', [
         'as' => 'doctor.editview',
         'uses' => 'Back\DoctorController@viewEditDoctor'
     ]);
@@ -108,14 +105,14 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\DoctorController@editDoctor'
     ]);
 
-    Route::post('surgery/slug-create', [
-        'as' => 'surgery.slug-create',
-        'uses' => 'Back\SurgeryController@titleAndSlug'
-    ]);
-
     Route::post('doctor/store', [
         'as' => 'doctor.store',
         'uses' => 'Back\DoctorController@saveCreateDoctor'
+    ]);
+
+    Route::post('doctor/store-img', [
+        'as' => 'doctor.storeimg',
+        'uses' => 'Back\DoctorController@uploadImage'
     ]);
 
     Route::post('office/store', [
@@ -123,10 +120,7 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@saveCreateOffice'
     ]);
 
-    Route::post('doctor/store-img', [
-        'as' => 'doctor.storeimg',
-        'uses' => 'Back\DoctorController@uploadImage'
-    ]);
+   
 
     Route::post('office/store-img', [
         'as' => 'office.storeimg',
@@ -138,10 +132,36 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@findOffice'
     ]);
 
+    
 
     Route::post('surgery/store', [
         'as' => 'surgery.store',
         'uses' => 'Back\SurgeryController@saveCreateSurgery'
+    ]);
+
+    Route::post('surgery/edit', [
+        'as' => 'surgery.edit',
+        'uses' => 'Back\SurgeryController@editSurgery'
+    ]);
+
+    Route::post('surgery/slug-create', [
+        'as' => 'surgery.slug-create',
+        'uses' => 'Back\SurgeryController@titleAndSlug'
+    ]);
+
+    Route::get('cirugias', [
+        'as' => 'surgery.view-all-surgeries',
+        'uses' => 'Back\SurgeryController@viewAllSurgeries'
+    ]);
+
+    Route::get('cirugias/nueva', [
+        'as' => 'surgery.createview',
+        'uses' => 'Back\SurgeryController@viewCreateSurgery'
+    ]);
+
+    Route::get('cirugias/editar/{slug}', [
+        'as' => 'surgery.editview',
+        'uses' => 'Back\SurgeryController@viewEditSurgery'
     ]);
 
 });
