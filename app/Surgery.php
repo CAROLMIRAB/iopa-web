@@ -8,12 +8,15 @@ class Surgery extends Model
 {
     protected $fillable = [
         'name',
-        'slug',
-        'body'
+        'body',
+        'slug', 
+        'file',
+        'status'
     ]; 
 
     public function offices()
     {
         return $this->belongsToMany(Office::class);
     }
+    
 }

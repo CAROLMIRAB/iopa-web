@@ -15,7 +15,18 @@ class CreateSurgeryOfficeTable extends Migration
     {
         Schema::create('surgery_office', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+
+            $table->integer('surgery_id')->unsigned();
+            $table->integer('office_id')->unsigned();
+
+            $table->foreign('surgery_id')->references('id')->on('surgeries')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->foreign('office_id')->references('id')->on('offices')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
         });
     }
 

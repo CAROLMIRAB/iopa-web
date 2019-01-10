@@ -19,8 +19,15 @@ class Office extends Model
         return $this->belongsToMany(Doctor::class);
     }
 
+    public function surgeries()
+    {
+        return $this->belongsToMany(Surgery::class);
+    }
+
     public function exams()
     {
         return $this->belongsToMany(Exam::class);
     }
+
+   
 }

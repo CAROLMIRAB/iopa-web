@@ -17,48 +17,60 @@
 			<div class="card-body">
 				<div class="form-group">
 					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/cirugias/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('surgery.slug-create') }}">
+						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
-                <input type="text" name="name" id="name" value="" class="form-control @if ($errors->valid->has('name')) is-invalid @endif " data-slugit-target="#slug">					@if ($errors->valid->has('name'))
+					<input type="text" name="name" id="name" value="" class="form-control @if ($errors->valid->has('name')) is-invalid @endif "
+					 data-slugit-target="#slug"> @if ($errors->valid->has('name'))
 					<p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-                    <textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>			
-                    		@if ($errors->valid->has('body'))
+					<textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>					@if ($errors->valid->has('body'))
 					<p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
+				</div>
+				<div class="form-group">
+					<label for="office">{{ __('Sucursales') }}</label>
+					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"> 
+						@foreach ($officessurgery as $os)
+							<option selected="selected" value="{{ $os->office_id }}">{{ $os->name }}</option>
+						@endforeach
+						@foreach ($offices as $item)
+							<option value="{{ $item->id }}">{{ $item->name }}</option>
+						@endforeach
+					</select>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-xl-4 mb-5 mb-xl-0">
-			<div class="card shadow">
-				<div class="card-body">
-					<div class="form-group">
-						<label for="status">{{ __('Estado') }}</label>
-						<select id="status" name="status" class="form-control">
+		<div class="card shadow">
+			<div class="card-body">
+				<div class="form-group">
+					<label for="status">{{ __('Estado') }}</label>
+					<select id="status" name="status" class="form-control">
 								<option value="PUBLISHED">Publicado</option>
 								<option value="DRAFT">Borrador</option>
 							</select>
-					</div>
-					<div class="form-group">
-						<label for="image">{{ __('Imagen') }}</label>
-						<div id="image-preview" style="border: #619DC9 3px dashed;">
-							<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
-							<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
-						</div>
-					</div>
-					{{ csrf_field() }}
-	
 				</div>
-	
-	
+				<div class="form-group">
+					<label for="image">{{ __('Imagen') }}</label>
+					<div id="image-preview" style="border: #619DC9 3px dashed;">
+						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
+						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
+					</div>
+				</div>
+
 			</div>
+
+
 		</div>
+	</div>
 	{{ csrf_field() }}
+
+<input id="id_surgery" type="hidden" value="{{ $surgery->id }}">
 </form>
 @endsection
  
@@ -74,6 +86,7 @@
 	Surgery.slug();
 	Surgery.editHTML();
 	Surgery.imageUpload(image); 
+	Offices.selectOfficeEdit();
 	});
 
 </script>

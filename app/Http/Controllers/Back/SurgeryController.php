@@ -6,22 +6,30 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\SurgeryRepo;
+use App\BackPage\Repositories\OfficeRepo;
+use App\BackPage\Collections\SurgeryCollection;
 use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Back\CoreController;
 use Validator;
 
 class SurgeryController extends Controller
 {
 
     private $surgeryRepo;
+    private $officeRepo;
+    private $surgeryCollection;
+
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(SurgeryRepo $surgeryRepo)
+    public function __construct(SurgeryRepo $surgeryRepo, SurgeryCollection $surgeryCollection, OfficeRepo $officeRepo)
     {
         $this->surgeryRepo = $surgeryRepo;
+        $this->officeRepo = $officeRepo;
+        $this->surgeryCollection = $surgeryCollection;
     }
 
     /**
@@ -31,7 +39,8 @@ class SurgeryController extends Controller
      */
     public function viewCreateSurgery()
     {
-        return view('back.surgeries.create');
+        $offices = $this->officeRepo->showAllOffices();
+        return view('back.surgeries.create', compact('offices'));
     }
 
     /**
@@ -39,9 +48,13 @@ class SurgeryController extends Controller
      * 
      * @return view
      */
-    public function viewEditSurgery()
+    public function viewEditSurgery($slug)
     {
-        return view('back.surgeries.edit');
+        $surgery = $this->surgeryRepo->showSurgerySlug($slug);
+        $offices = $this->officeRepo->showAllOffices();
+        $officessurgery = $this->surgeryRepo->showOfficesSurgery($surgery->id);
+
+        return view('back.surgeries.edit', compact('offices', 'officessurgery', 'surgery'));
     }
 
     /**
@@ -62,7 +75,6 @@ class SurgeryController extends Controller
     public function saveCreateSurgery(Request $request)
     {
         try {
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
@@ -82,24 +94,7 @@ class SurgeryController extends Controller
             }
 
             if ($request->file('image')) {
-
-                $input = [];
-
-                $image = $request->file('image');
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
-
-                $destinationPath = public_path('/uploads/thumbnail');
-                $img = \Image::make($image->getRealPath());
-                $img->resize(100, 100, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $input['imagename']);
-
-
-                $destinationPath = public_path('/uploads/images');
-                $image->move($destinationPath, $input['imagename']);
-
-                $image_url = \URL::to('/') . "/uploads/images/" . $input['imagename'];
+                $image_url = CoreController::uploadImage($request->file('image'));
             }
 
             $data = array(
@@ -155,24 +150,7 @@ class SurgeryController extends Controller
             }
 
             if ($request->file('image')) {
-
-                $input = [];
-
-                $image = $request->file('image');
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
-
-                $destinationPath = public_path('/uploads/thumbnail');
-                $img = \Image::make($image->getRealPath());
-                $img->resize(100, 100, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $input['imagename']);
-
-
-                $destinationPath = public_path('/uploads/images');
-                $image->move($destinationPath, $input['imagename']);
-
-                $image_url = \URL::to('/') . "/uploads/images/" . $input['imagename'];
+                $image_url = CoreController::uploadImage($request->file('image'));
             }
 
             $data = array(
@@ -201,32 +179,6 @@ class SurgeryController extends Controller
     }
 
     /**
-     * Render Slug Surgeries 
-     * 
-     * @return $slug
-     */
-    function titleAndSlug(Request $request)
-    {
-        $slug = str_slug($request->title, '-');
-        $slug_search = $this->surgeryRepo->findSlug($slug);
-        if (!empty($slug_search)) {
-            $slug_response = $slug . '-2';
-        } else {
-            $slug_response = $slug;
-        }
-
-        $data = [
-            'status' => 'success',
-            'message' => __(''),
-            'data' => [
-                'slug' => $slug_response
-            ]
-        ];
-
-        return response()->json($data);
-    }
-
-     /**
      * Show all surgeries 
      * 
      * @return $surgeries
@@ -241,12 +193,10 @@ class SurgeryController extends Controller
             'data' => $surgeries
         ];
 
-
         return Datatables::of($surgeries)->make(true);
-
     }
 
-    
+
 }
 
 

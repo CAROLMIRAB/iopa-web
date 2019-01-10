@@ -17,7 +17,7 @@
 			<div class="card-body">
 				<div class="form-group">
 					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/cirugias/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('surgery.slug-create') }}">
+						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -29,6 +29,12 @@
 					<label for="body">{{ __('Cuerpo') }}</label>
 					<textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>					@if ($errors->valid->has('body'))
 					<p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
+				</div>
+				<div class="form-group">
+					<label for="office">{{ __('Sucursales') }}</label>
+					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 
+									
+					</select>
 				</div>
 			</div>
 		</div>
@@ -73,6 +79,7 @@
 	Surgery.slug();
 	Surgery.editHTML();
 	Surgery.imageUpload(image); 
+	Offices.selectOffice();
 	});
 
 </script>

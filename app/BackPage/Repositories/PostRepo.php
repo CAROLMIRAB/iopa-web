@@ -48,7 +48,9 @@ class PostRepo
 
     public function findSlug($slug)
     {
-        $post = Post::select('slug')->where('slug', $slug)->first();
+        $post = Post::select(DB::raw('count(*) as number_slug'))
+        ->where('slug', $slug)
+        ->first();
         return $post;
     }
 

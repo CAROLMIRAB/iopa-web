@@ -96,13 +96,13 @@
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('office.createview') }}">
-              <i class="ni ni-pin-3 text-orange"></i> Sucursales
+          <a class="nav-link" href="{{ route('surgery.view-all-surgeries') }}">
+              <i class="ni ni-single-02 text-yellow"></i> Cirugías 
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('surgery.createview') }}">
-              <i class="ni ni-single-02 text-yellow"></i> Cirugías 
+          <a class="nav-link" href="{{ route('office.createview') }}">
+              <i class="ni ni-pin-3 text-orange"></i> Sucursales
             </a>
         </li>
         <li class="nav-item">

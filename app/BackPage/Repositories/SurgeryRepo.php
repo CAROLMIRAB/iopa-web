@@ -22,15 +22,37 @@ class SurgeryRepo
 
     public function findSlug($slug)
     {
-        $surgery = Surgery::select('slug')->where('slug', $slug)->first();
+        $surgery = Surgery::select(DB::raw('count(*) as number_slug'))
+        ->where('slug', $slug)
+        ->first();
         return $surgery;
     }
 
     public function showAllSurgeries()
     {
-        $surgery = Surgery::select('id', 'name', 'body', 'slug', 'file')
+        $surgery = Surgery::select('id', 'name', 'body', 'slug', 'file', 'status')
             ->orderBy('name', 'DESC')
             ->get();
+        return $surgery;
+    }
+
+    public function showOfficesSurgery($id)
+    {
+        $office = Office::leftJoin('surgery_office', 'offices.id', '=', 'surgery_office.office_id')
+            ->where('surgery_office.surgery_id', $id)
+            ->orderBy('name', 'ASC')
+            ->get();
+        return $office;
+    }
+
+
+    public function showSurgerySlug($slug)
+    {
+        $surgery = Surgery::select('id', 'name', 'body', 'file', 'slug')
+            ->where('surgeries.slug', $slug)
+            ->orderBy('id', 'DESC')
+            ->first();
+
         return $surgery;
     }
 

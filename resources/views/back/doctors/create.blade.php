@@ -169,7 +169,7 @@
 
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
-		Doctors.selectOffice();
+		Offices.selectOffice();
 	});
 
 </script>

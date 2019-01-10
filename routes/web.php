@@ -75,6 +75,11 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\PostController@titleAndSlug'
     ]);
 
+    Route::post('slug/slug-create', [
+        'as' => 'core.slug-create',
+        'uses' => 'Back\CoreController@titleAndSlug'
+    ]);
+
     Route::get('post/all-posts', [
         'as' => 'post.all-posts',
         'uses' => 'Back\PostController@allPosts'
@@ -120,8 +125,6 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@saveCreateOffice'
     ]);
 
-   
-
     Route::post('office/store-img', [
         'as' => 'office.storeimg',
         'uses' => 'Back\OfficeController@uploadImage'
@@ -131,8 +134,6 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'office.find-office',
         'uses' => 'Back\OfficeController@findOffice'
     ]);
-
-    
 
     Route::post('surgery/store', [
         'as' => 'surgery.store',
@@ -147,6 +148,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('surgery/slug-create', [
         'as' => 'surgery.slug-create',
         'uses' => 'Back\SurgeryController@titleAndSlug'
+    ]);
+
+    Route::get('surgery/all-surgeries', [
+        'as' => 'surgery.all-surgeries',
+        'uses' => 'Back\SurgeryController@allSurgeries'
     ]);
 
     Route::get('cirugias', [

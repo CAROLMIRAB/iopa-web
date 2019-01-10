@@ -25,4 +25,10 @@ class OfficeRepo
         return $offices;
     }
 
+    public function showAllOffices()
+    {
+        $office = Office::orderBy('name', 'ASC')->get();
+        return $office;
+    }
+
 }

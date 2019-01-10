@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecialtiesTableSeeder::class);
         $this->call(OfficesTableSeeder::class);
         $this->call(DoctorsTableSeeder::class);
-        $this->call(ExamsTableSeeder::class);
         $this->call(SurgeriesTableSeeder::class);
+        $this->call(ExamsTableSeeder::class);
         $this->call(ConfigurationsTableSeeder::class);
         
     }

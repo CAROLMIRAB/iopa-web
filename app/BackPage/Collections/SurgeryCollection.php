@@ -25,8 +25,9 @@ class SurgeryCollection
                 'body' => $surgery->body,
                 'file' => $surgery->file,
                 'created' => $surgery->created,
-                'status' => $post->status,
-                'route' => $route
+                'status' => $surgery->status,
+                'route' => $route,
+                'id' => $surgery->id
             ]);
         }
         return $allsurgeries;

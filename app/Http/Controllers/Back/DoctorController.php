@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\DoctorRepo;
+use App\BackPage\Repositories\OfficeRepo;
 use Validator;
 use App\BackPage\Collections\DoctorCollection;
 use Yajra\DataTables\DataTables;
@@ -14,6 +15,7 @@ class DoctorController extends Controller
 {
 
     private $doctorRepo;
+    private $officeRepo;
     private $doctorCollection;
 
     /**
@@ -21,10 +23,11 @@ class DoctorController extends Controller
      * 
      * @return void
      */
-    public function __construct(DoctorRepo $doctorRepo, DoctorCollection $doctorCollection)
+    public function __construct(DoctorRepo $doctorRepo, DoctorCollection $doctorCollection, OfficeRepo $officeRepo)
     {
         $this->doctorRepo = $doctorRepo;
         $this->doctorCollection = $doctorCollection;
+        $this->officeRepo = $officeRepo;
     }
 
 
@@ -36,7 +39,7 @@ class DoctorController extends Controller
     public function viewCreateDoctor()
     {
         $specialties = $this->doctorRepo->showAllSpecialties();
-        $offices = $this->doctorRepo->showAllOffices();
+        $offices = $this->officeRepo->showAllOffices();
         return view('back.doctors.create', compact('specialties', 'offices'));
     }
 
@@ -49,7 +52,7 @@ class DoctorController extends Controller
     {
         $doctor = $this->doctorRepo->showDoctorSlug($slug);
         $specialties = $this->doctorRepo->showAllSpecialties();
-        $offices = $this->doctorRepo->showAllOffices();
+        $offices = $this->officeRepo->showAllOffices();
         $officesdoctor = $this->doctorRepo->showOfficesDoctor($doctor->id);
 
         return view('back.doctors.edit', compact('specialties', 'offices', 'doctor', 'officesdoctor'));

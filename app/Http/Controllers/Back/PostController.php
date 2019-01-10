@@ -9,6 +9,7 @@ use App\BackPage\Repositories\PostRepo;
 use App\BackPage\Collections\PostCollection;
 use Yajra\Datatables\Datatables;
 use Validator;
+use App\Http\Controllers\Back\CoreController;
 
 class PostController extends Controller
 {
@@ -127,26 +128,8 @@ class PostController extends Controller
             $image_url = "";
             $tags = explode(",", $request->tags);
 
-
             if ($request->file('image')) {
-
-                $input = [];
-
-                $image = $request->file('image');
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
-
-                $destinationPath = public_path('/uploads/thumbnail');
-                $img = \Image::make($image->getRealPath());
-                $img->resize(100, 100, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $input['imagename']);
-
-
-                $destinationPath = public_path('/uploads/images');
-                $image->move($destinationPath, $input['imagename']);
-
-                $image_url = $input['imagename'];
+                $image_url = CoreController::uploadImage($request->file('image'));
             }
 
             $data = array(
@@ -211,24 +194,7 @@ class PostController extends Controller
             $tags = explode(",", $request->tags);
 
             if ($request->file('image')) {
-
-                $input = [];
-
-                $image = $request->file('image');
-                $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
-
-                $destinationPath = public_path('/uploads/thumbnail');
-                $img = \Image::make($image->getRealPath());
-                $img->resize(100, 100, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $input['imagename']);
-
-
-                $destinationPath = public_path('/uploads/images');
-                $image->move($destinationPath, $input['imagename']);
-
-                $image_url = $input['imagename'];
+                $image_url = CoreController::uploadImage($request->file('image'));
             }
 
             if (!empty($image_url)) {
@@ -271,44 +237,4 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Create slug from title 
-     * 
-     * @param Request $request
-     * @return mixed
-     */
-    function titleAndSlug(Request $request)
-    {
-        try {
-            
-            $slug = str_slug($request->title, '-');
-            $slug_search = $this->postRepo->findSlug($slug);
-            if (!empty($slug_search) && !empty($request->id_post)) {
-                $slug_response = $slug;
-            } else if (!empty($slug_search)) {
-                $slug_response = $slug . '-2';
-            } else {
-                $slug_response = $slug;
-            }
-
-            $data = [
-                'status' => 'success',
-                'message' => __(''),
-                'data' => [
-                    'slug' => $slug_response
-                ]
-            ];
-
-            return response()->json($data);
-
-        } catch (\Exception $ex) {
-
-            $data = [
-                'title' => __('Publicación fallida'),
-                'message' => __('Ocurrió un error mientras se publicaba su post. Por favor intente nuevamente'),
-            ];
-
-            return $ex;
-        }
-    }
 }

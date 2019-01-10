@@ -176,7 +176,7 @@
 	$(document).ready(function(){
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
         Doctors.eliminateMessages();
-        Doctors.selectOfficeEdit();
+        Offices.selectOfficeEdit();
        
 	});
 

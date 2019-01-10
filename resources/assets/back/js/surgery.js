@@ -7,13 +7,15 @@ var Surgery = function () {
 
             $('#name').focusout(function () {
                 var title = $('#name').val();
-               
+                var id_surgery = $('#id_surgery').val();
                     $.ajax({
                         type: 'post',
                         url: route,
                         dataType: "json",
                         data: {
-                            title: title
+                            title: title,
+                            id: id_surgery,
+                            mod: 'surgery'
                         },
                     }).done(function (data) {
                         $('#slug').val(data.data.slug);
@@ -44,6 +46,7 @@ var Surgery = function () {
 
         },
 
+
         allSurgeries: function () {
             var route = $('.datatable-surgeries').data('route');
             var table = $('.datatable-surgeries').DataTable({
@@ -51,7 +54,7 @@ var Surgery = function () {
                 "serverSide": false,
                 "ajax": route,
                 "responsive": true,
-                "order": [[ 4, "desc" ]],
+                "order": [[ 4, "asc" ]],
                 columns: [
                     {
                         data: 'name',
@@ -80,7 +83,10 @@ var Surgery = function () {
                     },
                     {
                         data: 'route',
-                        width: "120px",
+                        visible: false
+                    },
+                    {
+                        data: 'id',
                         visible: false
                     }
 

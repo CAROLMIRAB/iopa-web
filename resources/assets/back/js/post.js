@@ -4,7 +4,7 @@ var Posts = function () {
 
         slug: function () {
             var route = $('#slug').data('route');
-
+            var title_before = $('#name').val();
             $('#name').focusout(function () {
                 var title = $('#name').val();
                 var id_post = $('#id_post').val();
@@ -14,7 +14,9 @@ var Posts = function () {
                     dataType: "json",
                     data: {
                         title: title,
-                        id_post: id_post,
+                        title_before: title_before,
+                        id: id_post,
+                        mod: 'post'
                     },
                 }).done(function (data) {
                     $('#slug').val(data.data.slug);

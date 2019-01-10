@@ -17,7 +17,7 @@
 			<div class="card-body">
 				<div class="form-group">
 					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ route('post.viewposts') }}/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('post.slug-create') }}">
+						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
 					</div>
 				</div>
 				<div class="form-group">

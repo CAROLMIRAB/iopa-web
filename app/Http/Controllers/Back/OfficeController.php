@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\OfficeRepo;
+use App\Http\Controllers\Back\CoreController;
 use Validator;
 
 class OfficeController extends Controller
@@ -33,7 +34,7 @@ class OfficeController extends Controller
         return view('back.offices.create');
     }
 
-     /**
+    /**
      * Office find office
      * 
      * @return var
@@ -44,7 +45,7 @@ class OfficeController extends Controller
         $data = [
             'code' => 200,
             'data' => [
-                'tags' =>  $offices 
+                'tags' => $offices
             ]
         ];
         return response()->json($data);
@@ -78,24 +79,7 @@ class OfficeController extends Controller
             }
 
             if ($request->file('image')) {
-
-                $input = [];
-
-                $image = $request->file('image');
-                $input['imagename'] = 'office_' . time() . '.' . $image->getClientOriginalExtension();
-
-                $destinationPath = public_path('/uploads/thumbnail');
-                $img = \Image::make($image->getRealPath());
-                $img->resize(100, 100, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $input['imagename']);
-
-
-                $destinationPath = public_path('/uploads/images');
-                $image->move($destinationPath, $input['imagename']);
-
-                $image_url = \URL::to('/') . "/uploads/images/" . $input['imagename'];
-
+                $image_url = CoreController::uploadImage($request->file('image'));
             }
 
             $data = array(
@@ -124,38 +108,4 @@ class OfficeController extends Controller
         }
     }
 
-    public function uploadImage(Request $request)
-    {
-        try {
-            $input = [];
-            $image_str = $request->img;
-            if ($image_str) {
-
-                $png_url = "doctor-" . time() . ".png";
-                $path = public_path('/uploads/temp/') . $png_url;
-                $base64Image = explode(',', $image_str);
-                $image = \Image::make($base64Image[1])->encode('jpg', 75);
-                $image->resize(500, 500, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($path);
-
-                $image_url = \URL::to('/') . "/uploads/images/" . $png_url;
-                $image_name = $png_url;
-
-                $data = [
-                    'status' => true,
-                    'message' => __('Imagen subida'),
-                    'img_url' => $image_url,
-                    'img_name' => $image_name
-                ];
-                return response()->json($data);
-            }
-        } catch (\Exception $ex) {
-            $data = [
-                'title' => __('Publicación fallida'),
-                'message' => __('Ocurrió un error mientras se subía la imagen. Por favor intente nuevamente'),
-            ];
-            return $ex;
-        }
-    }
 }
