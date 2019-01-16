@@ -9,9 +9,9 @@ class Exam extends Model
     protected $fillable = ['name', 'slug','body']; 
 
   
-    public function Office()
+    public function offices()
     {
-        return $this->belongsToMany(Office::class);
+        return $this->belongsToMany(Office::class, 'exam_office');
     }
 
 }

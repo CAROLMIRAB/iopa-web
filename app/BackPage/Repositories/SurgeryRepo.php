@@ -56,4 +56,14 @@ class SurgeryRepo
         return $surgery;
     }
 
+    public function editSurgeryById($data, $id, $offices)
+    {
+       
+        $surgery = \DB::table('surgeries')->where('id', $id)->update($data);
+        $surg = Surgery::find($id);
+        $surg->offices()->sync($offices);
+ 
+        return $surgery;
+    }
+
 }

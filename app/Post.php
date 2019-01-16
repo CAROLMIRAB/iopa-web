@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Post extends Model
 {
+    use Sluggable;
 
     protected $fillable = [
         'user_id', 
@@ -19,6 +22,20 @@ class Post extends Model
         'tags'
     ];    
     
+
+    /* Return the sluggable configuration array for this model.
+    *
+    * @return array
+    */
+   public function sluggable()
+   {
+       return [
+           'slug' => [
+               'source' => 'name'
+           ]
+       ];
+   }
+
     /*
     Relation with category
      */
@@ -35,5 +52,7 @@ class Post extends Model
         return $this->belongTo(User::class);
     }
 
+
+    
  
 }

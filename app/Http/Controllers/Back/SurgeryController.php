@@ -9,7 +9,7 @@ use App\BackPage\Repositories\SurgeryRepo;
 use App\BackPage\Repositories\OfficeRepo;
 use App\BackPage\Collections\SurgeryCollection;
 use Yajra\DataTables\DataTables;
-use App\Http\Controllers\Back\CoreController;
+use App\Core\Core;
 use Validator;
 
 class SurgeryController extends Controller
@@ -75,26 +75,33 @@ class SurgeryController extends Controller
     public function saveCreateSurgery(Request $request)
     {
         try {
+            $offices = $request->office;
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
                 'body' => 'required',
-                'image' => 'required'
+                'image' => 'required',
+                'office' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
                 'name.required' => __('El título es requerido'),
-                'body.required' => __('Debe escribir algo en el blog'),
-                'image.required' => __('Debe agregar una imagen destacada')
+                'body.required' => __('Debe escribir algo en el cuerpo de la cirugía'),
+                'image.required' => __('Debe agregar una imagen destacada'),
+                'office.required' => __('Debe agregar las sucursales')
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator, 'valid')
-                    ->withInput();
+                return response()->json([
+                    'status' => 400,
+                    'title' => '¡Error!',
+                    'message' => "Te falta algún campo",
+                    'data' => $validator->errors()
+                    ]);
             }
 
             if ($request->file('image')) {
-                $image_url = CoreController::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->file('image'));
             }
 
             $data = array(
@@ -105,11 +112,21 @@ class SurgeryController extends Controller
                 'file' => $image_url
             );
 
-            if (!empty($image_url)) {
-                $surgery = $this->surgeryRepo->createPost($data);
-            }
+            $offices = array_map(
+                function ($value) {
+                    return (int)$value;
+                },
+                $offices
+            );
 
-            return redirect()->back();
+            if (!empty($image_url)) {
+                $surgery = $this->surgeryRepo->createSurgery($data, $offices);
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha creado la cirugía de forma correcta"
+                ]);
+            }
 
         } catch (\Exception $ex) {
 
@@ -130,17 +147,19 @@ class SurgeryController extends Controller
     public function editSurgery(Request $request)
     {
         try {
-
+            $offices = $request->office;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
                 'body' => 'required',
-                'image' => 'required'
+                'image' => 'required',
+                'office' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
                 'name.required' => __('El título es requerido'),
                 'body.required' => __('Debe escribir algo en el blog'),
-                'image.required' => __('Debe agregar una imagen destacada')
+                'image.required' => __('Debe agregar una imagen destacada'),
+                'office.required' => __('Debe agregar las sucursales')
             ]);
 
             if ($validator->fails()) {
@@ -150,8 +169,15 @@ class SurgeryController extends Controller
             }
 
             if ($request->file('image')) {
-                $image_url = CoreController::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->file('image'));
             }
+
+            $offices = array_map(
+                function ($value) {
+                    return (int)$value;
+                },
+                $offices
+            );
 
             $data = array(
                 'name' => $request->name,
@@ -162,7 +188,7 @@ class SurgeryController extends Controller
             );
 
             if (!empty($image_url)) {
-                $surgery = $this->surgeryRepo->createPost($data);
+                $surgery = $this->surgeryRepo->editSurgeryById($data, $request->id_sugery, $offices);
             }
 
             return redirect()->back();

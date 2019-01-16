@@ -1,5 +1,8 @@
 var Posts = function () {
 
+
+
+
     return {
 
         slug: function () {
@@ -27,7 +30,6 @@ var Posts = function () {
 
                 });
             }).change();
-
         },
 
         editHTML: function () {
@@ -69,6 +71,43 @@ var Posts = function () {
             });
         },
 
+        createPost: function () {
+            $('#post').submit(function (e) {
+                $('.btn-save').button('loading');
+                e.preventDefault();
+                var formData = new FormData(document.getElementById("post"));
+                formData.append("dato", "valor");
+                $.ajax({
+                    type: 'post',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status == 400) {
+                        $.each(data.data, function (key, value) {
+                            $('.' + key + '-error').html(value);
+                        });
+                    }
+                    if (data.status == 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                        $('#post')[0].reset();
+                        $("#body").summernote("reset");
+                        $("#image-preview").css('background-image', '');
+                        $(".invalid-feedback").html('');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('.btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+
         allPosts: function () {
             var route = $('.datatable-posts').data('route');
             var table = $('.datatable-posts').DataTable({
@@ -76,7 +115,7 @@ var Posts = function () {
                 "serverSide": false,
                 "ajax": route,
                 "responsive": true,
-                "order": [[ 4, "desc" ]],
+                "order": [[4, "desc"]],
                 columns: [
                     {
                         data: 'title',

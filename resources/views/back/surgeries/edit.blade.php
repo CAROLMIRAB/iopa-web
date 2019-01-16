@@ -28,12 +28,12 @@
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>					@if ($errors->valid->has('body'))
-					<p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
+					<textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>					
+					@if ($errors->valid->has('body'))<p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
 				</div>
 				<div class="form-group">
 					<label for="office">{{ __('Sucursales') }}</label>
-					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"> 
+					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple" @if ($errors->valid->has('office')) is-invalid @endif>  
 						@foreach ($officessurgery as $os)
 							<option selected="selected" value="{{ $os->office_id }}">{{ $os->name }}</option>
 						@endforeach
@@ -41,6 +41,8 @@
 							<option value="{{ $item->id }}">{{ $item->name }}</option>
 						@endforeach
 					</select>
+					@if ($errors->valid->has('office'))<p class="invalid-feedback">{{ $errors->valid->first('office') }}</p> @endif
+
 				</div>
 			</div>
 		</div>

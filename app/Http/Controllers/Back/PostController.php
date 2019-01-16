@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\PostRepo;
 use App\BackPage\Collections\PostCollection;
 use Yajra\Datatables\Datatables;
+use App\Core\Core;
 use Validator;
-use App\Http\Controllers\Back\CoreController;
 
 class PostController extends Controller
 {
@@ -120,16 +120,19 @@ class PostController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator, 'valid')
-                    ->withInput();
+                return response()->json([
+                    'status' => 400,
+                    'title' => '¡Error!',
+                    'message' => "Te falta algún campo",
+                    'data' => $validator->errors()
+                ]);
             }
 
             $image_url = "";
             $tags = explode(",", $request->tags);
 
             if ($request->file('image')) {
-                $image_url = CoreController::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->file('image'));
             }
 
             $data = array(
@@ -146,9 +149,12 @@ class PostController extends Controller
 
             if (!empty($image_url)) {
                 $post = $this->postRepo->createPost($data);
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha creado la noticia de forma correcta"
+                ]);
             }
-
-            return redirect()->back();
 
         } catch (\Exception $ex) {
 
@@ -194,7 +200,7 @@ class PostController extends Controller
             $tags = explode(",", $request->tags);
 
             if ($request->file('image')) {
-                $image_url = CoreController::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->file('image'));
             }
 
             if (!empty($image_url)) {
@@ -223,8 +229,8 @@ class PostController extends Controller
 
             if ($data) {
                 $post = $this->postRepo->editPostById($request->id_post, $data);
-
-                return redirect()->route('post.editview', $request->slug);
+                return response()->json(['mensaje' => "no hay nada"]);
+                //return redirect()->route('post.editview', $request->slug);
             }
         } catch (\Exception $ex) {
 

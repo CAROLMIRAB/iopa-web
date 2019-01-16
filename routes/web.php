@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\DoctorController@viewAllDoctors'
     ]);
     
-    Route::get('medicos/editar/{slug}', [
+    Route::get('medicos/editar/', [
         'as' => 'doctor.editview',
         'uses' => 'Back\DoctorController@viewEditDoctor'
     ]);

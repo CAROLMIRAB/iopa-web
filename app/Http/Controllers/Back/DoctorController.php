@@ -10,6 +10,7 @@ use App\BackPage\Repositories\OfficeRepo;
 use Validator;
 use App\BackPage\Collections\DoctorCollection;
 use Yajra\DataTables\DataTables;
+use App\Core\Core;
 
 class DoctorController extends Controller
 {
@@ -30,7 +31,6 @@ class DoctorController extends Controller
         $this->officeRepo = $officeRepo;
     }
 
-
     /**
      * View doctor create
      * 
@@ -48,9 +48,9 @@ class DoctorController extends Controller
      * 
      * @return view
      */
-    public function viewEditDoctor($slug)
+    public function viewEditDoctor(Request $request)
     {
-        $doctor = $this->doctorRepo->showDoctorSlug($slug);
+        $doctor = $this->doctorRepo->showDoctorSlug($request->slug);
         $specialties = $this->doctorRepo->showAllSpecialties();
         $offices = $this->officeRepo->showAllOffices();
         $officesdoctor = $this->doctorRepo->showOfficesDoctor($doctor->id);
@@ -102,18 +102,23 @@ class DoctorController extends Controller
                 'name' => 'required',
                 'lastname' => 'required',
                 'excerpt' => 'required',
+                'office' => 'required',
                 'specialty_id' => 'required',
             ], [
                 'name.required' => __('El nombre es requerido'),
                 'lastname.required' => __('El apellido es requerido'),
                 'excerpt.required' => __('Debe escribir un extracto'),
+                'office.required' => __('Debes agregar alguna sucursal'),
                 'specialty_id' => 'required',
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator, 'valid')
-                    ->withInput();
+                return response()->json([
+                    'status' => 400,
+                    'title' => '¡Error!',
+                    'message' => "Te falta algún campo",
+                    'data' => $validator->errors()
+                ]);
             }
 
             if (!empty($image_url)) {
@@ -130,11 +135,12 @@ class DoctorController extends Controller
 
                 $post = $this->doctorRepo->createDoctor($data, $request->office);
 
-
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha creado un doctor de forma correcta"
+                ]);
             }
-
-            return redirect()->back();
-
         } catch (\Exception $ex) {
 
             $data = [
@@ -155,11 +161,11 @@ class DoctorController extends Controller
     public function editDoctor(Request $request)
     {
         try {
-          
+
             $slug = str_slug($request->name, '-');
             $image_url = $request->imgurl;
             $offices = $request->office;
-         
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'lastname' => 'required',
@@ -173,33 +179,40 @@ class DoctorController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator, 'valid')
-                    ->withInput();
+                return response()->json([
+                    'status' => 400,
+                    'title' => '¡Error!',
+                    'message' => "Te falta algún campo",
+                    'data' => $validator->errors()
+                ]);
             }
+
+            $data = array(
+                'name' => $request->name,
+                'lastname' => $request->lastname,
+                'excerpt' => $request->excerpt,
+                'phone' => $request->phone,
+                'specialty_id' => $request->specialty_id,
+                'file' => $image_url,
+                'slug' => $slug
+            );
+
             if (!empty($image_url)) {
 
-                $data = array(
-                    'name' => $request->name,
-                    'lastname' => $request->lastname,
-                    'excerpt' => $request->excerpt,
-                    'phone' => $request->phone,
-                    'specialty_id' => $request->specialty_id,
-                    'file' => $image_url,
-                    'slug' => $slug
-                );
-              
                 $offices = array_map(
                     function ($value) {
                         return (int)$value;
                     },
                     $offices
                 );
-                
-                $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices);
-            }
 
-            return redirect()->route('doctor.editview', $slug);
+                $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices);
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha editado el doctor de forma correcta"
+                ]);
+            }
 
         } catch (\Exception $ex) {
 

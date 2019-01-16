@@ -56,7 +56,7 @@
 
                             <div class="form-group">
                                 <label for="office">{{ __('Sucursales') }}</label>
-                                <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"> 
+                                <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple" @if ($errors->valid->has('office')) is-invalid @endif> 
                                     @foreach ($officesdoctor as $od)
                                         <option selected="selected" value="{{ $od->office_id }}">{{ $od->name }}</option>
                                     @endforeach
@@ -64,6 +64,8 @@
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->valid->has('office'))<p class="invalid-feedback">{{ $errors->valid->first('office') }}</p> @endif
+
                             </div>
                         </div>
                     </div>
@@ -176,6 +178,7 @@
 	$(document).ready(function(){
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
         Doctors.eliminateMessages();
+        Doctors.editDoctor();
         Offices.selectOfficeEdit();
        
 	});

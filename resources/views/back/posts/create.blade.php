@@ -10,7 +10,7 @@
 						<h2 class="mb-0">{{ _('Nueva Noticia') }}</h2>
 					</div>
 					<div class="col-4 text-right">
-						<button id="btn-save" class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+						<button id="btn-save" class="btn btn-sm btn-primary btn-save" type="submit"  data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>
@@ -22,19 +22,19 @@
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
-					<input type="text" name="name" id="name" class="form-control @if ($errors->valid->has('name')) is-invalid @endif " data-slugit-target="#slug">					@if ($errors->valid->has('name'))
-					<p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
+					<input type="text" name="name" id="name" class="form-control " data-slugit-target="#slug">
+					<p class="invalid-feedback name-error"></p> 
 				</div>
 
 				<div class="form-group">
 					<label for="excerpt">{{ __('Extracto') }}</label>
-					<textarea id="excerpt" name="excerpt" class="form-control @if ($errors->valid->has('excerpt')) is-invalid @endif "></textarea>					@if ($errors->valid->has('excerpt'))
-					<p class="invalid-feedback">{{ $errors->valid->first('excerpt') }}</p> @endif
+					<textarea id="excerpt" name="excerpt" class="form-control  "></textarea>				
+					<p class="invalid-feedback excerpt-error"></p> 
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>					@if ($errors->valid->has('body'))
-					<p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
+					<textarea id="body" name="body" class="form-control summernote" > </textarea>				
+					<p class="invalid-feedback body-error"></p> 
 
 				</div>
 				<div class="form-group">
@@ -93,6 +93,7 @@
 	Posts.tagsInput();		
 	Posts.imageUpload(image); 
 	Posts.eliminateMessages();
+	Posts.createPost();
 	});
 
 </script>

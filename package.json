@@ -34,6 +34,7 @@
         "select2": "^4.0.6-rc.1",
         "slick-carousel": "^1.8.1",
         "sweetalert2": "^7.26.13",
+        "toastr": "^2.1.4",
         "validate": "^4.5.1",
         "validate.js": "^0.12.0",
         "webpack": "^4.23.1"

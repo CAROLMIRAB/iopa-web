@@ -14,7 +14,6 @@ class Doctor extends Model
         'specialty_id',
         'file',
         'slug'
-       
     ]; 
 
     public function specialty()

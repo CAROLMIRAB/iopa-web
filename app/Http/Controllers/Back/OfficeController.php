@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\OfficeRepo;
-use App\Http\Controllers\Back\CoreController;
+use App\Core\Core;
 use Validator;
 
 class OfficeController extends Controller
@@ -79,7 +79,7 @@ class OfficeController extends Controller
             }
 
             if ($request->file('image')) {
-                $image_url = CoreController::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->file('image'));
             }
 
             $data = array(

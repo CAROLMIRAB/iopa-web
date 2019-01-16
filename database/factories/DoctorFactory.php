@@ -3,9 +3,9 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Doctor::class, function (Faker $faker) {
-    $title = $faker->sentence(4);
+    $title = $faker->name;
     return [
-        'name' => $faker->name,
+        'name' => $title,
         'lastname' => $faker->name,
         'phone' => $faker->phoneNumber,
         'excerpt' => $faker->text(200), 

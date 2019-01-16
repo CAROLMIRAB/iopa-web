@@ -1,7 +1,7 @@
 @extends('back.theme') 
 @section('content')
 
-<form action="{{ route('doctor.store') }}" method="post" id="doctor-form" class="row">
+<form action="{{ route('doctor.store') }}" method="post" id="doctor-form" class="row" >
 	<div class="col-xl-8 order-xl-1">
 		<div class="card shadow">
 			<div class="card-header bg-transparent">
@@ -11,7 +11,7 @@
 						<h2 class="mb-0">{{ _('Nuevo Medico') }}</h2>
 					</div>
 					<div class="col-4 text-right">
-						<button class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+						<button class="btn btn-sm btn-primary btn-save" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>
@@ -22,23 +22,21 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label for="name">{{ __('Nombre') }}</label>
-								<input type="text" name="name" id="name" class="form-control @if ($errors->valid->has('name')) is-invalid @endif " data-slugit-target="#slug">								@if ($errors->valid->has('name'))
-								<p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
+								<input type="text" name="name" id="name" class="form-control">				
+								<p class="invalid-feedback name-error"></p> 
 							</div>
 
 							<div class="form-group">
 								<label for="phone">{{ __('Teléfono') }}</label>
-								<input type="text" name="phone" id="phone" class="form-control @if ($errors->valid->has('phone')) is-invalid @endif " data-slugit-target="#slug">								@if ($errors->valid->has('phone'))
-								<p class="invalid-feedback">{{ $errors->valid->first('phone') }}</p> @endif
+								<input type="text" name="phone" id="phone" class="form-control"> 
 							</div>
 
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label for="name">{{ __('Apellido') }}</label>
-								<input type="text" name="lastname" id="lastname" class="form-control @if ($errors->valid->has('lastname')) is-invalid @endif "
-								 data-slugit-target="#slug"> @if ($errors->valid->has('lastname'))
-								<p class="invalid-feedback">{{ $errors->valid->first('lastname') }}</p> @endif
+								<label for="lastname">{{ __('Apellido') }}</label>
+								<input type="text" name="lastname" id="lastname" class="form-control">				
+								<p class="invalid-feedback lastname-error"></p> 
 							</div>
 							<div class="form-group">
 								<label for="specialty_id">{{ __('Especialidad') }}</label>
@@ -55,9 +53,9 @@
 
 							<div class="form-group">
 								<label for="office">{{ __('Sucursales') }}</label>
-								<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 
-									
-										</select>
+								<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" > 				
+								</select>
+								<p class="invalid-feedback office-error"></p> 
 							</div>
 						</div>
 					</div>
@@ -100,8 +98,8 @@
 				<div class="text-center">
 					<div class="form-group">
 						<label for="excerpt">{{ __('Ficha Médico') }}</label>
-						<textarea id="excerpt" name="excerpt" class="form-control @if ($errors->valid->has('excerpt')) is-invalid @endif "></textarea>						@if ($errors->valid->has('excerpt'))
-						<p class="invalid-feedback">{{ $errors->valid->first('excerpt') }}</p> @endif
+						<textarea id="excerpt" name="excerpt" class="form-control"></textarea>			
+						<p class="invalid-feedback excerpt-error"></p> 
 					</div>
 
 				</div>
@@ -169,6 +167,7 @@
 
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
+		Doctors.createDoctor();
 		Offices.selectOffice();
 	});
 

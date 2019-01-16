@@ -62,7 +62,8 @@ mix.styles([
     'plugins/summernote/summernote.css',
     'plugins/amsify-suggestags/css/amsify.suggestags.css',
     'node_modules/cropper/dist/cropper.css',
-    'bower_components/datatables.net-dt/css/jquery.dataTables.css'
+    'bower_components/datatables.net-dt/css/jquery.dataTables.css',
+    'node_modules/toastr/toastr.scss'
 ], 'public/back/css/build.back.min.css').version();
 
 mix.styles([
@@ -81,7 +82,8 @@ mix.scripts([
     'plugins/amsify-suggestags/js/jquery.amsify.suggestags.js',
     'plugins/upload-preview/uploadPreview.min.js',
     'node_modules/cropper/dist/cropper.js',
-    'bower_components/datatables.net/js/jquery.dataTables.js'
+    'bower_components/datatables.net/js/jquery.dataTables.js',
+    'node_modules/toastr/toastr.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([

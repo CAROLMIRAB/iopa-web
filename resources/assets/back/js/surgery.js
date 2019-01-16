@@ -35,6 +35,42 @@ var Surgery = function () {
             });
         },
 
+        createSurgery: function () {
+            $('#surgery').submit(function (e) {
+                $('.btn-save').button('loading');
+                e.preventDefault();
+                var formData = new FormData(document.getElementById("surgery"));
+                formData.append("dato", "valor");
+                $.ajax({
+                    type: 'post',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status == 400) {
+                        $.each(data.data, function (key, value) {
+                            $('.' + key + '-error').html(value);
+                        });
+                    }
+                    if (data.status == 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                        $('#surgery')[0].reset();
+                        $("#body").summernote("reset");
+                        $("#image-preview").css('background-image', '');
+                        $(".invalid-feedback").html('');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('.btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
         imageUpload: function (image) {
             $.uploadPreview({
                 input_field: "#image",
