@@ -2,7 +2,7 @@
 @section('content')
 
 <form action="{{ route('doctor.store') }}" method="post" id="doctor-form" class="row" >
-	<div class="col-xl-8 order-xl-1">
+	<div class="col-xl-8 order-xl-1 mb-5">
 		<div class="card shadow">
 			<div class="card-header bg-transparent">
 				<div class="row align-items-center">
@@ -11,7 +11,7 @@
 						<h2 class="mb-0">{{ _('Nuevo Medico') }}</h2>
 					</div>
 					<div class="col-4 text-right">
-						<button class="btn btn-sm btn-primary btn-save" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+						<button class="btn btn-sm btn-primary btn-save" id="btn-save" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 
 				<div class="pl-lg-4">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-6 ">
 							<div class="form-group">
 								<label for="name">{{ __('Nombre') }}</label>
 								<input type="text" name="name" id="name" class="form-control">				

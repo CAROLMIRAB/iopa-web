@@ -83,7 +83,8 @@ mix.scripts([
     'plugins/upload-preview/uploadPreview.min.js',
     'node_modules/cropper/dist/cropper.js',
     'bower_components/datatables.net/js/jquery.dataTables.js',
-    'node_modules/toastr/toastr.js'
+    'node_modules/toastr/toastr.js',
+    'node_modules/jquery-validation/dist/jquery.validate.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([

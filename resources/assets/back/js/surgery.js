@@ -8,25 +8,25 @@ var Surgery = function () {
             $('#name').focusout(function () {
                 var title = $('#name').val();
                 var id_surgery = $('#id_surgery').val();
-                    $.ajax({
-                        type: 'post',
-                        url: route,
-                        dataType: "json",
-                        data: {
-                            title: title,
-                            id: id_surgery,
-                            mod: 'surgery'
-                        },
-                    }).done(function (data) {
-                        $('#slug').val(data.data.slug);
+                $.ajax({
+                    type: 'post',
+                    url: route,
+                    dataType: "json",
+                    data: {
+                        title: title,
+                        id: id_surgery,
+                        mod: 'surgery'
+                    },
+                }).done(function (data) {
+                    $('#slug').val(data.data.slug);
 
-                    }).fail(function (data) {
+                }).fail(function (data) {
 
-                    }).always(function () {
+                }).always(function () {
 
-                    });
-                }).change();
-           
+                });
+            }).change();
+
         },
 
         editHTML: function () {
@@ -36,38 +36,70 @@ var Surgery = function () {
         },
 
         createSurgery: function () {
-            $('#surgery').submit(function (e) {
-                $('.btn-save').button('loading');
+            var $form = $('#surgery');
+            var v = $('#surgery').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    body: "required",
+                    image: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El título es un campo requerido",
+                        minlength: "Escriba un título más largo"
+                    },
+                    body: "No ha agregado contenido",
+                    image: "No ha agregado una imagen"
+                },
+                ignore: ":hidden, [contenteditable='true']:not([body])"
+            });
+
+            $('#btn-save').click(function (e) {
+                $(this).button('loading');
                 e.preventDefault();
                 var formData = new FormData(document.getElementById("surgery"));
-                formData.append("dato", "valor");
-                $.ajax({
-                    type: 'post',
-                    url: $(this).attr('action'),
-                    data: formData,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                }).done(function (data) {
-                    if (data.status == 400) {
-                        $.each(data.data, function (key, value) {
-                            $('.' + key + '-error').html(value);
-                        });
+                if ($form.valid()) {
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                            $('#surgery')[0].reset();
+                            $("#body").summernote("reset");
+                            $("#image-preview").css('background-image', '');
+                            $(".invalid-feedback").html('');
+                            $('#office').val(null).trigger('change');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+
+            $('#body').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
                     }
-                    if (data.status == 200) {
-                        toastr.success(data.message, '!Exitoso!');
-                        $('#surgery')[0].reset();
-                        $("#body").summernote("reset");
-                        $("#image-preview").css('background-image', '');
-                        $(".invalid-feedback").html('');
-                    }
-                }).fail(function (data) {
-                    toastr.error(data.message, '!Error!');
-                }).always(function () {
-                    $('.btn-save').button('reset');
-                });
-                return false;
+                }
             });
         },
 
@@ -79,7 +111,6 @@ var Surgery = function () {
                 label_default: image,
                 label_selected: image
             });
-
         },
 
 
@@ -90,7 +121,7 @@ var Surgery = function () {
                 "serverSide": false,
                 "ajax": route,
                 "responsive": true,
-                "order": [[ 4, "asc" ]],
+                "order": [[4, "asc"]],
                 columns: [
                     {
                         data: 'name',

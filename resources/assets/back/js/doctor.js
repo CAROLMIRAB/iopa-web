@@ -17,77 +17,163 @@ var Doctors = function () {
         },
 
         createDoctor: function () {
-            $('#doctor-form').submit(function (e) {
-                $('.btn-save').button('loading');
-                e.preventDefault();
-                var formData = new FormData(document.getElementById("doctor-form"));
-                formData.append("dato", "valor");
-                $.ajax({
-                    type: 'post',
-                    url: $(this).attr('action'),
-                    data: formData,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                }).done(function (data) {
-                    if (data.status == 400) {
-                        $.each(data.data, function (key, value) {
-                            $('.' + key + '-error').html(value);
-                        });
-                    }
-                    if (data.status == 200) {
-                        toastr.success(data.message, '!Exitoso!');
-                        $('#doctor-form')[0].reset();
-                        $(".invalid-feedback").html('');
-                        canvas.cropper('destroy');
-                    }
-                }).fail(function (data) {
-                    toastr.error(data.message, '!Error!');
-                }).always(function () {
-                    $('.btn-save').button('reset');
-                });
-                return false;
+            var $form = $('#doctor-form');
+            $form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 2,
+                        lettersonly: true
+                    },
+                    lastname: {
+                        required: true,
+                        minlength: 2,
+                        lettersonly: true
+                    },
+                    phone: {
+                        number: true,
+                        minlength: 9
+
+                    },
+                    excerpt: "required",
+                    imgurl: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El Apellido es un campo requerido",
+                        minlength: "Escriba un apellido más largo",
+                        lettersonly: "Solo se permiten letras"
+                    },
+                    lastname: {
+                        required: "El Nombre es un campo requerido",
+                        minlength: "Escriba un nombre más largo",
+                        lettersonly: "Solo se permiten letras"
+                    },
+                    phone: {
+                        number: "Ingrese un teléfono válido",
+                        minlength: "Ingrese un teléfono válido"
+                    },
+                    excerpt: "El extracto es un campo requerido",
+                    imgurl: "No ha agregado una imagen"
+                },
             });
+
+            $('#btn-save').click(function () {
+                $(this).button('loading');
+                if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("doctor-form"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                            return false;
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                            $('#doctor-form')[0].reset();
+                            $(".invalid-feedback").html('');
+                            $("#canvas").cropper('destroy');
+                            $('#office').val(null).trigger('change');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+            jQuery.validator.addMethod("lettersonly", function (value, element) {
+                return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
+            }, "Letters and spaces only please");
         },
 
         editDoctor: function () {
-            $('#doctor-form').submit(function (e) {
-                $('.btn-save').button('loading');
-                e.preventDefault();
-                var formData = new FormData(document.getElementById("doctor-form"));
-                formData.append("dato", "valor");
-                $.ajax({
-                    type: 'post',
-                    url: $(this).attr('action'),
-                    data: formData,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                }).done(function (data) {
-                    if (data.status == 400) {
-                        $.each(data.data, function (key, value) {
-                            $('.' + key + '-error').html(value);
-                        });
-                        return false;
-                    }
-                    if (data.status == 200) {
-                        toastr.success(data.message, '!Exitoso!');
-                        $('#doctor-form')[0].reset();
-                        $(".invalid-feedback").html('');
-                        canvas.cropper('destroy');
-                    }
-                }).fail(function (data) {
-                    toastr.error(data.message, '!Error!');
-                }).always(function () {
-                    $('.btn-save').button('reset');
-                });
-                //return false;
+            var $form = $('#doctor-form');
+            $form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 2,
+                        lettersonly: true
+                    },
+                    lastname: {
+                        required: true,
+                        minlength: 2,
+                        lettersonly: true
+                    },
+                    phone: {
+                        number: true,
+                        minlength: 9
+
+                    },
+                    excerpt: "required",
+                    imgurl: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El Apellido es un campo requerido",
+                        minlength: "Escriba un apellido más largo",
+                        lettersonly: "Solo se permiten letras"
+                    },
+                    lastname: {
+                        required: "El Nombre es un campo requerido",
+                        minlength: "Escriba un nombre más largo",
+                        lettersonly: "Solo se permiten letras"
+                    },
+                    phone: {
+                        number: "Ingrese un teléfono válido",
+                        minlength: "Ingrese un teléfono válido"
+                    },
+                    excerpt: "El extracto es un campo requerido",
+                    imgurl: "No ha agregado una imagen"
+                },
             });
+
+            $('#btn-save').click(function () {
+                $(this).button('loading');
+                if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("doctor-form"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                            return false;
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+            jQuery.validator.addMethod("lettersonly", function (value, element) {
+                return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
+            }, "Letters and spaces only please");
         },
 
-    
         imageUploadDoctor: function (route) {
 
             var canvas = $("#canvas"),
@@ -151,10 +237,8 @@ var Doctors = function () {
                     $('#imgurl').val(data.data.img_name);
                     $("#avatar-doctor").attr("src", imgurl);
                     $('#modal-notification').modal('hide');
-
                 }).fail(function (data) {
-                    var obj = data;
-                    $('#btnCrop').button('reset');
+                    toastr.error(data.message, '!Error!');
                 }).always(function () {
                     $('#btnCrop').button('reset');
                 });

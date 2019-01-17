@@ -28,7 +28,7 @@ class Core
      * 
      * @return $slug
      */
-    public function titleAndSlug($request)
+    public static function titleAndSlug($request)
     {
         $slug = str_slug($request->title, '-');
         switch ($request->mod) {

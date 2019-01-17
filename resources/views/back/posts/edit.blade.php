@@ -22,20 +22,20 @@
                 </div>
                 <div class="form-group">
                     <label for="name">{{ __('Título') }}</label>
-                    <input type="text" name="name" id="name" value="{{ $post->name }}" class="form-control @if ($errors->valid->has('name')) is-invalid @endif "
-                        data-slugit-target="#slug"> @if ($errors->valid->has('name'))
-                    <p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
+                    <input type="text" name="name" id="name" value="{{ $post->name }}" class="form-control"
+                        data-slugit-target="#slug">
+                    <p class="invalid-feedback"></p> 
                 </div>
 
                 <div class="form-group">
                     <label for="excerpt">{{ __('Extracto') }}</label>
-                    <textarea id="excerpt" name="excerpt" value="{{ $post->excerpt }}" class="form-control @if ($errors->valid->has('excerpt')) is-invalid @endif ">{{ $post->excerpt }}</textarea>                    @if ($errors->valid->has('excerpt'))
-                    <p class="invalid-feedback">{{ $errors->valid->first('excerpt') }}</p> @endif
+                    <textarea id="excerpt" name="excerpt" value="{{ $post->excerpt }}" class="form-control">{{ $post->excerpt }}</textarea> 
+                    <p class="invalid-feedback"></p>
                 </div>
                 <div class="form-group">
                     <label for="body">{{ __('Cuerpo') }}</label>
-                    <textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif >{!! $post->body !!}  </textarea>                    @if ($errors->valid->has('body'))
-                    <p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
+                    <textarea id="body" name="body" class="form-control summernote">{!! $post->body !!}  </textarea>
+                    <p class="invalid-feedback"></p>
 
                 </div>
                 <div class="form-group">

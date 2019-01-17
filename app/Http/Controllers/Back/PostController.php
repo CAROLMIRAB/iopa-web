@@ -176,7 +176,6 @@ class PostController extends Controller
     public function editPost(Request $request)
     {
         try {
-
             $validator = Validator::make($request->all(), [
                 'category_id' => 'required',
                 'name' => 'required',
@@ -229,8 +228,11 @@ class PostController extends Controller
 
             if ($data) {
                 $post = $this->postRepo->editPostById($request->id_post, $data);
-                return response()->json(['mensaje' => "no hay nada"]);
-                //return redirect()->route('post.editview', $request->slug);
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha modificado la noticia de forma correcta"
+                ]);
             }
         } catch (\Exception $ex) {
 

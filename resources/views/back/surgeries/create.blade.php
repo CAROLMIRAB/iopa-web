@@ -10,7 +10,7 @@
 						<h2 class="mb-0">{{ _('Nueva Cirugía') }}</h2>
 					</div>
 					<div class="col-4 text-right">
-						<button id="btn-save" class="btn btn-sm btn-primary btn-save" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+						<button id="btn-save" class="btn btn-sm btn-primary btn-save" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>

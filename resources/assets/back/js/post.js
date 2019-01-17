@@ -1,8 +1,5 @@
 var Posts = function () {
 
-
-
-
     return {
 
         slug: function () {
@@ -35,6 +32,7 @@ var Posts = function () {
         editHTML: function () {
             $('#body').summernote({
                 height: 200
+
             });
         },
 
@@ -61,52 +59,148 @@ var Posts = function () {
                 label_default: image,
                 label_selected: image
             });
-
         },
 
         tagsInput: function () {
             $('input[name="tags"]').amsifySuggestags({
-                type: 'amsify',
-                suggestions: ['Black', 'White', 'Red', 'Blue', 'Green', 'Orange']
+                type: 'amsify'
             });
         },
 
         createPost: function () {
-            $('#post').submit(function (e) {
-                $('.btn-save').button('loading');
+            var $form = $('#post');
+            var v = $form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    excerpt: "required",
+                    body: "required",
+                    image: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El titulo es un campo requerido",
+                        minlength: "Escriba un titulo más largo"
+                    },
+                    excerpt: "El extracto es un campo requerido",
+                    body: "No ha agregado contenido",
+                    image: "No ha agregado una imagen"
+                },
+                ignore: ":hidden, [contenteditable='true']:not([body])"
+            });
+
+            $('#btn-save').click(function (e) {
                 e.preventDefault();
-                var formData = new FormData(document.getElementById("post"));
-                formData.append("dato", "valor");
-                $.ajax({
-                    type: 'post',
-                    url: $(this).attr('action'),
-                    data: formData,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                }).done(function (data) {
-                    if (data.status == 400) {
-                        $.each(data.data, function (key, value) {
-                            $('.' + key + '-error').html(value);
-                        });
+                $(this).button('loading');
+                if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("post"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                            $('#post')[0].reset();
+                            $("#body").summernote("reset");
+                            $("#image-preview").css('background-image', '');
+                            $(".invalid-feedback").html('');
+                            $(".amsify-suggestags-input-area").remove('.amsify-select-tag');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+
+            $('#body').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
                     }
-                    if (data.status == 200) {
-                        toastr.success(data.message, '!Exitoso!');
-                        $('#post')[0].reset();
-                        $("#body").summernote("reset");
-                        $("#image-preview").css('background-image', '');
-                        $(".invalid-feedback").html('');
-                    }
-                }).fail(function (data) {
-                    toastr.error(data.message, '!Error!');
-                }).always(function () {
-                    $('.btn-save').button('reset');
-                });
-                return false;
+                }
             });
         },
 
+        editPost: function () {
+            var $form = $('#post');
+            var v = $form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    excerpt: "required",
+                    body: "required",
+                    image: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El titulo es un campo requerido",
+                        minlength: "Escriba un titulo más largo"
+                    },
+                    excerpt: "El extracto es un campo requerido",
+                    body: "No ha agregado contenido",
+                    image: "No ha agregado una imagen"
+                },
+                ignore: ":hidden, [contenteditable='true']:not([body])"
+            });
+
+            $('#btn-save').click(function (e) {
+                e.preventDefault();
+                $(this).button('loading');
+                if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("post"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+
+            $('#body').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
+                    }
+                }
+            });
+        },
 
         allPosts: function () {
             var route = $('.datatable-posts').data('route');

@@ -10,30 +10,30 @@
 						<h2 class="mb-0">{{ _('Editar Cirugía') }}</h2>
 					</div>
 					<div class="col-4 text-right">
-						<button id="btn-save" class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+						<button id="btn-save" class="btn btn-sm btn-primary" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
 					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/cirugias/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
+						<input size="65" value="{{ $surgery->slug }}" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
-					<input type="text" name="name" id="name" value="" class="form-control @if ($errors->valid->has('name')) is-invalid @endif "
-					 data-slugit-target="#slug"> @if ($errors->valid->has('name'))
-					<p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
+					<input type="text" name="name" id="name" value="{{ $surgery->name }}" class="form-control"
+				data-slugit-target="#slug" > 
+					<p class="invalid-feedback"></p> 
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote" @if ($errors->valid->has('body')) is-invalid @endif > </textarea>					
-					@if ($errors->valid->has('body'))<p class="invalid-feedback">{{ $errors->valid->first('body') }}</p> @endif
+					<textarea id="body" name="body" class="form-control summernote"  > {!! $surgery->body !!}</textarea>					
+					<p class="invalid-feedback"></p>
 				</div>
 				<div class="form-group">
 					<label for="office">{{ __('Sucursales') }}</label>
-					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple" @if ($errors->valid->has('office')) is-invalid @endif>  
+					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple">  
 						@foreach ($officessurgery as $os)
 							<option selected="selected" value="{{ $os->office_id }}">{{ $os->name }}</option>
 						@endforeach
@@ -41,7 +41,7 @@
 							<option value="{{ $item->id }}">{{ $item->name }}</option>
 						@endforeach
 					</select>
-					@if ($errors->valid->has('office'))<p class="invalid-feedback">{{ $errors->valid->first('office') }}</p> @endif
+					<p class="invalid-feedback"></p> 
 
 				</div>
 			</div>

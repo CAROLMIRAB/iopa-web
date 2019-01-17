@@ -22,18 +22,18 @@
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
-					<input type="text" name="name" id="name" class="form-control " data-slugit-target="#slug">
+					<input type="text" name="name" id="name" class="form-control " data-slugit-target="#slug" required>
 					<p class="invalid-feedback name-error"></p> 
 				</div>
 
 				<div class="form-group">
 					<label for="excerpt">{{ __('Extracto') }}</label>
-					<textarea id="excerpt" name="excerpt" class="form-control  "></textarea>				
+					<textarea id="excerpt" name="excerpt" class="form-control" required></textarea>				
 					<p class="invalid-feedback excerpt-error"></p> 
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote" > </textarea>				
+					<textarea id="body" name="body" class="form-control summernote" required> </textarea>				
 					<p class="invalid-feedback body-error"></p> 
 
 				</div>
@@ -66,7 +66,7 @@
 					<label for="image">{{ __('Imagen') }}</label>
 					<div id="image-preview" style="border: #619DC9 3px dashed;">
 						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
-						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
+						<input type="file" name="image" id="image" accept="image/png, image/jpeg" required/>
 					</div>
 				</div>
 				{{ csrf_field() }}
