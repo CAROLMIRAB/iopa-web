@@ -59,9 +59,8 @@ var Surgery = function () {
 
             $('#btn-save').click(function (e) {
                 $(this).button('loading');
-                e.preventDefault();
-                var formData = new FormData(document.getElementById("surgery"));
                 if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("surgery"));
                     $.ajax({
                         type: 'post',
                         url: $form.attr('action'),

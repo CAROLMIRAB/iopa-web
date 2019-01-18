@@ -10,7 +10,7 @@
                         <h2 class="mb-0">{{ _('Editar Noticia') }}</h2>
                     </div>
                     <div class="col-4 text-right">
-                        <button id="btn-save" class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+                        <button id="btn-save" class="btn btn-sm btn-primary" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
                     </div>
                 </div>
             </div>
@@ -22,14 +22,13 @@
                 </div>
                 <div class="form-group">
                     <label for="name">{{ __('Título') }}</label>
-                    <input type="text" name="name" id="name" value="{{ $post->name }}" class="form-control"
-                        data-slugit-target="#slug">
-                    <p class="invalid-feedback"></p> 
+                    <input type="text" name="name" id="name" value="{{ $post->name }}" class="form-control" data-slugit-target="#slug">
+                    <p class="invalid-feedback"></p>
                 </div>
 
                 <div class="form-group">
                     <label for="excerpt">{{ __('Extracto') }}</label>
-                    <textarea id="excerpt" name="excerpt" value="{{ $post->excerpt }}" class="form-control">{{ $post->excerpt }}</textarea> 
+                    <textarea id="excerpt" name="excerpt" value="{{ $post->excerpt }}" class="form-control">{{ $post->excerpt }}</textarea>
                     <p class="invalid-feedback"></p>
                 </div>
                 <div class="form-group">
@@ -97,7 +96,8 @@
 	Posts.tagsInput();		
 	Posts.imageUpload(image); 
 	Posts.eliminateMessages();
-	});
+    Posts.editPost();
+});
 
 </script>
 @endsection

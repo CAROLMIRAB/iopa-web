@@ -162,7 +162,6 @@ var Posts = function () {
             });
 
             $('#btn-save').click(function (e) {
-                e.preventDefault();
                 $(this).button('loading');
                 if ($form.valid()) {
                     var formData = new FormData(document.getElementById("post"));
