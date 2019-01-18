@@ -90,8 +90,7 @@ class PostController extends Controller
         $post_data = $this->postRepo->viewPostSlug($slug);
         $categories = $this->postRepo->allCategories();
         $post = $this->postCollection->editData($post_data);
-     
-        //dd($post);
+   
         return view('back.posts.edit', compact('post', 'categories'));
     }
 

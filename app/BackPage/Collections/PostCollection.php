@@ -38,18 +38,8 @@ class PostCollection
         $post->tag = str_replace('[', "", $post->tag);
         $post->tag = str_replace(']', "", $post->tag);
 
-        $image = url('') . "/uploads/images/" . $post->file;
-        $slug = route('post.viewposts') . "/" . $post->slug;
-
-        $post->slug = $post->slug;
-        $post->name = $post->name;
-        $post->body = $post->body;
-        $post->file = $post->file;
-        $post->status = $post->status;
-        $post->image = $image;
-        $post->tag = $post->tag;
-        $post->slug_url =  $slug;
-           
+        $post->image= url('') . "/uploads/images/" . $post->file;
+        $post->slug_url = route('post.viewposts') . "/" . $post->slug;
 
         return $post;
 
