@@ -20,6 +20,11 @@ var Posts = function () {
                     },
                 }).done(function (data) {
                     $('#slug').val(data.data.slug);
+                    var html = $('#slug-url').data('slug');
+                    var url = html + "/" + data.data.slug;
+                    $('#slug-url').html(url);
+                    $('#slug-url').attr('href', url);
+                  
 
                 }).fail(function (data) {
 
@@ -146,8 +151,7 @@ var Posts = function () {
                         minlength: 5
                     },
                     excerpt: "required",
-                    body: "required",
-                    image: "required"
+                    body: "required"
                 },
                 messages: {
                     name: {
@@ -155,15 +159,15 @@ var Posts = function () {
                         minlength: "Escriba un titulo más largo"
                     },
                     excerpt: "El extracto es un campo requerido",
-                    body: "No ha agregado contenido",
-                    image: "No ha agregado una imagen"
+                    body: "No ha agregado contenido"
                 },
                 ignore: ":hidden, [contenteditable='true']:not([body])"
             });
 
             $('#btn-save').click(function (e) {
-                $(this).button('loading');
+
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("post"));
                     $.ajax({
                         type: 'post',

@@ -32,4 +32,28 @@ class PostCollection
         return $allposts;
     }
 
+    public function editData($post)
+    {
+        $post->tag = str_replace('"', "", $post->tags);
+        $post->tag = str_replace('[', "", $post->tag);
+        $post->tag = str_replace(']', "", $post->tag);
+
+        $image = url('') . "/uploads/images/" . $post->file;
+        $slug = route('post.viewposts') . "/" . $post->slug;
+
+        $data = [
+            'slug' => $post->slug,
+            'name' => $post->name,
+            'body' => $post->body,
+            'file' => $post->file,
+            'status' => $post->status,
+            'image' => $image,
+            'tag' => $post->tag,
+            'slug_url' => $slug
+        ];
+
+        return $data;
+
+    }
+
 }

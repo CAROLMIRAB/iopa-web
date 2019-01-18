@@ -87,13 +87,11 @@ class PostController extends Controller
      */
     public function viewEditPost($slug)
     {
-        $post = $this->postRepo->viewPostSlug($slug);
+        $post_data = $this->postRepo->viewPostSlug($slug);
         $categories = $this->postRepo->allCategories();
-        $post->tag = str_replace('"', "", $post->tags);
-        $post->tag = str_replace('[', "", $post->tag);
-        $post->tag = str_replace(']', "", $post->tag);
-        $image = url('') . "/uploads/images/" . $post->file;
-        return view('back.posts.edit', compact('post', 'categories', 'image'));
+        $post = $this->postCollection->editData($post_data);
+     
+        return view('back.posts.edit', compact('post', 'categories'));
     }
 
     /**

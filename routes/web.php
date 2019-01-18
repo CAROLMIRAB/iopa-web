@@ -30,8 +30,18 @@ Route::get('entradas/{slug}', [
 ]);
 
 
-Route::get('entradas', [
+Route::get('entradas/', [
     'as' => 'post.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
+Route::get('cirugias/', [
+    'as' => 'surgery.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
+Route::get('medicos/', [
+    'as' => 'medicos.viewposts',
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 

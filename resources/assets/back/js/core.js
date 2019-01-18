@@ -1,7 +1,7 @@
 
 var Core = function () {
 
-  
+ 
 
     return {
 

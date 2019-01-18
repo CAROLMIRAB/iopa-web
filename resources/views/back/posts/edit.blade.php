@@ -16,8 +16,10 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <div class="example-text"><span class="url-example"><strong> Url:</strong> {{ route('post.viewposts') }}/</span>
-                        <input size="65" type="text" value="{{ $post->slug }}" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create')  }}">
+                <input type="text" name="slug" id="slug" value="{{ $post->slug }}" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+                    <div class="example-text">
+                        <span class="url-example"><strong> Url:</strong> 
+                        <a href="{{ $post->slug_url }}" data-slug="{{ route('post.viewposts') }}" id="slug-url">{{ $post->slug_url }}</a></span>
                     </div>
                 </div>
                 <div class="form-group">

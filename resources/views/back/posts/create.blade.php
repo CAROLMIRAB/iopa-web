@@ -10,31 +10,34 @@
 						<h2 class="mb-0">{{ _('Nueva Noticia') }}</h2>
 					</div>
 					<div class="col-4 text-right">
-						<button id="btn-save" class="btn btn-sm btn-primary btn-save" type="button"  data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
+						<button id="btn-save" class="btn btn-sm btn-primary btn-save" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ route('post.viewposts') }}/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
+					<input size="65" type="text" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+					<div class="example-text">
+					<span class="url-example"><strong> Url:</strong> 
+					<a href="" data-slug="{{ route('post.viewposts') }}" id="slug-url">{{ route('post.viewposts') }}</a></span>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
 					<input type="text" name="name" id="name" class="form-control " data-slugit-target="#slug" required>
-					<p class="invalid-feedback name-error"></p> 
+					<p class="invalid-feedback name-error"></p>
 				</div>
 
 				<div class="form-group">
 					<label for="excerpt">{{ __('Extracto') }}</label>
-					<textarea id="excerpt" name="excerpt" class="form-control" required></textarea>				
-					<p class="invalid-feedback excerpt-error"></p> 
+					<textarea id="excerpt" name="excerpt" class="form-control" required></textarea>
+					<p class="invalid-feedback excerpt-error"></p>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote" required> </textarea>				
-					<p class="invalid-feedback body-error"></p> 
+					<textarea id="body" name="body" class="form-control summernote" required> </textarea>
+					<p class="invalid-feedback body-error"></p>
 
 				</div>
 				<div class="form-group">

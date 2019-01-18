@@ -16,53 +16,55 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/cirugias/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
+					<input size="65" type="text" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+					<div class="example-text">
+						<span class="url-example"><strong> Url:</strong> 
+							<a href="" data-slug="{{ route('suregry.viewposts') }}" id="slug-url">{{ route('suregry.viewposts') }}</a></span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
-					<input type="text" name="name" id="name" class="form-control" data-slugit-target="#slug">					
-					<p class="invalid-feedback name-error"></p> 
+					<input type="text" name="name" id="name" class="form-control" data-slugit-target="#slug">
+					<p class="invalid-feedback name-error"></p>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote" ></textarea>	
-					<p class="invalid-feedback body-error"></p> 
+					<textarea id="body" name="body" class="form-control summernote"></textarea>
+					<p class="invalid-feedback body-error"></p>
 				</div>
 				<div class="form-group">
 					<label for="office">{{ __('Sucursales') }}</label>
-					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" > 				
+					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 				
 					</select>
-					<p class="invalid-feedback office-error"></p> 
+					<p class="invalid-feedback office-error"></p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-xl-4 mb-5 mb-xl-0">
-			<div class="card shadow">
-				<div class="card-body">
-					<div class="form-group">
-						<label for="status">{{ __('Estado') }}</label>
-						<select id="status" name="status" class="form-control">
+		<div class="card shadow">
+			<div class="card-body">
+				<div class="form-group">
+					<label for="status">{{ __('Estado') }}</label>
+					<select id="status" name="status" class="form-control">
 								<option value="PUBLISHED">Publicado</option>
 								<option value="DRAFT">Borrador</option>
 							</select>
-					</div>
-					<div class="form-group">
-						<label for="image">{{ __('Imagen') }}</label>
-						<div id="image-preview" style="border: #619DC9 3px dashed;">
-							<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
-							<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
-						</div>
-					</div>
-					{{ csrf_field() }}
-	
 				</div>
-	
-	
+				<div class="form-group">
+					<label for="image">{{ __('Imagen') }}</label>
+					<div id="image-preview" style="border: #619DC9 3px dashed;">
+						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
+						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
+					</div>
+				</div>
+				{{ csrf_field() }}
+
 			</div>
+
+
 		</div>
+	</div>
 	{{ csrf_field() }}
 </form>
 @endsection
