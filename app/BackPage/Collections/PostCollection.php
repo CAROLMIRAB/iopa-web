@@ -41,18 +41,17 @@ class PostCollection
         $image = url('') . "/uploads/images/" . $post->file;
         $slug = route('post.viewposts') . "/" . $post->slug;
 
-        $data = [
-            'slug' => $post->slug,
-            'name' => $post->name,
-            'body' => $post->body,
-            'file' => $post->file,
-            'status' => $post->status,
-            'image' => $image,
-            'tag' => $post->tag,
-            'slug_url' => $slug
-        ];
+        $post->slug = $post->slug;
+        $post->name = $post->name;
+        $post->body = $post->body;
+        $post->file = $post->file;
+        $post->status = $post->status;
+        $post->image = $image;
+        $post->tag = $post->tag;
+        $post->slug_url =  $slug;
+           
 
-        return $data;
+        return $post;
 
     }
 

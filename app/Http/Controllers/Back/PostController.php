@@ -91,6 +91,7 @@ class PostController extends Controller
         $categories = $this->postRepo->allCategories();
         $post = $this->postCollection->editData($post_data);
      
+        //dd($post);
         return view('back.posts.edit', compact('post', 'categories'));
     }
 
