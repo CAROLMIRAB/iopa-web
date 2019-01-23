@@ -1,7 +1,7 @@
 @extends('back.theme') 
 @section('content')
 
-<form action="{{ route('doctor.store') }}" method="post" id="doctor-form" class="row" >
+<form action="{{ route('doctor.store') }}" method="post" id="doctor-form" class="row">
 	<div class="col-xl-8 order-xl-1 mb-5">
 		<div class="card shadow">
 			<div class="card-header bg-transparent">
@@ -16,27 +16,35 @@
 				</div>
 			</div>
 			<div class="card-body">
-
 				<div class="pl-lg-4">
 					<div class="row">
+						<div class="col-lg-12 ">
+							<div class="form-group">
+								<input size="65" type="text" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+								<div class="example-text">
+									<span class="url-example"><strong> Url:</strong> 
+												<a href="" data-slug="{{ route('doctor.viewposts') }}" id="slug-url">{{ route('doctor.viewposts') }}/</a></span>
+								</div>
+							</div>
+						</div>
 						<div class="col-lg-6 ">
 							<div class="form-group">
 								<label for="name">{{ __('Nombre') }}</label>
-								<input type="text" name="name" id="name" class="form-control">				
-								<p class="invalid-feedback name-error"></p> 
+								<input type="text" name="name" id="name" class="form-control">
+								<p class="invalid-feedback name-error"></p>
 							</div>
 
 							<div class="form-group">
 								<label for="phone">{{ __('Teléfono') }}</label>
-								<input type="text" name="phone" id="phone" class="form-control"> 
+								<input type="text" name="phone" id="phone" class="form-control">
 							</div>
 
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label for="lastname">{{ __('Apellido') }}</label>
-								<input type="text" name="lastname" id="lastname" class="form-control">				
-								<p class="invalid-feedback lastname-error"></p> 
+								<input type="text" name="lastname" id="lastname" class="form-control">
+								<p class="invalid-feedback lastname-error"></p>
 							</div>
 							<div class="form-group">
 								<label for="specialty_id">{{ __('Especialidad') }}</label>
@@ -53,9 +61,9 @@
 
 							<div class="form-group">
 								<label for="office">{{ __('Sucursales') }}</label>
-								<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" > 				
+								<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}"> 				
 								</select>
-								<p class="invalid-feedback office-error"></p> 
+								<p class="invalid-feedback office-error"></p>
 							</div>
 						</div>
 					</div>
@@ -98,8 +106,8 @@
 				<div class="text-center">
 					<div class="form-group">
 						<label for="excerpt">{{ __('Ficha Médico') }}</label>
-						<textarea id="excerpt" name="excerpt" class="form-control"></textarea>			
-						<p class="invalid-feedback excerpt-error"></p> 
+						<textarea id="excerpt" name="excerpt" class="form-control"></textarea>
+						<p class="invalid-feedback excerpt-error"></p>
 					</div>
 
 				</div>
@@ -168,6 +176,7 @@
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
 		Doctors.createDoctor();
+		Doctors.slug();
 		Offices.selectOffice();
 	});
 

@@ -85,11 +85,11 @@ class PostController extends Controller
      * @param string $slug
      * @return view
      */
-    public function viewEditPost($slug)
+    public function viewEditPost(Request $request)
     {
-        $post_data = $this->postRepo->viewPostSlug($slug);
+        $postdata = $this->postRepo->viewPostSlug($request->slug);
         $categories = $this->postRepo->allCategories();
-        $post = $this->postCollection->editData($post_data);
+        $post = $this->postCollection->editData($postdata);
    
         return view('back.posts.edit', compact('post', 'categories'));
     }
@@ -188,9 +188,12 @@ class PostController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator, 'valid')
-                    ->withInput();
+                return response()->json([
+                    'status' => 400,
+                    'title' => '¡Error!',
+                    'message' => "Te falta algún campo",
+                    'data' => $validator->errors()
+                ]);
             }
 
             $image_url = "";

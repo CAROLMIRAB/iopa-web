@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Validator;
 use App\Post;
 use App\Surgery;
+use App\Doctor;
 
 class Core
 {
@@ -20,7 +21,7 @@ class Core
      */
     public function __construct()
     {
-       
+
     }
 
     /**
@@ -55,6 +56,34 @@ class Core
                     }
                     if ($request->title <> $request->title_before) {
                         $slug_response = SlugService::createSlug(Surgery::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    break;
+                }
+            case 'doctor':
+                {
+                    if ($request->title <> $request->title_before && !empty($request->id)) {
+                        $slug_response = SlugService::createSlug(Doctor::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    if ($request->title <> $request->title_before) {
+                        $slug_response = SlugService::createSlug(Doctor::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    break;
+                }
+            case 'office':
+                {
+                    if ($request->title <> $request->title_before && !empty($request->id)) {
+                        $slug_response = SlugService::createSlug(Office::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    if ($request->title <> $request->title_before) {
+                        $slug_response = SlugService::createSlug(Office::class, 'slug', $request->title, ['unique' => true]);
                     } else {
                         $slug_response = $slug;
                     }

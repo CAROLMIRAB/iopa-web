@@ -18,7 +18,16 @@
             <div class="card-body">
                 <div class="pl-lg-4">
                     <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <input size="65" type="text" name="slug" id="slug" value="{{ $doctor->slug }}" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+                                <div class="example-text">
+                                    <span class="url-example"><strong> Url:</strong> 
+                                                        <a target="_blank" href="{{ $doctor->slug_url }}" data-slug="{{ route('doctor.viewposts') }}" id="slug-url">{{ $doctor->slug_url }}</a></span></div>
+                            </div>
+                        </div>
                         <div class="col-lg-6">
+                          
                             <div class="form-group">
                                 <label for="name">{{ __('Nombre') }}</label>
                                 <input type="text" name="name" id="name" value="{{ $doctor->name }}" class="form-control @if ($errors->valid->has('name')) is-invalid @endif "
@@ -56,22 +65,22 @@
 
                             <div class="form-group">
                                 <label for="office">{{ __('Sucursales') }}</label>
-                                <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple" @if ($errors->valid->has('office')) is-invalid @endif> 
+                                <select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"
+                                    @if ($errors->valid->has('office')) is-invalid @endif> 
                                     @foreach ($officesdoctor as $od)
                                         <option selected="selected" value="{{ $od->office_id }}">{{ $od->name }}</option>
                                     @endforeach
                                     @foreach ($offices as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
-                                </select>
-                                @if ($errors->valid->has('office'))<p class="invalid-feedback">{{ $errors->valid->first('office') }}</p> @endif
+                                </select> @if ($errors->valid->has('office'))
+                                <p class="invalid-feedback">{{ $errors->valid->first('office') }}</p> @endif
 
                             </div>
                         </div>
                     </div>
                 </div>
-            <input class="hidden" id="imgurl" name="imgurl" type="hidden" value="{{ $doctor->file }}">
-                 {{ csrf_field() }}
+                <input class="hidden" id="imgurl" name="imgurl" type="hidden" value="{{ $doctor->file }}"> 
 
             </div>
         </div>
@@ -117,7 +126,8 @@
             </div>
         </div>
     </div>
-    <input type="hidden" value="{{ $doctor->id }}" name="id_doctor">
+    <input type="hidden" value="{{ $doctor->id }}" name="id_doctor" id="id_doctor">
+    {{ csrf_field()}}
 </form>
 
 <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
@@ -179,6 +189,7 @@
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
         Doctors.eliminateMessages();
         Doctors.editDoctor();
+        Doctors.slug();
         Offices.selectOfficeEdit();
        
 	});

@@ -31,7 +31,7 @@ class Surgery extends Model
        ];
    }
 
-    public function offices()
+    public function surgery_office()
     {
         return $this->belongsToMany(Office::class, 'surgery_office');
     }

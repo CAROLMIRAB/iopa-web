@@ -23,7 +23,6 @@ class CreateDoctorsTable extends Migration
             $table->string('file', 128)->nullable();
             $table->string('slug', 128)->unique();
 
-
             $table->timestamps();
 
             $table->foreign('specialty_id')->references('id')->on('specialties')

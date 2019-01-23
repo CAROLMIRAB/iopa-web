@@ -30,4 +30,14 @@ class DoctorCollection
         return $alldoctors;
     }
 
+    public function editData($doctor)
+    {
+    
+        $doctor->image= url('') . "/uploads/images/" . $doctor->file;
+        $doctor->slug_url = route('surgery.viewposts') . "/" . $doctor->slug;
+
+        return $doctor;
+
+    }
+
 }

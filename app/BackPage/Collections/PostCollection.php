@@ -19,7 +19,7 @@ class PostCollection
             $date_create->setTimezone('America/Santiago');
             $post->created = $date_create->format('d/m/Y h:i A');
             $tags = json_decode($post->tags);
-            $route = route('post.editview', $post->slug);
+            $route = route('post.editview', ['slug' => $post->slug]);
             $allposts->push([
                 'title' => $post->name,
                 'category' => $post->category,

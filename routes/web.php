@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('', function(){
+Route::get('', function () {
     return redirect('admin/post/nuevo');
 });
 
@@ -23,6 +23,7 @@ Route::get('theme', [
     'as' => 'theme',
     'uses' => 'Front\PostController@viewTheme'
 ]);
+
 
 Route::get('entradas/{slug}', [
     'as' => 'post.viewpost',
@@ -41,18 +42,33 @@ Route::get('cirugias/', [
 ]);
 
 Route::get('medicos/', [
-    'as' => 'medicos.viewposts',
+    'as' => 'doctor.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
+Route::get('sucursales/', [
+    'as' => 'office.viewposts',
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
 Route::group(['prefix' => 'admin'], function () {
-   
+
+    Route::get('404', [
+        'as' => '404', 
+        'uses' => 'Back\ErrorController@backNotFound'
+        ]);
+
+    Route::get('500', [
+        'as' => '500', 
+        'uses' => 'Back\ErrorController@backFatal'
+        ]);
+
     Route::get('post/nuevo', [
         'as' => 'post.createview',
         'uses' => 'Back\PostController@viewCreatePost'
     ]);
 
-    Route::get('post/editar/{slug}', [
+    Route::get('post/editar/', [
         'as' => 'post.editview',
         'uses' => 'Back\PostController@viewEditPost'
     ]);
@@ -68,7 +84,7 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\OfficeController@viewCreateOffice'
     ]);
 
- 
+
 
     Route::post('post/store', [
         'as' => 'post.store',
@@ -109,7 +125,7 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'doctor.view-all-doctors',
         'uses' => 'Back\DoctorController@viewAllDoctors'
     ]);
-    
+
     Route::get('medicos/editar/', [
         'as' => 'doctor.editview',
         'uses' => 'Back\DoctorController@viewEditDoctor'
@@ -175,7 +191,7 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\SurgeryController@viewCreateSurgery'
     ]);
 
-    Route::get('cirugias/editar/{slug}', [
+    Route::get('cirugias/editar/', [
         'as' => 'surgery.editview',
         'uses' => 'Back\SurgeryController@viewEditSurgery'
     ]);

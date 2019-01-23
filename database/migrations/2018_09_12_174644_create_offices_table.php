@@ -20,7 +20,7 @@ class CreateOfficesTable extends Migration
             $table->text('map');
             $table->string('phone');
             $table->string('address');
-
+            $table->string('slug', 128)->unique();
             $table->timestamps();
         });
     }

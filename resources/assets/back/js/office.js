@@ -2,6 +2,45 @@ var Offices = function () {
 
     return {
 
+        slug: function () {
+            var route = $('#slug').data('route');
+            var title_before = $('#name').val();
+            $('#name').change(function () {
+                var title = $('#name').val();
+                var id_post = $('#id_office').val();
+                $("#btn-save").button('loading');
+                $.ajax({
+                    type: 'post',
+                    url: route,
+                    dataType: "json",
+                    data: {
+                        title: title,
+                        title_before: title_before,
+                        id: id_post,
+                        mod: 'office'
+                    },
+                }).done(function (data) {
+                    $('#slug').val(data.data.slug);
+                    var html = $('#slug-url').data('slug');
+                    var url = html + "/" + data.data.slug;
+                    $('#slug-url').html(url);
+                    $('#slug-url').attr('href', url);
+                }).fail(function (data) {
+
+                }).always(function () {
+                    $('#btn-save').button('reset');
+                });
+
+            }).change();
+        },
+
+        editHTML: function () {
+            $('#body').summernote({
+                height: 200
+
+            });
+        },
+
         eliminateMessages: function () {
             $('#name').blur(function () {
                 if (!$(this).val() == '') {
@@ -24,6 +63,143 @@ var Offices = function () {
                 label_field: "#image-label",
                 label_default: image,
                 label_selected: image
+            });
+        },
+
+        createOffice: function () {
+            var $form = $('#office');
+            var v = $form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    phone: {
+                        number: true,
+                        minlength: 9,
+                        required: true
+                    },
+                    map: "required",
+                    address: "required",
+                    image: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El titulo es un campo requerido",
+                        minlength: "Escriba un titulo más largo"
+                    },
+                    phone: { 
+                        number: 'Solo se permiten numeros',
+                        minlength: "Escriba un número válido",
+                        required: "El número es requerido"
+                    },
+                    map: "El map es un campo requerido",
+                    phone: "No ha agregado contenido",
+                    address: "No ha agregado la dirección",
+                    image: "No ha agregado una imagen"
+                }
+            });
+
+            $('#btn-save').click(function (e) {
+                e.preventDefault();
+                $(this).button('loading');
+                if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("office"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                            $('#office')[0].reset();
+                            $("#image-preview").css('background-image', '');
+                            $(".invalid-feedback").html('');
+                            var html = $('#slug-url').data('slug');
+                            $('#slug-url').html(html);
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+        },
+
+        editOffice: function () {
+            var $form = $('#office');
+            var v = $form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    phone: {
+                        number: true,
+                        minlength: 9,
+                        required: true
+                    },
+                    map: "required",
+                    address: "required",
+                    image: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El titulo es un campo requerido",
+                        minlength: "Escriba un titulo más largo"
+                    },
+                    phone: { 
+                        number: 'Solo se permiten numeros',
+                        minlength: "Escriba un número válido",
+                        required: "El número es requerido"
+                    },
+                    map: "El map es un campo requerido",
+                    phone: "No ha agregado contenido",
+                    address: "No ha agregado la dirección",
+                    image: "No ha agregado una imagen"
+                }
+            });
+
+            $('#btn-save').click(function (e) {
+                e.preventDefault();
+                $(this).button('loading');
+                if ($form.valid()) {
+                    var formData = new FormData(document.getElementById("office"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
             });
         },
 

@@ -12,6 +12,7 @@
 					<div class="col-4 text-right">
 						<button id="btn-save" class="btn btn-sm btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Publicando...') }}">{{ __('Guardar Cambios') }}</button>
 					</div>
+
 				</div>
 			</div>
 			<div class="card-body">
@@ -55,14 +56,11 @@
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
 				</div>
-			
-
 			</div>
-
-
 		</div>
-	</div>
-	{{ csrf_field() }}
+    </div>
+    <input id="id_office" name="id_office" value="" type="hidden" readonly>
+    {{ csrf_field() }}
 </form>
 @endsection
  
@@ -72,10 +70,9 @@
 	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
 
 	$(document).ready(function(){
-		Offices.slug();
 		Offices.imageUpload(image); 
-		Offices.eliminateMessages();
-		Offices. createOffice();
+        Offices.eliminateMessages();
+        Offices.editOffice();
 	});
 
 </script>

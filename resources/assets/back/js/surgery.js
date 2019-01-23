@@ -4,34 +4,100 @@ var Surgery = function () {
 
         slug: function () {
             var route = $('#slug').data('route');
-
-            $('#name').focusout(function () {
+            var title_before = $('#name').val();
+            $('#name').change(function () {
                 var title = $('#name').val();
                 var id_surgery = $('#id_surgery').val();
+                $("#btn-save").button('loading');
                 $.ajax({
                     type: 'post',
                     url: route,
                     dataType: "json",
                     data: {
+                        title_before: title_before,
                         title: title,
                         id: id_surgery,
                         mod: 'surgery'
                     },
                 }).done(function (data) {
                     $('#slug').val(data.data.slug);
+                    var html = $('#slug-url').data('slug');
+                    var url = html + "/" + data.data.slug;
+                    $('#slug-url').html(url);
+                    $('#slug-url').attr('href', url);
 
                 }).fail(function (data) {
 
                 }).always(function () {
-
+                    $('#btn-save').button('reset');
                 });
             }).change();
-
         },
 
         editHTML: function () {
             $('#body').summernote({
                 height: 200
+            });
+        },
+
+
+        editSurgery: function () {
+            var $form = $('#surgery');
+            var v = $('#surgery').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    body: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El título es un campo requerido",
+                        minlength: "Escriba un título más largo"
+                    },
+                    body: "No ha agregado contenido",
+                },
+                ignore: ":hidden, [contenteditable='true']:not([body])"
+            });
+
+            $('#btn-save').click(function (e) {
+                if ($form.valid()) {
+                    $(this).button('loading');
+                    var formData = new FormData(document.getElementById("surgery"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+
+            $('#body').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
+                    }
+                }
             });
         },
 
@@ -58,8 +124,8 @@ var Surgery = function () {
             });
 
             $('#btn-save').click(function (e) {
-                $(this).button('loading');
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("surgery"));
                     $.ajax({
                         type: 'post',
@@ -82,6 +148,8 @@ var Surgery = function () {
                             $("#image-preview").css('background-image', '');
                             $(".invalid-feedback").html('');
                             $('#office').val(null).trigger('change');
+                            var html = $('#slug-url').data('slug');
+                            $('#slug-url').html(html);
                         }
                     }).fail(function (data) {
                         toastr.error(data.message, '!Error!');

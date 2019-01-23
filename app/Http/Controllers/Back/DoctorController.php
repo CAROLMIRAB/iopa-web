@@ -50,7 +50,8 @@ class DoctorController extends Controller
      */
     public function viewEditDoctor(Request $request)
     {
-        $doctor = $this->doctorRepo->showDoctorSlug($request->slug);
+        $doctors = $this->doctorRepo->showDoctorSlug($request->slug);
+        $doctor = $this->doctorCollection->editData($doctors);
         $specialties = $this->doctorRepo->showAllSpecialties();
         $offices = $this->officeRepo->showAllOffices();
         $officesdoctor = $this->doctorRepo->showOfficesDoctor($doctor->id);
@@ -73,7 +74,6 @@ class DoctorController extends Controller
             'data' => $doctor
         ];
 
-
         return Datatables::of($doctor)->make(true);
 
     }
@@ -91,12 +91,11 @@ class DoctorController extends Controller
     /**
      * Stored post
      * 
-     * @return view
+     * @return json
      */
     public function saveCreateDoctor(Request $request)
     {
         try {
-            $slug = str_slug($request->title, '-');
             $image_url = $request->imgurl;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -130,7 +129,7 @@ class DoctorController extends Controller
                     'phone' => $request->phone,
                     'specialty_id' => $request->specialty_id,
                     'file' => $image_url,
-                    'slug' => $slug
+                    'slug' => $request->slug
                 );
 
                 $post = $this->doctorRepo->createDoctor($data, $request->office);
@@ -161,8 +160,6 @@ class DoctorController extends Controller
     public function editDoctor(Request $request)
     {
         try {
-
-            $slug = str_slug($request->name, '-');
             $image_url = $request->imgurl;
             $offices = $request->office;
 
@@ -194,7 +191,7 @@ class DoctorController extends Controller
                 'phone' => $request->phone,
                 'specialty_id' => $request->specialty_id,
                 'file' => $image_url,
-                'slug' => $slug
+                'slug' => $request->slug
             );
 
             if (!empty($image_url)) {

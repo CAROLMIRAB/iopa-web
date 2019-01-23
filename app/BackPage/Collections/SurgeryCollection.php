@@ -19,7 +19,7 @@ class SurgeryCollection
             $date_create->setTimezone('America/Santiago');
             $surgery->created = $date_create->format('d/m/Y h:i A');
     
-            $route = route('surgery.editview', $surgery->slug);
+            $route = route('surgery.editview', ['slug' => $surgery->slug]);
             $allsurgeries->push([
                 'name' => $surgery->name,
                 'body' => $surgery->body,
@@ -32,5 +32,16 @@ class SurgeryCollection
         }
         return $allsurgeries;
     }
+
+    public function editData($surgery)
+    {
+    
+        $surgery->image= url('') . "/uploads/images/" . $surgery->file;
+        $surgery->slug_url = route('surgery.viewposts') . "/" . $surgery->slug;
+
+        return $surgery;
+
+    }
+
 
 }

@@ -2,6 +2,38 @@ var Doctors = function () {
 
     return {
 
+        slug: function () {
+            var route = $('#slug').data('route');
+            var title_before = $('#name').val();
+            $('#name').change(function () {
+                var title = $('#name').val();
+                var id_post = $('#id_doctor').val();
+                $("#btn-save").button('loading');
+                $.ajax({
+                    type: 'post',
+                    url: route,
+                    dataType: "json",
+                    data: {
+                        title: title,
+                        title_before: title_before,
+                        id: id_post,
+                        mod: 'doctor'
+                    },
+                }).done(function (data) {
+                    $('#slug').val(data.data.slug);
+                    var html = $('#slug-url').data('slug');
+                    var url = html + "/" + data.data.slug;
+                    $('#slug-url').html(url);
+                    $('#slug-url').attr('href', url);
+                }).fail(function (data) {
+
+                }).always(function () {
+                    $('#btn-save').button('reset');
+                });
+            }).change();
+
+        },
+
         eliminateMessages: function () {
             $('#name').blur(function () {
                 if (!$(this).val() == '') {
@@ -83,6 +115,8 @@ var Doctors = function () {
                             $(".invalid-feedback").html('');
                             $("#canvas").cropper('destroy');
                             $('#office').val(null).trigger('change');
+                            var html = $('#slug-url').data('slug');
+                            $('#slug-url').html(html);
                         }
                     }).fail(function (data) {
                         toastr.error(data.message, '!Error!');

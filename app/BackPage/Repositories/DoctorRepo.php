@@ -17,7 +17,7 @@ class DoctorRepo
         $doctor->fill($data);
         $doctor->save();
 
-        $doctor->offices()->attach($offices);
+        $doctor->doctor_office()->attach($offices);
         return $doctor;
     }
 
@@ -38,7 +38,7 @@ class DoctorRepo
 
     public function showDoctorSlug($slug)
     {
-        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'doctors.slug','lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
             ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
             ->orderBy('id', 'DESC')
             ->where('doctors.slug', $slug)

@@ -5,9 +5,10 @@ var Posts = function () {
         slug: function () {
             var route = $('#slug').data('route');
             var title_before = $('#name').val();
-            $('#name').focusout(function () {
+            $('#name').change(function () {
                 var title = $('#name').val();
                 var id_post = $('#id_post').val();
+                $("#btn-save").button('loading');
                 $.ajax({
                     type: 'post',
                     url: route,
@@ -24,13 +25,12 @@ var Posts = function () {
                     var url = html + "/" + data.data.slug;
                     $('#slug-url').html(url);
                     $('#slug-url').attr('href', url);
-                  
-
                 }).fail(function (data) {
 
                 }).always(function () {
-
+                    $('#btn-save').button('reset');
                 });
+
             }).change();
         },
 
@@ -122,6 +122,8 @@ var Posts = function () {
                             $("#image-preview").css('background-image', '');
                             $(".invalid-feedback").html('');
                             $(".amsify-suggestags-input-area").remove('.amsify-select-tag');
+                            var html = $('#slug-url').data('slug');
+                            $('#slug-url').html(html);
                         }
                     }).fail(function (data) {
                         toastr.error(data.message, '!Error!');

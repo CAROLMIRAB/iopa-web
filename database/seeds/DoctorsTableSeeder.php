@@ -12,7 +12,7 @@ class DoctorsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Doctor::class, 30)->create()->each(function (App\Doctor $post) {
-            $post->offices()->attach([
+            $post->doctor_office()->attach([
                 rand(1,5),
                 rand(5,10)
             ]);

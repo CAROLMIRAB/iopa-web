@@ -16,7 +16,7 @@ class SurgeryRepo
         $surgery->fill($data);
         $surgery->save();
 
-        $surgery->offices()->attach($offices);
+        $surgery->surgery_office()->attach($offices);
         return $surgery;
     }
 
@@ -57,11 +57,10 @@ class SurgeryRepo
     }
 
     public function editSurgeryById($data, $id, $offices)
-    {
-       
+    { 
         $surgery = \DB::table('surgeries')->where('id', $id)->update($data);
         $surg = Surgery::find($id);
-        $surg->offices()->sync($offices);
+        $surg->offices_surgery()->sync($offices);
  
         return $surgery;
     }

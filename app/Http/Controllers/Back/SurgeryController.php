@@ -48,9 +48,10 @@ class SurgeryController extends Controller
      * 
      * @return view
      */
-    public function viewEditSurgery($slug)
+    public function viewEditSurgery(Request $request)
     {
-        $surgery = $this->surgeryRepo->showSurgerySlug($slug);
+        $surgerydata = $this->surgeryRepo->showSurgerySlug($request->slug);
+        $surgery = $this->surgeryCollection->editData($surgerydata);
         $offices = $this->officeRepo->showAllOffices();
         $officessurgery = $this->surgeryRepo->showOfficesSurgery($surgery->id);
 
@@ -97,7 +98,7 @@ class SurgeryController extends Controller
                     'title' => '¡Error!',
                     'message' => "Te falta algún campo",
                     'data' => $validator->errors()
-                    ]);
+                ]);
             }
 
             if ($request->file('image')) {
@@ -147,25 +148,27 @@ class SurgeryController extends Controller
     public function editSurgery(Request $request)
     {
         try {
+
             $offices = $request->office;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
                 'body' => 'required',
-                'image' => 'required',
                 'office' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
                 'name.required' => __('El título es requerido'),
                 'body.required' => __('Debe escribir algo en el blog'),
-                'image.required' => __('Debe agregar una imagen destacada'),
                 'office.required' => __('Debe agregar las sucursales')
             ]);
 
             if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator, 'valid')
-                    ->withInput();
+                return response()->json([
+                    'status' => 400,
+                    'title' => '¡Error!',
+                    'message' => "Te falta algún campo",
+                    'data' => $validator->errors()
+                ]);
             }
 
             if ($request->file('image')) {
@@ -179,20 +182,36 @@ class SurgeryController extends Controller
                 $offices
             );
 
-            $data = array(
-                'name' => $request->name,
-                'slug' => $request->slug,
-                'body' => $request->body,
-                'status' => $request->status,
-                'file' => $image_url
-            );
-
             if (!empty($image_url)) {
-                $surgery = $this->surgeryRepo->editSurgeryById($data, $request->id_sugery, $offices);
+                $data = array(
+                    'name' => $request->name,
+                    'slug' => $request->slug,
+                    'body' => $request->body,
+                    'status' => $request->status,
+                    'file' => $image_url
+                );
+
+            } else {
+                $data = array(
+                    'name' => $request->name,
+                    'slug' => $request->slug,
+                    'body' => $request->body,
+                    'status' => $request->status
+
+                );
             }
 
-            return redirect()->back();
+            if ($data) {
+    
+           $surgery = $this->surgeryRepo->editSurgeryById($data, $request->id_surgery, $offices);
 
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha modificado la cirugía de forma correcta"
+                ]);
+
+            }
         } catch (\Exception $ex) {
 
             $data = [

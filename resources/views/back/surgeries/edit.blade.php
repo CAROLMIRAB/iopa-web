@@ -16,9 +16,10 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/cirugias/</span>
-						<input size="65" value="{{ $surgery->slug }}" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
-					</div>
+				<input size="65" type="text" name="slug" id="slug" value="{{ $surgery->slug }}" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+					<div class="example-text">
+					<span class="url-example"><strong> Url:</strong> 
+						<a target="_blank" href="{{ $surgery->slug_url }}" data-slug="{{ route('surgery.viewposts') }}" id="slug-url">{{ $surgery->slug_url }}</a></span></div>
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
@@ -59,7 +60,7 @@
 				</div>
 				<div class="form-group">
 					<label for="image">{{ __('Imagen') }}</label>
-					<div id="image-preview" style="border: #619DC9 3px dashed;">
+					<div id="image-preview" style="border: #619DC9 3px dashed; background-image: url('{{ $surgery->image }}');">
 						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
@@ -70,9 +71,9 @@
 
 		</div>
 	</div>
+	<input id="id_surgery" name="id_surgery" type="hidden" value="{{ $surgery->id }}">
 	{{ csrf_field() }}
 
-<input id="id_surgery" type="hidden" value="{{ $surgery->id }}">
 </form>
 @endsection
  
@@ -88,6 +89,7 @@
 	Surgery.slug();
 	Surgery.editHTML();
 	Surgery.imageUpload(image); 
+	Surgery.editSurgery();
 	Offices.selectOfficeEdit();
 	});
 

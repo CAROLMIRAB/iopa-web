@@ -11,6 +11,11 @@ class ExamsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Exam::class, 20)->create();
+        factory(App\Exam::class, 20)->create()->each(function (App\Exam $post) {
+            $post->exam_office()->attach([
+                rand(1,5),
+                rand(5,10)
+            ]);
+        });
     }
 }
