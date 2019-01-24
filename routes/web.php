@@ -41,6 +41,11 @@ Route::get('cirugias/', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
+Route::get('examenes/', [
+    'as' => 'exam.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
 Route::get('medicos/', [
     'as' => 'doctor.viewposts',
     'uses' => 'Front\PostController@viewFullPost'
@@ -53,148 +58,197 @@ Route::get('sucursales/', [
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('404', [
-        'as' => '404', 
-        'uses' => 'Back\ErrorController@backNotFound'
+
+    /************** ROUTES POST ******************/
+    Route::group(['prefix' => 'noticias'], function () {
+
+        Route::get('', [
+            'as' => 'post.view-all-posts',
+            'uses' => 'Back\PostController@viewAllPosts'
         ]);
 
-    Route::get('500', [
-        'as' => '500', 
-        'uses' => 'Back\ErrorController@backFatal'
+        Route::get('nuevo', [
+            'as' => 'post.createview',
+            'uses' => 'Back\PostController@viewCreatePost'
         ]);
 
-    Route::get('post/nuevo', [
-        'as' => 'post.createview',
-        'uses' => 'Back\PostController@viewCreatePost'
-    ]);
+        Route::get('editar', [
+            'as' => 'post.editview',
+            'uses' => 'Back\PostController@viewEditPost'
+        ]);
 
-    Route::get('post/editar/', [
-        'as' => 'post.editview',
-        'uses' => 'Back\PostController@viewEditPost'
-    ]);
+        Route::get('all-posts', [
+            'as' => 'post.all-posts',
+            'uses' => 'Back\PostController@allPosts'
+        ]);
+
+        Route::post('store', [
+            'as' => 'post.store',
+            'uses' => 'Back\PostController@saveCreatePost'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'post.edit',
+            'uses' => 'Back\PostController@editPost'
+        ]);
+
+    });
 
 
-    Route::get('medico/nuevo', [
-        'as' => 'doctor.createview',
-        'uses' => 'Back\DoctorController@viewCreateDoctor'
-    ]);
+    /************** ROUTES DOCTOR ******************/
+    Route::group(['prefix' => 'medicos'], function () {
 
-    Route::get('sucursal/nueva', [
-        'as' => 'office.createview',
-        'uses' => 'Back\OfficeController@viewCreateOffice'
-    ]);
+        Route::get('', [
+            'as' => 'doctor.view-all-doctors',
+            'uses' => 'Back\DoctorController@viewAllDoctors'
+        ]);
+
+        Route::get('all-doctors', [
+            'as' => 'doctor.all-doctors',
+            'uses' => 'Back\DoctorController@allDoctors'
+        ]);
+
+        Route::get('editar', [
+            'as' => 'doctor.editview',
+            'uses' => 'Back\DoctorController@viewEditDoctor'
+        ]);
+
+        Route::get('nuevo', [
+            'as' => 'doctor.createview',
+            'uses' => 'Back\DoctorController@viewCreateDoctor'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'doctor.edit',
+            'uses' => 'Back\DoctorController@editDoctor'
+        ]);
+
+        Route::post('store', [
+            'as' => 'doctor.store',
+            'uses' => 'Back\DoctorController@saveCreateDoctor'
+        ]);
+
+        Route::post('store-img', [
+            'as' => 'doctor.storeimg',
+            'uses' => 'Back\DoctorController@uploadImage'
+        ]);
+
+    });
+
+
+    /************** ROUTES OFFICE ******************/
+    Route::group(['prefix' => 'sucursales'], function () {
+
+        Route::get('', [
+            'as' => 'office.view-all-doctors',
+            'uses' => 'Back\OfficesController@viewAllOffices'
+        ]);
+
+        Route::get('find-office', [
+            'as' => 'office.find-office',
+            'uses' => 'Back\OfficeController@findOffice'
+        ]);
+
+        Route::get('editar', [
+            'as' => 'office.editview',
+            'uses' => 'Back\OfficeController@viewEditOffice'
+        ]);
+
+        Route::get('nuevo', [
+            'as' => 'office.createview',
+            'uses' => 'Back\OfficeController@viewCreateOffice'
+        ]);
+
+        Route::post('store', [
+            'as' => 'office.store',
+            'uses' => 'Back\OfficeController@saveCreateOffice'
+        ]);
+
+        Route::post('store-img', [
+            'as' => 'office.storeimg',
+            'uses' => 'Back\OfficeController@uploadImage'
+        ]);
+    });
 
 
 
-    Route::post('post/store', [
-        'as' => 'post.store',
-        'uses' => 'Back\PostController@saveCreatePost'
-    ]);
+    /************** ROUTES SURGERY ******************/
+    Route::group(['prefix' => 'cirugias'], function () {
 
-    Route::post('post/edit', [
-        'as' => 'post.edit',
-        'uses' => 'Back\PostController@editPost'
-    ]);
+        Route::get('', [
+            'as' => 'surgery.view-all-surgeries',
+            'uses' => 'Back\SurgeryController@viewAllSurgeries'
+        ]);
 
-    Route::post('post/slug-create', [
-        'as' => 'post.slug-create',
-        'uses' => 'Back\PostController@titleAndSlug'
-    ]);
+        Route::get('all-surgeries', [
+            'as' => 'surgery.all-surgeries',
+            'uses' => 'Back\SurgeryController@allSurgeries'
+        ]);
+
+        Route::get('nueva', [
+            'as' => 'surgery.createview',
+            'uses' => 'Back\SurgeryController@viewCreateSurgery'
+        ]);
+
+        Route::get('editar', [
+            'as' => 'surgery.editview',
+            'uses' => 'Back\SurgeryController@viewEditSurgery'
+        ]);
+
+        Route::post('store', [
+            'as' => 'surgery.store',
+            'uses' => 'Back\SurgeryController@saveCreateSurgery'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'surgery.edit',
+            'uses' => 'Back\SurgeryController@editSurgery'
+        ]);
+
+    });
+
+
+    /************** ROUTES EXAMS ******************/
+    Route::group(['prefix' => 'examenes'], function () {
+
+        Route::get('', [
+            'as' => 'exam.view-all-exams',
+            'uses' => 'Back\ExamController@viewAllExams'
+        ]);
+
+        Route::get('all-exams', [
+            'as' => 'exam.all-exams',
+            'uses' => 'Back\ExamController@allExams'
+        ]);
+
+        Route::post('store', [
+            'as' => 'exam.store',
+            'uses' => 'Back\ExamController@saveCreateExam'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'exam.edit',
+            'uses' => 'Back\ExamController@editExam'
+        ]);
+
+    });
+
 
     Route::post('slug/slug-create', [
         'as' => 'core.slug-create',
         'uses' => 'Back\CoreController@titleAndSlug'
     ]);
 
-    Route::get('post/all-posts', [
-        'as' => 'post.all-posts',
-        'uses' => 'Back\PostController@allPosts'
+    Route::get('404', [
+        'as' => '404',
+        'uses' => 'Back\ErrorController@backNotFound'
     ]);
 
-    Route::get('post', [
-        'as' => 'post.view-all-posts',
-        'uses' => 'Back\PostController@viewAllPosts'
+    Route::get('500', [
+        'as' => '500',
+        'uses' => 'Back\ErrorController@backFatal'
     ]);
 
-    Route::get('doctor/all-doctors', [
-        'as' => 'doctor.all-doctors',
-        'uses' => 'Back\DoctorController@allDoctors'
-    ]);
-
-    Route::get('medicos', [
-        'as' => 'doctor.view-all-doctors',
-        'uses' => 'Back\DoctorController@viewAllDoctors'
-    ]);
-
-    Route::get('medicos/editar/', [
-        'as' => 'doctor.editview',
-        'uses' => 'Back\DoctorController@viewEditDoctor'
-    ]);
-
-    Route::post('doctor/edit', [
-        'as' => 'doctor.edit',
-        'uses' => 'Back\DoctorController@editDoctor'
-    ]);
-
-    Route::post('doctor/store', [
-        'as' => 'doctor.store',
-        'uses' => 'Back\DoctorController@saveCreateDoctor'
-    ]);
-
-    Route::post('doctor/store-img', [
-        'as' => 'doctor.storeimg',
-        'uses' => 'Back\DoctorController@uploadImage'
-    ]);
-
-    Route::post('office/store', [
-        'as' => 'office.store',
-        'uses' => 'Back\OfficeController@saveCreateOffice'
-    ]);
-
-    Route::post('office/store-img', [
-        'as' => 'office.storeimg',
-        'uses' => 'Back\OfficeController@uploadImage'
-    ]);
-
-    Route::get('office/find-office', [
-        'as' => 'office.find-office',
-        'uses' => 'Back\OfficeController@findOffice'
-    ]);
-
-    Route::post('surgery/store', [
-        'as' => 'surgery.store',
-        'uses' => 'Back\SurgeryController@saveCreateSurgery'
-    ]);
-
-    Route::post('surgery/edit', [
-        'as' => 'surgery.edit',
-        'uses' => 'Back\SurgeryController@editSurgery'
-    ]);
-
-    Route::post('surgery/slug-create', [
-        'as' => 'surgery.slug-create',
-        'uses' => 'Back\SurgeryController@titleAndSlug'
-    ]);
-
-    Route::get('surgery/all-surgeries', [
-        'as' => 'surgery.all-surgeries',
-        'uses' => 'Back\SurgeryController@allSurgeries'
-    ]);
-
-    Route::get('cirugias', [
-        'as' => 'surgery.view-all-surgeries',
-        'uses' => 'Back\SurgeryController@viewAllSurgeries'
-    ]);
-
-    Route::get('cirugias/nueva', [
-        'as' => 'surgery.createview',
-        'uses' => 'Back\SurgeryController@viewCreateSurgery'
-    ]);
-
-    Route::get('cirugias/editar/', [
-        'as' => 'surgery.editview',
-        'uses' => 'Back\SurgeryController@viewEditSurgery'
-    ]);
 
 });
 

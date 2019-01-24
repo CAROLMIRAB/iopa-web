@@ -1,6 +1,6 @@
 @extends('back.theme') 
 @section('content')
-<form action="{{ route('surgery.edit') }}" method="post" id="surgery" enctype="multipart/form-data" class="row">
+<form action="{{ route('exam.edit') }}" method="post" id="exam" enctype="multipart/form-data" class="row">
 	<div class="col-xl-8 mb-5 mb-xl-0">
 		<div class="card shadow">
 			<div class="card-header bg-transparent">
@@ -16,38 +16,39 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<div class="example-text"><span class="url-example"><strong> Url:</strong> {{ url('') }}/cirugias/</span>
-						<input size="65" type="text" name="slug" id="slug" class="slug" readonly data-route="{{ route('core.slug-create') }}">
+					<input size="65" type="text" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
+					<div class="example-text">
+						<span class="url-example"><strong> Url:</strong> 
+									<a href="" data-slug="{{ route('exam.viewposts') }}" id="slug-url">{{ route('exam.viewposts') }}/</a></span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
-					<input type="text" name="name" id="name" value="" class="form-control @if ($errors->valid->has('name')) is-invalid @endif "
-					 data-slugit-target="#slug"> @if ($errors->valid->has('name'))
-					<p class="invalid-feedback">{{ $errors->valid->first('name') }}</p> @endif
+					<input type="text" name="name" id="name" value="{{ $exam->name }}" class="form-control" data-slugit-target="#slug">
+					<p class="invalid-feedback"></p>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Descripción') }}</label>
-					<textarea id="description" name="description" class="form-control summernote"> </textarea>
+					<textarea id="description" name="description" class="form-control summernote">{!! $exam->description !!}</textarea>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Preparación') }}</label>
-					<textarea id="preparation" name="preparation" class="form-control summernote"> </textarea>
+					<textarea id="preparation" name="preparation" class="form-control summernote">{!! $exam->preparation !!} </textarea>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Indicaciones') }}</label>
-					<textarea id="indications" name="indications" class="form-control summernote"> </textarea>
+					<textarea id="indications" name="indications" class="form-control summernote">{!! $exam->indications !!} </textarea>
 				</div>
 				<div class="form-group">
 					<label for="office">{{ __('Sucursales') }}</label>
-					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple" @if ($errors->valid->has('office')) is-invalid @endif> 
-						@foreach ($officessurgery as $os)
+					<select name="office[]" id="office" class="form-control" data-route="{{ route('office.find-office')}}" multiple="multiple"> 
+						@foreach ($officesexam as $os)
 							<option selected="selected" value="{{ $os->office_id }}">{{ $os->name }}</option>
 						@endforeach
 						@foreach ($offices as $item)
 							<option value="{{ $item->id }}">{{ $item->name }}</option>
 						@endforeach
-						@if ($errors->valid->has('office'))<p class="invalid-feedback">{{ $errors->valid->first('office') }}</p> @endif
+						<p class="invalid-feedback"></p> 
 					</select>
 				</div>
 			</div>
@@ -78,7 +79,7 @@
 	</div>
 	{{ csrf_field() }}
 
-	<input id="id_exam" type="hidden" value="{{ $surgery->id }}">
+	<input id="id_exam" type="hidden" value="{{ $exam->id }}">
 </form>
 @endsection
  

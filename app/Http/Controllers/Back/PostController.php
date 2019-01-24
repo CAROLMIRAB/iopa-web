@@ -10,6 +10,8 @@ use App\BackPage\Collections\PostCollection;
 use Yajra\Datatables\Datatables;
 use App\Core\Core;
 use Validator;
+//use Newsletter;
+
 
 class PostController extends Controller
 {

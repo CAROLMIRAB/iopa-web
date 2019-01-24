@@ -9,14 +9,14 @@
                     <h2 class="mb-0">{{ _('Todas las Noticias') }}</h2>
                 </div>
                 <div class="col-4 text-right">
-                    <a class="btn btn-md btn-primary" href="{{ route('post.createview') }}">{{ __('Nueva Noticia') }}</a>
+                    <a class="btn btn-md btn-primary" href="{{ route('office.createview') }}">{{ __('Nueva Noticia') }}</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-xl-12">
-                    <table id="table-offices" class="table-flush datatable-posts hover" role="grid" data-route="{{ route('post.all-posts') }}">
+                    <table id="table-offices" class="table-flush datatable-offices hover" role="grid" data-route="{{ route('office.all-posts') }}">
                         <thead class="thead-light">
                             <tr>
                                 <th class="sorting" width="20%" >{{ __('Nombre') }}</th>
