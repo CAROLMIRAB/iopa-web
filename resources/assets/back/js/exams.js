@@ -4,29 +4,163 @@ var Exams = function () {
 
         slug: function () {
             var route = $('#slug').data('route');
-
-            $('#name').focusout(function () {
+            var title_before = $('#name').val();
+            $('#name').change(function () {
                 var title = $('#name').val();
                 var id_exam = $('#id_exam').val();
+                $("#btn-save").button('loading');
+                $.ajax({
+                    type: 'post',
+                    url: route,
+                    dataType: "json",
+                    data: {
+                        title_before: title_before,
+                        title: title,
+                        id: id_exam,
+                        mod: 'exam'
+                    },
+                }).done(function (data) {
+                    $('#slug').val(data.data.slug);
+                    var html = $('#slug-url').data('slug');
+                    var url = html + "/" + data.data.slug;
+                    $('#slug-url').html(url);
+                    $('#slug-url').attr('href', url);
+
+                }).fail(function (data) {
+
+                }).always(function () {
+                    $('#btn-save').button('reset');
+                });
+            }).change();
+        },
+
+        createExam: function () {
+            var $form = $('#exam');
+            var v = $('#exam').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    description: "required",
+                    image: "required"
+                },
+                messages: {
+                    name: {
+                        required: "El título es un campo requerido",
+                        minlength: "Escriba un título más largo"
+                    },
+                    description: "No ha agregado contenido",
+                    image: "No ha agregado una imagen"
+                },
+                ignore: ":hidden, [contenteditable='true']:not([description])"
+            });
+
+            $('#btn-save').click(function (e) {
+                if ($form.valid()) {
+                    $(this).button('loading');
+                    var formData = new FormData(document.getElementById("exam"));
                     $.ajax({
                         type: 'post',
-                        url: route,
+                        url: $form.attr('action'),
+                        data: formData,
                         dataType: "json",
-                        data: {
-                            title: title,
-                            id: id_exam,
-                            mod: 'exam'
-                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
                     }).done(function (data) {
-                        $('#slug').val(data.data.slug);
-
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                            $('#exam')[0].reset();
+                            $("#body").summernote("reset");
+                            $("#image-preview").css('background-image', '');
+                            $(".invalid-feedback").html('');
+                            $('#office').val(null).trigger('change');
+                            var html = $('#slug-url').data('slug');
+                            $('#slug-url').html(html);
+                        }
                     }).fail(function (data) {
-
+                        toastr.error(data.message, '!Error!');
                     }).always(function () {
-
+                        $('#btn-save').button('reset');
                     });
-                }).change();
-           
+                    return false;
+                }
+            });
+
+            $('#description').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
+                    }
+                }
+            });
+        },
+
+        editExam: function () {
+            var $form = $('#exam');
+            var v = $('#exam').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    description: "required",
+                },
+                messages: {
+                    name: {
+                        required: "El título es un campo requerido",
+                        minlength: "Escriba un título más largo"
+                    },
+                    description: "No ha agregado contenido",
+                },
+                ignore: ":hidden, [contenteditable='true']:not([description])"
+            });
+
+            $('#btn-save').click(function (e) {
+                if ($form.valid()) {
+                    $(this).button('loading');
+                    var formData = new FormData(document.getElementById("exam"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                        if (data.status == 400) {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+                        if (data.status == 200) {
+                            toastr.success(data.message, '!Exitoso!');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-save').button('reset');
+                    });
+                    return false;
+                }
+            });
+
+            $('#description').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
+                    }
+                }
+            });
         },
 
         editHTML: function () {
@@ -36,7 +170,7 @@ var Exams = function () {
             $('#description').summernote({
                 height: 200
             });
-            $('#indication').summernote({
+            $('#indications').summernote({
                 height: 200
             });
         },
@@ -53,14 +187,14 @@ var Exams = function () {
         },
 
 
-        allSurgeries: function () {
-            var route = $('.datatable-surgeries').data('route');
-            var table = $('.datatable-surgeries').DataTable({
+        allExams: function () {
+            var route = $('.datatable-exams').data('route');
+            var table = $('.datatable-exams').DataTable({
                 "processing": true,
                 "serverSide": false,
                 "ajax": route,
                 "responsive": true,
-                "order": [[ 4, "asc" ]],
+                "order": [[1, "asc"]],
                 columns: [
                     {
                         data: 'name',
@@ -68,19 +202,6 @@ var Exams = function () {
                         render: function (data, type, row, meta) {
                             var concat = '<a href="' + row.route + '">' + data + '</a>';
                             return concat;
-                        }
-                    },
-                    {
-                        data: 'status',
-                        width: "80px",
-                        render: function (data, type, row, meta) {
-                            var button;
-                            if (data == "DRAFT") {
-                                button = '<span class="badge badge-default">Borrador</span>';
-                            } else {
-                                button = '<span class="badge badge-success">Publicado</span>';
-                            }
-                            return button;
                         }
                     },
                     {

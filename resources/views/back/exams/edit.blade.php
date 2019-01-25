@@ -58,23 +58,13 @@
 		<div class="card shadow">
 			<div class="card-body">
 				<div class="form-group">
-					<label for="status">{{ __('Estado') }}</label>
-					<select id="status" name="status" class="form-control">
-								<option value="PUBLISHED">Publicado</option>
-								<option value="DRAFT">Borrador</option>
-							</select>
-				</div>
-				<div class="form-group">
 					<label for="image">{{ __('Imagen') }}</label>
 					<div id="image-preview" style="border: #619DC9 3px dashed;">
 						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
 				</div>
-
 			</div>
-
-
 		</div>
 	</div>
 	{{ csrf_field() }}
@@ -94,6 +84,7 @@
 	$(document).ready(function(){
 	Exams.slug();
 	Exams.editHTML();
+	Exams.editExam();
 	Exams.imageUpload(image); 
 	Offices.selectOfficeEdit();
 	});

@@ -10,6 +10,7 @@ use Validator;
 use App\Post;
 use App\Surgery;
 use App\Doctor;
+use App\Exam;
 
 class Core
 {
@@ -84,6 +85,20 @@ class Core
                     }
                     if ($request->title <> $request->title_before) {
                         $slug_response = SlugService::createSlug(Office::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    break;
+                }
+            case 'exam':
+                {
+                    if ($request->title <> $request->title_before && !empty($request->id)) {
+                        $slug_response = SlugService::createSlug(Exam::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    if ($request->title <> $request->title_before) {
+                        $slug_response = SlugService::createSlug(Exam::class, 'slug', $request->title, ['unique' => true]);
                     } else {
                         $slug_response = $slug;
                     }

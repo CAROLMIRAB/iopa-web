@@ -30,15 +30,15 @@
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Descripción') }}</label>
-					<textarea id="description" name="description" class="form-control summernote"> {!! old('description') !!}</textarea>
+					<textarea id="description" name="description" class="form-control summernote"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Preparación') }}</label>
-					<textarea id="preparation" name="preparation" class="form-control summernote"> {!! old('preparation') !!}</textarea>
+					<textarea id="preparation" name="preparation" class="form-control summernote"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Indicaciones') }}</label>
-					<textarea id="indications" name="indications" class="form-control summernote"> {!! old('indications') !!}</textarea>
+					<textarea id="indications" name="indications" class="form-control summernote"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="office">{{ __('Sucursales') }}</label>
@@ -53,24 +53,13 @@
 		<div class="card shadow">
 			<div class="card-body">
 				<div class="form-group">
-					<label for="status">{{ __('Estado') }}</label>
-					<select id="status" name="status" class="form-control">
-								<option value="PUBLISHED">Publicado</option>
-								<option value="DRAFT">Borrador</option>
-							</select>
-				</div>
-				<div class="form-group">
 					<label for="image">{{ __('Imagen') }}</label>
 					<div id="image-preview" style="border: #619DC9 3px dashed;">
 						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
 				</div>
-				{{ csrf_field() }}
-
 			</div>
-
-
 		</div>
 	</div>
 	{{ csrf_field() }}
@@ -88,6 +77,7 @@
 	$(document).ready(function(){
 	Exams.slug();
 	Exams.editHTML();
+	Exams.createExam();
 	Exams.imageUpload(image); 
 	Offices.selectOffice();
 	});

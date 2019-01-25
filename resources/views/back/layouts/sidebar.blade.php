@@ -101,10 +101,15 @@
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('office.createview') }}">
+          <a class="nav-link" href="{{ route('office.view-all-offices') }}">
               <i class="ni ni-pin-3 text-orange"></i> Sucursales
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('exam.view-all-exams') }}">
+                <i class="ni ni-pin-3 text-orange"></i> Examenes
+              </a>
+          </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ route('post.view-all-posts') }}">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables

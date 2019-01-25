@@ -140,8 +140,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'sucursales'], function () {
 
         Route::get('', [
-            'as' => 'office.view-all-doctors',
-            'uses' => 'Back\OfficesController@viewAllOffices'
+            'as' => 'office.view-all-offices',
+            'uses' => 'Back\OfficeController@viewAllOffices'
+        ]);
+
+        Route::get('all-offices', [
+            'as' => 'office.all-offices',
+            'uses' => 'Back\OfficeController@allOffices'
         ]);
 
         Route::get('find-office', [
@@ -219,6 +224,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('all-exams', [
             'as' => 'exam.all-exams',
             'uses' => 'Back\ExamController@allExams'
+        ]);
+
+        Route::get('nueva', [
+            'as' => 'exam.createview',
+            'uses' => 'Back\ExamController@viewCreateExam'
+        ]);
+
+        Route::get('editar', [
+            'as' => 'exam.editview',
+            'uses' => 'Back\ExamController@viewEditExam'
         ]);
 
         Route::post('store', [

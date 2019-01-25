@@ -21,11 +21,11 @@ class OfficeCollection
            // $image = \URL::to('/') . "/uploads/images/" . $doctor->file;
             $route = route('doctor.editview', $office->slug);
             $alloffices->push([
-                'name' => $office->lastname.", ".$office->name,
+                'name' => $office->name,
                 'phone' => $office->phone,
-                'file' => $office->file,
                 'created' => $office->created,
-                'route' => $route
+                'route' => $route,
+                'id' => $office->id
             ]);
         }
         return $alloffices;

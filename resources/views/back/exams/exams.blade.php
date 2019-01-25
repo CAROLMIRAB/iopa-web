@@ -5,22 +5,21 @@
         <div class="card-header bg-transparent">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <h6 class="text-uppercase text-muted ls-1 mb-1">Cirugías</h6>
-                    <h2 class="mb-0">{{ _('Todos las Cirugías') }}</h2>
+                    <h6 class="text-uppercase text-muted ls-1 mb-1">Examenes</h6>
+                    <h2 class="mb-0">{{ _('Todos las Examenes') }}</h2>
                 </div>
                 <div class="col-4 text-right">
-                    <a class="btn btn-md btn-primary" href="{{ route('surgery.createview') }}">{{ __('Nueva Cirugía') }}</a>
+                    <a class="btn btn-md btn-primary" href="{{ route('exam.createview') }}">{{ __('Nueva Examen') }}</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-xl-12">
-                    <table id="table-posts" class="table-flush datatable-surgeries hover" role="grid" data-route="{{ route('surgery.all-surgeries') }}">
+                    <table id="table-exams" class="table-flush datatable-exams hover" role="grid" data-route="{{ route('exam.all-exams') }}">
                         <thead class="thead-light">
                             <tr>
                                 <th class="no-sort" width="15%" >{{ __('Nombre') }}</th>
-                                <th class="sorting" width="10%" >{{ __('Estatus') }}</th>
                                 <th class="sorting" width="10%" >{{ __('Fecha') }}</th>
                             </tr>
                         </thead>
@@ -40,7 +39,7 @@
 		}
 	});
 	$(function(){
-	Surgery.allSurgeries();
+	Exams.allExams();
 	});
 
 </script>

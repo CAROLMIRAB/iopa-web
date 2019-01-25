@@ -20,12 +20,9 @@ class ExamCollection
             $exam->created = $date_create->format('d/m/Y h:i A');
     
             $route = route('exam.editview', ['slug' => $exam->slug]);
-            $allsurgeries->push([
+            $allexams->push([
                 'name' => $exam->name,
                 'slug' => $exam->slug,
-                'description' => $exam->description,
-                'preparation' => $exam->preparation,
-                'indications' => $exam->indications,
                 'file' => $exam->file,
                 'created' => $exam->created,
                 'route' => $route,
@@ -37,13 +34,9 @@ class ExamCollection
 
     public function editData($exam)
     {
-    
         $exam->image= url('') . "/uploads/images/" . $exam->file;
         $exam->slug_url = route('exam.viewposts') . "/" . $exam->slug;
 
         return $exam;
-
     }
-
-
 }

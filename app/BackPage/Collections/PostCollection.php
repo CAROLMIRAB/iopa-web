@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 
 class PostCollection
 {
-
     public function allPostCollect($posts)
     {
         $allposts = new Collection();

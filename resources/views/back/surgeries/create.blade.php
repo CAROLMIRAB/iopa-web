@@ -58,11 +58,7 @@
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
 				</div>
-				{{ csrf_field() }}
-
 			</div>
-
-
 		</div>
 	</div>
 	{{ csrf_field() }}

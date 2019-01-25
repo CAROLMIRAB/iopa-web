@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\OfficeRepo;
+use Yajra\DataTables\DataTables;
 use App\Core\Core;
 use Validator;
 
@@ -22,6 +23,16 @@ class OfficeController extends Controller
     public function __construct(OfficeRepo $officeRepo)
     {
         $this->officeRepo = $officeRepo;
+    }
+
+  /**
+     * Show all exams view 
+     * 
+     * @return view
+     */
+    public function viewAllOffices()
+    {
+        return view('back.offices.offices');
     }
 
     /**
@@ -173,6 +184,24 @@ class OfficeController extends Controller
 
             return $data;
         }
+    }
+
+     /**
+     * Show all offices
+     * 
+     * @return $office
+     */
+    public function allOffices()
+    {
+        $offices = $this->officeRepo->showAllOffices();
+        $offices = $this->officeCollection->allOfficeCollect($offices);
+        $data = [
+            'title' => __('Publicación fallida'),
+            'message' => __('No se pudo obtener los post'),
+            'data' => $offices
+        ];
+
+        return Datatables::of($offices)->make(true);
     }
 
 }

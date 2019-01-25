@@ -63,7 +63,6 @@ class ExamController extends Controller
      * 
      * @return view
      */
-    
     public function viewAllExams()
     {
         return view('back.exams.exams');
@@ -78,6 +77,7 @@ class ExamController extends Controller
     {
         try {
             $offices = $request->office;
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
@@ -106,7 +106,9 @@ class ExamController extends Controller
             $data = array(
                 'name' => $request->name,
                 'slug' => $request->slug,
-                'description' => $request->body,
+                'description' => $request->description,
+                'preparation' => $request->preparation,
+                'indications' => $request->indications,
                 'file' => $image_url
             );
 
@@ -183,9 +185,9 @@ class ExamController extends Controller
                 $data = array(
                     'name' => $request->name,
                     'slug' => $request->slug,
-                    'description' => $request->body,
+                    'description' => $request->description,
                     'preparation' => $request->preparation,
-                    'indications' => $request->preparation,
+                    'indications' => $request->indications,
                     'file' => $image_url
                 );
 
@@ -193,9 +195,9 @@ class ExamController extends Controller
                 $data = array(
                     'name' => $request->name,
                     'slug' => $request->slug,
-                    'description' => $request->body,
+                    'description' => $request->description,
                     'preparation' => $request->preparation,
-                    'indications' => $request->preparation
+                    'indications' => $request->indications
                 );
             }
 
