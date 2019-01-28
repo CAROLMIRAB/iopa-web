@@ -91,8 +91,8 @@ var Doctors = function () {
             });
 
             $('#btn-save').click(function () {
-                $(this).button('loading');
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("doctor-form"));
                     $.ajax({
                         type: 'post',
@@ -174,8 +174,8 @@ var Doctors = function () {
             });
 
             $('#btn-save').click(function () {
-                $(this).button('loading');
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("doctor-form"));
                     $.ajax({
                         type: 'post',
@@ -331,7 +331,7 @@ var Doctors = function () {
                 ],
                 fnInitComplete: function () {
 
-                    $(".datatable-posts").css("width", "100%");
+                    $(".datatable-doctors").css("width", "100%");
                 },
                 "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
             });

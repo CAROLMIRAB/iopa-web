@@ -13,10 +13,10 @@ class OfficeRepo
     
     public function createOffice($data)
     {
-        $doctor = new Office();
-        $doctor->fill($data);
-        $doctor->save();
-        return $doctor;
+        $office = new Office();
+        $office->fill($data);
+        $office->save();
+        return $office;
     }
 
     public function findOffices($var)
@@ -29,6 +29,22 @@ class OfficeRepo
     {
         $office = Office::orderBy('name', 'ASC')->get();
         return $office;
+    }
+
+    public function showOfficeSlug($slug)
+    {
+        $office = Office::select('id', 'name', 'photo', 'map', 'phone', 'address', 'slug')
+            ->where('slug', $slug)
+            ->orderBy('id', 'DESC')
+            ->first();
+
+        return $office;
+    }
+
+    public function editOfficeById($id, $data)
+    {
+        $result = \DB::table('offices')->where('id', $id)->update($data);
+        return $result;
     }
 
 }

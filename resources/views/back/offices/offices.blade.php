@@ -16,7 +16,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-xl-12">
-                    <table id="table-offices" class="table-flush datatable-offices hover" role="grid" data-route="{{ route('office.all-posts') }}">
+                    <table id="table-offices" class="table-flush datatable-offices hover" role="grid" data-route="{{ route('office.all-offices') }}">
                         <thead class="thead-light">
                             <tr>
                                 <th class="sorting" width="20%" >{{ __('Nombre') }}</th>
@@ -40,7 +40,7 @@
 		}
 	});
 	$(function(){
-	Posts.allPosts();
+	Offices.allOffices();
 	});
 
 </script>

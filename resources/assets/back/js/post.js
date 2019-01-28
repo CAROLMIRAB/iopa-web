@@ -98,8 +98,8 @@ var Posts = function () {
 
             $('#btn-save').click(function (e) {
                 e.preventDefault();
-                $(this).button('loading');
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("post"));
                     $.ajax({
                         type: 'post',
@@ -167,7 +167,6 @@ var Posts = function () {
             });
 
             $('#btn-save').click(function (e) {
-
                 if ($form.valid()) {
                     $(this).button('loading');
                     var formData = new FormData(document.getElementById("post"));

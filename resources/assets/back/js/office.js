@@ -94,7 +94,6 @@ var Offices = function () {
                         required: "El número es requerido"
                     },
                     map: "El map es un campo requerido",
-                    phone: "No ha agregado contenido",
                     address: "No ha agregado la dirección",
                     image: "No ha agregado una imagen"
                 }
@@ -102,8 +101,8 @@ var Offices = function () {
 
             $('#btn-save').click(function (e) {
                 e.preventDefault();
-                $(this).button('loading');
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("office"));
                     $.ajax({
                         type: 'post',
@@ -151,8 +150,7 @@ var Offices = function () {
                         required: true
                     },
                     map: "required",
-                    address: "required",
-                    image: "required"
+                    address: "required"
                 },
                 messages: {
                     name: {
@@ -165,16 +163,14 @@ var Offices = function () {
                         required: "El número es requerido"
                     },
                     map: "El map es un campo requerido",
-                    phone: "No ha agregado contenido",
-                    address: "No ha agregado la dirección",
-                    image: "No ha agregado una imagen"
+                    address: "No ha agregado la dirección"
                 }
             });
 
             $('#btn-save').click(function (e) {
                 e.preventDefault();
-                $(this).button('loading');
                 if ($form.valid()) {
+                    $(this).button('loading');
                     var formData = new FormData(document.getElementById("office"));
                     $.ajax({
                         type: 'post',
@@ -255,5 +251,58 @@ var Offices = function () {
                 tokenSeparators: [',', ' ']
             })
         },
+
+        allOffices: function () {
+            var route = $('.datatable-offices').data('route');
+            var table = $('.datatable-offices').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "ajax": route,
+                "responsive": true,
+                "order": [[1, "asc"]],
+                columns: [
+                    {
+                        data: 'name',
+                        width: "100px",
+                        render: function (data, type, row, meta) {
+                            var concat = '<a href="' + row.route + '">' + data + '</a>';
+                            return concat;
+                        }
+                    },
+                    {
+                        data: 'phone',
+                        width: "100px"
+                    },
+                    {
+                        data: 'address',
+                        width: "100px"
+                    },
+                   
+                    {
+                        data: 'route',
+                        visible: false
+                    },
+                    {
+                        data: 'id',
+                        visible: false
+                    }
+
+                ],
+                columnDefs: [
+                    { className: "cdatatable-td", targets: [0] },
+                    { className: "cdatatable-td", targets: [1] },
+                    { className: "cdatatable-td", targets: [2] },
+                    { className: "cdatatable-td", targets: [3] }
+                ],
+                fnInitComplete: function () {
+
+                    $(".datatable-offices").css("width", "100%");
+                },
+                "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
+            });
+            table.columns.adjust().draw();
+        },
+
+    
     }
 }();

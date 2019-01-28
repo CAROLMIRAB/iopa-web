@@ -54,7 +54,7 @@ class ExamController extends Controller
         $exam = $this->examCollection->editData($examdata);
         $offices = $this->officeRepo->showAllOffices();
         $officesexam = $this->examRepo->showOfficesExam($exam->id);
-
+     
         return view('back.exams.edit', compact('offices', 'officesexam', 'exam'));
     }
 
@@ -147,18 +147,15 @@ class ExamController extends Controller
     public function editExam(Request $request)
     {
         try {
-
             $offices = $request->office;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
-                'description' => 'required',
-                'image' => 'required'
+                'description' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este artículo'),
                 'name.required' => __('El título es requerido'),
-                'description.required' => __('Debe escribir una descripción para la examen'),
-                'image.required' => __('Debe agregar una imagen destacada') 
+                'description.required' => __('Debe escribir una descripción para la examen')
             ]);
 
             if ($validator->fails()) {

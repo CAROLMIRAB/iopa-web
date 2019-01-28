@@ -11,7 +11,7 @@
 |
  */
 Route::get('', function () {
-    return redirect('admin/post/nuevo');
+    return redirect()->route('post.view-all-posts');
 });
 
 Route::get('home', [
@@ -167,6 +167,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('store', [
             'as' => 'office.store',
             'uses' => 'Back\OfficeController@saveCreateOffice'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'office.edit',
+            'uses' => 'Back\OfficeController@editOffice'
         ]);
 
         Route::post('store-img', [

@@ -59,7 +59,7 @@ class ExamRepo
     { 
         $exam = \DB::table('exams')->where('id', $id)->update($data);
         $surg = Exam::find($id);
-        $surg->offices_exam()->sync($offices);
+        $surg->exam_office()->sync($offices);
  
         return $exam;
     }

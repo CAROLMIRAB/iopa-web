@@ -59,7 +59,7 @@
 			<div class="card-body">
 				<div class="form-group">
 					<label for="image">{{ __('Imagen') }}</label>
-					<div id="image-preview" style="border: #619DC9 3px dashed;">
+					<div id="image-preview" style="border: #619DC9 3px dashed; background-image: url('{{ $exam->image }}'); background-size: cover; background-position: center center; ">
 						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
@@ -67,9 +67,8 @@
 			</div>
 		</div>
 	</div>
+	<input id="id_exam" name="id_exam" type="hidden" value="{{ $exam->id }}"> 
 	{{ csrf_field() }}
-
-	<input id="id_exam" type="hidden" value="{{ $exam->id }}">
 </form>
 @endsection
  

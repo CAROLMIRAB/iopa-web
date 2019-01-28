@@ -233,7 +233,7 @@ var Surgery = function () {
                 ],
                 fnInitComplete: function () {
 
-                    $(".datatable-posts").css("width", "100%");
+                    $(".datatable-surgeries").css("width", "100%");
                 },
                 "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
             });

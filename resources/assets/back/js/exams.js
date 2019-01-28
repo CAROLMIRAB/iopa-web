@@ -77,7 +77,9 @@ var Exams = function () {
                         if (data.status == 200) {
                             toastr.success(data.message, '!Exitoso!');
                             $('#exam')[0].reset();
-                            $("#body").summernote("reset");
+                            $("#preparation").summernote("reset");
+                            $("#indications").summernote("reset");
+                            $("#description").summernote("reset");
                             $("#image-preview").css('background-image', '');
                             $(".invalid-feedback").html('');
                             $('#office').val(null).trigger('change');
@@ -226,7 +228,7 @@ var Exams = function () {
                 ],
                 fnInitComplete: function () {
 
-                    $(".datatable-posts").css("width", "100%");
+                    $(".datatable-exams").css("width", "100%");
                 },
                 "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
             });

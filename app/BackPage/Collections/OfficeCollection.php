@@ -19,16 +19,26 @@ class OfficeCollection
             $date_create->setTimezone('America/Santiago');
             $office->created = $date_create->format('d/m/Y h:i A');
            // $image = \URL::to('/') . "/uploads/images/" . $doctor->file;
-            $route = route('doctor.editview', $office->slug);
+            $route = route('office.editview', ['slug' => $office->slug]);
             $alloffices->push([
                 'name' => $office->name,
                 'phone' => $office->phone,
+                'address' => $office->address,
                 'created' => $office->created,
                 'route' => $route,
                 'id' => $office->id
             ]);
         }
         return $alloffices;
+    }
+
+    public function editData($office)
+    {
+        //$office->image= url('') . "/uploads/images/" . $office->photo;
+        $office->image = $office->photo;
+        $office->slug_url = route('office.viewposts') . "/" . $office->slug;
+
+        return $office;
     }
 
 }
