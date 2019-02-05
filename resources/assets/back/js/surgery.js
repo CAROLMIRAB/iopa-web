@@ -206,22 +206,28 @@ var Surgery = function () {
                             return concat;
                         }
                     },
+                    
+                    {
+                        data: 'created',
+                        width: "120px"
+                    },
                     {
                         data: 'status',
                         width: "80px",
                         render: function (data, type, row, meta) {
                             var button;
-                            if (data == "DRAFT") {
+                         /*   if (data == "DRAFT") {
                                 button = '<span class="badge badge-default">Borrador</span>';
                             } else {
                                 button = '<span class="badge badge-success">Publicado</span>';
+                            }*/
+                            if (data == "DRAFT") {
+                                button = '<input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">';
+                            } else {
+                                button = '<input type="checkbox" data-toggle="toggle" checked data-on="Enabled" data-off="Disabled">';
                             }
                             return button;
                         }
-                    },
-                    {
-                        data: 'created',
-                        width: "120px"
                     },
                     {
                         data: 'route',
@@ -230,7 +236,7 @@ var Surgery = function () {
                     {
                         data: 'id',
                         visible: false
-                    }
+                    },
 
                 ],
                 columnDefs: [
