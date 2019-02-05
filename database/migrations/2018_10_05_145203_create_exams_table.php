@@ -21,6 +21,7 @@ class CreateExamsTable extends Migration
             $table->text('preparation');
             $table->text('indications');
             $table->string('file', 128)->nullable();
+            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
         });
     }

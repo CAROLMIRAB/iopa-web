@@ -290,3 +290,16 @@ label.error {
   text-transform: uppercase;
   font-size: 70%;
 }
+
+textarea.form-control{
+  min-height: 150px;
+}
+
+.invalid-feedback{
+    font-size: 70%;
+    width: 100%;
+    margin-top: .25rem;
+    color: #fb6340;
+    text-transform: uppercase;
+    font-weight: 700;
+  }

@@ -1,107 +1,75 @@
-{{-- <header>
+<div class="iopa-loader">
+    <div class="self-building-square-spinner">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square clear"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square clear"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
+</div>
+
+<header class="nav-header">
+
     <div class="topbar">
         <div class="container">
-            <div class="ui-callus">
-                <a href="+tel:+56933445672">
-                    <i class="icon-earphones-alt icons"></i>
-                    <span>Llámanos:</span> +569 334 45 672</a>
+            <div class="row">
+                <div class="col-sm-12">
+                        <a class="top-brand" href="#">
+                                <img src="{{ asset('img/logo-iopa220px.png') }}" alt="Logo IOPA">
+                            </a>
+                    <ul class="list-social">
+                        <li><a class="social-ico" href="#!"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a class="social-ico" href="#!"><i class="fa fa-youtube-square"></i></a></li>
+                        <li><a class="social-ico" href="#!"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="tel:+56933445672" class="call-link"> <img src="{{ asset('img/ico-support-04.png') }}" alt="Support"> <span>+56 9 334 45 672</span></a></li>
+                    </ul>
+                </div>
+                <!--<div class="col-sm-6 text-right pt-6">
+                    <a class="call-link" href="tel:+56235737201">
+                        <i class="fa fa-phone phone-icon"></i> <span>+56 2 35737201</span>
+                    </a>
+                    <a class="cta-link" href="#!">
+                        <i class="fa fa-calendar calendar-icon"></i> Reservar ahora
+                    </a>
+                </div>-->
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-theme">
-        <div class="container nav-container">
+
+    <!--navbar-->
+    <nav class="navbar navbar-default navbar-theme">
+        <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                 aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <img src="{{ asset('/img/logo-iopa.png') }}" alt="IOPA">
-                </a>
+                
             </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Sobre Nosotros</a>
-                    </li>
-                    <li>
-                        <a href="#">Médicos</a>
-                    </li>
-                    <li>
-                        <a href="#">Sucursales</a>
-                    </li>
-                    <li>
-                        <a href="#">Aranceles y Convenios</a>
-                    </li>
-                    <li>
-                        <a href="#">Contacto</a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn cta-reserve">
-                            <i class="fa fa-calendar"></i> Reserva tu Hora</a>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Médicos y especialidades</a></li>
+                    <li><a href="#">Exámenes y cirugías</a></li>
+                    <li><a href="#">Aranceles y convenios</a></li>
+                    <li><a href="#">Sucursales</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a class="cta-link" href="#!">
+                            <i class="fa fa-calendar calendar-icon"></i> Reserva<br>  tu hora
+                        </a>
                     </li>
                 </ul>
-                <!-- 					<ul class="nav navbar-nav navbar-right">
-
-                </ul> -->
+                
             </div>
+            <!--/.nav-collapse -->
         </div>
     </nav>
-</header> --}}
-
-<div class="topbar">
-    <div class="container">
-        <div class="ui-callus">
-            <a href="+tel:+56933445672">
-                <i class="icon-earphones-alt icons"></i>
-                <span>Llámanos:</span> +569 334 45 672</a>
-        </div>
-    </div>
-</div>
-<nav class="navbar navbar-default navbar-theme">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            {{-- <a class="navbar-brand" href="#">Brand</a> --}}
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('/img/logo-iopa.png') }}" alt="IOPA">
-            </a>
-          </div>
-      
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Sobre Nosotros</a>
-                    </li>
-                    <li>
-                        <a href="#">Médicos</a>
-                    </li>
-                    <li>
-                        <a href="#">Sucursales</a>
-                    </li>
-                    <li>
-                        <a href="#">Aranceles y Convenios</a>
-                    </li>
-                    <li>
-                        <a href="#">Contacto</a>
-                    </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" class="btn cta-reserve">
-                    <i class="fa fa-calendar"></i> Reserva tu Hora</a>
-                </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+    <!--end navbar-->
+</header>

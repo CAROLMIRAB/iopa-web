@@ -55,8 +55,9 @@ class DoctorController extends Controller
         $specialties = $this->doctorRepo->showAllSpecialties();
         $offices = $this->officeRepo->showAllOffices();
         $officesdoctor = $this->doctorRepo->showOfficesDoctor($doctor->id);
+        $specialtiesdoctor= $officesdoctor;
 
-        return view('back.doctors.edit', compact('specialties', 'offices', 'doctor', 'officesdoctor'));
+        return view('back.doctors.edit', compact('specialties', 'offices', 'doctor', 'officesdoctor', 'specialtiesdoctor'));
     }
 
     /**
@@ -66,6 +67,7 @@ class DoctorController extends Controller
      */
     public function allDoctors()
     {
+        try{
         $doctors = $this->doctorRepo->showAllDoctors();
         $doctor = $this->doctorCollection->allDoctorCollect($doctors);
         $data = [
@@ -75,7 +77,15 @@ class DoctorController extends Controller
         ];
 
         return Datatables::of($doctor)->make(true);
+    }catch(\Exception $ex) {
+        $data = [
+            'title' => __('Publicación fallida'),
+            'message' => __('Ocurrió un error mientras se publicaba. Por favor intente nuevamente'),
+            'close' => __('Cerrar')
+        ];
 
+        return $data;
+    } 
     }
 
     /**
@@ -96,19 +106,23 @@ class DoctorController extends Controller
     public function saveCreateDoctor(Request $request)
     {
         try {
+            
             $image_url = $request->imgurl;
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'lastname' => 'required',
                 'excerpt' => 'required',
                 'office' => 'required',
-                'specialty_id' => 'required',
+                'rut' => 'required|unique:doctors',
+                'specialty' => 'required',
             ], [
                 'name.required' => __('El nombre es requerido'),
                 'lastname.required' => __('El apellido es requerido'),
                 'excerpt.required' => __('Debe escribir un extracto'),
                 'office.required' => __('Debes agregar alguna sucursal'),
-                'specialty_id' => 'required',
+                'rut.required'=> __('El rut es un campo requerido'),
+                'rut.unique' => __('Ya existe este rut'),
+                'specialty.required' => __('Debes agregar alguna especialidad'),
             ]);
 
             if ($validator->fails()) {
@@ -127,13 +141,14 @@ class DoctorController extends Controller
                     'lastname' => $request->lastname,
                     'excerpt' => $request->excerpt,
                     'phone' => $request->phone,
-                    'specialty_id' => $request->specialty_id,
+                    'rut' => $request->rut, 
+                    'email' => $request->email,
                     'file' => $image_url,
                     'slug' => $request->slug
                 );
 
-                $post = $this->doctorRepo->createDoctor($data, $request->office);
-
+                $post = $this->doctorRepo->createDoctor($data, $request->office, $request->specialty);
+                
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
@@ -162,17 +177,22 @@ class DoctorController extends Controller
         try {
             $image_url = $request->imgurl;
             $offices = $request->office;
-
+            $specialties = $request->specialty;
+        
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'lastname' => 'required',
                 'excerpt' => 'required',
-                'specialty_id' => 'required',
+                'rut' => 'required',
+                'office' => 'required',
+                'specialty' => 'required',
             ], [
                 'name.required' => __('El nombre es requerido'),
                 'lastname.required' => __('El apellido es requerido'),
                 'excerpt.required' => __('Debe escribir un extracto'),
-                'specialty_id' => 'required',
+                'office.required' => __('Debes agregar alguna sucursal'),
+                'rut.required' => __('El rut es un campo requerido'),
+                'specialty.required' => __('Debes agregar alguna especialidad'),
             ]);
 
             if ($validator->fails()) {
@@ -189,7 +209,8 @@ class DoctorController extends Controller
                 'lastname' => $request->lastname,
                 'excerpt' => $request->excerpt,
                 'phone' => $request->phone,
-                'specialty_id' => $request->specialty_id,
+                'rut' => $request->rut,
+                'email' => $request->email,
                 'file' => $image_url,
                 'slug' => $request->slug
             );
@@ -203,7 +224,15 @@ class DoctorController extends Controller
                     $offices
                 );
 
-                $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices);
+                $specialties = array_map(
+                    function ($value) {
+                        return (int)$value;
+                    },
+                    $specialties
+                );
+
+                $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices, $specialties);
+              
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',

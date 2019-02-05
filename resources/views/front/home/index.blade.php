@@ -1,83 +1,49 @@
-@extends('front.layouts.iopa')
-
+@extends('front.layouts.iopa') 
 @section('content')
-    
-@include('front.home.slider')
+    @include('front.home.slider')
 
 
-<div class="cta-group">
-    <div class="cta-group-item">
-        <div class="cta-content">
-            <div class="cta-icon phone"></div>
-            Presupuestos
+<section class="section-boxes wow fadeIn">
+    <div class="container">
+        <div class="row row-boxes blue">
+            <div class="col-sm-3 uno">
+                <div class="ui-box reserva">
+                    <a href="#!">
+                        <img src="{{ asset('img/home/icon/reservar.png') }}" alt=" Aranceles">
+                        <h4>RESERVAR</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-3 dos">
+                <div class="ui-box uno">
+                    <a href="#!">
+                        <img src="{{ asset('img/home/icon/examenes.png') }}" alt="Exámenes">
+                        <h4>EXÁMENES</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-3 tres">
+                <div class="ui-box dos">
+                    <a href="#!">
+                        <img src="{{ asset('img/home/icon/cirugias.png') }}" alt="Cirugías">
+                        <h4>CIRUGÍAS</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-3 cuatro">
+                <div class="ui-box tres">
+                    <a href="#!">
+                        <img src="{{ asset('img/home/icon/sucursales.png') }}" alt="Sucursales">
+                        <h4>SUCURSALES</h4>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="cta-group-item">
-        <div class="cta-content">
-            <div class="cta-icon lab"></div>
-            Exámenes y Cirugías
-        </div>
-    </div>
-    <div class="cta-group-item">
-        <div class="cta-content">
-            <div class="cta-icon hands"></div>
-            Aranceles y Convenios
-        </div>
-    </div>
-</div>
+</section>
 
 <div class="clearfix"></div>
-
-<section>
-    <div class="section-title">
-        <h3>ENTRADAS DE BLOG</h3>
-    </div>
-    <div class="container">
-        <div class="ui-top-posts">
-            <div class="row">        
-            
-                @include('front.home.posts', array('posts' => $posts))
-
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="ui-specialities">
-        <div class="section-title">
-            <h3>ESPECIALIDADES</h3>
-        </div>
-        <div class="container">
-            <div class="col-sm-4">
-                <div class="ui-spec-item">
-                    <figure>
-                        <img src="{{ asset('/img/specialities-exam.jpg') }}" alt="">
-                    </figure>
-                    <a href="#!" class="btn btn-theme02">Exámenes</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="ui-spec-item">
-                    <figure>
-                        <img src="{{ asset('/img/specialities-cirug.jpg') }}" alt="">
-                    </figure>
-                    <a href="#!" class="btn btn-theme02">Cirugías</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="ui-spec-item">
-                    <figure>
-                        <img src="{{ asset('/img/specialities-consulta.jpg') }}" alt="">
-                    </figure>
-                    <a href="#!" class="btn btn-theme02">Consultas</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- @include('home.partners') --}}
-
+    @include('front.home.posts')
+    @include('front.home.specialties')
+    @include('front.home.partners')
 @endsection
-	

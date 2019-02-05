@@ -154,6 +154,11 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'Back\OfficeController@findOffice'
         ]);
 
+        Route::get('find-specialty', [
+            'as' => 'specialty.find-specialty',
+            'uses' => 'Back\OfficeController@findOffice'
+        ]);
+
         Route::get('editar', [
             'as' => 'office.editview',
             'uses' => 'Back\OfficeController@viewEditOffice'

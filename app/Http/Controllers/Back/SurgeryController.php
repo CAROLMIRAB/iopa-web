@@ -77,17 +77,16 @@ class SurgeryController extends Controller
     {
         try {
             $offices = $request->office;
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
-                'body' => 'required',
+                'description' => 'required',
                 'image' => 'required',
                 'office' => 'required'
             ], [
-                'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
+                'slug.required' => __('Ha ocurrido un error publicando este artículo'),
                 'name.required' => __('El título es requerido'),
-                'body.required' => __('Debe escribir algo en el cuerpo de la cirugía'),
+                'description.required' => __('Debe escribir algo en el cuerpo de la cirugía'),
                 'image.required' => __('Debe agregar una imagen destacada'),
                 'office.required' => __('Debe agregar las sucursales')
             ]);
@@ -108,10 +107,14 @@ class SurgeryController extends Controller
             $data = array(
                 'name' => $request->name,
                 'slug' => $request->slug,
-                'body' => $request->body,
+                'description' => $request->description,
+                'preparation' => $request->preparation,
+                'indications' => $request->indications,
                 'status' => $request->status,
                 'file' => $image_url
             );
+
+            //dd($data);
 
             $offices = array_map(
                 function ($value) {
@@ -153,13 +156,13 @@ class SurgeryController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
-                'body' => 'required',
-                'office' => 'required'
+                'office' => 'required',
+                'description' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este art´culo'),
                 'name.required' => __('El título es requerido'),
-                'body.required' => __('Debe escribir algo en el blog'),
-                'office.required' => __('Debe agregar las sucursales')
+                'office.required' => __('Debe agregar las sucursales'),
+                'description.required' => __('Debe escribir una descripción para la examen')
             ]);
 
             if ($validator->fails()) {
@@ -186,7 +189,9 @@ class SurgeryController extends Controller
                 $data = array(
                     'name' => $request->name,
                     'slug' => $request->slug,
-                    'body' => $request->body,
+                    'description' => $request->description,
+                    'preparation' => $request->preparation,
+                    'indications' => $request->indications,
                     'status' => $request->status,
                     'file' => $image_url
                 );
@@ -195,7 +200,9 @@ class SurgeryController extends Controller
                 $data = array(
                     'name' => $request->name,
                     'slug' => $request->slug,
-                    'body' => $request->body,
+                    'description' => $request->description,
+                    'preparation' => $request->preparation,
+                    'indications' => $request->indications,
                     'status' => $request->status
 
                 );

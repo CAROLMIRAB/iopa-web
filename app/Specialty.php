@@ -11,10 +11,10 @@ class Specialty extends Model
     ];  
 
   /*
-    Relation with category
+    Relation with specialty
      */
-    public function doctor()
+    public function specialty_doctor()
     {
-        return $this->hasMany(Doctor::class);
+        return $this->belongsToMany(Doctor::class, 'doctor_specialty');
     }
 }

@@ -18,16 +18,14 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('phone');
+            $table->string('email');
+            $table->string('rut');
             $table->mediumText('excerpt')->nullable();
-            $table->integer('specialty_id')->unsigned();
             $table->string('file', 128)->nullable();
             $table->string('slug', 128)->unique();
 
             $table->timestamps();
 
-            $table->foreign('specialty_id')->references('id')->on('specialties')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
         });
     }
 

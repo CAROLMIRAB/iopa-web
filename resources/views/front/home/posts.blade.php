@@ -1,20 +1,91 @@
 @foreach ($posts as $post)
-    <div class="col-sm-4">
-        <div class="ui-post-preview">
-            <figure>
-                <a href="#!">
-                    <img src="{{ $post->file }}" alt="">
-                </a>
-            </figure>
-            <div class="ui-preview-content">
-                <a href="#!" class="ui-preview-title">
-                        {{ $post->name }}
-                </a>
-                <p>
-                        {{ $post->excerpt }}
-                </p>
+<section class="section-sucursales wow slideInUp" data-wow-delay=".1s" style="overflow: hidden;">
+    <div class="container">
+        <div class="row row-sucursales">
+            <div class="inner-section text-center mt-40">
+                <h3 class="inner-title">
+                    LO VISTE PRIMERO
+                </h3>
+                <div class="ui-divider"></div>
+                <p>Consequat posuere viverra fringilla volutpat parturient sociosqu tincidunt potenti, quis gravida Semper.</p>
             </div>
-        <a href="{{ route('post', $post->slug) }}" class="btn ui-more">Ver +</a>
         </div>
     </div>
+</section>
+<section class="section-posts">
+    <div class="section-post-overlay"></div>
+    <div class="section-padding">
+        <div class="container mt-40 ">
+            <div class="recent-entries mb-40 wow fadeIn">
+                <div class="row mb-40">
+                    <div class="col-sm-6">
+                        <div class="post-preview">
+                            <a href="#!">
+                                <figure>
+                                    <img src="./assets/img/post-preview01.jpg" alt="">
+                                    <div class="post-title">
+                                        <h3>Cursus pellentesque torquent suscipit litora laoree</h3>
+                                    </div>
+                                </figure>
+                                <div class="meta-date">
+                                    Publicado el 11 de agosto, 2018.
+                                </div>
+                                <div class="post-extract">
+                                    ultrices quam feugiat condimentum tempor elementum, felis habitasse consequat donec praesent scelerisque
+                                    porttitor[...]
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="media-list preview-list">
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="./assets/img/post-preview02.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
+                                    </h4>
+                                    <p>Publicado el 21 de Octubre, 2019.</p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="./assets/img/post-preview01.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
+                                    </h4>
+                                    <p>Publicado el 21 de Octubre, 2019.</p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="./assets/img/post-preview03.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
+                                    </h4>
+                                    <p>Publicado el 21 de Octubre, 2019.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#!" class="btn btn-theme04 btn-lg btn-block mt-20">Ir al blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endforeach

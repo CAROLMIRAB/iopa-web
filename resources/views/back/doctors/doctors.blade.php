@@ -21,8 +21,8 @@
                             <tr>
                                 <th class="sorting" width="20%" >{{ __('') }}</th>
                                 <th class="no-sort" width="15%" >{{ __('Nombre') }}</th>
-                                <th class="sorting" width="10%" >{{ __('Telefono') }}</th>
-                                <th class="sorting" width="10%" >{{ __('Fecha') }}</th>
+                                <th class="sorting" width="10%" >{{ __('Teléfono') }}</th>
+                                <th class="sorting" width="10%" >{{ __('Email') }}</th>
                             </tr>
                         </thead>
                     </table>

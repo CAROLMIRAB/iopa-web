@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 258.13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #619dc9;
+      }
+
+      .cls-2 {
+        fill: #2d4a9b;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_2_1" data-name="Symbol 2 – 1" transform="translate(-0.01 -165)">
+    <path id="curve-bottom" class="cls-1" d="M0,2123.667c-2.9-5.789,414.74-150.536,878.784-40.529s1041.2-50.182,1041.2-50.182V1951.9H0Z" transform="translate(1919.995 2359.274) rotate(180)"/>
+    <path id="curve-bottom-2" data-name="curve-bottom" class="cls-2" d="M1919.97,2210.03c2.9-8.7-414.74-226.224-878.784-60.906S-.015,2073.71-.015,2073.71V1951.9H1919.97Z" transform="translate(1919.995 2375.03) rotate(180)"/>
+  </g>
+</svg>

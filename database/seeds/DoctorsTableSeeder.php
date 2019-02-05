@@ -16,6 +16,10 @@ class DoctorsTableSeeder extends Seeder
                 rand(1,5),
                 rand(5,10)
             ]);
+            $post->doctor_specialty()->attach([
+                rand(1,5),
+                rand(5,10)
+            ]);
         });
     }
 }

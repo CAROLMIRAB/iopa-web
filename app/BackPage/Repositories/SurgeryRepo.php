@@ -30,7 +30,7 @@ class SurgeryRepo
 
     public function showAllSurgeries()
     {
-        $surgery = Surgery::select('id', 'name', 'body', 'slug', 'file', 'status')
+        $surgery = Surgery::select('id', 'name', 'description', 'slug', 'file', 'status', 'created_at')
             ->orderBy('name', 'DESC')
             ->get();
         return $surgery;
@@ -48,7 +48,7 @@ class SurgeryRepo
 
     public function showSurgerySlug($slug)
     {
-        $surgery = Surgery::select('id', 'name', 'body', 'file', 'slug')
+        $surgery = Surgery::select('id', 'name', 'description','preparation', 'indications','file', 'slug')
             ->where('surgeries.slug', $slug)
             ->orderBy('id', 'DESC')
             ->first();
@@ -60,7 +60,7 @@ class SurgeryRepo
     { 
         $surgery = \DB::table('surgeries')->where('id', $id)->update($data);
         $surg = Surgery::find($id);
-        $surg->offices_surgery()->sync($offices);
+        $surg->surgery_office()->sync($offices);
  
         return $surgery;
     }

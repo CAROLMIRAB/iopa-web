@@ -14,7 +14,8 @@ class Doctor extends Model
         'lastname', 
         'phone', 
         'excerpt', 
-        'specialty_id',
+        'email',
+        'rut',
         'file',
         'slug'
     ]; 
@@ -33,10 +34,10 @@ class Doctor extends Model
        ];
    }
 
-    public function specialty()
-    {
-        return $this->belongTo(Specialty::class);
-    }
+   public function doctor_specialty()
+   {
+       return $this->belongsToMany(Specialty::class, 'doctor_specialty');
+   }
 
     public function doctor_office()
     {

@@ -35,7 +35,13 @@ var Surgery = function () {
         },
 
         editHTML: function () {
-            $('#body').summernote({
+            $('#indications').summernote({
+                height: 200
+            });
+            $('#preparation').summernote({
+                height: 200
+            });
+            $('#description').summernote({
                 height: 200
             });
         },
@@ -49,14 +55,14 @@ var Surgery = function () {
                         required: true,
                         minlength: 5
                     },
-                    body: "required"
+                    description: "required"
                 },
                 messages: {
                     name: {
                         required: "El título es un campo requerido",
                         minlength: "Escriba un título más largo"
                     },
-                    body: "No ha agregado contenido",
+                    description: "No ha agregado contenido",
                 },
                 ignore: ":hidden, [contenteditable='true']:not([body])"
             });
@@ -109,7 +115,7 @@ var Surgery = function () {
                         required: true,
                         minlength: 5
                     },
-                    body: "required",
+                    description: "required",
                     image: "required"
                 },
                 messages: {
@@ -117,7 +123,7 @@ var Surgery = function () {
                         required: "El título es un campo requerido",
                         minlength: "Escriba un título más largo"
                     },
-                    body: "No ha agregado contenido",
+                    description: "No ha agregado contenido",
                     image: "No ha agregado una imagen"
                 },
                 ignore: ":hidden, [contenteditable='true']:not([body])"
@@ -144,7 +150,9 @@ var Surgery = function () {
                         if (data.status == 200) {
                             toastr.success(data.message, '!Exitoso!');
                             $('#surgery')[0].reset();
-                            $("#body").summernote("reset");
+                            $("#description").summernote("reset");
+                            $("#preparation").summernote("reset");
+                            $("#indications").summernote("reset");
                             $("#image-preview").css('background-image', '');
                             $(".invalid-feedback").html('');
                             $('#office').val(null).trigger('change');
@@ -188,7 +196,7 @@ var Surgery = function () {
                 "serverSide": false,
                 "ajax": route,
                 "responsive": true,
-                "order": [[4, "asc"]],
+                "order": [[4, "desc"]],
                 columns: [
                     {
                         data: 'name',

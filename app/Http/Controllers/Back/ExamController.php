@@ -149,12 +149,14 @@ class ExamController extends Controller
         try {
             $offices = $request->office;
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
                 'slug' => 'required',
+                'name' => 'required',
+                'office' => 'required',
                 'description' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este artículo'),
                 'name.required' => __('El título es requerido'),
+                'office.required' => __('Debe agregar las sucursales'),
                 'description.required' => __('Debe escribir una descripción para la examen')
             ]);
 

@@ -7,7 +7,9 @@ $factory->define(App\Surgery::class, function (Faker $faker) {
     return [
         'name' => $title,
         'slug' => str_slug($title),
-        'body' => $faker->text(500),
+        'description' => $faker->text(500),
+        'preparation' => $faker->text(500),
+        'indications' => $faker->text(500),
         'file' => $faker->imageUrl($width = 800, $height = 800),
         'status' => $faker->randomElement(array('DRAFT','PUBLISHED')),
 

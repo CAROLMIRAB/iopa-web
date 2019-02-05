@@ -67,26 +67,40 @@ var Doctors = function () {
                         minlength: 9
 
                     },
+                    rut: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 9
+                    },
+                    email: "email",
                     excerpt: "required",
-                    imgurl: "required"
+                    imgurl: "required",
+                    specialty: "required"
                 },
                 messages: {
                     name: {
-                        required: "El Apellido es un campo requerido",
-                        minlength: "Escriba un apellido más largo",
+                        required: "El nombre es un campo requerido",
+                        minlength: "Escriba un nombre más largo",
                         lettersonly: "Solo se permiten letras"
                     },
                     lastname: {
-                        required: "El Nombre es un campo requerido",
-                        minlength: "Escriba un nombre más largo",
-                        lettersonly: "Solo se permiten letras"
+                        required: "El apellido es un campo requerido",
+                        minlength: "Escriba un apellido más largo",
+                        lettersonly: "Solo se permiten letras" 
                     },
                     phone: {
                         number: "Ingrese un teléfono válido",
                         minlength: "Ingrese un teléfono válido"
                     },
+                    rut: {
+                        required: "El rut es un campo requerido",
+                        minlength: "No es un rut válido",
+                        maxlength: "No es un rut válido",
+                    },
+                    email: "El email no es válido",
                     excerpt: "El extracto es un campo requerido",
-                    imgurl: "No ha agregado una imagen"
+                    imgurl: "No ha agregado una imagen",
+                    specialty: "Al menos una especialidad es requerida"
                 },
             });
 
@@ -107,7 +121,6 @@ var Doctors = function () {
                             $.each(data.data, function (key, value) {
                                 $('.' + key + '-error').html(value);
                             });
-                            return false;
                         }
                         if (data.status == 200) {
                             toastr.success(data.message, '!Exitoso!');
@@ -115,6 +128,7 @@ var Doctors = function () {
                             $(".invalid-feedback").html('');
                             $("#canvas").cropper('destroy');
                             $('#office').val(null).trigger('change');
+                            $('#specialty').val(null).trigger('change');
                             var html = $('#slug-url').data('slug');
                             $('#slug-url').html(html);
                         }
@@ -150,26 +164,40 @@ var Doctors = function () {
                         minlength: 9
 
                     },
+                    rut: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 9
+                    },
+                    email: "email",
                     excerpt: "required",
-                    imgurl: "required"
+                    imgurl: "required",
+                    specialty: "required"
                 },
                 messages: {
                     name: {
-                        required: "El Apellido es un campo requerido",
-                        minlength: "Escriba un apellido más largo",
+                        required: "El nombre es un campo requerido",
+                        minlength: "Escriba un nombre más largo",
                         lettersonly: "Solo se permiten letras"
                     },
                     lastname: {
-                        required: "El Nombre es un campo requerido",
-                        minlength: "Escriba un nombre más largo",
+                        required: "El apellido es un campo requerido",
+                        minlength: "Escriba un apellido más largo",
                         lettersonly: "Solo se permiten letras"
                     },
                     phone: {
                         number: "Ingrese un teléfono válido",
                         minlength: "Ingrese un teléfono válido"
                     },
+                    rut: {
+                        required: "El rut es un campo requerido",
+                        minlength: "No es un rut válido",
+                        maxlength: "No es un rut válido",
+                    },
+                    email: "El email no es válido",
                     excerpt: "El extracto es un campo requerido",
-                    imgurl: "No ha agregado una imagen"
+                    imgurl: "No ha agregado una imagen",
+                    specialty: "Al menos una especialidad es requerida"
                 },
             });
 
@@ -190,7 +218,6 @@ var Doctors = function () {
                             $.each(data.data, function (key, value) {
                                 $('.' + key + '-error').html(value);
                             });
-                            return false;
                         }
                         if (data.status == 200) {
                             toastr.success(data.message, '!Exitoso!');
@@ -310,10 +337,9 @@ var Doctors = function () {
                         data: 'phone',
                         width: "100px"
                     },
-
                     {
-                        data: 'created',
-                        width: "120px"
+                        data: 'email',
+                        width: "100px"
                     },
                     {
                         data: 'route',

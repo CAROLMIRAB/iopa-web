@@ -24,6 +24,7 @@ class DoctorCollection
                 'phone' => $doctor->phone,
                 'file' => $doctor->file,
                 'created' => $doctor->created,
+                'email' => $doctor->email,
                 'route' => $route
             ]);
         }

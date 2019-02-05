@@ -28,9 +28,16 @@
 					<p class="invalid-feedback"></p> 
 				</div>
 				<div class="form-group">
-					<label for="body">{{ __('Cuerpo') }}</label>
-					<textarea id="body" name="body" class="form-control summernote"  > {!! $surgery->body !!}</textarea>					
-					<p class="invalid-feedback"></p>
+					<label for="body">{{ __('Descripción') }}</label>
+				<textarea id="description" name="description" class="form-control summernote">{{ $surgery->description }}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="body">{{ __('Preparación') }}</label>
+					<textarea id="preparation" name="preparation" class="form-control summernote">{{ $surgery->preparation }}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="body">{{ __('Indicaciones') }}</label>
+					<textarea id="indications" name="indications" class="form-control summernote">{{ $surgery->indications }}</textarea>
 				</div>
 				<div class="form-group">
 					<label for="office">{{ __('Sucursales') }}</label>

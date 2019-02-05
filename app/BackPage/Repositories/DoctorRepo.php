@@ -11,13 +11,15 @@ use App\Doctor;
 class DoctorRepo
 {
 
-    public function createDoctor($data, $offices)
+    public function createDoctor($data, $offices, $specialties)
     {
         $doctor = new Doctor();
         $doctor->fill($data);
         $doctor->save();
 
         $doctor->doctor_office()->attach($offices);
+        $doctor->doctor_specialty()->attach($specialties);
+
         return $doctor;
     }
 
@@ -29,8 +31,7 @@ class DoctorRepo
 
     public function showAllDoctors()
     {
-        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at', 'doctors.slug')
-            ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file','doctors.created_at', 'doctors.email', 'doctors.rut', 'doctors.slug')
             ->orderBy('id', 'DESC')
             ->get();
         return $doctor;
@@ -38,8 +39,7 @@ class DoctorRepo
 
     public function showDoctorSlug($slug)
     {
-        $doctor = Doctor::select('doctors.id', 'doctors.name', 'doctors.slug','lastname', 'phone', 'excerpt', 'file', DB::raw('specialties.name as specialty'), 'doctors.created_at')
-            ->leftJoin('specialties', 'specialties.id', '=', 'doctors.specialty_id')
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'doctors.slug','lastname', 'phone', 'excerpt', 'file', 'email', 'rut', 'doctors.created_at')
             ->orderBy('id', 'DESC')
             ->where('doctors.slug', $slug)
             ->first();
@@ -67,12 +67,12 @@ class DoctorRepo
         return $office;
     }
 
-    public function editDoctorById($data, $id, $offices)
+    public function editDoctorById($data, $id, $offices, $specialties)
     {
-       
         $doctor = \DB::table('doctors')->where('id', $id)->update($data);
         $doc = Doctor::find($id);
-        $doc->offices()->sync($offices);
+        $doc->doctor_office()->sync($offices);
+        $doc->doctor_specialty()->sync($specialties);
  
         return $doctor;
     }

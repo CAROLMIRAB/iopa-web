@@ -16,7 +16,9 @@ class CreateSurgeriesTable extends Migration
         Schema::create('surgeries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 128);
-            $table->text('body');
+            $table->text('description');
+            $table->text('preparation')->nullable();
+            $table->text('indications')->nullable();
             $table->string('slug', 128)->unique();
             $table->string('file', 128)->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');

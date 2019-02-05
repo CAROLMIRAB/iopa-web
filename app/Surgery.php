@@ -12,7 +12,9 @@ class Surgery extends Model
     
     protected $fillable = [
         'name',
-        'body',
+        'description',
+        'indications',
+        'preparation',
         'slug', 
         'file',
         'status'
