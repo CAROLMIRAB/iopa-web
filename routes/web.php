@@ -220,6 +220,10 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'Back\SurgeryController@editSurgery'
         ]);
 
+        Route::post('change-status', [
+            'as' => 'surgery.change-status',
+            'uses' => 'Back\SurgeryController@changeStatus'
+        ]);
     });
 
 

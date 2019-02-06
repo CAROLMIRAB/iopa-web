@@ -1,33 +1,35 @@
 //Import Font Family 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 
 //Body properties
-$font-family: "Open Sans", sans-serif;
-$font-header: "Open Sans", sans-serif;
-$font-size: 15px;
-$font-color: #666666;
+$font-family: 'Lato', sans-serif;
+$font-header: 'Lato', sans-serif;
+$font-size: 14px;
+$font-color: #272727;
 $background: #fff;
 
 //Colors manipulation value
 $percent-value: 10%;
 
 //Theme Colors
-$theme: #2D4A9B;
-$theme02: #619DC9; 
-$theme03: #2196F3;
-$theme04:#00b5e5;
-$theme05: #FFC107;
+$theme: #2f4a9b;
+$theme02: #0174cd; 
+$theme03: #11acc8;
+$theme04:#e6454d;
+$theme05: #25d366;
 $light-theme: #eee;
 $dark-theme: #111111;
 $gray-theme: #666;
 
-$cta-reserve: #6BDD4A;
+$cta-theme: #25d366;
+$cta-theme-lighten: lighten($cta-theme,$percent-value);
+$cta-theme-darken: darken($cta-theme,$percent-value);
 
 //Bootstrap Colors
 $primary-theme: #2D4A9B;
 $success-theme: #8BC34A;
-$warning-theme: #FBC02D;
-$danger-theme: #f44336;
+$warning-theme: #FFEB3B;
+$danger-theme: #F44336;
 $info-theme: #2196F3;
 
 //Colors manipulation

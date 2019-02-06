@@ -1,0 +1,133 @@
+.slide.ui-carousel{
+    position: relative;
+    .item{
+        max-height: 600px;
+        img{
+            width: 100%;
+            margin: 0 auto;
+        }
+        p{
+            color: #fff;
+            font-size: 18px;
+            line-height: 19px;
+            margin: 10px 0;
+            opacity: .8;
+            @media(max-width: 768px){
+                font-size: 14px;
+                line-height: 15px;
+            }
+        }
+        .carousel-layer{
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+            background: linear-gradient(90deg,hsla(244, 1%, 37%, 0.59) 6%,transparent 99%);
+            text-shadow: none;
+            padding: 30px 60px;
+            position: absolute;
+            top: 0%;
+            bottom: auto!important;
+            height: 100%;
+            width: 50%;
+            @media(max-width: 768px){
+                width: 80%;
+            }
+
+        }
+        .carousel-caption{
+            color: #fff;
+            text-align: left;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: normal;
+            max-width: 500px;
+            text-shadow: none;
+            padding: 30px 20px;
+            border-radius: 0;
+            position: absolute;
+            top: 30%;
+            bottom: unset;
+            background: rgba($theme03, 0.7);
+            //bottom: auto!important;
+            //height: 100%;
+            left: 15%;
+            h3{
+                color: #ffffff;
+                font-size: 30px;
+                line-height: 31px;
+                margin: 4px 0;
+                font-weight: normal;
+                transition: none 0s ease 0s;
+                transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+                transform-origin: 50% 50% 0px;
+                @media(max-width: 768px){
+                    font-size: 24px;
+                    line-height: 25px;
+                }
+            }
+            .btn{
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+            .btn-link{
+                color: #fff;
+                border:1px solid #fff;
+                &:hover,
+                &:focus{
+                    text-decoration: none;
+                }
+            }
+
+            @media(min-width: 768px){
+                left: 15%;
+            }
+
+            @media(max-width: 768px){
+                max-width: 320px;
+                padding: 10px;
+                border-radius: 5px;
+                top: 10%;
+                .btn{
+                    font-size: 14px;
+                }
+               
+                h3{
+                    font-size: 20px;
+                    line-height: 20px;
+                    margin: 2px 0;
+                }
+            }
+
+            @media(max-width: 430px){
+                p {
+                    //display: none;
+                }
+                h3 {
+                    font-size: 18px;
+                    line-height: 18px;
+                    margin-bottom: 10px;
+                }
+              }
+
+              @media(max-width: 430px){
+                  .btn {
+                      font-size: 12px;
+                      padding: 4px 10px;
+                  }
+               }
+        }
+    }
+
+    .slider-gradient{
+        position: absolute;
+        bottom: -1px;
+       // z-index: 0;
+    }
+    .carousel-control{
+        &.right,
+        &.left{
+            background-image:none; 
+        }
+    }
+}

@@ -65,4 +65,10 @@ class SurgeryRepo
         return $surgery;
     }
 
+    public function changeStatusById($status, $id)
+    { 
+        $surgery = \DB::table('surgeries')->where('id', $id)->update(['status' => $status]);
+        return $surgery;
+    }
+
 }

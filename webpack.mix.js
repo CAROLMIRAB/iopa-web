@@ -2,9 +2,9 @@ let mix = require('laravel-mix');
 
 
 mix.webpackConfig({
-       
+
     module: {
-       rules: [
+        rules: [
             {
                 test: /\.(woff2?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
@@ -63,7 +63,8 @@ mix.styles([
     'plugins/amsify-suggestags/css/amsify.suggestags.css',
     'node_modules/cropper/dist/cropper.css',
     'bower_components/datatables.net-dt/css/jquery.dataTables.css',
-    'node_modules/toastr/toastr.scss'
+    'node_modules/toastr/toastr.scss',
+    'bower_components/bootstrap-toggle/css/bootstrap-toggle.css'
 ], 'public/back/css/build.back.min.css').version();
 
 mix.styles([
@@ -84,7 +85,8 @@ mix.scripts([
     'node_modules/cropper/dist/cropper.js',
     'bower_components/datatables.net/js/jquery.dataTables.js',
     'node_modules/toastr/toastr.js',
-    'node_modules/jquery-validation/dist/jquery.validate.js'
+    'node_modules/jquery-validation/dist/jquery.validate.js',
+    'bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([
@@ -96,3 +98,19 @@ mix.scripts([
     'resources/assets/back/js/exams.js',
     'resources/assets/back/js/specialty.js'
 ], 'public/back/js/custom.back.min.js').version();
+
+
+/* fronend site web styles and js */
+
+mix.styles([
+    'node_modules/animate.css/animate.css'
+], 'public/front/css/frontcss.min.css').version();
+
+
+mix.sass('resources/assets/front/scss/app.scss',
+'public/front/css/front.min.css');
+
+mix.scripts([
+    'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+    'node_modules/wow.js/dist/wow.min.js'
+], 'public/front/js/front.min.js').version();

@@ -13,5 +13,6 @@ $factory->define(App\Doctor::class, function (Faker $faker) {
         'excerpt' => $faker->text(200), 
         'file' => $faker->imageUrl($width = 600, $height = 600),
         'slug' => str_slug($title),
+        'status' => $faker->randomElement(array('INACTIVE','ACTIVE')),
     ];
 });

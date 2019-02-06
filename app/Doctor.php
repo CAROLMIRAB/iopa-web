@@ -17,7 +17,8 @@ class Doctor extends Model
         'email',
         'rut',
         'file',
-        'slug'
+        'slug',
+        'status'
     ]; 
 
 

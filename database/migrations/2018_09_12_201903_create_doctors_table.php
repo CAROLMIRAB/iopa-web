@@ -23,9 +23,9 @@ class CreateDoctorsTable extends Migration
             $table->mediumText('excerpt')->nullable();
             $table->string('file', 128)->nullable();
             $table->string('slug', 128)->unique();
+            $table->enum('status', ['ACTIVE', 'INACTIVE'])->default('INACTIVE');
 
             $table->timestamps();
-
         });
     }
 

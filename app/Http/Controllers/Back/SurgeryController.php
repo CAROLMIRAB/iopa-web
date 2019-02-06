@@ -139,7 +139,7 @@ class SurgeryController extends Controller
                 'message' => __('Ocurrió un error mientras se publicaba su post. Por favor intente nuevamente'),
             ];
 
-            return $ex;
+            return response()->json($data);
         }
     }
 
@@ -226,7 +226,7 @@ class SurgeryController extends Controller
                 'message' => __('Ocurrió un error mientras se publicaba su post. Por favor intente nuevamente'),
             ];
 
-            return $ex;
+            return response()->json($data);
         }
     }
 
@@ -239,16 +239,16 @@ class SurgeryController extends Controller
     {
         $surgeries = $this->surgeryRepo->showAllSurgeries();
         $surgeries = $this->surgeryCollection->allSurgeryCollect($surgeries);
-        $data = [
-            'title' => __('Publicación fallida'),
-            'message' => __('No se pudo obtener los post'),
-            'data' => $surgeries
-        ];
 
         return Datatables::of($surgeries)->make(true);
     }
 
-
+    public function changeStatus(Request $request)
+    {
+        $surgeries = $this->surgeryRepo->changeStatusById($request->status, $request->id);
+       
+        return $surgeries;
+    }
 }
 
 
