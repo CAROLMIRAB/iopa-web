@@ -23,22 +23,46 @@ mix.webpackConfig({
                 }
             },
             {
-                test: /\.(png|jpe?g|gif)$/,
+                test: /\.(png|jpe?g|gif|svg|map)$/,
                 loader: 'file-loader',
                 options: {
                     name: path => {
                         if (!/node_modules|bower_components|plugins/.test(path)) {
-                            return '/img/[name].[ext]?[hash]';
+                            return '/images/[name].[ext]?[hash]';
                         }
 
-                        return '/img/vendor/' + path
+                        return '/images/vendor/' + path
                             .replace(/\\/g, '/')
                             .replace(
                                 /((.*(node_modules|bower_components|plugins))|fonts|font|assets)\//g, ''
                             ) + '?[hash]'
                     }
                 }
-            }
+            },
+            {
+                test: /\.scss$/,
+                include: [
+                    path.resolve(__dirname, "not_exist_path")
+                ],
+                use: [
+                    {
+                        loader: "postcss-loader",
+                    },
+                    {
+                        loader: "css-loader",
+                    },
+                    {
+                        loader: "style-loader",
+                    },
+                    
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
+            },
         ],
     },
 });
@@ -102,13 +126,8 @@ mix.scripts([
 
 /* fronend site web styles and js */
 
-mix.styles([
-    'node_modules/animate.css/animate.css'
-], 'public/front/css/frontcss.min.css').version();
-
-
 mix.sass('resources/assets/front/scss/app.scss',
-'public/front/css/front.min.css');
+    'public/front/css/').version();
 
 mix.scripts([
     'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',

@@ -12,6 +12,20 @@
         bottom: 0;
     }
 
+    .img-acreditado {
+        width: 170px;
+        height: auto;
+    }
+
+    .row-sucursales {
+        .fa.fa-map-marker{
+            margin-right: 8px;
+        }
+        span {
+            font-weight: bold;
+        }
+    }
+
     .footer-sucursal{
         font-size: 1.1rem;
     }
@@ -111,6 +125,9 @@
         }
         .fa-circle{
             font-size: 50%;
+            margin-right: 3px;
+            font-size: 35%;
+            transform: translateY(-3px);
         }
     }
     .f-item-right{
@@ -136,7 +153,7 @@
         }
 
         .f-social-buttons{
-            color: $theme02;
+            color: $theme;
             margin-top:30px;
             text-align: center;
             display: flex;

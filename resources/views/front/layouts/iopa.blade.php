@@ -19,17 +19,13 @@
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:site" content="" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('styles')
+    <link href="{{ asset('front/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     
     @include('front.shared.header')
 
-
-
     @yield('content')
-
 
     @include('front.shared.footer')
 

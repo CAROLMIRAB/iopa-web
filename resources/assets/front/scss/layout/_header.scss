@@ -13,24 +13,9 @@
     margin-bottom: 0;
     position: relative;
     border-color: $theme02;
+    min-height: 35px;
 
-    @media (min-width: 1600px) {
-        .container {
-            width: 1400px;
-        }
-    }
 
-    @media (min-width: 1400px) {
-        .container {
-            width: 1360px;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .container {
-            width: 1180px;
-        }
-    }
 
     @media (max-width: 986px) {
         .container {
@@ -63,7 +48,6 @@
         }
     }
     .navbar-nav{
-        margin-top: 5px;
         > li {
             > a{
                 color: #fff;
@@ -71,7 +55,7 @@
                 font-weight: bold;
                 text-transform: uppercase;
                 position: relative;
-                padding: 9px 8px;
+                padding: 9px 15px;
                 transition: all ease-in-out .2s;
                 //animation: slideIn .4s forwards 0s ease-in-out;
 
@@ -143,23 +127,24 @@
                     }
                 }
             }
+            > .dropdown-menu{
+                animation: fadeInUp .2s forwards 0s ease-in-out;
+            }
         }
     }
     .navbar-collapse{
-        //float: right;
-        padding: 7px;
         .cta-link {
             font-size: 16px;
             font-weight: bold;
             background: $theme04;
-            padding: 20px 30px 20px 65px;
+            padding: 12px 30px 14px 65px;
             border-radius: 0;
             text-transform: uppercase;
             color: #fff;
             margin-top: -30px;
             transform: translateY(7px);
             position: relative;
-            line-height: 15px;
+            line-height: 18px;
             @media (max-width: 1200px) {
                 font-size: 12px;
                 line-height: 12px;
@@ -183,7 +168,7 @@
             .fa {
                 position: absolute;
                 left: 20px;
-                font-size: 26px;
+                font-size: 32px;
             }
     
                 @media(max-width: 994px) {
@@ -204,8 +189,13 @@
     color:#fff;
     background: #fff;
     //display: flex;
-    min-height: 62px;
+    min-height: 90px;
     padding-top: 5px;
+    @media (min-width: 1200px) {
+        .container {
+            width: 1100px;
+        }
+    }
     @media(max-width: 768px){
         background: #1488be;
         min-height: auto;
@@ -248,6 +238,7 @@
     font-size: 16px;
     font-weight: bold;
     padding: 9px 15px;
+    letter-spacing: 2px;
     border-radius: 3px;
     margin-right: 5px;
     text-transform: uppercase;
@@ -259,8 +250,8 @@
         }
 
         img {
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
             margin-right: 5px;
         }
 
@@ -312,7 +303,7 @@
     > li {
         //font-size: 28px;
         display: inline-block;
-        //margin-right: 5px;
+        margin-right: 10px;
         img{
             height: 30px;
             width: 30px;
@@ -368,4 +359,20 @@
 
 .pt-8 {
     padding-top: 8px;
+}
+
+
+@keyframes fadeInUp{
+    0%{
+        transform: rotate(0) translateY(10px);
+        opacity: 0;
+        }
+    100%{
+        transform: rotate(0) translateY(0);
+        opacity: 1;
+        }
+}
+
+.fadeInUp{
+    animation: fadeInUp .5s forwards 0s ease-in-out;
 }
