@@ -19,22 +19,22 @@
             <div class="row">
                 <div class="col-sm-12 col-top">
                     <a class="top-brand hidden-xs" href="#">
-							<img src="./assets/img/logo-iopa220px.png" alt="Logo IOPA">
+							<img src="{{ asset('/img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
                         <li><a href="#!" class="btn-social">
-									<img src="./assets/img/rrss/icon-facebook.png" alt="Facebook">
+									<img src="{{ asset('img/rrss/icon-facebook.png') }}"  alt="Facebook">
 								</a></li>
                         <li><a href="#!" class="btn-social">
-									<img src="./assets/img/rrss/icon-instagram.png" alt="Instagram">
+									<img src="{{ asset('img/rrss/icon-instagram.png') }}" alt="Instagram">
 								</a> </li>
                         <li><a href="#!" class="btn-social">
-									<img src="./assets/img/rrss/icon-youtube.png" alt="Youtube">
+									<img src="{{ asset('img/rrss/icon-youtube.png') }}"  alt="Youtube">
 								</a> </li>
                         <li class="visible-xs"><a href="#!" class="btn-social">
-									<img src="./assets/img/rrss/icon-phone.png" alt="Teléfono">
+									<img src="{{ asset('img/rrss/icon-phone.png') }}" alt="Teléfono">
 								</a> </li>
-                        <li><a href="tel:+56933445672" class="call-link"> <img src="./assets/img/ico-support-04.png" alt="Support">
+                        <li><a href="tel:+56933445672" class="call-link"> <img src="{{ asset('img/ico-support-04.png') }}"  alt="Support">
 									<span>+56 9 334 45 672</span></a></li>
                     </ul>
                 </div>
@@ -61,7 +61,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-                <a class="navbar-brand visible-xs" href="#"><img src="./assets/img/logo-iopa220px.png" alt="Logo IOPA"></a>
+                <a class="navbar-brand visible-xs" href="#"><img src="{{ asset('img/logo-iopa220px.png') }}" alt="Logo IOPA"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">

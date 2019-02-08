@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920.172 300.007">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2d4a9b;
+        opacity: 0.48;
+      }
+
+      .cls-2 {
+        fill: #b4cada;
+        opacity: 0.52;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="curves-bottom6" transform="translate(12795.172 1994.866) rotate(180)">
+    <path id="curve-top" class="cls-1" d="M-.149,208.5c-2.9-8.7,416.2-176.6,879.846-11.279s1040.3-127.043,1040.3-127.043L1920,0-.172-.141Z" transform="translate(10875.172 1747.001)"/>
+    <path id="curve-top-2" data-name="curve-top" class="cls-2" d="M-.156,218.531c-2.9-8.7,416.209-186.625,879.853-21.307S1919.936,79.656,1919.936,79.656L1920,0-.172-.141Z" transform="translate(10875.172 1737.001)"/>
+    <path id="curve-top-3" data-name="curve-top" class="cls-3" d="M-.156,260.812c-2.9-8.7,416.209-228.906,879.853-63.588S1920,121.81,1920,121.81V0L-.172-.141Z" transform="translate(10875.172 1695.001)"/>
+  </g>
+</svg>
