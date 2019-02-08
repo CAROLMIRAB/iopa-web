@@ -42,7 +42,7 @@
 </section>
 
 <div class="clearfix"></div>
-    @include('front.home.posts')
+    @include('front.home.posts', array('posts' => $posts))
     @include('front.home.specialties')
     @include('front.home.partners')
 @endsection

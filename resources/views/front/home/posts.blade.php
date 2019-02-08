@@ -1,4 +1,3 @@
-
 <section class="section-sucursales ">
     <div class="container wow slideInUp" data-wow-delay=".1s" style="overflow: hidden;">
         <div class="row row-sucursales">
@@ -22,18 +21,17 @@
                         <div class="post-preview">
                             <a href="#!">
                                 <figure>
-                                    <img src="./assets/img/post-preview01.jpg" alt="">
+
+                                    <img src="{{ asset('uploads/images/').$posts[0]->file }}" alt="">
                                     <div class="post-title">
-                                        <h3>Cursus pellentesque torquent suscipit litora laoree</h3>
+                                        <h3>{{ $posts[0]->name }}</h3>
                                     </div>
                                 </figure>
                                 <div class="meta-date">
-                                    Publicado el 11 de agosto, 2018.
+                                    {{ $posts[0]->created }}
                                 </div>
                                 <div class="post-extract text-left">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                    ea commodo consequat.[...]
+                                    {{ $posts[0]->excerpt }}[...]
                                 </div>
                             </a>
                         </div>
@@ -42,8 +40,34 @@
                         <ul class="media-list preview-list">
                             <li class="media">
                                 <div class="media-left">
+                                    <a href="{{ $posts[1]->slug }}">
+                                            <img class="media-object" src="{{ asset('img/post-preview02.jpg') }}" alt="...">
+										</a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{ $posts[1]->route }}"> {{ $posts[1]->name }}</a>
+                                    </h4>
+                                    <p>{{ $posts[1]->created }}</p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
                                     <a href="#">
-											<img class="media-object" src="./assets/img/post-preview02.jpg" alt="...">
+                                    <img class="media-object" src="{{ $posts[2]->file }}" alt="...">
+										</a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{ $posts[2]->route }}"> {{ $posts[2]->name }}</a>
+                                    </h4>
+                                <p>{{ $posts[2]->created }}</p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+											<img class="media-object" src="{{ asset('img/post-preview03.jpg') }}" alt="...">
 										</a>
                                 </div>
                                 <div class="media-body">
@@ -56,33 +80,7 @@
                             <li class="media">
                                 <div class="media-left">
                                     <a href="#">
-											<img class="media-object" src="./assets/img/post-preview01.jpg" alt="...">
-										</a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
-                                    </h4>
-                                    <p>Publicado el 21 de Octubre, 2019.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-											<img class="media-object" src="./assets/img/post-preview03.jpg" alt="...">
-										</a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
-                                    </h4>
-                                    <p>Publicado el 21 de Octubre, 2019.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-											<img class="media-object" src="./assets/img/post-preview03.jpg" alt="...">
+											<img class="media-object" src="{{ asset('img/post-preview03.jpg') }}"  alt="...">
 										</a>
                                 </div>
                                 <div class="media-body">

@@ -9,7 +9,7 @@ use App\Post;
 
 
 
-class PostRepo
+class WebRepo
 {
     public function showPosts()
     {
@@ -28,7 +28,7 @@ class PostRepo
 
     public function showPostHome()
     {
-        $post = Post::orderBy('created_at', 'desc')->take(3)->get();
+        $post = Post::orderBy('created_at', 'desc')->take(5)->get();
         return $post;
     }
 

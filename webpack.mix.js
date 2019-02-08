@@ -6,7 +6,7 @@ mix.webpackConfig({
     module: {
         rules: [
             {
-                test: /\.(woff2?|ttf|eot|svg|otf)$/,
+                test: /\.(woff2?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
                 options: {
                     name: path => {
@@ -14,7 +14,7 @@ mix.webpackConfig({
                             return '/fonts/[name].[ext]?[hash]';
                         }
 
-                        return '/fonts/' + path
+                        return '/fonts/vendor/' + path
                             .replace(/\\/g, '/')
                             .replace(
                                 /((.*(node_modules|bower_components|plugins))|fonts|font|assets)\//g, ''
@@ -23,7 +23,7 @@ mix.webpackConfig({
                 }
             },
             {
-                test: /\.(png|jpe?g|gif|map)$/,
+                test: /\.(png|jpe?g|gif|svg|map)$/,
                 loader: 'file-loader',
                 options: {
                     name: path => {

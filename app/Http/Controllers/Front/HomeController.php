@@ -4,23 +4,25 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\FrontPage\Repositories\PostRepo;
+use App\FrontPage\Repositories\WebRepo;
+use App\FrontPage\Collections\WebCollection;
 
 
 class HomeController extends Controller
 {
 
-    private $postRepo;
+    private $webRepo;
+    private $webCollection;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(PostRepo $postRepo)
+    public function __construct(WebRepo $webRepo, WebCollection $webCollection)
     {
-        //$this->middleware('auth');
-        $this->postRepo = $postRepo;
+        $this->webRepo = $webRepo;
+        $this->webCollection = $webCollection;
     }
 
      /**
@@ -30,7 +32,8 @@ class HomeController extends Controller
      */
     public function home()
     {
-       $posts = $this->postRepo->showPostHome();
+       $post = $this->webRepo->showPostHome();
+       $posts = $this->webCollection->RenderPostsHome($post);
        return view('front.home.index', compact('posts'));
     }
 

@@ -19,7 +19,8 @@ class Post extends Model
         'body',
         'status',
         'file', 
-        'tags'
+        'tags',
+        'created_at'
     ];    
     
 
