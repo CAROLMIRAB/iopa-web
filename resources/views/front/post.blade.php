@@ -1,4 +1,4 @@
-@extends('front.layouts.app')
+@extends('front.layouts.iopa')
 
 @section('content')
 <div class="container">

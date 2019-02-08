@@ -61,33 +61,33 @@
                                     <h4 class="media-heading">
                                         <a href="{{ $posts[2]->route }}"> {{ $posts[2]->name }}</a>
                                     </h4>
-                                <p>{{ $posts[2]->created }}</p>
+                                    <p>{{ $posts[2]->created }}</p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="{{ $posts[3]->route }}">
+                                        <img class="media-object" src="{{ $posts[3]->file }}" alt="...">
+                                            </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{ $posts[3]->route }}"> {{ $posts[3]->name }}</a>
+                                    </h4>
+                                    <p>{{ $posts[3]->created }}</p>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="media-left">
                                     <a href="#">
-											<img class="media-object" src="{{ asset('img/post-preview03.jpg') }}" alt="...">
-										</a>
+                                            <img class="media-object" src="{{ $posts[4]->file }}" alt="...">
+                                                </a>
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading">
-                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
+                                        <a href="{{ $posts[4]->route }}"> {{ $posts[4]->name }}</a>
                                     </h4>
-                                    <p>Publicado el 21 de Octubre, 2019.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#">
-											<img class="media-object" src="{{ asset('img/post-preview03.jpg') }}"  alt="...">
-										</a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <a href="#!">Qia dolor sit amet consectetur adipisci velit</a>
-                                    </h4>
-                                    <p>Publicado el 21 de Octubre, 2019.</p>
+                                    <p>{{ $posts[4]->created }}</p>
                                 </div>
                             </li>
                             <li>

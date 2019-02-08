@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\FrontPage\Repositories\PostRepo;
+use App\FrontPage\Repositories\WebRepo;
 
 
 class PostController extends Controller
@@ -18,7 +18,7 @@ class PostController extends Controller
      * 
      * @return void
      */
-    public function __construct(PostRepo $postRepo)
+    public function __construct(WebRepo $postRepo)
     {
         $this->postRepo = $postRepo;
     }
