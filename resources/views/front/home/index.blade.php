@@ -8,7 +8,7 @@
             <div class="col-sm-3 uno">
                 <div class="ui-box reserva">
                     <a href="#!">
-							<img src="./assets/img/home/icon/reservar.png"" alt=" Aranceles">
+							<img src="{{ asset('/img/home/icon/reservar.png') }}" alt=" Aranceles">
 							<h4>RESERVAR</h4>
 						</a>
                 </div>
@@ -16,7 +16,7 @@
             <div class="col-sm-3 dos">
                 <div class="ui-box uno">
                     <a href="#!">
-							<img src="./assets/img/home/icon/examenes.png" alt="Exámenes">
+							<img src="{{ asset('/img/home/icon/examenes.png') }}" alt="Exámenes">
 							<h4>PRESUPUESTOS</h4>
 						</a>
                 </div>
@@ -24,7 +24,7 @@
             <div class="col-sm-3 tres">
                 <div class="ui-box dos">
                     <a href="#!">
-							<img src="./assets/img/home/icon/cirugias.png" alt="Cirugías">
+							<img src="{{ asset('img/home/icon/cirugias.png') }}" alt="Cirugías">
 							<h4>Aranceles y Convenios</h4>
 						</a>
                 </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-3 cuatro">
                 <div class="ui-box tres">
                     <a href="#!">
-							<img src="./assets/img/home/icon/sucursales.png" alt="Sucursales">
+							<img src="{{ asset('img/home/icon/sucursales.png') }}"  alt="Sucursales">
 							<h4>SUCURSALES</h4>
 						</a>
                 </div>

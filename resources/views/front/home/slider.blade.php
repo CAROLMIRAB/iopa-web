@@ -11,7 +11,7 @@
 		<div class="carousel-inner" role="listbox">
 
 			<div class="item active">
-				<img src="./assets/img/slider/slider-01.jpg" alt="Slider 01">
+				<img src="{{ asset('img/slider/slider-01.jpg') }}"  alt="Slider 01">
 				<div class="carousel-layer">
 					<div class="carousel-caption">
 						<h3>ESPECIALISTAS DE PRIMER NIVEL</h3>
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img src="./assets/img/slider/slider-03.jpg" alt="Slider 01">
+				<img src="{{ asset('img/slider/slider-03.jpg') }}"  alt="Slider 01">
 				<div class="carousel-layer">
 					<div class="carousel-caption">
 						<h3>30 AÑOS DE EXITOSA <br>EXPERIECIA</h3>
