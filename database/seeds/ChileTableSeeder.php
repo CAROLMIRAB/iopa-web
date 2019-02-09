@@ -9,6 +9,7 @@ class ChileTableSeeder extends Seeder
         $this->insertRegions();
         $this->insertCommunes();
     }
+    
     public function insertRegions(): void
     {
         $now = now();

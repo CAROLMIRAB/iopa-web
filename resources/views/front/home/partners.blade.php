@@ -8,16 +8,16 @@
             <div class="col-sm-12">
                 <ul class="partners-caousel">
                     <li>
-                        <img src="./assets/img/partners/partner01.jpg" alt="">
+                        <img src="{{ asset('img/partners/partner01.jpg') }}" alt="">
                     </li>
                     <li>
-                        <img src="./assets/img/partners/partner02.jpg" alt="">
+                        <img src="{{ asset('img/partners/partner02.jpg') }}" alt="">
                     </li>
                     <li>
-                        <img src="./assets/img/partners/partner03.jpg" alt="">
+                        <img src="{{ asset('img/partners/partner03.jpg') }}" alt="">
                     </li>
                     <li>
-                        <img src="./assets/img/partners/partner04.jpg" alt="">
+                        <img src="{{ asset('img/partners/partner04.jpg') }}" alt="">
                     </li>
                 </ul>
             </div>

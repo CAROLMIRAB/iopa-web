@@ -42,7 +42,7 @@ class PostController extends Controller
     public function viewFullPost($slug)
     {
         $post = $this->postRepo->viewPostSlug($slug);
-        return view('front.post', compact('post'));
+        return view('front.sections.post', compact('post'));
     }
 
 }

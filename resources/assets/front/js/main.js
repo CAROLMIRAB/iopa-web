@@ -1,5 +1,3 @@
-import slick from 'slick-carousel';
-import WOW from 'wow.js'
 
 $(document).ready(function(){
     $(function () {

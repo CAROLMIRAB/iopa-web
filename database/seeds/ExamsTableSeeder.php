@@ -14,7 +14,7 @@ class ExamsTableSeeder extends Seeder
         factory(App\Exam::class, 20)->create()->each(function (App\Exam $post) {
             $post->exam_office()->attach([
                 rand(1,5),
-                rand(5,10)
+                rand(1,5)
             ]);
         });
     }

@@ -32,6 +32,7 @@
     },
     "dependencies": {
         "animate.css": "^3.7.0",
+        "babel-loader": "^8.0.5",
         "bootstrap": "^3.3.7",
         "bootstrap-daterangepicker": "^3.0.3",
         "bootstrap-sass": "^3.4.0",

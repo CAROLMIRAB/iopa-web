@@ -1,4 +1,4 @@
-@extends('front.layouts.iopa') 
+@extends('front.iopa') 
 @section('content')
     @include('front.home.slider')
 

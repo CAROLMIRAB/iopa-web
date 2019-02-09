@@ -23,7 +23,7 @@ mix.webpackConfig({
                 }
             },
             {
-                test: /\.(png|jpe?g|gif|svg|map)$/,
+                test: /\.(png|jpeg|jpg|gif|svg|map)$/,
                 loader: 'file-loader',
                 options: {
                     name: path => {
@@ -128,6 +128,12 @@ mix.sass('resources/assets/front/scss/app.scss',
     'public/front/css/').version();
 
 mix.scripts([
+    'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-    'node_modules/wow.js/dist/wow.min.js'
+    'node_modules/wow.js/dist/wow.min.js',
+    'node_modules/slick-carousel/slick/slick.min.js'
 ], 'public/front/js/front.min.js').version();
+
+mix.scripts([
+    'resources/assets/front/js/main.js'
+], 'public/front/js/main.min.js').version();

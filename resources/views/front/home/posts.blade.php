@@ -22,7 +22,7 @@
                             <a href="#!">
                                 <figure>
 
-                                    <img src="{{ asset('uploads/images/').$posts[0]->file }}" alt="">
+                                    <img src="{{ $posts[0]->file }}" alt="">
                                     <div class="post-title">
                                         <h3>{{ $posts[0]->name }}</h3>
                                     </div>
@@ -53,7 +53,7 @@
                             </li>
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="#">
+                                    <a href="{{ $posts[2]->route }}">
                                     <img class="media-object" src="{{ $posts[2]->file }}" alt="...">
 										</a>
                                 </div>
@@ -79,7 +79,7 @@
                             </li>
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="#">
+                                    <a href="{{ $posts[4]->route }}">
                                             <img class="media-object" src="{{ $posts[4]->file }}" alt="...">
                                                 </a>
                                 </div>

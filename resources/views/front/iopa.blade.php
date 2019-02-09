@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href=""> -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>{{ config('app.name', 'Laravel') }}</title>
+	<title>{{ config('app.name', 'Cliníca IOPA') }}</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<meta name="description" content="" />
 	<meta property="og:site_name" content="" />
@@ -27,8 +27,11 @@
 
     @yield('content')
 
-    @include('front.shared.footer')
+	@include('front.shared.footer')
+	
 
-    @yield('scripts')
+<script type="text/javascript" src="{{ asset('front/js/front.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('front/js/main.min.js') }}"></script>
+
 </body>
 </html>

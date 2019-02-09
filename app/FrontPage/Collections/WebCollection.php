@@ -10,12 +10,12 @@ class WebCollection
 {
    public function RenderPostsHome($post)
    {
-   
+    setlocale(LC_TIME, 'es_ES.UTF-8');
     $allposts = [];
 
      foreach($post as $item){
-        setlocale(LC_TIME, 'es_ES.UTF-8');
-        Carbon::setLocale('es'); 
+        
+        $mydate = Carbon::setLocale('es'); 
         $mydate = Carbon::parse($item->created_at)->setTimezone('America/Santiago')->formatLocalized('Publicado el %d de %B, %Y');
         $route = route('post.viewpost', ['slug' => $item->slug]);
         $allposts[]= (object)[

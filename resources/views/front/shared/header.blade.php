@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-top">
-                    <a class="top-brand hidden-xs" href="#">
+                <a class="top-brand hidden-xs" href="{{ url('home') }}">
 							<img src="{{ asset('/img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
@@ -34,18 +34,11 @@
                         <li class="visible-xs"><a href="#!" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-phone.png') }}" alt="Teléfono">
 								</a> </li>
-                        <li><a href="tel:+56933445672" class="call-link"> <img src="{{ asset('img/ico-support-04.png') }}"  alt="Support">
+                        <li><a href="tel:+56933445672" class="call-link">
+                             <img src="{{ asset('img/ico-support-04.png') }}"  alt="Support">
 									<span>+56 9 334 45 672</span></a></li>
                     </ul>
                 </div>
-                <!--<div class="col-sm-6 text-right pt-6">
-						<a class="call-link" href="tel:+56235737201">
-							<i class="fa fa-phone phone-icon"></i> <span>+56 2 35737201</span>
-						</a>
-						<a class="cta-link" href="#!">
-							<i class="fa fa-calendar calendar-icon"></i> Reservar ahora
-						</a>
-					</div>-->
             </div>
         </div>
     </div>

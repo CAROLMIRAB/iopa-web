@@ -16,8 +16,8 @@ class CreateOfficesTable extends Migration
         Schema::create('offices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('photo');
-            $table->text('map');
+            $table->string('photo')->nullable();
+            $table->text('map')->nullable();
             $table->string('phone');
             $table->string('address');
             $table->string('slug', 128)->unique();

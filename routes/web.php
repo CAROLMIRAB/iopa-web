@@ -30,6 +30,11 @@ Route::get('entradas/{slug}', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
+Route::get('sucursales/{slug}', [
+    'as' => 'office.viewpost',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
 
 Route::get('entradas/', [
     'as' => 'post.viewposts',

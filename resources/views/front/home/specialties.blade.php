@@ -4,12 +4,11 @@
             <h3 class="inner-title">
                 Especialidades
             </h3>
-            <div class="ui-divider"></div>
             <p>Consequat posuere viverra fringilla volutpat parturient sociosqu tincidunt potenti, quis gravida Semper.</p>
         </div>
         <div class="row row-especialidades">
             <div class="col-sm-3">
-                <div class="item-especialidad  wow fadeInUp">
+                <div class="item-especialidad  wow slideInUp">
                     <a href="#!">
                         <img src="{{ asset('img/home/papilas.jpg') }}" alt="Fotos de Papilas">
                         <h5>Fotos de Papilas</h5>

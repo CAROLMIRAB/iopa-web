@@ -14,7 +14,7 @@ class SurgeriesTableSeeder extends Seeder
         factory(App\Surgery::class, 30)->create()->each(function (App\Surgery $post) {
             $post->surgery_office()->attach([
                 rand(1, 5),
-                rand(5, 10)
+                rand(1,5)
             ]);
         });
     }
