@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Navigation -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -86,7 +86,7 @@
             </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{{ route('post.view-all-posts') }}">
+          <a class="nav-link" href="{{ route('post.view-all-posts') }}">
               <i class="ni ni-planet text-primary"></i> Noticias
             </a>
         </li>
@@ -106,18 +106,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('exam.view-all-exams') }}">
+          <a class="nav-link" href="{{ route('exam.view-all-exams') }}">
                 <i class="ni ni-pin-3 text-orange"></i> Examenes
               </a>
-          </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{{ route('post.view-all-posts') }}">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
-            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./examples/login.html">
-              <i class="ni ni-key-25 text-info"></i> Login
+          <a class="nav-link" href="{{ route('specialty.view-all-specialties') }}">
+                  <i class="ni ni-key-25 text-info"></i> Especialidades
+                </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('post.view-all-posts') }}">
+              <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
         </li>
         <li class="nav-item">

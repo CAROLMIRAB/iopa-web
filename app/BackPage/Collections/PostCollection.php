@@ -20,6 +20,7 @@ class PostCollection
             $tags = json_decode($post->tags);
             $route = route('post.editview', ['slug' => $post->slug]);
             $allposts->push([
+                'id' => $post->id,
                 'title' => $post->name,
                 'category' => $post->category,
                 'tags' => $tags,

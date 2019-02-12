@@ -232,7 +232,6 @@ var Posts = function () {
                         width: "100px",
                         render: function (data, type, row, meta) {
                             var concat = "";
-                            console.log(row);
                             jQuery.each(data, function (i, val) {
                                 concat += '<span class="badge badge-info">' + val + '</span>'
                             });
@@ -240,24 +239,29 @@ var Posts = function () {
                         }
                     },
                     {
+                        data: 'created',
+                        width: "120px"
+                    },
+                    {
                         data: 'status',
                         width: "80px",
                         render: function (data, type, row, meta) {
                             var button;
                             if (data == "DRAFT") {
-                                button = '<span class="badge badge-default">Borrador</span>';
+                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Publicado" data-off="Borrador" data-onstyle="info" data-size="small">';
                             } else {
-                                button = '<span class="badge badge-success">Publicado</span>';
+                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Publicado" data-off="Borrador"  data-onstyle="info" data-size="small">';
                             }
                             return button;
                         }
                     },
                     {
-                        data: 'created',
-                        width: "120px"
+                        data: 'route',
+                        width: "120px",
+                        visible: false
                     },
                     {
-                        data: 'route',
+                        data: 'id',
                         width: "120px",
                         visible: false
                     }
@@ -271,12 +275,33 @@ var Posts = function () {
                     { className: "cdatatable-td", targets: [4] }
                 ],
                 fnInitComplete: function () {
-
+                    $('.toggle-check').bootstrapToggle();
                     $(".datatable-posts").css("width", "100%");
                 },
                 "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
             });
             table.columns.adjust().draw();
+        },
+
+        changeStatus: function () {
+            $(document).on('click', '.toggle', function () {
+                var $input = $(this).find('input.toggle-check');
+                var status = ($input.is(':checked')) ? 'PUBLISHED' : 'DRAFT';
+                $.ajax({
+                    type: 'post',
+                    url: $('.datatable-posts').data('route-status'),
+                    data: {
+                        id: $input.data('id'),
+                        status: status
+                    }
+                }).done(function (data) {
+                   
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                   
+                });
+            });
         },
 
         datePicker: function () {

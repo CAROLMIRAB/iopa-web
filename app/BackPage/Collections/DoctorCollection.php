@@ -17,15 +17,17 @@ class DoctorCollection
 
             $date_create = new Carbon($doctor->created_at);
             $date_create->setTimezone('America/Santiago');
-            $doctor->created = $date_create->format('d/m/Y h:i A');
+            $doctor->created = $date_create->format('d/m/Y');
             $route = route('doctor.editview', ['slug' => $doctor->slug]);
             $alldoctors->push([
+                'id' => $doctor->id,
                 'name' => $doctor->lastname.", ".$doctor->name,
                 'phone' => $doctor->phone,
                 'file' => $doctor->file,
                 'created' => $doctor->created,
                 'email' => $doctor->email,
-                'route' => $route
+                'route' => $route,
+                'status' => $doctor->status
             ]);
         }
         return $alldoctors;

@@ -16,11 +16,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-xl-12">
-                    <table id="table-exams" class="table-flush datatable-exams hover" role="grid" data-route="{{ route('exam.all-exams') }}">
+                    <table id="table-exams" class="table-flush datatable-exams hover" role="grid" data-route="{{ route('exam.all-exams') }}" data-route-status="{{ route('exam.change-status') }}">
                         <thead class="thead-light">
                             <tr>
                                 <th class="no-sort" width="15%" >{{ __('Nombre') }}</th>
                                 <th class="sorting" width="10%" >{{ __('Fecha') }}</th>
+                                <th class="sorting" width="10%" >{{ __('Estado') }}</th>
                             </tr>
                         </thead>
                     </table>
@@ -39,7 +40,8 @@
 		}
 	});
 	$(function(){
-	Exams.allExams();
+    Exams.allExams();
+    Exams.changeStatus();
 	});
 
 </script>

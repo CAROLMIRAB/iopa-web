@@ -30,7 +30,7 @@ class ExamRepo
 
     public function showAllExams()
     {
-        $exam = Exam::select('id', 'name', 'description', 'slug', 'preparation', 'indications')
+        $exam = Exam::select('id', 'name', 'description', 'slug', 'preparation', 'indications', 'status')
             ->orderBy('name', 'DESC')
             ->get();
         return $exam;
@@ -61,6 +61,12 @@ class ExamRepo
         $surg = Exam::find($id);
         $surg->exam_office()->sync($offices);
  
+        return $exam;
+    }
+
+    public function changeStatusById($status, $id)
+    { 
+        $exam = \DB::table('exams')->where('id', $id)->update(['status' => $status]);
         return $exam;
     }
 

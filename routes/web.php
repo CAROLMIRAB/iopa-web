@@ -46,6 +46,11 @@ Route::get('cirugias/', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
+Route::get('especialidades/', [
+    'as' => 'specialty.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
 Route::get('examenes/', [
     'as' => 'exam.viewposts',
     'uses' => 'Front\PostController@viewFullPost'
@@ -61,7 +66,7 @@ Route::get('sucursales/', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 
     /************** ROUTES POST ******************/
@@ -95,6 +100,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit', [
             'as' => 'post.edit',
             'uses' => 'Back\PostController@editPost'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'post.change-status',
+            'uses' => 'Back\PostController@changeStatus'
         ]);
 
     });
@@ -136,6 +146,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('store-img', [
             'as' => 'doctor.storeimg',
             'uses' => 'Back\DoctorController@uploadImage'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'doctor.change-status',
+            'uses' => 'Back\DoctorController@changeStatus'
         ]);
 
     });
@@ -231,6 +246,45 @@ Route::group(['prefix' => 'admin'], function () {
         ]);
     });
 
+     /************** ROUTES SPECIALTY ******************/
+     Route::group(['prefix' => 'especialidades'], function () {
+
+        Route::get('', [
+            'as' => 'specialty.view-all-specialties',
+            'uses' => 'Back\SpecialtyController@viewAllSpecialties'
+        ]);
+
+        Route::get('all-specialties', [
+            'as' => 'specialty.all-specialties',
+            'uses' => 'Back\SpecialtyController@allSpecialties'
+        ]);
+
+        Route::get('nueva', [
+            'as' => 'specialty.createview',
+            'uses' => 'Back\SpecialtyController@viewCreateSpecialty'
+        ]);
+
+        Route::get('editar', [
+            'as' => 'specialty.editview',
+            'uses' => 'Back\SpecialtyController@viewEditSpecialty'
+        ]);
+
+        Route::post('store', [
+            'as' => 'specialty.store',
+            'uses' => 'Back\SpecialtyController@saveCreateSpecialty'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'specialty.edit',
+            'uses' => 'Back\SpecialtyController@editSpecialty'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'specialty.change-status',
+            'uses' => 'Back\SpecialtyController@changeStatus'
+        ]);
+    });
+
 
     /************** ROUTES EXAMS ******************/
     Route::group(['prefix' => 'examenes'], function () {
@@ -263,6 +317,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit', [
             'as' => 'exam.edit',
             'uses' => 'Back\ExamController@editExam'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'exam.change-status',
+            'uses' => 'Back\ExamController@changeStatus'
         ]);
 
     });
@@ -302,3 +361,7 @@ Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 
 Route::get('blog/{slug}', 'Front\PostController@viewFullPost')->name('post');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -17,11 +17,12 @@ class ExamCollection
 
             $date_create = new Carbon($exam->created_at);
             $date_create->setTimezone('America/Santiago');
-            $exam->created = $date_create->format('d/m/Y h:i A');
+            $exam->created = $date_create->format('d/m/Y');
     
             $route = route('exam.editview', ['slug' => $exam->slug]);
             $allexams->push([
                 'name' => $exam->name,
+                'status' => $exam->status,
                 'slug' => $exam->slug,
                 'file' => $exam->file,
                 'created' => $exam->created,

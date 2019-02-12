@@ -9,7 +9,7 @@ class Exam extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['name', 'slug','description', 'preparation', 'indications', 'file']; 
+    protected $fillable = ['name', 'slug','description', 'preparation', 'indications', 'file', 'status']; 
 
   
    /* Return the sluggable configuration array for this model.

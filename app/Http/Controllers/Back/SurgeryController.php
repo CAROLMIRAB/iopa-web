@@ -114,8 +114,6 @@ class SurgeryController extends Controller
                 'file' => $image_url
             );
 
-            //dd($data);
-
             $offices = array_map(
                 function ($value) {
                     return (int)$value;

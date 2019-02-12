@@ -5,6 +5,9 @@ use Faker\Generator as Faker;
 $factory->define(App\Specialty::class, function (Faker $faker) {
     $title = $faker->unique()->word(3);
     return [
-        'name' => $title
+        'name' => $title,
+        'slug' => str_slug($title),
+        'body' => $faker->text(500),
+        'status' => $faker->randomElement(array('DRAFT','PUBLISHED'))
     ];
 });

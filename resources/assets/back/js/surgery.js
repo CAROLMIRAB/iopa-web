@@ -217,9 +217,9 @@ var Surgery = function () {
                         render: function (data, type, row, meta) {
                             var button;
                             if (data == "DRAFT") {
-                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Publicado" data-off="No publicado" data-onstyle="info" data-size="small">';
+                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Publicado" data-off="Borrador" data-onstyle="info" data-size="small">';
                             } else {
-                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Publicado" data-off="No publicado"  data-onstyle="info" data-size="small">';
+                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Publicado" data-off="Borrador"  data-onstyle="info" data-size="small">';
                             }
                             return button;
                         }

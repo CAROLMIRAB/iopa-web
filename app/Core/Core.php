@@ -11,6 +11,7 @@ use App\Post;
 use App\Surgery;
 use App\Doctor;
 use App\Exam;
+use App\Specialty;
 
 class Core
 {
@@ -99,6 +100,20 @@ class Core
                     }
                     if ($request->title <> $request->title_before) {
                         $slug_response = SlugService::createSlug(Exam::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    break;
+                }
+                case 'specialty':
+                {
+                    if ($request->title <> $request->title_before && !empty($request->id)) {
+                        $slug_response = SlugService::createSlug(Specialty::class, 'slug', $request->title, ['unique' => true]);
+                    } else {
+                        $slug_response = $slug;
+                    }
+                    if ($request->title <> $request->title_before) {
+                        $slug_response = SlugService::createSlug(Specialty::class, 'slug', $request->title, ['unique' => true]);
                     } else {
                         $slug_response = $slug;
                     }

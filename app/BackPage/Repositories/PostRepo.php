@@ -19,7 +19,7 @@ class PostRepo
 
     public function showPosts()
     {
-        $posts = Post::select('posts.name', 'posts.slug', 'excerpt', 'posts.body', DB::raw('categories.name as category'), 'status', 'tags', 'file', 'posts.created_at')
+        $posts = Post::select('posts.id','posts.name', 'posts.slug', 'excerpt', 'posts.body', DB::raw('categories.name as category'), 'status', 'tags', 'file', 'posts.created_at')
             ->leftJoin('categories', 'categories.id', '=', 'posts.category_id')
             ->get();
         return $posts;
@@ -58,6 +58,12 @@ class PostRepo
     {
         $result = \DB::table('posts')->where('id', $id)->update($data);
         return $result;
+    }
+
+    public function changeStatusById($status, $id)
+    { 
+        $post = \DB::table('posts')->where('id', $id)->update(['status' => $status]);
+        return $post;
     }
 
 }

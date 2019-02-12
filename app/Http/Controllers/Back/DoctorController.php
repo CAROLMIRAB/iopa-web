@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\DoctorRepo;
 use App\BackPage\Repositories\OfficeRepo;
+use App\BackPage\Repositories\SpecialtyRepo;
 use Validator;
 use App\BackPage\Collections\DoctorCollection;
 use Yajra\DataTables\DataTables;
@@ -18,17 +19,19 @@ class DoctorController extends Controller
     private $doctorRepo;
     private $officeRepo;
     private $doctorCollection;
+    private $specialtyRepo;
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(DoctorRepo $doctorRepo, DoctorCollection $doctorCollection, OfficeRepo $officeRepo)
+    public function __construct(DoctorRepo $doctorRepo, DoctorCollection $doctorCollection, OfficeRepo $officeRepo, SpecialtyRepo $specialtyRepo)
     {
         $this->doctorRepo = $doctorRepo;
         $this->doctorCollection = $doctorCollection;
         $this->officeRepo = $officeRepo;
+        $this->specialtyRepo = $specialtyRepo;
     }
 
     /**
@@ -52,10 +55,10 @@ class DoctorController extends Controller
     {
         $doctors = $this->doctorRepo->showDoctorSlug($request->slug);
         $doctor = $this->doctorCollection->editData($doctors);
-        $specialties = $this->doctorRepo->showAllSpecialties();
+        $specialties = $this->specialtyRepo->showAllSpecialties();
         $offices = $this->officeRepo->showAllOffices();
         $officesdoctor = $this->doctorRepo->showOfficesDoctor($doctor->id);
-        $specialtiesdoctor= $officesdoctor;
+        $specialtiesdoctor= $this->doctorRepo->showSpecialtiesDoctor($doctor->id);
 
         return view('back.doctors.edit', compact('specialties', 'offices', 'doctor', 'officesdoctor', 'specialtiesdoctor'));
     }
@@ -294,5 +297,12 @@ class DoctorController extends Controller
             ];
             return $ex;
         }
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $doctor = $this->doctorRepo->changeStatusById($request->status, $request->id);
+       
+        return $doctor;
     }
 }

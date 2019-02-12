@@ -11,5 +11,6 @@ $factory->define(App\Exam::class, function (Faker $faker) {
         'preparation' => $faker->text(500),
         'indications' => $faker->text(500),
         'file' => $faker->imageUrl($width = 1200, $height = 800),
+        'status' => $faker->randomElement(array('DRAFT','PUBLISHED')),
     ];
 });

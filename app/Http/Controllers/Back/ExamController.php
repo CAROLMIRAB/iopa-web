@@ -240,6 +240,12 @@ class ExamController extends Controller
         return Datatables::of($exams)->make(true);
     }
 
+    public function changeStatus(Request $request)
+    {
+        $exam = $this->examRepo->changeStatusById($request->status, $request->id);
+       
+        return $exam;
+    }
 
 }
 

@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,9 +36,8 @@
   @include('back.layouts.header')
     <!-- Page content -->
     <div class="container-fluid mt--7">
-    
-        @yield('content')
- 
+
+      @yield('content')
   @include('back.layouts.footer')
     </div>
 

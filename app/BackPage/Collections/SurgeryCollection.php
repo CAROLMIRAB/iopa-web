@@ -17,7 +17,7 @@ class SurgeryCollection
 
             $date_create = new Carbon($surgery->created_at);
             $date_create->setTimezone('America/Santiago');
-            $surgery->created = $date_create->format('d/m/Y h:i A');
+            $surgery->created = $date_create->format('d/m/Y');
     
             $route = route('surgery.editview', ['slug' => $surgery->slug]);
             $allsurgeries->push([
