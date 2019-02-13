@@ -20,8 +20,8 @@
             </div>
         </div>
     </div>
-    <div class="field_wrapper">
-        <div class="field_row row">
+    <div class="">
+        <div class="row">
             <div class="col-12">
                 <table class="table align-items-center table-flush table-isapres" style="width: 100%">
                     <thead class="thead-light">
