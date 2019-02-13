@@ -26,7 +26,7 @@ var Agreement = function () {
         var tr ='<tr>'
             tr += '<td width="40%">'
             tr +=  '<div style="" id="isapre-image-preview-'+ number +'" class="table-img-prev" class="">'
-            tr +=       '<label for="image-upload" id="isapre-image-label-'+ number +'"><img class="" src="/cloud-upload.png" width="60" height="60"/></label>'
+            tr +=       '<label for="image-upload" id="isapre-image-label-'+ number +'"><i class="ni ni-cloud-download-95"></i></label>'
             tr +=       '<input type="file" name="isapre-image" id="isapre-image-'+ number +'" class="isapre-image" accept="image/png, image/jpeg" />'
             tr +=    '</div>'
             tr += ' </td>'

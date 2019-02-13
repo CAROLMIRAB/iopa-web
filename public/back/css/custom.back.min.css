@@ -22230,9 +22230,10 @@ textarea.form-control{
   z-index: 5;
   opacity: 0.9;
   cursor: pointer;
-  color: #2d4a9b;
+  color: #619DC9;
   width: 200px;
   height: 50px;
+  font-size: 20px;
   line-height: 50px;
   text-transform: uppercase;
   top: 0;

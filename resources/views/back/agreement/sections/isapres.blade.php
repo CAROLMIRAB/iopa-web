@@ -36,7 +36,7 @@
                         <tr>
                             <td width="40%">
                                 <div style="" id="isapre-image-preview" class="table-img-prev" class="">
-                                    <label for="image-upload" id="isapre-image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
+                                    <label for="image-upload" id="isapre-image-label"><i class='ni ni-cloud-download-95'></i></label>
                                     <input type="file" name="isapre-image" id="isapre-image" class="isapre-image" accept="image/png, image/jpeg" />
                                 </div>
                             </td>
