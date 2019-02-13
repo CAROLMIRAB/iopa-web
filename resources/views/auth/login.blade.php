@@ -119,16 +119,17 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-12">
-                            <a class="text-light" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                        </div>
-                        <div class="col-12">
+                        <div class="col-6 text-left">
                             <a class="text-light" href="{{ route('register') }}">
-                                            {{ __('Register') }}
-                                        </a>
+                                <small>{{ __('Register') }}</small>
+                            a</a>
                         </div>
+                        <div class="col-6 text-right">
+                            <a class="text-light" href="{{ route('password.request') }}">
+                                <small>{{ __('Forgot Your Password?') }}</small>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
