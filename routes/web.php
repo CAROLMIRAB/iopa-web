@@ -68,6 +68,9 @@ Route::get('sucursales/', [
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
+    Route::get('agreement', function () {
+        return view('back.agreement.agreement');
+    });
 
     /************** ROUTES POST ******************/
     Route::group(['prefix' => 'noticias'], function () {

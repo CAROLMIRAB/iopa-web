@@ -77,7 +77,7 @@
                         </div>
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="text-center text-muted mb-4">
-                                <small>Or sign in with credentials</small>
+                                <small>Entra con tus credenciales</small>
                             </div>
                             <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                                 <div class="form-group mb-3">
@@ -122,11 +122,11 @@
                         <div class="col-6 text-left">
                             <a class="text-light" href="{{ route('register') }}">
                                 <small>{{ __('Register') }}</small>
-                            a</a>
+                            </a>
                         </div>
                         <div class="col-6 text-right">
                             <a class="text-light" href="{{ route('password.request') }}">
-                                <small>{{ __('Forgot Your Password?') }}</small>
+                                <small>{{ __('Olvidaste tu contraseña?') }}</small>
                             </a>
                         </div>
 
