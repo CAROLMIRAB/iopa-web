@@ -16,7 +16,8 @@ class CreateAgreementTable extends Migration
         Schema::create('agreement', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
-            $table->text('tax');
+            $table->text('description');
+            $table->text('content');
             $table->timestamps();
         });
     }
