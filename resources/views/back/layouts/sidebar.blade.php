@@ -116,8 +116,8 @@
                 </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('post.view-all-posts') }}">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
+          <a class="nav-link" href="{{ route('agreement.view-agreement') }}">
+              <i class="ni ni-bullet-list-67 text-red"></i> Convenios
             </a>
         </li>
         <li class="nav-item">
