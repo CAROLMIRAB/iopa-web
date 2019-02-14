@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Back;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\BackPage\Repositories\SurgeryRepo;
-use App\BackPage\Repositories\OfficeRepo;
-use App\BackPage\Collections\SurgeryCollection;
+use App\BackPage\Repositories\AgreementRepo;
+use App\BackPage\Collections\AgreementCollection;
 use Yajra\DataTables\DataTables;
 use App\Core\Core;
 use Validator;
-use Yajra\DataTables\Utilities\Request;
+use App\Agreement;
+
 
 class AgreementController extends Controller
 {
@@ -35,11 +35,15 @@ class AgreementController extends Controller
         return view('back.agreement.agreement');
     }
 
-    public function saveAgreement(Request $request)
+    public function saveGes(Request $request)
     {
-       
+        $data = $this->agreementRepo->findGes();
+        $datarender = Core::renderGes($request, $data);
+        $ges = $this->agreementRepo->addGes();
+        return $ges;
     }
 
+    
 
 }
 

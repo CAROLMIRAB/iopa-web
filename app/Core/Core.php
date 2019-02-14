@@ -145,4 +145,9 @@ class Core
         return $image_url;
     }
 
+    public static function renderGes ($data) {
+      
+        
+    }
+
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgreementTable extends Migration
+class CreateAgreementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAgreementTable extends Migration
      */
     public function up()
     {
-        Schema::create('agreement', function (Blueprint $table) {
+        Schema::create('agreements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
-            $table->text('description');
-            $table->text('content');
+            $table->string('name', 50)->nullable();
+            $table->text('description')->nullable();
+            $table->text('content')->nullable();
+            $table->string('slug', 128)->unique();
             $table->timestamps();
         });
     }

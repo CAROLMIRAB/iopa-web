@@ -30,25 +30,31 @@
             </div>
             <div class="col-4">
                 <ul class="is-ges">
-                    <li><input type="text" name="isapre-ges[]" />
-                        <a class="add-ges-inp">
-                            <i class="ni ni-fat-add " style="font-size: 22px"></i>
-                        </a>
+                    <li>
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="text" class="form-control input-sm" name="isapre-ges[]" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary add-ges-inp" type="button"><i class="ni ni-fat-add " style=""></i></button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
             <div class="col-4">
                 <ul class="is-cu">
-                    <li><input type="text" name="isapre-cuenta[]" />
-                        <a class="add-cu-inp">
-                            <i class="ni ni-fat-add " style="font-size: 22px"></i>
-                        </a>
+                    <li>
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="text" class="form-control " name="isapre-cuenta[]" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary add-cu-inp" type="button"><i class="ni ni-fat-add " style=""></i></button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
             <div class="col-12 text-center">
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary"> Agregar</button>
+                    <button type="button"  class="btn btn-primary"> Agregar</button>
                 </div>
             </div>
             <div class="col-12">

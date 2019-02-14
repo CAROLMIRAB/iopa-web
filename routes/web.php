@@ -10,11 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('', function () {
-    return redirect()->route('post.view-all-posts');
-});
 
-Route::get('home', [
+
+Route::get('', [
     'as' => 'home',
     'uses' => 'Front\HomeController@home'
 ]);
@@ -24,6 +22,15 @@ Route::get('theme', [
     'uses' => 'Front\PostController@viewTheme'
 ]);
 
+Route::get('404', [
+    'as' => '404',
+    'uses' => 'Back\ErrorController@notFound'
+]);
+
+Route::get('500', [
+    'as' => '500',
+    'uses' => 'Back\ErrorController@fatal'
+]);
 
 Route::get('entradas/{slug}', [
     'as' => 'post.viewpost',
@@ -336,7 +343,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         'uses' => 'Back\CoreController@titleAndSlug'
     ]);
 
-    Route::get('404', [
+   /*Route::get('404', [
         'as' => '404',
         'uses' => 'Back\ErrorController@backNotFound'
     ]);
@@ -344,8 +351,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('500', [
         'as' => '500',
         'uses' => 'Back\ErrorController@backFatal'
-    ]);
-
+    ]);*/
 
 });
 
