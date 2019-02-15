@@ -75,10 +75,7 @@ Route::get('sucursales/', [
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
-    Route::get('agreement', [
-        'as' => 'agreement.view-agreement',
-        'uses' => 'Back\AgreementController@viewAgreement'
-    ]);
+   
 
     /************** ROUTES POST ******************/
     Route::group(['prefix' => 'noticias'], function () {
@@ -337,21 +334,29 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     });
 
+     /************** ROUTES AGREEMENT ******************/
+     Route::group(['prefix' => 'convenios'], function () {
+
+        Route::post('save-ges', [
+            'as' => 'agreement.save-ges',
+            'uses' => 'Back\AgreementController@saveGes'
+        ]);
+
+        Route::get('agreement', [
+            'as' => 'agreement.view-agreement',
+            'uses' => 'Back\AgreementController@viewAgreement'
+        ]);
+
+     });
+
 
     Route::post('slug/slug-create', [
         'as' => 'core.slug-create',
         'uses' => 'Back\CoreController@titleAndSlug'
     ]);
 
-   /*Route::get('404', [
-        'as' => '404',
-        'uses' => 'Back\ErrorController@backNotFound'
-    ]);
 
-    Route::get('500', [
-        'as' => '500',
-        'uses' => 'Back\ErrorController@backFatal'
-    ]);*/
+
 
 });
 

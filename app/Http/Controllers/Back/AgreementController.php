@@ -37,13 +37,19 @@ class AgreementController extends Controller
 
     public function saveGes(Request $request)
     {
-        $data = $this->agreementRepo->findGes();
-        $datarender = Core::renderGes($request, $data);
-        $ges = $this->agreementRepo->addGes();
-        return $ges;
+        $data = $this->agreementRepo->findGes($request->slug);
+        $datarender = Core::renderGes($request);
+       
+       // $ges = $this->agreementRepo->addGes();
+        return response()->json([
+            'status' => 200,
+            'title' => '¡Exitoso!',
+            'message' => "Ha modificado la cirugía de forma correcta",
+            'data' => $datarender
+        ]);
     }
 
-    
+
 
 }
 

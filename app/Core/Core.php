@@ -105,7 +105,7 @@ class Core
                     }
                     break;
                 }
-                case 'specialty':
+            case 'specialty':
                 {
                     if ($request->title <> $request->title_before && !empty($request->id)) {
                         $slug_response = SlugService::createSlug(Specialty::class, 'slug', $request->title, ['unique' => true]);
@@ -145,9 +145,38 @@ class Core
         return $image_url;
     }
 
-    public static function renderGes ($data) {
-      
-        
-    }
+    public static function renderGes($request)
+    {
+        $isapre = [];
+        $ges = [];
+        $acount = [];
+        $isapreges = $request->isapreges;
+        $isaprecuenta = $request->isaprecuenta;
 
+        foreach ($isapreges as $key => $n) {
+            $ges[] = [
+                'name' => $isapreges[$key]
+            ];
+        }
+
+        foreach ($isaprecuenta as $key => $n) {
+            $acount[] = [
+                'name' => $isaprecuenta[$key]
+            ];
+        }
+
+        $image_url = Core::uploadImage($request->file('isapre_image'));
+
+        $isapre = [
+            'image' => $image_url,
+            'ges' => $ges,
+            'acount' => [
+                'title' => $request->account_title,
+                'content' => $acount
+            ]
+        ];
+
+        return json_encode($isapre);
+
+    }
 }
