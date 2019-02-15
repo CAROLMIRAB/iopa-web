@@ -149,7 +149,7 @@ class Core
     {
         $isapre = [];
         $ges = [];
-        $acount = [];
+        $account = [];
         $isapreges = $request->isapreges;
         $isaprecuenta = $request->isaprecuenta;
 
@@ -170,9 +170,9 @@ class Core
         $isapre = [
             'image' => $image_url,
             'ges' => $ges,
-            'acount' => [
+            'account' => [
                 'title' => $request->account_title,
-                'content' => $acount
+                'content' => $account
             ]
         ];
 

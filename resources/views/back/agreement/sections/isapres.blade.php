@@ -28,7 +28,7 @@
     <div class="col-12">
         <div class="form-group">
             <label for="isapre-title">{{ __('Titulo') }}</label>
-            <input id="isapre-accounttitle" name="account_title" class="form-control">
+            <input id="isapre-accounttitle input-sm" name="account_title" class="form-control">
         </div>
     </div>
     <div class="col-4">

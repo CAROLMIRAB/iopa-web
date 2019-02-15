@@ -191,7 +191,7 @@ var Agreement = function () {
                         $.each(JSON.parse(data.data), function (key, value) {
                             if (key == 'ges') {
                                 $.each(value, function (keyy, valuee) {
-                                    console.log(keyy);
+                                    //console.log(keyy);
                                     console.log(valuee.name);
                                 });
                             }
