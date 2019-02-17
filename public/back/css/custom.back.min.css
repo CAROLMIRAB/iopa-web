@@ -22161,7 +22161,7 @@ label.error {
 }
 
 textarea.form-control{
-  min-height: 150px;
+  min-height: 100px;
 }
 
 .invalid-feedback{

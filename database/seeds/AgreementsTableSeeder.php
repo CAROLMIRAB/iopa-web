@@ -18,12 +18,12 @@ class AgreementsTableSeeder extends Seeder
     {
         $now = now();
         $agreements = [
-            [1, 'fonasa', 'Fonasa', '', ''],
-            [2, 'isapres', 'Isapres', '', ''],
-            [3, 'convenios', 'Convenios', '', ''],
-            [4, 'promociones', 'Promociones', '', ''],
-            [5, 'aranceles', 'Arenceles', '', ''],
-            [6, 'medios-pagos', 'Medios de Pago', '', '']
+            [1, 'fonasa', 'Fonasa', '', '[]'],
+            [2, 'isapres', 'Isapres', '', '[]'],
+            [3, 'convenios', 'Convenios', '', '[]'],
+            [4, 'promociones', 'Promociones', '', '[]'],
+            [5, 'aranceles', 'Arenceles', '', '[]'],
+            [6, 'medios-pagos', 'Medios de Pago', '', '[]']
         ];
 
         $agreements = array_map(function ($agreement) use ($now) {

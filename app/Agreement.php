@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agreement extends Model
 {
-    protected $fillable = ['name', 'description', 'content']; 
+    protected $fillable = ['name', 'description', 'content','slug']; 
    
 }

@@ -6,11 +6,13 @@
         <div class="col-4 text-right">
             <button id="fonasa-btn-save" class="btn  btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Guardando...') }}">{{ __('Guardar Cambios') }}</button>
         </div>
-        <div class="col-12" ><hr class="my-4"></div>
+        <div class="col-12">
+            <hr class="my-4">
+        </div>
         <div class="col-8">
             <div class="form-group">
                 <label for="fonasa-title">{{ __('Titulo') }}</label>
-                <input id="fonasa-title" name="fonasa-title" class="form-control"></textarea>
+                <input id="fonasa-title" name="fonasa_title" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="fonasa-description">{{ __('Descripción') }}</label>
@@ -27,28 +29,28 @@
             </div>
         </div>
     </div>
-    <div class="field_wrapper">
-        <div class="field_row row">
-            <div class="col-11">
-                <div class="form-group">
-                    <label for="subtitle">{{ __('Titulo') }}</label>
-                    <input id="fonasa-subtitle" name="fonasa-subtitle[]" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <textarea id="fonasa-subdescription" name="fonasa-subdescription[]" class="form-control"></textarea>
-                </div>
+</form>
+<div class="field_wrapper">
+    <div class="field_row row">
+        <div class="col-11">
+            <div class="form-group form-group-sm">
+                <label for="fonasa-subtitle">{{ __('Titulo') }}</label>
+                <input id="fonasa-subtitle" name="fonasa_subtitle[]" class="form-control">
+                <input id="fonasa-slug" name="fonasa_slug" class="form-control">
             </div>
-            <div class="col-1">
-                <div class="form-group">
-                    <label for="subadd">{{ __(' ') }}</label>
-                    <button id="subadd" class="btn btn-icon btn-2 btn-primary add_button" type="button">
+            <div class="form-group form-group-sm">
+                <textarea id="fonasa-subdescription" name="fonasa_subdescription[]" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label for="subadd">{{ __(' ') }}</label>
+                <button id="subadd" class="btn btn-icon btn-2 btn-primary add_button" type="button">
                     <span class="btn-inner--icon">
                         <i class="ni ni-fat-add" style="font-size: 18px"></i>
                     </span>
-                    </button>
-                </div>
+                </button>
             </div>
-
         </div>
     </div>
-</form>
+</div>

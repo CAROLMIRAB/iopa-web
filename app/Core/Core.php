@@ -145,13 +145,16 @@ class Core
         return $image_url;
     }
 
-    public static function renderGes($request)
+    public static function renderGes($request, $arr)
     {
         $isapre = [];
         $ges = [];
         $account = [];
         $isapreges = $request->isapreges;
         $isaprecuenta = $request->isaprecuenta;
+
+        $array = json_decode($arr, true);
+
 
         foreach ($isapreges as $key => $n) {
             $ges[] = [
@@ -160,7 +163,7 @@ class Core
         }
 
         foreach ($isaprecuenta as $key => $n) {
-            $acount[] = [
+            $account[] = [
                 'name' => $isaprecuenta[$key]
             ];
         }
@@ -168,15 +171,44 @@ class Core
         $image_url = Core::uploadImage($request->file('isapre_image'));
 
         $isapre = [
-            'image' => $image_url,
-            'ges' => $ges,
-            'account' => [
-                'title' => $request->account_title,
-                'content' => $account
+            time() => [
+                'image' => asset('uploads/images') . '/' . $image_url,
+                'ges' => $ges,
+                'account' => [
+                    'title' => $request->account_title,
+                    'content' => $account
+                ]
             ]
         ];
 
-        return json_encode($isapre);
+
+        array_push($array, $isapre);
+
+
+        return ['full' => $array, 'isapre' => $isapre];
+
+    }
+
+
+    public static function renderFonasa($request, $arr)
+    {
+
+        $subfon = [];
+        $subtitle = $request->fonasa_subtitle;
+        $subdescription = $request->fonasa_subdescription;
+
+        $array = json_decode($arr, true);
+
+        $subfon = [
+            time() => [
+                'subtitle' => $subtitle,
+                'subdescription' => $subdescription
+            ]
+        ];
+
+        array_push($array, $subfon);
+
+        return ['full' => $array, 'fonasa' => $subfon];
 
     }
 }

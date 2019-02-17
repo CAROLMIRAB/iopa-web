@@ -22,36 +22,24 @@ var Agreement = function () {
     fieldHTML += '</div>';
     fieldHTML += '</div>'
 
-    function tableTr(number) {
+    function tableTr(img, ges, cuenta, cuenta_title, ky) {
         var tr = '<tr>'
-        tr += '<td width="40%">'
-        tr += '<div style="" id="isapre-image-preview-' + number + '" class="table-img-prev" class="">'
-        tr += '<label for="image-upload" id="isapre-image-label-' + number + '"><i class="ni ni-cloud-download-95"></i></label>'
-        tr += '<input type="file" name="isapre-image" id="isapre-image-' + number + '" class="isapre-image" accept="image/png, image/jpeg" />'
-        tr += '</div>'
+        tr += '<td width="35%">'
+        tr += '<img src="' + img + '" width="100%">'
         tr += ' </td>'
-        tr += '<td width="25%">'
-        tr += ' <ul class="is-ges">'
-        tr += '<li><input type="text" name="isapre-ges[]" />'
-        tr += '<a   class="add-ges-inp">'
-        tr += '<i class="ni ni-fat-add " style="font-size: 22px"></i>'
-        tr += ' </a>'
-        tr += '</li>'
+        tr += '<td width="30%">'
+        tr += '<ul class="is-ges">'
+        tr += ges
         tr += '</ul>'
         tr += ' </td>'
-        tr += '<td width="25%">'
+        tr += '<td width="30%">'
+        tr += cuenta_title
         tr += ' <ul class="is-cu">'
-        tr += '<li><input type="text" name="isapre-cuenta[]" />'
-        tr += ' <a class="add-cu-inp">'
-        tr += '<i class="ni ni-fat-add " style="font-size: 22px"></i>'
-        tr += '</a>'
-        tr += '</li>'
+        tr += cuenta
         tr += ' </ul>'
         tr += '</td>'
-        tr += '<td width="10%">'
-        tr += '<button type="button" class="btn btn-icon btn-2 btn-primary min-tr">'
-        tr += '<i class="ni ni-fat-delete" style="font-size: 18px"></i>'
-        tr += '</button>'
+        tr += '<td width="5%">'
+        tr += '<button class="btn btn-primary min-tr" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
         tr += '</td>'
         tr += '</tr>'
         return tr;
@@ -61,27 +49,35 @@ var Agreement = function () {
 
 
 
-        addTr: function () {
-            var maxField = 10;
-            var addButton = $('.add_tr');
-            var wrapper = $('.table-isapres tbody');
+        minTr: function () {
+            var wrapper = $('.table-isapres > tbody');
             var x = 1;
-
-
-            $(addButton).click(function () {
-                if (x < maxField) {
-                    var tr = tableTr(x);
-                    x++;
-                    $(wrapper).append(tr);
-                }
-            });
 
 
             $(wrapper).on('click', '.min-tr', function (e) {
                 e.preventDefault();
+                var tr = $(this).parents('tr').index() - 1;
+                var slug = $('#isapre_slug').val();
                 $(this).parents('tr').remove();
-                x--;
+                $.ajax({
+                    type: 'post',
+                    url: $('#isapre_add').data('route'),
+                    data: {
+                        index: $(this).data('key'),
+                        slug: slug
+                    },
+                    dataType: "json"
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addisapre').button('reset');
+                });
+                return false;
             });
+
         },
 
         addFon: function () {
@@ -182,21 +178,39 @@ var Agreement = function () {
                     contentType: false,
                     processData: false
                 }).done(function (data) {
+                    var cuenta_title = '';
+                    var cuenta = '';
+                    var image = ''
+                    var ges = '';
+                    var ky = '';
+                    var json = JSON.parse(data.data);
                     if (data.status == 400) {
-                        $.each(data.data, function (key, value) {
+                        $.each(json, function (key, value) {
                             $('.' + key + '-error').html(value);
                         });
                     }
                     if (data.status == 200) {
-                        $.each(JSON.parse(data.data), function (key, value) {
-                            if (key == 'ges') {
-                                $.each(value, function (keyy, valuee) {
-                                    //console.log(keyy);
-                                    console.log(valuee.name);
-                                });
-                            }
+                        console.log(json);
+                        $.each(json, function (k, val) {
+                            ky = k;
+                            image = val.image;
+                            $.each(val, function (key, value) {
+                                if (key == 'ges') {
+                                    $.each(value, function (keyg, valueg) {
+                                        ges += '<li>' + valueg.name + '</li>';
+                                    });
+                                }
+                                if (key == 'account') {
+                                    cuenta_title = value.title;
+                                    $.each(value.content, function (keyc, valuec) {
+                                        cuenta += '<li>' + valuec.name + '</li>';
+                                    });
+                                }
+                            });
                         });
 
+                        var tr = tableTr(image, ges, cuenta, cuenta_title, ky);
+                        $('.table-isapres tbody').append(tr);
                         toastr.success(data.message, '!Exitoso!');
                     }
                 }).fail(function (data) {
@@ -209,136 +223,33 @@ var Agreement = function () {
 
         },
 
-        editSurgery: function () {
-            var $form = $('#surgery');
-            var v = $('#surgery').validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 5
-                    },
-                    description: "required"
-                },
-                messages: {
-                    name: {
-                        required: "El título es un campo requerido",
-                        minlength: "Escriba un título más largo"
-                    },
-                    description: "No ha agregado contenido",
-                },
-                ignore: ":hidden, [contenteditable='true']:not([body])"
+
+
+        saveIsapre: function () {
+            var $form = $('#isapre');
+            $('#isapre-btn-save').click(function (e) {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("isapre"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#isapre-btn-save').button('reset');
+                });
+                return false;
             });
 
-            $('#btn-save').click(function (e) {
-                if ($form.valid()) {
-                    $(this).button('loading');
-                    var formData = new FormData(document.getElementById("surgery"));
-                    $.ajax({
-                        type: 'post',
-                        url: $form.attr('action'),
-                        data: formData,
-                        dataType: "json",
-                        cache: false,
-                        contentType: false,
-                        processData: false
-                    }).done(function (data) {
-                        if (data.status == 400) {
-                            $.each(data.data, function (key, value) {
-                                $('.' + key + '-error').html(value);
-                            });
-                        }
-                        if (data.status == 200) {
-                            toastr.success(data.message, '!Exitoso!');
-                        }
-                    }).fail(function (data) {
-                        toastr.error(data.message, '!Error!');
-                    }).always(function () {
-                        $('#btn-save').button('reset');
-                    });
-                    return false;
-                }
-            });
-
-            $('#body').summernote({
-                callbacks: {
-                    onChange: function (contents, $editable) {
-                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
-                        v.element(myElement);
-                    }
-                }
-            });
         },
 
-        createSurgery: function () {
-            var $form = $('#surgery');
-            var v = $('#surgery').validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 5
-                    },
-                    description: "required",
-                    image: "required"
-                },
-                messages: {
-                    name: {
-                        required: "El título es un campo requerido",
-                        minlength: "Escriba un título más largo"
-                    },
-                    description: "No ha agregado contenido",
-                    image: "No ha agregado una imagen"
-                },
-                ignore: ":hidden, [contenteditable='true']:not([body])"
-            });
-
-            $('#btn-save').click(function (e) {
-                if ($form.valid()) {
-                    $(this).button('loading');
-                    var formData = new FormData(document.getElementById("surgery"));
-                    $.ajax({
-                        type: 'post',
-                        url: $form.attr('action'),
-                        data: formData,
-                        dataType: "json",
-                        cache: false,
-                        contentType: false,
-                        processData: false
-                    }).done(function (data) {
-                        if (data.status == 400) {
-                            $.each(data.data, function (key, value) {
-                                $('.' + key + '-error').html(value);
-                            });
-                        }
-                        if (data.status == 200) {
-                            toastr.success(data.message, '!Exitoso!');
-                            $('#surgery')[0].reset();
-                            $("#description").summernote("reset");
-                            $("#preparation").summernote("reset");
-                            $("#indications").summernote("reset");
-                            $("#image-preview").css('background-image', '');
-                            $(".invalid-feedback").html('');
-                            $('#office').val(null).trigger('change');
-                            var html = $('#slug-url').data('slug');
-                            $('#slug-url').html(html);
-                        }
-                    }).fail(function (data) {
-                        toastr.error(data.message, '!Error!');
-                    }).always(function () {
-                        $('#btn-save').button('reset');
-                    });
-                    return false;
-                }
-            });
-
-            $('#body').summernote({
-                callbacks: {
-                    onChange: function (contents, $editable) {
-                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
-                        v.element(myElement);
-                    }
-                }
-            });
-        },
 
         imageUpload: function (image) {
             $.uploadPreview({

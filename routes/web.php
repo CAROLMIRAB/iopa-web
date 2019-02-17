@@ -342,6 +342,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@saveGes'
         ]);
 
+        Route::post('min-isapre', [
+            'as' => 'agreement.min-isapre',
+            'uses' => 'Back\AgreementController@unsetIsapre'
+        ]);
+
+        Route::post('save-isapre', [
+            'as' => 'agreement.save-isapre',
+            'uses' => 'Back\AgreementController@saveIsapres'
+        ]);
+
         Route::get('agreement', [
             'as' => 'agreement.view-agreement',
             'uses' => 'Back\AgreementController@viewAgreement'
@@ -379,4 +389,4 @@ Route::get('blog/{slug}', 'Front\PostController@viewFullPost')->name('post');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

@@ -94,7 +94,8 @@
         Agreement.addGes();
         Agreement.addCu();
         Agreement.imagesUp();
-        Agreement.addTr();
+        Agreement.minTr();
+        Agreement.saveIsapre();
         Agreement.isapreAdd();
 	});
 
