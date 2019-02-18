@@ -51,9 +51,9 @@ class AgreementController extends Controller
 
         } catch (\Exception $ex) {
             $data = [
+                'status' => 400,
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
-                'close' => __('Cerrar')
             ];
 
             return $data;
@@ -66,20 +66,20 @@ class AgreementController extends Controller
         try {
             $data = $this->agreementRepo->findFon($request->fonasa_slug);
             $datarender = Core::renderFonasa($request, $data->content);
-            $ges = $this->agreementRepo->addGes($request->isapre_slug, json_encode($datarender['full']));
+            $ges = $this->agreementRepo->addFonasa($request->fonasa_slug, json_encode($datarender['full']));
 
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
-                'message' => "Ha agregado Isapre de forma correcta",
-                'data' => json_encode($datarender['isapre'])
+                'message' => "Ha agregado Fonasa de forma correcta",
+                'data' => json_encode($datarender['fonasa'])
             ]);
 
         } catch (\Exception $ex) {
             $data = [
+                'status' => 400,
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
-                'close' => __('Cerrar')
             ];
 
             return $data;
@@ -87,10 +87,10 @@ class AgreementController extends Controller
 
     }
 
-    public function unsetIsapre(Request $request)
+    public function unsetFonasa(Request $request)
     {
         try {
-            $data = $this->agreementRepo->findGes($request->slug);
+            $data = $this->agreementRepo->findFon($request->slug);
             $arr = json_decode($data->content, true);
           
 
@@ -100,7 +100,7 @@ class AgreementController extends Controller
                     unset($arr[$key]);
                 }
             }
-            $ges = $this->agreementRepo->addGes($request->slug, json_encode($arr));
+            $ges = $this->agreementRepo->addFonasa($request->slug, json_encode($arr));
 
             
             return response()->json([
@@ -111,9 +111,43 @@ class AgreementController extends Controller
 
         } catch (\Exception $ex) {
             $data = [
+                'status' => 400,
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
-                'close' => __('Cerrar')
+            ];
+
+            return $data;
+        }
+
+    }
+
+
+    public function unsetIsapre(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findGes($request->slug);
+            $arr = json_decode($data->content, true);
+          
+            foreach ($arr as $key => $val) {
+                if (isset($val[$request->index])) {
+                    unset($arr[$key][$request->index]);
+                    unset($arr[$key]);
+                }
+            }
+
+            $ges = $this->agreementRepo->addGes($request->slug, json_encode($arr));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Isapre de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
             ];
 
             return $data;
@@ -124,7 +158,6 @@ class AgreementController extends Controller
     public function saveIsapres(Request $request)
     {
         try {
-
             $ges = $this->agreementRepo->changeIsapre($request->slug, $request->name, $request->description);
 
             return response()->json([
@@ -135,18 +168,14 @@ class AgreementController extends Controller
 
         } catch (\Exception $ex) {
             $data = [
+                'status' => 400,
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
-                'close' => __('Cerrar')
             ];
 
             return $data;
         }
-
     }
-
-
-
 }
 
 

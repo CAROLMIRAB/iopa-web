@@ -30,27 +30,41 @@
         </div>
     </div>
 </form>
-<div class="field_wrapper">
+<form action="{{ route('agreement.save-subfonasa') }}" method="post" id="fonasa_add" enctype="multipart/form-data" data-route="{{ route('agreement.min-fonasa') }}">
     <div class="field_row row">
         <div class="col-11">
             <div class="form-group form-group-sm">
                 <label for="fonasa-subtitle">{{ __('Titulo') }}</label>
-                <input id="fonasa-subtitle" name="fonasa_subtitle[]" class="form-control">
-                <input id="fonasa-slug" name="fonasa_slug" class="form-control">
+                <input id="fonasa-subtitle" name="fonasa_subtitle" class="form-control">
+                <input id="fonasa-slug" name="fonasa_slug" value="fonasa" class="form-control hidden" type="hidden">
             </div>
             <div class="form-group form-group-sm">
-                <textarea id="fonasa-subdescription" name="fonasa_subdescription[]" class="form-control"></textarea>
+                <textarea id="fonasa-subdescription" name="fonasa_subdescription" class="form-control"></textarea>
             </div>
         </div>
         <div class="col-1">
             <div class="form-group">
                 <label for="subadd">{{ __(' ') }}</label>
-                <button id="subadd" class="btn btn-icon btn-2 btn-primary add_button" type="button">
+                <button id="btn-addfonasa" class="btn btn-icon btn-2 btn-primary btn-sm" type="button" data-loading-text="<i class='fa fa-spinner'></i>">
                     <span class="btn-inner--icon">
                         <i class="ni ni-fat-add" style="font-size: 18px"></i>
                     </span>
                 </button>
             </div>
         </div>
+        <div class="col-12">
+            <table class="table align-items-center table-flush table-fonasa" style="width: 100%">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" width="20%" >TITULO</th>
+                        <th scope="col" width="75%">DESCRIPCIÓN</th>
+                        <th scope="col" width="5%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+              
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+</form>

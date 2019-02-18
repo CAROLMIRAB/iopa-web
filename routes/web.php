@@ -352,6 +352,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@saveIsapres'
         ]);
 
+        Route::post('save-subfonasa', [
+            'as' => 'agreement.save-subfonasa',
+            'uses' => 'Back\AgreementController@saveSubFonasa'
+        ]);
+
+        Route::post('min-fonasa', [
+            'as' => 'agreement.min-fonasa',
+            'uses' => 'Back\AgreementController@unsetFonasa'
+        ]);
+
         Route::get('agreement', [
             'as' => 'agreement.view-agreement',
             'uses' => 'Back\AgreementController@viewAgreement'
@@ -370,14 +380,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 
-    Route::get('create', [
-        'as' => 'create',
-        'uses' => 'Back\PostController@createPost'
-    ]);
-
-});
 
 
 Auth::routes();
@@ -387,6 +390,3 @@ Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 Route::get('blog/{slug}', 'Front\PostController@viewFullPost')->name('post');
 
 
-Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');

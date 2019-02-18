@@ -45,10 +45,10 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
+                                <div class="tab-pane fade active in" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
                                     @include('back.agreement.sections.fonasa')
                                 </div>
-                                <div class="tab-pane fade active in" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
+                                <div class="tab-pane fade" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
                                     @include('back.agreement.sections.isapres')
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
@@ -90,14 +90,14 @@
 		}
 	});
 	$(function(){
-        Agreement.addFon();
         Agreement.addGes();
         Agreement.addCu();
         Agreement.imagesUp();
         Agreement.minTr();
         Agreement.saveIsapre();
         Agreement.isapreAdd();
+        Agreement.fonasaAdd();
+        Agreement.minTrFonasa();
 	});
-
 </script>
 @endsection

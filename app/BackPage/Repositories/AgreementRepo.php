@@ -28,6 +28,15 @@ class AgreementRepo
         return $agreement;
     }
 
+    public function addFonasa($slug, $datarender)
+    {
+        $agreement = \DB::table('agreements')->where('slug', $slug)->update(
+            ['content' => $datarender]
+        );
+
+        return $agreement;
+    }
+
 
     public function changeIsapre($slug, $name, $description)
     {

@@ -69,7 +69,7 @@
     </div>
     <div class="col-12 text-right">
         <div class="form-group">
-            <button type="button" id="btn-addisapre" class="btn btn-primary"> Agregar</button>
+            <button type="button" id="btn-addisapre" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner'></i> {{ __('Agregando...') }}"> Agregar</button>
         </div>
     </div>
     <div class="col-12">

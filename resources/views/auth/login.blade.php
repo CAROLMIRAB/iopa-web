@@ -21,9 +21,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
             <div class="container px-4">
-                <a class="navbar-brand" href="../index.html">
-                    <img src="{{ asset('back/img/logo-iopa.png') }}"  />
-                  </a>
+                <img src="{{ asset('back/img/logo-iopa-white.png') }}" width="200">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -112,9 +110,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-6 text-left">
-                            <a class="text-light" href="{{ route('register') }}">
-                                <small>{{ __('Register') }}</small>
-                            </a>
+                            
                         </div>
                         <div class="col-6 text-right">
                             <a class="text-light" href="{{ route('password.request') }}">
