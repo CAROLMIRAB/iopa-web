@@ -4,6 +4,7 @@ namespace App\BackPage\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\Agreement;
+use Intervention\Image\Image;
 
 
 
@@ -38,12 +39,13 @@ class AgreementRepo
     }
 
 
-    public function changeIsapre($slug, $name, $description)
+    public function changeAgreement($slug, $name, $description, $image = null)
     {
         $agreement = \DB::table('agreements')->where('slug', $slug)->update(
             [
                 'name' => $name,
-                'description' => $description
+                'description' => $description,
+                'image' => $image
             ]
         );
 

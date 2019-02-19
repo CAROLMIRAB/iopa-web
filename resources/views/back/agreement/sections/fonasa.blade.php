@@ -1,10 +1,10 @@
-<form action="" method="post" id="fonasa" enctype="multipart/form-data">
+<form action="{{ route('agreement.save-fonasa') }}" method="post" id="fonasa" enctype="multipart/form-data">
     <div class="row">
         <div class="col-8 text-left">
             <h2 class="mb-0">{{ __('Fonasa') }}</h2>
         </div>
         <div class="col-4 text-right">
-            <button id="fonasa-btn-save" class="btn  btn-primary" type="submit" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Guardando...') }}">{{ __('Guardar Cambios') }}</button>
+            <button id="fonasa-btn-save" class="btn  btn-primary" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Guardando...') }}">{{ __('Guardar Cambios') }}</button>
         </div>
         <div class="col-12">
             <hr class="my-4">
@@ -23,13 +23,15 @@
             <div class="form-group ">
                 <label for="image">{{ __('Imagen') }}</label>
                 <div id="image-preview" style="border: #619DC9 3px dashed;">
-                    <label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
+                    <label for="image-upload" id="image-label">
+                        <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="fonasa-image" id="fonasa-image" accept="image/png, image/jpeg" />
                 </div>
             </div>
         </div>
     </div>
 </form>
+
 <form action="{{ route('agreement.save-subfonasa') }}" method="post" id="fonasa_add" enctype="multipart/form-data" data-route="{{ route('agreement.min-fonasa') }}">
     <div class="field_row row">
         <div class="col-11">

@@ -75,7 +75,10 @@ Route::get('sucursales/', [
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
-   
+    Route::get('register', [
+        'as' => 'auth.view-register',
+        'uses' => 'Auth\RegisterController@viewRegister'
+    ]);
 
     /************** ROUTES POST ******************/
     Route::group(['prefix' => 'noticias'], function () {
@@ -254,8 +257,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         ]);
     });
 
-     /************** ROUTES SPECIALTY ******************/
-     Route::group(['prefix' => 'especialidades'], function () {
+    /************** ROUTES SPECIALTY ******************/
+    Route::group(['prefix' => 'especialidades'], function () {
 
         Route::get('', [
             'as' => 'specialty.view-all-specialties',
@@ -334,8 +337,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     });
 
-     /************** ROUTES AGREEMENT ******************/
-     Route::group(['prefix' => 'convenios'], function () {
+    /************** ROUTES AGREEMENT ******************/
+    Route::group(['prefix' => 'convenios'], function () {
 
         Route::post('save-ges', [
             'as' => 'agreement.save-ges',
@@ -350,6 +353,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('save-isapre', [
             'as' => 'agreement.save-isapre',
             'uses' => 'Back\AgreementController@saveIsapres'
+        ]);
+
+        Route::post('save-fonasa', [
+            'as' => 'agreement.save-fonasa',
+            'uses' => 'Back\AgreementController@saveFonasa'
         ]);
 
         Route::post('save-subfonasa', [
@@ -367,7 +375,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@viewAgreement'
         ]);
 
-     });
+    });
 
 
     Route::post('slug/slug-create', [

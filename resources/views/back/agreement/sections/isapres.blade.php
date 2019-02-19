@@ -36,8 +36,9 @@
     </div>
     <div class="col-4">
         <h5>IMAGEN</h5>
-        <div style="" id="isapre-image-preview" class="table-img-prev" class="">
-            <label for="image-upload" id="isapre-image-label"><i class='ni ni-cloud-download-95'></i></label>
+        <div style="" id="isapre-image-preview" class="table-img-prev" >
+            <label for="image-upload" id="isapre-image-label">
+                <i class='ni ni-cloud-download-95 i-img'></i></label>
             <input type="file" name="isapre_image" id="isapre-image" class="isapre-image" accept="image/png, image/jpeg" />
         </div>
     </div>

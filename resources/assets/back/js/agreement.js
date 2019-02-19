@@ -35,7 +35,7 @@ var Agreement = function () {
         tr += ' </ul>'
         tr += '</td>'
         tr += '<td width="5%">'
-        tr += '<button class="btn btn-primary min-tr" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
+        tr += '<button class="btn btn-primary min-tr btn-sm" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
         tr += '</td>'
         tr += '</tr>'
         return tr;
@@ -268,8 +268,7 @@ var Agreement = function () {
         },
 
 
-
-        saveIsapre: function () {
+        saveFonasa: function () {
             var $form = $('#isapre');
             $('#isapre-btn-save').click(function (e) {
                 $(this).button('loading');
@@ -295,9 +294,58 @@ var Agreement = function () {
         },
 
 
+        saveIsapre: function () {
+            var $form = $('#isapre');
+            $('#isapre-btn-save').click(function (e) {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("isapre"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#isapre-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+        saveFonasa: function () {
+            var $form = $('#fonasa');
+            $('#fonasa-btn-save').click(function (e) {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("fonasa"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#fonasa-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+
         imageUpload: function (image) {
             $.uploadPreview({
-                input_field: "#image",
+                input_field: "#fonasa-image",
                 preview_box: "#image-preview",
                 label_field: "#image-label",
                 label_default: image,

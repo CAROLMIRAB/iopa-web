@@ -92,7 +92,7 @@ class AgreementController extends Controller
         try {
             $data = $this->agreementRepo->findFon($request->slug);
             $arr = json_decode($data->content, true);
-          
+
 
             foreach ($arr as $key => $val) {
                 if (isset($val[$request->index])) {
@@ -102,7 +102,7 @@ class AgreementController extends Controller
             }
             $ges = $this->agreementRepo->addFonasa($request->slug, json_encode($arr));
 
-            
+
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
@@ -127,7 +127,7 @@ class AgreementController extends Controller
         try {
             $data = $this->agreementRepo->findGes($request->slug);
             $arr = json_decode($data->content, true);
-          
+
             foreach ($arr as $key => $val) {
                 if (isset($val[$request->index])) {
                     unset($arr[$key][$request->index]);
@@ -158,12 +158,41 @@ class AgreementController extends Controller
     public function saveIsapres(Request $request)
     {
         try {
-            $ges = $this->agreementRepo->changeIsapre($request->slug, $request->name, $request->description);
+            $img = $request->file('image');
+
+            if (!isset($img)) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }
+
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description);
 
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
                 'message' => "Ha Modificado Isapre de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+
+    public function saveFonasa(Request $request)
+    {
+        try {
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description, $request->image);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha Modificado Fonasa de forma correcta"
             ]);
 
         } catch (\Exception $ex) {

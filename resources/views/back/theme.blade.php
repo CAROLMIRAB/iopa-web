@@ -23,15 +23,7 @@
   <!-- Sidenav -->
   @include("back.layouts.sidebar")
   <!-- Main content -->
-  <div class="main-content">
-    <!-- Top navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-      <div class="container-fluid">
-        <!-- Brand -->
-        <!--<a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>-->
-
-      </div>
-    </nav>
+  <div class="main-content">  
     <!-- Header -->
   @include('back.layouts.header')
     <!-- Page content -->
@@ -68,6 +60,10 @@
   <script src="{{ asset('back/js/build.back.min.js') }}"></script>
   <!-- Optional JS -->
   <script src="{{ asset('back/js/custom.back.min.js') }}"></script>
+  
+  <script>
+    Core.dropdown();
+  </script>
   @yield('scripts')
 </body>
 

@@ -377,6 +377,9 @@ var Doctors = function () {
                     $('.toggle-check').bootstrapToggle();
                     $(".datatable-doctors").css("width", "100%");
                 },
+                fnDrawCallback: function() {
+                    $('.toggle-check').bootstrapToggle();
+                },
                 "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
             });
             table.columns.adjust().draw();

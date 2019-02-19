@@ -84,20 +84,24 @@
  
 @section('scripts')
 <script>
+    var img ='<i class="ni ni-cloud-download-95 i-img"></i>';
     $.ajaxSetup({
 		headers: {
     	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		}
-	});
+    });
 	$(function(){
         Agreement.addGes();
         Agreement.addCu();
-        Agreement.imagesUp();
+        Agreement.imagesUp(img);
         Agreement.minTr();
         Agreement.saveIsapre();
         Agreement.isapreAdd();
         Agreement.fonasaAdd();
         Agreement.minTrFonasa();
+        Agreement.saveFonasa();
+        Agreement.imageUpload(img);
+
 	});
 </script>
 @endsection
