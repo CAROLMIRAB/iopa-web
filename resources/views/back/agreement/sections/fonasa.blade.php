@@ -12,11 +12,11 @@
         <div class="col-8">
             <div class="form-group">
                 <label for="fonasa-title">{{ __('Titulo') }}</label>
-                <input id="fonasa-title" name="fonasa_title" class="form-control"></textarea>
+                <input id="fonasa-title" name="fonasa_title" class="form-control" value="{{ isset($fonasa['name']) ? $fonasa['name'] : ''  }}">
             </div>
             <div class="form-group">
                 <label for="fonasa-description">{{ __('Descripción') }}</label>
-                <textarea id="fonasa-description" name="fonasa-description" class="form-control"></textarea>
+                <textarea id="fonasa-description" name="fonasa-description" class="form-control">{{ isset($fonasa['description']) ? $fonasa['description'] : '' }}</textarea>
             </div>
         </div>
         <div class="col-4">
@@ -58,13 +58,27 @@
             <table class="table align-items-center table-flush table-fonasa" style="width: 100%">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" width="20%" >TITULO</th>
+                        <th scope="col" width="20%">TITULO</th>
                         <th scope="col" width="75%">DESCRIPCIÓN</th>
                         <th scope="col" width="5%"></th>
                     </tr>
                 </thead>
                 <tbody>
-              
+                    @if(!empty($fonasa['content'])) @foreach ($fonasa['content'] as $key => $item)
+                    <tr>
+                        @foreach ($item as $ky => $it)
+                        <td width="20%">
+                            {{ $it['subtitle'] }}
+                        </td>
+                        <td width="75%">
+                            {{ $it['subdescription'] }}
+                        </td>
+                        <td width="5%">
+                            <button class="btn btn-primary btn-sm min-tr-fon" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
+                        </td>
+                        @endforeach
+                    </tr>
+                    @endforeach @endif
                 </tbody>
             </table>
         </div>

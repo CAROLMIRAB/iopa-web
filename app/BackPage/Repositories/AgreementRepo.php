@@ -62,4 +62,14 @@ class AgreementRepo
     }
 
 
+    public function findAll()
+    {
+        $agreement = Agreement::select('name', 'description', 'image', 'content', 'slug')
+            ->orderBy('id')
+            ->get();
+
+        return $agreement;
+    }
+
+
 }

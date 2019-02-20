@@ -12,12 +12,12 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="isapre-title">{{ __('Titulo') }}</label>
-                <input id="isapre_title" name="name" class="form-control">
+                <input id="isapre_title" name="name" value="{{ isset($isapre['name']) ? $isapre['name'] : ''   }}" class="form-control">
                 <input name="isapre_slug" class="hidden" value="isapres" type="hidden">
             </div>
             <div class="form-group">
                 <label for="isapre-description">{{ __('Descripción') }}</label>
-                <textarea id="isapre_description" name="description" class="form-control"></textarea>
+                <textarea id="isapre_description" name="description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-4">
         <h5>IMAGEN</h5>
-        <div style="" id="isapre-image-preview" class="table-img-prev" >
+        <div style="" id="isapre-image-preview" class="table-img-prev">
             <label for="image-upload" id="isapre-image-label">
                 <i class='ni ni-cloud-download-95 i-img'></i></label>
             <input type="file" name="isapre_image" id="isapre-image" class="isapre-image" accept="image/png, image/jpeg" />
@@ -84,18 +84,33 @@
                 </tr>
             </thead>
             <tbody>
+                @if(!empty($isapre['content'])) @foreach($isapre['content'] as $key => $item)
                 <tr>
-                    <td width="40%">
-
+                    @foreach ($item as $ky => $it)
+                    <td width="35%">
+                        <img src="{{ $it['image'] }}" width="100%">
                     </td>
                     <td width="30%">
-
+                        <ul>
+                            @foreach($it['ges'] as $val)
+                            <li>{{ $val['name'] }}</li>
+                            @endforeach
+                        </ul>
                     </td>
                     <td width="30%">
-
+                        <ul>
+                            <strong>{{ $it['account']['title'] }}</strong>
+                             @foreach($it['account']['content'] as $vl)
+                            <li>{{ $vl['name'] }}</li>
+                            @endforeach
+                        </ul>
                     </td>
-
+                    <td width="5%">
+                        <button class="btn btn-primary min-tr btn-sm" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
+                    </td>
+                    @endforeach
                 </tr>
+                @endforeach @endif
             </tbody>
         </table>
     </div>

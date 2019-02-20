@@ -32,8 +32,32 @@ class AgreementController extends Controller
 
     public function viewAgreement()
     {
-        return view('back.agreement.agreement');
+        $data = $this->agreementRepo->findAll();
+        $datarender = $this->agreementCollection->renderData($data);
+        return view('back.agreement.agreement', compact('datarender'));
     }
+
+    public function showAgreement()
+    {
+        try {
+            $data = $this->agreementRepo->findAll();
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Se ha encontrado",
+                'data' => json_encode($data)
+            ]);
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
 
     public function saveGes(Request $request)
     {

@@ -342,6 +342,51 @@ var Agreement = function () {
             });
         },
 
+        showAgreements: function () {
+            $.ajax({
+                type: 'post',
+                url: $('.agreements-content').data('route'),
+                dataType: "json"
+            }).done(function (data) {
+                var ky = '';
+                    var cuenta = '';
+                    var cuenta_title = '';
+                    var ges = '';
+                    var image = '';
+                    if (data.status == 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status == 200) {
+                        var json = JSON.parse(data.data);
+                        $.each(json, function (k, val) {
+                            ky = k;
+                            image = val.image;
+                            $.each(val, function (key, value) {
+                                if (key == 'ges') {
+                                    $.each(value, function (keyg, valueg) {
+                                        ges += '<li>' + valueg.name + '</li>';
+                                    });
+                                }
+                                if (key == 'account') {
+                                    cuenta_title = value.title;
+                                    $.each(value.content, function (keyc, valuec) {
+                                        cuenta += '<li>' + valuec.name + '</li>';
+                                    });
+                                }
+                            });
+                        });
+                        var tr = tableTr(image, ges, cuenta, cuenta_title, ky);
+                        $('.table-isapres tbody').append(tr);
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                toastr.success(data.message, '!Exitoso!');
+            }).fail(function (data) {
+                toastr.error(data.message, '!Error!');
+            });
+            return false;
+        },
+
+
 
         imageUpload: function (image) {
             $.uploadPreview({

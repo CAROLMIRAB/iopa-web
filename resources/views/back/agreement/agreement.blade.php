@@ -1,6 +1,6 @@
 @extends('back.theme') 
 @section('content')
-<div class="col-xl-12 mb-5 mb-xl-0">
+<div class="col-xl-12 mb-5 mb-xl-0 agreements-content" data-route="{{ route('agreement.show-agreement') }}">
     <div class="card shadow">
         <div class="card-header bg-transparent">
             <div class="row align-items-center">
@@ -46,10 +46,10 @@
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active in" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
-                                    @include('back.agreement.sections.fonasa')
+                                    @include('back.agreement.sections.fonasa', ['fonasa' => isset($datarender[0]['fonasa']) ? $datarender[0]['fonasa'] : ''])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
-                                    @include('back.agreement.sections.isapres')
+                                    @include('back.agreement.sections.isapres', ['isapre' => isset($datarender[1]['isapres']) ? $datarender[1]['isapres'] : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
                                     <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown

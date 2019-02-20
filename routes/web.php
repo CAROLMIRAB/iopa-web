@@ -375,6 +375,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@viewAgreement'
         ]);
 
+        Route::get('show-agreement', [
+            'as' => 'agreement.show-agreement',
+            'uses' => 'Back\AgreementController@showAgreement'
+        ]);
+
     });
 
 
