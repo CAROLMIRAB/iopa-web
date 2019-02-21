@@ -52,9 +52,7 @@
                                     @include('back.agreement.sections.isapres', ['isapre' => isset($datarender[1]['isapres']) ? $datarender[1]['isapres'] : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
-                                    <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                                        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                                        @include('back.agreement.sections.convenios', ['convenio' => isset($datarender[2]['convenios']) ? $datarender[2]['convenios'] : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-4" role="tabpanel" aria-labelledby="tabs-text-3-tab">
                                     <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
@@ -101,6 +99,7 @@
         Agreement.minTrFonasa();
         Agreement.saveFonasa();
         Agreement.imageUpload(img);
+        Agreement.conveniosDropzone();
 
 	});
 </script>

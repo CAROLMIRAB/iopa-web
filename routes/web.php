@@ -380,6 +380,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@showAgreement'
         ]);
 
+        Route::post('save-images', [
+            'as' => 'agreement.save-images',
+            'uses' => 'Back\AgreementController@saveImageConvenios'
+        ]);
+
     });
 
 

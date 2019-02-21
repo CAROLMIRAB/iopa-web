@@ -349,44 +349,42 @@ var Agreement = function () {
                 dataType: "json"
             }).done(function (data) {
                 var ky = '';
-                    var cuenta = '';
-                    var cuenta_title = '';
-                    var ges = '';
-                    var image = '';
-                    if (data.status == 400) {
-                        toastr.error(data.message, '!Error!');
-                    }
-                    if (data.status == 200) {
-                        var json = JSON.parse(data.data);
-                        $.each(json, function (k, val) {
-                            ky = k;
-                            image = val.image;
-                            $.each(val, function (key, value) {
-                                if (key == 'ges') {
-                                    $.each(value, function (keyg, valueg) {
-                                        ges += '<li>' + valueg.name + '</li>';
-                                    });
-                                }
-                                if (key == 'account') {
-                                    cuenta_title = value.title;
-                                    $.each(value.content, function (keyc, valuec) {
-                                        cuenta += '<li>' + valuec.name + '</li>';
-                                    });
-                                }
-                            });
+                var cuenta = '';
+                var cuenta_title = '';
+                var ges = '';
+                var image = '';
+                if (data.status == 400) {
+                    toastr.error(data.message, '!Error!');
+                }
+                if (data.status == 200) {
+                    var json = JSON.parse(data.data);
+                    $.each(json, function (k, val) {
+                        ky = k;
+                        image = val.image;
+                        $.each(val, function (key, value) {
+                            if (key == 'ges') {
+                                $.each(value, function (keyg, valueg) {
+                                    ges += '<li>' + valueg.name + '</li>';
+                                });
+                            }
+                            if (key == 'account') {
+                                cuenta_title = value.title;
+                                $.each(value.content, function (keyc, valuec) {
+                                    cuenta += '<li>' + valuec.name + '</li>';
+                                });
+                            }
                         });
-                        var tr = tableTr(image, ges, cuenta, cuenta_title, ky);
-                        $('.table-isapres tbody').append(tr);
-                        toastr.success(data.message, '!Exitoso!');
-                    }
+                    });
+                    var tr = tableTr(image, ges, cuenta, cuenta_title, ky);
+                    $('.table-isapres tbody').append(tr);
+                    toastr.success(data.message, '!Exitoso!');
+                }
                 toastr.success(data.message, '!Exitoso!');
             }).fail(function (data) {
                 toastr.error(data.message, '!Error!');
             });
             return false;
         },
-
-
 
         imageUpload: function (image) {
             $.uploadPreview({
@@ -397,6 +395,70 @@ var Agreement = function () {
                 label_selected: image
             });
         },
+
+        conveniosDropzone: function () {
+            Dropzone.options.myAwesomeDropzone = {
+                paramName: "file",
+                maxFilesize: 30,
+                url: 'UploadImages',
+                previewsContainer: "#dropzone-previews",
+                uploadMultiple: true,
+                parallelUploads: 5,
+                maxFiles: 30,
+                addRemoveLinks: true,
+                init: function () {
+                    var cd;
+                    this.on("success", function (file, response) {
+                        $('.dz-progress').hide();
+                        $('.dz-size').hide();
+                        $('.dz-error-mark').hide();
+                        console.log(response);
+                        console.log(file);
+                        cd = response;
+                    });
+                    this.on("removedfile", function (file) {
+
+                        var rmvFile = "";
+                        for (var f = 0; f < fileList.length; f++) {
+                            if (fileList[f].fileName == file.name) {
+                                rmvFile = fileList[f].serverFileName;
+                            }
+                        }
+
+                        if (rmvFile) {
+                            $.ajax({
+                                url: path, //your php file path to remove specified image
+                                type: "POST",
+                                data: {
+                                    filenamenew: rmvFile,
+                                    type: 'delete',
+                                },
+                            });
+                        }
+                        /*  var removeButton = Dropzone.createElement("<a href='#'>Remove file</a>");
+                          var _this = this;
+  
+                          if (currentFile) {
+                              this.removeFile(currentFile);
+                          }
+                          currentFile = file;
+                          removeButton.addEventListener("click", function (e) {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              _this.removeFile(file);
+                              var name = "largeFileName=" + cd.pi.largePicPath + "&smallFileName=" + cd.pi.smallPicPath;
+                              $.ajax({
+                                  type: 'POST',
+                                  url: 'DeleteImage',
+                                  data: name,
+                                  dataType: 'json'
+                              });
+                          });
+                          file.previewElement.appendChild(removeButton);*/
+                    });
+                }
+            };
+        }
 
     }
 }();

@@ -184,7 +184,7 @@ class AgreementController extends Controller
         try {
             $img = $request->file('image');
 
-            if (!isset($img)) {
+            if (isset($img)) {
                 $image_url = Core::uploadImage($request->file('image'));
             }
 
@@ -218,6 +218,37 @@ class AgreementController extends Controller
                 'title' => '¡Exitoso!',
                 'message' => "Ha Modificado Fonasa de forma correcta"
             ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+    public function saveImageConvenios(Request $request)
+    {
+        try {
+
+            $img = $request->file('file');
+
+            if (isset($img)) {
+                $image_url = Core::uploadImage($request->file('file'));
+
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha subido una imagen forma correcta",
+                ]);
+            }
+
+           // $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description);
+
+            
 
         } catch (\Exception $ex) {
             $data = [
