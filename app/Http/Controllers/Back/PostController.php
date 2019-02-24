@@ -10,7 +10,7 @@ use App\BackPage\Collections\PostCollection;
 use Yajra\Datatables\Datatables;
 use App\Core\Core;
 use Validator;
-//use Newsletter;
+
 
 
 class PostController extends Controller
@@ -246,6 +246,13 @@ class PostController extends Controller
 
             return $ex;
         }
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $post = $this->postRepo->changeStatusById($request->status, $request->id);
+       
+        return $post;
     }
 
 }

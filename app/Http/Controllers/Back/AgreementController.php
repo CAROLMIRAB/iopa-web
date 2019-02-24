@@ -1,0 +1,265 @@
+<?php
+
+namespace App\Http\Controllers\Back;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\BackPage\Repositories\AgreementRepo;
+use App\BackPage\Collections\AgreementCollection;
+use Yajra\DataTables\DataTables;
+use App\Core\Core;
+use Validator;
+use App\Agreement;
+
+
+class AgreementController extends Controller
+{
+
+    private $agreementRepo;
+    private $agreementCollection;
+
+    /**
+     * Class construct 
+     * 
+     * @return void
+     */
+    public function __construct(AgreementRepo $agreementRepo, AgreementCollection $agreementCollection)
+    {
+        $this->agreementRepo = $agreementRepo;
+        $this->agreementCollection = $agreementCollection;
+    }
+
+    public function viewAgreement()
+    {
+        $data = $this->agreementRepo->findAll();
+        $datarender = $this->agreementCollection->renderData($data);
+        return view('back.agreement.agreement', compact('datarender'));
+    }
+
+    public function showAgreement()
+    {
+        try {
+            $data = $this->agreementRepo->findAll();
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Se ha encontrado",
+                'data' => json_encode($data)
+            ]);
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+
+    public function saveGes(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findGes($request->isapre_slug);
+            $datarender = Core::renderGes($request, $data->content);
+            $ges = $this->agreementRepo->addGes($request->isapre_slug, json_encode($datarender['full']));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Isapre de forma correcta",
+                'data' => json_encode($datarender['isapre'])
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
+    public function saveSubFonasa(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findFon($request->fonasa_slug);
+            $datarender = Core::renderFonasa($request, $data->content);
+            $ges = $this->agreementRepo->addFonasa($request->fonasa_slug, json_encode($datarender['full']));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Fonasa de forma correcta",
+                'data' => json_encode($datarender['fonasa'])
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
+    public function unsetFonasa(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findFon($request->slug);
+            $arr = json_decode($data->content, true);
+
+
+            foreach ($arr as $key => $val) {
+                if (isset($val[$request->index])) {
+                    unset($arr[$key][$request->index]);
+                    unset($arr[$key]);
+                }
+            }
+            $ges = $this->agreementRepo->addFonasa($request->slug, json_encode($arr));
+
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Isapre de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
+
+    public function unsetIsapre(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findGes($request->slug);
+            $arr = json_decode($data->content, true);
+
+            foreach ($arr as $key => $val) {
+                if (isset($val[$request->index])) {
+                    unset($arr[$key][$request->index]);
+                    unset($arr[$key]);
+                }
+            }
+
+            $ges = $this->agreementRepo->addGes($request->slug, json_encode($arr));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Isapre de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
+    public function saveIsapres(Request $request)
+    {
+        try {
+            $img = $request->file('image');
+
+            if (isset($img)) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }
+
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha Modificado Isapre de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+
+    public function saveFonasa(Request $request)
+    {
+        try {
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description, $request->image);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha Modificado Fonasa de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+    public function saveImageConvenios(Request $request)
+    {
+        try {
+
+            $img = $request->file('file');
+
+            if (isset($img)) {
+                $image_url = Core::uploadImage($request->file('file'));
+
+                return response()->json([
+                    'status' => 200,
+                    'title' => '¡Exitoso!',
+                    'message' => "Ha subido una imagen forma correcta",
+                ]);
+            }
+
+           // $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description);
+
+            
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+}
+
+

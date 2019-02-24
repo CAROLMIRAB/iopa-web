@@ -10,11 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('', function () {
-    return redirect()->route('post.view-all-posts');
-});
 
-Route::get('home', [
+
+Route::get('', [
     'as' => 'home',
     'uses' => 'Front\HomeController@home'
 ]);
@@ -24,6 +22,15 @@ Route::get('theme', [
     'uses' => 'Front\PostController@viewTheme'
 ]);
 
+Route::get('404', [
+    'as' => '404',
+    'uses' => 'Back\ErrorController@notFound'
+]);
+
+Route::get('500', [
+    'as' => '500',
+    'uses' => 'Back\ErrorController@fatal'
+]);
 
 Route::get('entradas/{slug}', [
     'as' => 'post.viewpost',
@@ -46,6 +53,11 @@ Route::get('cirugias/', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
+Route::get('especialidades/', [
+    'as' => 'specialty.viewposts',
+    'uses' => 'Front\PostController@viewFullPost'
+]);
+
 Route::get('examenes/', [
     'as' => 'exam.viewposts',
     'uses' => 'Front\PostController@viewFullPost'
@@ -61,8 +73,12 @@ Route::get('sucursales/', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
+    Route::get('register', [
+        'as' => 'auth.view-register',
+        'uses' => 'Auth\RegisterController@viewRegister'
+    ]);
 
     /************** ROUTES POST ******************/
     Route::group(['prefix' => 'noticias'], function () {
@@ -95,6 +111,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit', [
             'as' => 'post.edit',
             'uses' => 'Back\PostController@editPost'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'post.change-status',
+            'uses' => 'Back\PostController@changeStatus'
         ]);
 
     });
@@ -136,6 +157,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('store-img', [
             'as' => 'doctor.storeimg',
             'uses' => 'Back\DoctorController@uploadImage'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'doctor.change-status',
+            'uses' => 'Back\DoctorController@changeStatus'
         ]);
 
     });
@@ -231,6 +257,45 @@ Route::group(['prefix' => 'admin'], function () {
         ]);
     });
 
+    /************** ROUTES SPECIALTY ******************/
+    Route::group(['prefix' => 'especialidades'], function () {
+
+        Route::get('', [
+            'as' => 'specialty.view-all-specialties',
+            'uses' => 'Back\SpecialtyController@viewAllSpecialties'
+        ]);
+
+        Route::get('all-specialties', [
+            'as' => 'specialty.all-specialties',
+            'uses' => 'Back\SpecialtyController@allSpecialties'
+        ]);
+
+        Route::get('nueva', [
+            'as' => 'specialty.createview',
+            'uses' => 'Back\SpecialtyController@viewCreateSpecialty'
+        ]);
+
+        Route::get('editar', [
+            'as' => 'specialty.editview',
+            'uses' => 'Back\SpecialtyController@viewEditSpecialty'
+        ]);
+
+        Route::post('store', [
+            'as' => 'specialty.store',
+            'uses' => 'Back\SpecialtyController@saveCreateSpecialty'
+        ]);
+
+        Route::post('edit', [
+            'as' => 'specialty.edit',
+            'uses' => 'Back\SpecialtyController@editSpecialty'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'specialty.change-status',
+            'uses' => 'Back\SpecialtyController@changeStatus'
+        ]);
+    });
+
 
     /************** ROUTES EXAMS ******************/
     Route::group(['prefix' => 'examenes'], function () {
@@ -265,6 +330,61 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'Back\ExamController@editExam'
         ]);
 
+        Route::post('change-status', [
+            'as' => 'exam.change-status',
+            'uses' => 'Back\ExamController@changeStatus'
+        ]);
+
+    });
+
+    /************** ROUTES AGREEMENT ******************/
+    Route::group(['prefix' => 'convenios'], function () {
+
+        Route::post('save-ges', [
+            'as' => 'agreement.save-ges',
+            'uses' => 'Back\AgreementController@saveGes'
+        ]);
+
+        Route::post('min-isapre', [
+            'as' => 'agreement.min-isapre',
+            'uses' => 'Back\AgreementController@unsetIsapre'
+        ]);
+
+        Route::post('save-isapre', [
+            'as' => 'agreement.save-isapre',
+            'uses' => 'Back\AgreementController@saveIsapres'
+        ]);
+
+        Route::post('save-fonasa', [
+            'as' => 'agreement.save-fonasa',
+            'uses' => 'Back\AgreementController@saveFonasa'
+        ]);
+
+        Route::post('save-subfonasa', [
+            'as' => 'agreement.save-subfonasa',
+            'uses' => 'Back\AgreementController@saveSubFonasa'
+        ]);
+
+        Route::post('min-fonasa', [
+            'as' => 'agreement.min-fonasa',
+            'uses' => 'Back\AgreementController@unsetFonasa'
+        ]);
+
+        Route::get('agreement', [
+            'as' => 'agreement.view-agreement',
+            'uses' => 'Back\AgreementController@viewAgreement'
+        ]);
+
+        Route::get('show-agreement', [
+            'as' => 'agreement.show-agreement',
+            'uses' => 'Back\AgreementController@showAgreement'
+        ]);
+
+        Route::post('save-images', [
+            'as' => 'agreement.save-images',
+            'uses' => 'Back\AgreementController@saveImageConvenios'
+        ]);
+
     });
 
 
@@ -273,27 +393,12 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'Back\CoreController@titleAndSlug'
     ]);
 
-    Route::get('404', [
-        'as' => '404',
-        'uses' => 'Back\ErrorController@backNotFound'
-    ]);
 
-    Route::get('500', [
-        'as' => '500',
-        'uses' => 'Back\ErrorController@backFatal'
-    ]);
 
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 
-    Route::get('create', [
-        'as' => 'create',
-        'uses' => 'Back\PostController@createPost'
-    ]);
-
-});
 
 
 Auth::routes();
@@ -301,4 +406,5 @@ Auth::routes();
 Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 
 Route::get('blog/{slug}', 'Front\PostController@viewFullPost')->name('post');
+
 

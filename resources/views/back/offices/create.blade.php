@@ -55,11 +55,7 @@
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
 					</div>
 				</div>
-			
-
 			</div>
-
-
 		</div>
 	</div>
 	{{ csrf_field() }}
@@ -75,7 +71,7 @@
 		Offices.slug();
 		Offices.imageUpload(image); 
 		Offices.eliminateMessages();
-		Offices. createOffice();
+		Offices.createOffice();
 	});
 
 </script>

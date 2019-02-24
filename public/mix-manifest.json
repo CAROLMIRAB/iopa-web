@@ -1,9 +1,9 @@
 {
-    "/front/css/app.css": "/front/css/app.css?id=3dac14f6c0afecb905ea",
-    "/back/css/build.back.min.css": "/back/css/build.back.min.css?id=29e42f2b86f68c88f580",
-    "/back/css/custom.back.min.css": "/back/css/custom.back.min.css?id=4e8d36455965cf709fe5",
-    "/back/js/build.back.min.js": "/back/js/build.back.min.js?id=6ff51da3f61d8b0de108",
-    "/back/js/custom.back.min.js": "/back/js/custom.back.min.js?id=b29365b90d338bf8c832",
+    "/front/css/app.css": "/front/css/app.css?id=a6166d14037f200e590b",
+    "/back/css/build.back.min.css": "/back/css/build.back.min.css?id=1e52cb9e347bb8ca0a29",
+    "/back/css/custom.back.min.css": "/back/css/custom.back.min.css?id=104e2efdc1286182b9c7",
+    "/back/js/build.back.min.js": "/back/js/build.back.min.js?id=268f131474ad4014be04",
+    "/back/js/custom.back.min.js": "/back/js/custom.back.min.js?id=877270d6491bc90b73a0",
     "/front/js/front.min.js": "/front/js/front.min.js?id=e7822dd77055af75a779",
-    "/front/js/main.min.js": "/front/js/main.min.js?id=577ee47179787aaab8b7"
+    "/front/js/main.min.js": "/front/js/main.min.js?id=a7d3d3b6e032688f1d26"
 }

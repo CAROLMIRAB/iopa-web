@@ -31,7 +31,7 @@ class DoctorRepo
 
     public function showAllDoctors()
     {
-        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file','doctors.created_at', 'doctors.email', 'doctors.rut', 'doctors.slug')
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'lastname', 'phone', 'excerpt', 'file','doctors.created_at', 'doctors.email', 'doctors.rut', 'doctors.slug', 'doctors.status')
             ->orderBy('id', 'DESC')
             ->get();
         return $doctor;
@@ -39,18 +39,13 @@ class DoctorRepo
 
     public function showDoctorSlug($slug)
     {
-        $doctor = Doctor::select('doctors.id', 'doctors.name', 'doctors.slug','lastname', 'phone', 'excerpt', 'file', 'email', 'rut', 'doctors.created_at')
+        $doctor = Doctor::select('doctors.id', 'doctors.name', 'doctors.slug','lastname', 'phone', 'excerpt', 'file', 'email', 'rut', 'doctors.created_at', 'doctors.status')
             ->orderBy('id', 'DESC')
             ->where('doctors.slug', $slug)
             ->first();
         return $doctor;
     }
 
-    public function showAllSpecialties()
-    {
-        $specialty = Specialty::orderBy('name', 'ASC')->get();
-        return $specialty;
-    }
 
     public function showAllOffices()
     {
@@ -64,7 +59,18 @@ class DoctorRepo
             ->where('doctor_office.doctor_id', $id)
             ->orderBy('name', 'ASC')
             ->get();
+
         return $office;
+    }
+
+    public function showSpecialtiesDoctor($id)
+    {
+        $specialty = Specialty::leftJoin('doctor_specialty', 'specialties.id', '=', 'doctor_specialty.specialty_id')
+            ->where('doctor_specialty.doctor_id', $id)
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        return $specialty;
     }
 
     public function editDoctorById($data, $id, $offices, $specialties)
@@ -74,6 +80,12 @@ class DoctorRepo
         $doc->doctor_office()->sync($offices);
         $doc->doctor_specialty()->sync($specialties);
  
+        return $doctor;
+    }
+
+    public function changeStatusById($status, $id)
+    { 
+        $doctor = \DB::table('doctors')->where('id', $id)->update(['status' => $status]);
         return $doctor;
     }
 }

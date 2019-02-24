@@ -16,13 +16,14 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-xl-12">
-                    <table id="table-posts" class="table-flush datatable-doctors hover" role="grid" data-route="{{ route('doctor.all-doctors') }}">
+                    <table id="table-doctors" class="table-flush datatable-doctors hover" role="grid" data-route="{{ route('doctor.all-doctors') }}" data-route-status="{{ route('doctor.change-status') }}">
                         <thead class="thead-light">
                             <tr>
                                 <th class="sorting" width="20%" >{{ __('') }}</th>
                                 <th class="no-sort" width="15%" >{{ __('Nombre') }}</th>
                                 <th class="sorting" width="10%" >{{ __('Teléfono') }}</th>
                                 <th class="sorting" width="10%" >{{ __('Email') }}</th>
+                                <th class="sorting" width="10%" >{{ __('Estado') }}</th>
                             </tr>
                         </thead>
                     </table>
@@ -41,7 +42,8 @@
 		}
 	});
 	$(function(){
-	Doctors.allDoctors();
+    Doctors.allDoctors();
+    Doctors.changeStatus();
 	});
 
 </script>

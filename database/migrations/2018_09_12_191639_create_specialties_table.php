@@ -16,6 +16,9 @@ class CreateSpecialtiesTable extends Migration
         Schema::create('specialties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->text('body');
+            $table->string('slug', 128)->unique();
+            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
         });
     }

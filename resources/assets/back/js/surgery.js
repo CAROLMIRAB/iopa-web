@@ -217,9 +217,9 @@ var Surgery = function () {
                         render: function (data, type, row, meta) {
                             var button;
                             if (data == "DRAFT") {
-                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Publicado" data-off="No publicado" data-onstyle="info" data-size="small">';
+                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Publicado" data-off="Borrador" data-onstyle="info" data-size="small">';
                             } else {
-                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Publicado" data-off="No publicado"  data-onstyle="info" data-size="small">';
+                                button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Publicado" data-off="Borrador"  data-onstyle="info" data-size="small">';
                             }
                             return button;
                         }
@@ -243,6 +243,9 @@ var Surgery = function () {
                 fnInitComplete: function () {
                     $('.toggle-check').bootstrapToggle();
                     $(".datatable-surgeries").css("width", "100%");
+                },
+                fnDrawCallback: function() {
+                    $('.toggle-check').bootstrapToggle();
                 },
                 "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
             });
