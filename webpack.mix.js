@@ -5,8 +5,25 @@ mix.webpackConfig({
 
     module: {
         rules: [
+            { 
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+                loader: "url-loader?limit=10000&minetype=application/font-woff",
+                options: {
+                    name: path => {
+                        if (!/node_modules|bower_components|plugins/.test(path)) {
+                            return '/fonts/[name].[ext]?[hash]';
+                        }
+
+                        return '/fonts/vendor/' + path
+                            .replace(/\\/g, '/')
+                            .replace(
+                                /((.*(node_modules|bower_components|plugins))|fonts|font|assets)\//g, ''
+                            ) + '?[hash]'
+                    }
+                }
+             },
             {
-                test: /\.(woff2?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
                 options: {
                     name: path => {
