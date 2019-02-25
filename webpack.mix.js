@@ -104,7 +104,8 @@ mix.styles([
     'bower_components/datatables.net-dt/css/jquery.dataTables.css',
     'node_modules/toastr/toastr.scss',
     'bower_components/bootstrap-toggle/css/bootstrap-toggle.css',
-    'node_modules/dropzone/dist/min/dropzone.min.css'
+    'node_modules/dropzone/dist/min/dropzone.min.css',
+    'plugins/jquery-ui/jquery-ui.js'
 ], 'public/back/css/build.back.min.css').version();
 
 mix.styles([
@@ -127,7 +128,8 @@ mix.scripts([
     'node_modules/toastr/toastr.js',
     'node_modules/jquery-validation/dist/jquery.validate.js',
     'bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js',
-    'node_modules/dropzone/dist/min/dropzone.min.js'
+    'node_modules/dropzone/dist/min/dropzone.min.js',
+    'plugins/jquery-ui/jquery-ui.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([

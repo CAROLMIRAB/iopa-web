@@ -100,6 +100,8 @@
         Agreement.saveFonasa();
         Agreement.imageUpload(img);
         Agreement.conveniosDropzone();
+        Agreement.imagesUpCon();
+        Core.sortableImg();
 
 	});
 </script>

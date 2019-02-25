@@ -18,7 +18,7 @@
 				<div class="form-group">
 					<input size="65" type="text" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
 					<div class="example-text">
-					<span class="url-example"><strong> Url:</strong> 
+						<span class="url-example"><strong> Url:</strong> 
 					<a href="" data-slug="{{ route('specialty.viewposts') }}" id="slug-url">{{ route('specialty.viewposts') }}/</a></span>
 					</div>
 				</div>
@@ -43,6 +43,13 @@
 								<option value="PUBLISHED">Publicado</option>
 								<option value="DRAFT">Borrador</option>
 							</select>
+				</div>
+				<div class="form-group">
+					<label for="image">{{ __('Imagen') }}</label>
+					<div id="image-preview" style="border: #619DC9 3px dashed;">
+						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
+						<input type="file" name="image" id="image" accept="image/png, image/jpeg" required/>
+					</div>
 				</div>
 
 			</div>

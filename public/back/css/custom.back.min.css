@@ -22256,3 +22256,63 @@ textarea.form-control{
   color: #619DC9;
   font-size: 40px;
 }
+
+.image-preview-class{
+  width: 100%;
+  height: 150px;
+  border: 3px dashed rgb(66, 168, 208) !important;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+}
+
+.image-preview-class input {
+  line-height: 200px;
+  font-size: 200px;
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+}
+
+.image-preview-class label{
+  position: absolute;
+    z-index: 5;
+    opacity: 0.9;
+    cursor: pointer;
+    color: #2d4a9b;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+}
+
+#sortable li{
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#sortable{
+	list-style: none;
+	border: solid 4px #525f7f;
+	margin: 0;
+	padding: 20px;
+	width: 100%;
+}
+
+.box-image{
+			height: 180px;
+			border: solid 2px #999;
+			background: #eee;
+			width: 100%;
+			padding: 10px;
+			overflow: hidden;
+      overflow-y: scroll;
+}

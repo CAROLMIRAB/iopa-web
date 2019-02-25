@@ -161,6 +161,16 @@ var Agreement = function () {
             });
         },
 
+        imagesUpCon: function (image) {
+            $.uploadPreview({
+                input_field: "#convenio-image",
+                preview_box: "#convenio-image-preview",
+                label_field: "#convenio-mage-label",
+                label_default: image,
+                label_selected: image
+            });
+        },
+
         imagesUp: function (image) {
             $.uploadPreview({
                 input_field: "#isapre-image",
@@ -266,33 +276,6 @@ var Agreement = function () {
                 return false;
             });
         },
-
-
-        saveFonasa: function () {
-            var $form = $('#isapre');
-            $('#isapre-btn-save').click(function (e) {
-                $(this).button('loading');
-                var formData = new FormData(document.getElementById("isapre"));
-                $.ajax({
-                    type: 'post',
-                    url: $form.attr('action'),
-                    data: formData,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                }).done(function (data) {
-                    toastr.success(data.message, '!Exitoso!');
-                }).fail(function (data) {
-                    toastr.error(data.message, '!Error!');
-                }).always(function () {
-                    $('#isapre-btn-save').button('reset');
-                });
-                return false;
-            });
-
-        },
-
 
         saveIsapre: function () {
             var $form = $('#isapre');

@@ -51,11 +51,6 @@
               <i class="ni ni-bullet-list-67 text-red"></i> Convenios
             </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./examples/register.html">
-              <i class="ni ni-circle-08 text-pink"></i> Register
-            </a>
-      </li>
     </ul>
   </div>
   </div>
@@ -68,7 +63,7 @@
       <div class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
       </div>
       <!-- User -->
-      <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <ul class="navbar-nav user-log align-items-center d-none d-md-flex">
         <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
