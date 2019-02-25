@@ -89,11 +89,16 @@ class SpecialtyController extends Controller
                 ]);
             }
 
+            if ($request->file('image')) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }
+
             $data = array(
                 'name' => $request->name,
                 'slug' => $request->slug,
                 'body' => $request->body,
                 'status' => $request->status,
+                'file' => $image_url
             );
 
                 $specialty = $this->specialtyRepo->createSpecialty($data);
@@ -141,16 +146,31 @@ class SpecialtyController extends Controller
                 ]);
             }
 
+            $image_url = "";
+            
+            if ($request->file('image')) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }
 
+            if (!empty($image_url)) {
       
                 $data = array(
                     'name' => $request->name,
                     'slug' => $request->slug,
                     'body' => $request->body,
-                    'status' => $request->status
+                    'status' => $request->status,
+                    'file' => $image_url
                 );
 
-            
+            }else{
+                $data = array(
+                    'name' => $request->name,
+                    'slug' => $request->slug,
+                    'body' => $request->body,
+                    'status' => $request->status,
+                );
+
+            }
 
             if ($data) {
     

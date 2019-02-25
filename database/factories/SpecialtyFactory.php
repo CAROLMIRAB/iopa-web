@@ -8,6 +8,7 @@ $factory->define(App\Specialty::class, function (Faker $faker) {
         'name' => $title,
         'slug' => str_slug($title),
         'body' => $faker->text(500),
-        'status' => $faker->randomElement(array('DRAFT','PUBLISHED'))
+        'status' => $faker->randomElement(array('DRAFT','PUBLISHED')),
+        'file' => $faker->imageUrl($width = 1200, $height = 800)
     ];
 });

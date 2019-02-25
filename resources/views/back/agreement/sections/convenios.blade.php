@@ -13,5 +13,10 @@
             {{ csrf_field() }}
         </form>
     </div>
+    <div class="col-12">
+        <form action="{{ route('agreement.save-images') }}" method="post"  id="my-awesome-dropzone" class="dropzone needsclick dz-clickable" enctype="multipart/form-data">
+                {{ csrf_field() }}
+            </form>
+        </div>
 </div>
 

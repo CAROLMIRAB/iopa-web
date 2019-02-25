@@ -19,6 +19,7 @@ class CreateSpecialtiesTable extends Migration
             $table->text('body');
             $table->string('slug', 128)->unique();
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
+            $table->string('file', 128)->nullable();
             $table->timestamps();
         });
     }

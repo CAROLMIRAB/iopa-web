@@ -14,7 +14,8 @@ class Specialty extends Model
         'name',
         'slug',
         'status',
-        'body'
+        'body',
+        'file'
     ];  
 
     /* Return the sluggable configuration array for this model.
