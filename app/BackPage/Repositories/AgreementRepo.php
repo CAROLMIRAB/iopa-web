@@ -52,6 +52,20 @@ class AgreementRepo
         return $agreement;
     }
 
+    public function changeConvenio($slug, $name, $description, $image = null, $content = null)
+    {
+        $agreement = \DB::table('agreements')->where('slug', $slug)->update(
+            [
+                'name' => $name,
+                'description' => $description,
+                'image' => $image,
+                'content' => $content
+            ]
+        );
+
+        return $agreement;
+    }
+
     public function findFon($slug)
     {
         $agreement = Agreement::select('content', 'name')

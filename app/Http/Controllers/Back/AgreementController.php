@@ -260,7 +260,7 @@ class AgreementController extends Controller
         try {
            
             $convenios = json_encode($request->list);
-            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->title, $request->description, null, $convenios);
+            $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, null, $convenios);
             
             return response()->json([
                 'status' => 200,
