@@ -1,3 +1,4 @@
+<form action="" method="post" id="convenio" enctype="multipart/form-data">
 <div class="row">
     <div class="col-8 text-left">
         <h2 class="mb-0">{{ __('Convenios') }}</h2>
@@ -9,7 +10,20 @@
         <hr class="my-4">
     </div>
     <div class="col-12">
-        <form action="{{ route('agreement.save-images') }}" method="post" id="convenios" class="row" enctype="multipart/form-data">
+            <div class="form-group">
+                    <label for="convenio-title">{{ __('Titulo') }}</label>
+                    <input id="convenio-title" name="convenio_title" class="form-control" value="{{ isset($convenio['name']) ? $convenio['name'] : ''  }}">
+                </div>
+                <div class="form-group">
+                    <label for="convenio-description">{{ __('Descripción') }}</label>
+                    <textarea id="convenio-description" name="convenio-description" class="form-control">{{ isset($convenio['description']) ? $convenio['description'] : '' }}</textarea>
+                </div>
+    </div>
+</div>
+</form>
+
+ <form action="{{ route('agreement.save-images') }}" method="post" id="convenio_add" enctype="multipart/form-data">
+       <div class="row">     
             <div class="col-6">
                 <div style="" id="convenio-image-preview" class="image-preview-class">
                     <label for="image-upload" id="convenio-image-label">
@@ -22,31 +36,13 @@
                     <button type="button" id="btn-addconvenio" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner'></i> {{ __('Agregando...') }}"> Agregar</button>
                 </div>
             </div>
-
-            {{ csrf_field() }}
-        </form>
-    </div>
+            <div class="col-12">
+                <h2>Logos Convenios</h2>
+            </div>
     <div class="col-12">
-        <h2>Drag Boxes Around</h2>
         <ul class="clearfix" id="sortable">
-            <li>
-                <div class="box-image nostatus">
-                    <h4>Project Title</h4>
-                    <p>Here is a short description of a basic project</p>
-                </div>
-            </li>
-            <li>
-                <div class="box-image nostatus">
-                    <h4>Project Title</h4>
-                    <p>Here is a short description of a basic project</p>
-                </div>
-            </li>
-            <li>
-                <div class="box-image nostatus">
-                    <h4>Project Title</h4>
-                    <p>Here is a short description of a basic project</p>
-                </div>
-            </li>
+            
         </ul>
     </div>
 </div>
+ </form>

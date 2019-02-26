@@ -382,7 +382,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
         Route::post('save-images', [
             'as' => 'agreement.save-images',
-            'uses' => 'Back\AgreementController@saveImageConvenios'
+            'uses' => 'Back\AgreementController@saveSubConvenio'
         ]);
 
     });

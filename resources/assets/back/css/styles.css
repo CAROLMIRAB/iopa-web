@@ -437,7 +437,6 @@ textarea.form-control{
 
 #sortable{
 	list-style: none;
-	border: solid 4px #525f7f;
 	margin: 0;
 	padding: 20px;
 	width: 100%;
@@ -445,10 +444,8 @@ textarea.form-control{
 
 .box-image{
 			height: 180px;
-			border: solid 2px #999;
-			background: #eee;
+			border: solid 1px #999;
 			width: 100%;
 			padding: 10px;
 			overflow: hidden;
-      overflow-y: scroll;
 }

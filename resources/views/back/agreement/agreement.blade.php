@@ -102,6 +102,8 @@
         Agreement.conveniosDropzone();
         Agreement.imagesUpCon();
         Core.sortableImg();
+        Agreement.convenioAdd();
+        Agreement.saveConvenio();
 
 	});
 </script>

@@ -41,6 +41,15 @@ var Agreement = function () {
         return tr;
     }
 
+    function imgSort(img) {
+        var div = '<li data-img="' + img + '">';
+        div += '<div class="box-image nostatus">';
+        div += '<img src="' + img + '" width="100%">';
+        div += '</div>';
+        div += '</li>';
+        return div;
+    }
+
     return {
 
         minTrFonasa: function () {
@@ -236,6 +245,41 @@ var Agreement = function () {
 
         },
 
+        convenioAdd: function () {
+            var $form = $('#convenio_add');
+            $('#btn-addconvenio').click(function () {
+                // $(this).button('loading');
+                var formData = new FormData(document.getElementById("convenio_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+
+                        var img = data.data;
+
+                        var div = imgSort(img);
+                        $('#sortable').append(div);
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addconvenio').button('reset');
+                });
+                return false;
+            });
+        },
+
         fonasaAdd: function () {
             var $form = $('#fonasa_add');
             $('#btn-addfonasa').click(function () {
@@ -320,6 +364,44 @@ var Agreement = function () {
                     toastr.error(data.message, '!Error!');
                 }).always(function () {
                     $('#fonasa-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+        saveConvenio: function () {
+            var $form = $('#convenio');
+            $('#convenio-btn-save').click(function (e) {
+               // $(this).button('loading');
+                var title = $('#convenio-title').val();
+                var description = $('#convenio-description').text();
+                var mylist = [];
+                var i = 1;
+                $("ul#sortable > li").each(function () {
+                    mylist.push({
+                        "id": i,
+                        "img": $(this).data('img')
+                    });
+                    i++
+                })
+
+                console.log(mylist);
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: {
+                        title: title,
+                        description: description,
+                        list: mylist
+                    },
+                    dataType: "json"
+
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#convenio-btn-save').button('reset');
                 });
                 return false;
             });

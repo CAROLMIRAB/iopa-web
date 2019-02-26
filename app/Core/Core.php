@@ -211,4 +211,14 @@ class Core
         return ['full' => $array, 'fonasa' => $subfon];
 
     }
+
+    public static function renderConvenio($request)
+    {
+      
+
+        $image_url = Core::uploadImage($request->file('convenio_image'));
+
+        return ['convenio' => $image_url];
+
+    }
 }
