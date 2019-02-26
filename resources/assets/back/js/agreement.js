@@ -44,6 +44,7 @@ var Agreement = function () {
     function imgSort(img) {
         var div = '<li data-img="' + img + '">';
         div += '<div class="box-image nostatus">';
+        div += '<button type="button" class="btn btn-success btn-sm pull-right conv-delete">x</button>'
         div += '<img src="' + img + '" width="100%">';
         div += '</div>';
         div += '</li>';
@@ -248,7 +249,7 @@ var Agreement = function () {
         convenioAdd: function () {
             var $form = $('#convenio_add');
             $('#btn-addconvenio').click(function () {
-                // $(this).button('loading');
+                $(this).button('loading');
                 var formData = new FormData(document.getElementById("convenio_add"));
                 $.ajax({
                     type: 'post',
@@ -278,6 +279,11 @@ var Agreement = function () {
                 });
                 return false;
             });
+
+            $('#sortable').on('click', '.conv-delete', function (e) {
+                e.preventDefault();
+                $(this).parents('li').remove();
+            })
         },
 
         fonasaAdd: function () {
@@ -372,9 +378,10 @@ var Agreement = function () {
         saveConvenio: function () {
             var $form = $('#convenio');
             $('#convenio-btn-save').click(function (e) {
-               // $(this).button('loading');
+                $(this).button('loading');
                 var title = $('#convenio-title').val();
-                var description = $('#convenio-description').text();
+                var slug = $('#convenio-slug').val();
+                var description = $('textarea#convenio-description').val();
                 var mylist = [];
                 var i = 1;
                 $("ul#sortable > li").each(function () {
@@ -390,6 +397,7 @@ var Agreement = function () {
                     type: 'post',
                     url: $form.attr('action'),
                     data: {
+                        slug: slug,
                         title: title,
                         description: description,
                         list: mylist
@@ -405,6 +413,8 @@ var Agreement = function () {
                 });
                 return false;
             });
+
+
         },
 
         showAgreements: function () {

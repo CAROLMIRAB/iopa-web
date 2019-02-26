@@ -39,7 +39,7 @@ class AgreementRepo
     }
 
 
-    public function changeAgreement($slug, $name, $description, $image = null)
+    public function changeAgreement($slug, $name, $description, $image = null, $content = null)
     {
         $agreement = \DB::table('agreements')->where('slug', $slug)->update(
             [

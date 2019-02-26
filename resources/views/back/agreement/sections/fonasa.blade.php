@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="fonasa-description">{{ __('Descripción') }}</label>
-                <textarea id="fonasa-description" name="fonasa-description" class="form-control">{{ isset($fonasa['description']) ? $fonasa['description'] : '' }}</textarea>
+                <textarea id="fonasa-description" name="fonasa_description" class="form-control">{{ isset($fonasa['description']) ? $fonasa['description'] : '' }}</textarea>
             </div>
         </div>
         <div class="col-4">
@@ -25,7 +25,7 @@
                 <div id="image-preview" style="border: #619DC9 3px dashed;">
                     <label for="image-upload" id="image-label">
                         <i class="ni ni-cloud-download-95 i-img"></i></label>
-                    <input type="file" name="fonasa-image" id="fonasa-image" accept="image/png, image/jpeg" />
+                    <input type="file" name="image" id="fonasa-image" accept="image/png, image/jpeg" />
                 </div>
             </div>
         </div>

@@ -385,6 +385,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@saveSubConvenio'
         ]);
 
+        Route::post('save-convenio', [
+            'as' => 'agreement.save-convenio',
+            'uses' => 'Back\AgreementController@saveConvenio'
+        ]);
+
     });
 
 
@@ -397,8 +402,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 
 });
-
-
 
 
 Auth::routes();

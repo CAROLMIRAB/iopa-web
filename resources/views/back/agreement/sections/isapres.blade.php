@@ -12,12 +12,12 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="isapre-title">{{ __('Titulo') }}</label>
-                <input id="isapre_title" name="name" value="{{ isset($isapre['name']) ? $isapre['name'] : ''   }}" class="form-control">
+                <input id="isapre_title" name="isapre_title" value="{{ isset($isapre['name']) ? $isapre['name'] : ''   }}" class="form-control">
                 <input name="isapre_slug" class="hidden" value="isapres" type="hidden">
             </div>
             <div class="form-group">
                 <label for="isapre-description">{{ __('Descripción') }}</label>
-                <textarea id="isapre_description" name="description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
+                <textarea id="isapre_description" name="isapre_description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
             </div>
         </div>
     </div>

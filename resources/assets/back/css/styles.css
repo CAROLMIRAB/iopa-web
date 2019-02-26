@@ -49,7 +49,7 @@
   #image-preview {
     width: 100%;
     height: 200px;
-    border: 3px dashed rgb(66, 168, 208) !important;
+    border: 2px dashed rgb(66, 168, 208) !important;
     position: relative;
     overflow: hidden;
     background-color: #ffffff;
@@ -353,7 +353,7 @@ textarea.form-control{
   border: #619DC9 3px dashed;     
   width: 100%;
   height: 100px;
-  border: 3px dashed rgb(66, 168, 208) !important;
+  border: 2px dashed rgb(66, 168, 208) !important;
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
@@ -395,7 +395,7 @@ textarea.form-control{
 .image-preview-class{
   width: 100%;
   height: 150px;
-  border: 3px dashed rgb(66, 168, 208) !important;
+  border: 2px dashed rgb(66, 168, 208) !important;
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
@@ -432,20 +432,24 @@ textarea.form-control{
   display: inline-block;
   text-align: center;
   margin-bottom: 20px;
-  width: 33%;
+  width: 32%;
+  margin-left: 5px; 
 }
 
 #sortable{
 	list-style: none;
 	margin: 0;
 	padding: 20px;
-	width: 100%;
+  width: 100%;
+  border: 2px dashed rgb(66, 168, 208);
+  min-height: 244px;
 }
 
 .box-image{
 			height: 180px;
 			border: solid 1px #999;
 			width: 100%;
-			padding: 10px;
-			overflow: hidden;
+      overflow: hidden;
+      border-radius: .375rem;
+      padding-top: 4px;
 }

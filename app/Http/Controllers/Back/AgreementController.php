@@ -213,7 +213,7 @@ class AgreementController extends Controller
                 $image_url = Core::uploadImage($request->file('image'));
             }
 
-            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description);
+            $ges = $this->agreementRepo->changeAgreement($request->isapre_slug, $request->isapre_title, $request->isapre_description);
 
             return response()->json([
                 'status' => 200,
@@ -236,12 +236,36 @@ class AgreementController extends Controller
     public function saveFonasa(Request $request)
     {
         try {
-            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->name, $request->description, $request->image);
+            $ges = $this->agreementRepo->changeAgreement($request->fonasa_slug, $request->fonasa_title, $request->fonasa_description, $request->image);
 
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
                 'message' => "Ha Modificado Fonasa de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+    public function saveConvenio(Request $request)
+    {
+        try {
+           
+            $convenios = json_encode($request->list);
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->title, $request->description, null, $convenios);
+            
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado el Convenio de forma correcta"
             ]);
 
         } catch (\Exception $ex) {

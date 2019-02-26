@@ -95,6 +95,7 @@ mix.webpackConfig({
 
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
+    'plugins/jquery-ui/jquery-ui.css',
     'node_modules/select2/dist/css/select2.css',
     'plugins/nucleo/css/nucleo.css',
     'plugins/nucleo/css/nucleo-svg.css',
@@ -104,8 +105,7 @@ mix.styles([
     'bower_components/datatables.net-dt/css/jquery.dataTables.css',
     'node_modules/toastr/toastr.scss',
     'bower_components/bootstrap-toggle/css/bootstrap-toggle.css',
-    'node_modules/dropzone/dist/min/dropzone.min.css',
-    'plugins/jquery-ui/jquery-ui.js'
+    'node_modules/dropzone/dist/min/dropzone.min.css'
 ], 'public/back/css/build.back.min.css').version();
 
 mix.styles([
@@ -116,6 +116,7 @@ mix.styles([
 
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
+    'plugins/jquery-ui/jquery-ui.js',
     'node_modules/bootstrap/dist/js/bootstrap.js',
     'node_modules/select2/dist/js/select2.min.js',
     'node_modules/sweetalert2/dist/sweetalert2.js',
@@ -128,8 +129,7 @@ mix.scripts([
     'node_modules/toastr/toastr.js',
     'node_modules/jquery-validation/dist/jquery.validate.js',
     'bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js',
-    'node_modules/dropzone/dist/min/dropzone.min.js',
-    'plugins/jquery-ui/jquery-ui.js'
+    'node_modules/dropzone/dist/min/dropzone.min.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([
