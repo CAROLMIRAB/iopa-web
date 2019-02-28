@@ -390,6 +390,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@saveConvenio'
         ]);
 
+        Route::post('save-promo', [
+            'as' => 'agreement.save-promo',
+            'uses' => 'Back\AgreementController@saveConvenio'
+        ]);
+
+        Route::post('save-arancel', [
+            'as' => 'agreement.save-arancel',
+            'uses' => 'Back\AgreementController@saveConvenio'
+        ]);
+
+        Route::post('save-pago', [
+            'as' => 'agreement.save-pago',
+            'uses' => 'Back\AgreementController@saveConvenio'
+        ]);
     });
 
 

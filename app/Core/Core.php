@@ -153,19 +153,25 @@ class Core
         $isapreges = $request->isapreges;
         $isaprecuenta = $request->isaprecuenta;
 
+        $account_title=(is_null($request->account_title)) ? '' : $request->account_title;
+
         $array = json_decode($arr, true);
 
 
         foreach ($isapreges as $key => $n) {
-            $ges[] = [
-                'name' => $isapreges[$key]
-            ];
+            if (!is_null($isapreges[$key])) {
+                $ges[] = [
+                    'name' => $isapreges[$key]
+                ];
+            }
         }
 
         foreach ($isaprecuenta as $key => $n) {
-            $account[] = [
-                'name' => $isaprecuenta[$key]
-            ];
+            if (!is_null($isaprecuenta[$key])) {
+                $account[] = [
+                    'name' => $isaprecuenta[$key]
+                ];
+            }
         }
 
         $image_url = Core::uploadImage($request->file('isapre_image'));
@@ -175,7 +181,7 @@ class Core
                 'image' => asset('uploads/images') . '/' . $image_url,
                 'ges' => $ges,
                 'account' => [
-                    'title' => $request->account_title,
+                    'title' => $account_title,
                     'content' => $account
                 ]
             ]
@@ -214,7 +220,6 @@ class Core
 
     public static function renderConvenio($request)
     {
-      
 
         $image_url = Core::uploadImage($request->file('convenio_image'));
 

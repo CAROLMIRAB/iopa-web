@@ -88,7 +88,9 @@ class AgreementController extends Controller
     public function saveSubConvenio(Request $request)
     {
         try {
-            $image_url = Core::uploadImage($request->file('convenio_image'));
+
+            dd($request->all());
+            $image_url = Core::uploadImage($request->file('image'));
             $img = asset('uploads/images') . '/' . $image_url;
 
             return response()->json([
@@ -174,6 +176,7 @@ class AgreementController extends Controller
     public function unsetIsapre(Request $request)
     {
         try {
+
             $data = $this->agreementRepo->findGes($request->slug);
             $arr = json_decode($data->content, true);
 

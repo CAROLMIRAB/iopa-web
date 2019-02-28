@@ -34,7 +34,7 @@
 
 <form action="{{ route('agreement.save-subfonasa') }}" method="post" id="fonasa_add" enctype="multipart/form-data" data-route="{{ route('agreement.min-fonasa') }}">
     <div class="field_row row">
-        <div class="col-11">
+        <div class="col-10">
             <div class="form-group form-group-sm">
                 <label for="fonasa-subtitle">{{ __('Titulo') }}</label>
                 <input id="fonasa-subtitle" name="fonasa_subtitle" class="form-control">
@@ -44,12 +44,12 @@
                 <textarea id="fonasa-subdescription" name="fonasa_subdescription" class="form-control"></textarea>
             </div>
         </div>
-        <div class="col-1">
+        <div class="col-2">
             <div class="form-group">
-                <label for="subadd">{{ __(' ') }}</label>
-                <button id="btn-addfonasa" class="btn btn-icon btn-2 btn-primary btn-sm" type="button" data-loading-text="<i class='fa fa-spinner'></i>">
+                <label for="subadd">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</label>
+                <button id="btn-addfonasa" class="btn btn-icon btn-2 btn-primary btn-sm" type="button" data-loading-text="<i class='fa fa-spinner' aria-hidden='true'></i>Agregando...">
                     <span class="btn-inner--icon">
-                        <i class="ni ni-fat-add" style="font-size: 18px"></i>
+                       Agregar
                     </span>
                 </button>
             </div>
@@ -84,3 +84,4 @@
         </div>
     </div>
 </form>
+

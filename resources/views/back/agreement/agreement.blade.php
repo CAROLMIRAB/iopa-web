@@ -46,28 +46,27 @@
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active in" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
-                                    @include('back.agreement.sections.fonasa', ['fonasa' => isset($datarender[0]['fonasa']) ? $datarender[0]['fonasa'] : ''])
+    @include('back.agreement.sections.fonasa', ['fonasa' => isset($datarender[0]['fonasa']) ? $datarender[0]['fonasa'] : ''])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
-                                    @include('back.agreement.sections.isapres', ['isapre' => isset($datarender[1]['isapres']) ? $datarender[1]['isapres'] : '' ])
+    @include('back.agreement.sections.isapres', ['isapre' => isset($datarender[1]['isapres']) ? $datarender[1]['isapres'] : ''
+                                    ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
-                                        @include('back.agreement.sections.convenios', ['convenio' => isset($datarender[2]['convenios']) ? $datarender[2]['convenios'] : '' ])
+    @include('back.agreement.sections.convenios', ['convenio' => isset($datarender[2]['convenios']) ? $datarender[2]['convenios']
+                                    : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-4" role="tabpanel" aria-labelledby="tabs-text-3-tab">
-                                    <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                                        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+    @include('back.agreement.sections.promos', ['promo' => isset($datarender[3]['promociones']) ? $datarender[3]['promociones']
+                                        : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-3-tab">
-                                    <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                                        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+    @include('back.agreement.sections.aranceles', ['arancel' => isset($datarender[4]['aranceles']) ? $datarender[4]['aranceles']
+                                            : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-6" role="tabpanel" aria-labelledby="tabs-text-3-tab">
-                                    <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                                        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+    @include('back.agreement.sections.pago', ['pago' => isset($datarender[5]['medios-pagos']) ? $datarender[5]['medios-pagos']
+                                        : '' ])
                                 </div>
                             </div>
                         </div>
@@ -82,29 +81,44 @@
  
 @section('scripts')
 <script>
-    var img ='<i class="ni ni-cloud-download-95 i-img"></i>';
-    $.ajaxSetup({
-		headers: {
-    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		}
-    });
-	$(function(){
+    $(function(){
+        var img ='<i class="ni ni-cloud-download-95 i-img"></i>';
+        $.ajaxSetup({
+           headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+       });
+        /**** Fonasa *****/
+        Agreement.fonasaAdd();
+        Agreement.minTrFonasa();
+        Agreement.saveFonasa();
+        Agreement.imageUpload(img);
+        Agreement.editHTMLFonasa();
+       
+        /**** Isapres *****/
         Agreement.addGes();
         Agreement.addCu();
         Agreement.imagesUp(img);
         Agreement.minTr();
         Agreement.saveIsapre();
         Agreement.isapreAdd();
-        Agreement.fonasaAdd();
-        Agreement.minTrFonasa();
-        Agreement.saveFonasa();
-        Agreement.imageUpload(img);
-        Agreement.conveniosDropzone();
-        Agreement.imagesUpCon();
+        Agreement.editHTMLIsapre();
+
+        /**** Convenios *****/
+        Agreement.imagesUpCon(img);
         Core.sortableImg();
         Agreement.convenioAdd();
         Agreement.saveConvenio();
+        Agreement.editHTMLConvenio();
 
+        /**** Promociones *****/
+        Agreement.imagesUpProm(img);
+        Agreement.editHTMLProm();
+        
+
+        /**** Medios de Pago ****/
+        Agreement.pagoDropzone(); 
 	});
+
 </script>
 @endsection

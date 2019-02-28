@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="convenio-description">{{ __('Descripción') }}</label>
-                <textarea id="convenio-description" name="convenio-description" class="form-control">{{ isset($convenio['description']) ? $convenio['description'] : '' }}</textarea>
+                <textarea id="convenio-description" name="convenio_description" class="form-control">{{ isset($convenio['description']) ? $convenio['description'] : '' }}</textarea>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                 <div style="" id="convenio-image-preview" class="image-preview-class">
                     <label for="image-upload" id="convenio-image-label">
                         <i class='ni ni-cloud-download-95 i-img'></i></label>
-                    <input type="file" name="convenio_image" id="convenio-image" class="convenio-image" accept="image/png, image/jpeg" />
+                    <input type="file" name="image" id="convenio-image" class="convenio-image" accept="image/png, image/jpeg" />
                 </div>
             </div>
         </div>
@@ -44,7 +44,16 @@
         </div>
         <div class="col-12">
             <ul class="clearfix" id="sortable">
-
+                @if(!empty($convenio['content'])) 
+                    @foreach($convenio['content'] as $key => $item)
+                <li data-img="{{ $item['img'] }}">
+                    <div class="box-image nostatus">
+                        <button type="button" class="btn btn-success btn-sm pull-right conv-delete">x</button>
+                        <img src="{{ $item['img'] }}" width="100%">
+                     </div>
+                </li>
+                    @endforeach 
+                @endif
             </ul>
         </div>
     </div>

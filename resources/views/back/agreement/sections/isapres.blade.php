@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="isapre-description">{{ __('Descripción') }}</label>
-                <textarea id="isapre_description" name="isapre_description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
+                <textarea id="isapre-description" name="isapre_description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
     </div>
     <div class="col-12 text-right">
         <div class="form-group">
-            <button type="button" id="btn-addisapre" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner'></i> {{ __('Agregando...') }}"> Agregar</button>
+            <button type="button" id="btn-addisapre" class="btn btn-primary btn-sm" data-loading-text="<i class='fa fa-spinner'></i> {{ __('Agregando...') }}"> Agregar</button>
         </div>
     </div>
     <div class="col-12">
@@ -99,8 +99,7 @@
                     </td>
                     <td width="30%">
                         <ul>
-                            <strong>{{ $it['account']['title'] }}</strong>
-                             @foreach($it['account']['content'] as $vl)
+                            <strong>{{ $it['account']['title'] }}</strong> @foreach($it['account']['content'] as $vl)
                             <li>{{ $vl['name'] }}</li>
                             @endforeach
                         </ul>
@@ -116,3 +115,5 @@
     </div>
     {{ csrf_field() }}
 </form>
+
+
