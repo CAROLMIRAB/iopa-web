@@ -385,6 +385,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\AgreementController@saveSubConvenio'
         ]);
 
+        Route::post('save-pdf', [
+            'as' => 'agreement.save-pdf',
+            'uses' => 'Back\AgreementController@savePDF'
+        ]);
+
         Route::post('save-convenio', [
             'as' => 'agreement.save-convenio',
             'uses' => 'Back\AgreementController@saveConvenio'

@@ -85,11 +85,37 @@ class AgreementController extends Controller
 
     }
 
+
+    public function savePDF(Request $request)
+    {
+        try {
+
+            $image_url = Core::uploadImage($request->file('file'));
+            $img = asset('uploads/images') . '/' . $image_url;
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Convenio de forma correcta",
+                'data' => $img
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
     public function saveSubConvenio(Request $request)
     {
         try {
 
-            dd($request->all());
             $image_url = Core::uploadImage($request->file('image'));
             $img = asset('uploads/images') . '/' . $image_url;
 

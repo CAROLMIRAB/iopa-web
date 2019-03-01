@@ -529,7 +529,7 @@ var Agreement = function () {
 
                         if (rmvFile) {
                             $.ajax({
-                                url: path, //your php file path to remove specified image
+                                url: path, 
                                 type: "POST",
                                 data: {
                                     filenamenew: rmvFile,

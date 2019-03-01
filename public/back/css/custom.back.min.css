@@ -22348,10 +22348,9 @@ textarea.form-control{
 
 .box-image{
 			height: 180px;
-			border: solid 1px #999;
+			border: solid 1px #b6e6fd;
 			width: 100%;
       overflow: hidden;
-      border-radius: .375rem;
       padding-top: 4px;
       background-color: #fff;
 }

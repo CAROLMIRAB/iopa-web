@@ -21,21 +21,20 @@
             </div>
         </div>
         <div class="col-4">
-                <div class="form-group ">
-                    <label for="image">{{ __('Imagen') }}</label>
-                    <div id="pago-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed;">
-                        <label for="image-upload" id="pago-image-label">
+            <div class="form-group ">
+                <label for="image">{{ __('Imagen') }}</label>
+                <div id="pago-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed;">
+                    <label for="image-upload" id="pago-image-label">
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
-                        <input type="file" name="image" id="pago-image" accept="image/png, image/jpeg" />
-                    </div>
+                    <input type="file" name="image" id="pago-image" accept="image/png, image/jpeg" />
                 </div>
             </div>
+        </div>
     </div>
 </form>
 
-<form action="{{ route('agreement.save-images') }}" class="dropzone needsclick dz-clickable dz-started">
-        <div class="fallback">
-                <input name="image" type="file" multiple />
-              </div>
+<form action="{{ route('agreement.save-pdf') }}" class="dropzone needsclick dz-clickable dz-started">
+    <div class="fallback">
+        <input name="image" type="file" multiple />
+    </div>
 </form>
-
