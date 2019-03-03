@@ -76,6 +76,27 @@ section {
   }
 }
 
+.modal {
+  .modal-header {
+    background: #eee;
+    .close { 
+      opacity: 1;
+    }
+  }
+  .modal-footer {
+
+  }
+
+  .modal-body {
+
+  }
+  .modal-content {
+    box-shadow: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+  }
+}
+
 .section-padding{
   padding: 10px 0 0;
 }
@@ -125,6 +146,7 @@ section {
   @media(max-width:768px){
     right: 5px;
     bottom: 8px;
+    width: auto;
   }
 }
 

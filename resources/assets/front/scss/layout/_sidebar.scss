@@ -1,0 +1,33 @@
+.sidebar {
+    color: #737373;
+    background: #fff;
+    .side-widged {
+        padding: 10px;
+        margin-bottom: 10px;
+        .widged-title{
+            color: #333333;
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 10px;
+            padding-left: 5px;
+            border-left: 2px solid $theme03;
+        }
+    }
+}
+
+.list-categories {
+    .list-group-item {
+        display: block;
+        color: #737373;
+        font-size: 14px;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(#ccc, .1);
+        border-top: 1px solid rgba(#ccc, .1);
+
+        .badge {
+            background: $theme04;
+        }
+    }
+};

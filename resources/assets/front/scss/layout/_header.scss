@@ -128,7 +128,12 @@
                 }
             }
             > .dropdown-menu{
+                border-color: #fff;
+                border-radius: 0;
                 animation: fadeInUp .2s forwards 0s ease-in-out;
+                > li {
+                    clear: both;
+                }
             }
         }
     }

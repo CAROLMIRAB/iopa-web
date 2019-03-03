@@ -88,6 +88,7 @@ class SpecialtyController extends Controller
                     'data' => $validator->errors()
                 ]);
             }
+            $image_url = "";
 
             if ($request->file('image')) {
                 $image_url = Core::uploadImage($request->file('image'));
@@ -105,7 +106,7 @@ class SpecialtyController extends Controller
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha creado la cirugía de forma correcta"
+                    'message' => "Ha creado la especialidad de forma correcta"
                 ]);
 
         } catch (\Exception $ex) {

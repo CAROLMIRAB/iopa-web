@@ -18,17 +18,54 @@ class WebCollection
         $mydate = Carbon::setLocale('es'); 
         $mydate = Carbon::parse($item->created_at)->setTimezone('America/Santiago')->formatLocalized('Publicado el %d de %B, %Y');
         $route = route('post.viewpost', ['slug' => $item->slug]);
-        $allposts[]= (object)[
-                'name' => $item->name,
-                'slug' => $item->slug,
-                'file' => $item->file,
-                'created' => $mydate,
-                'excerpt' => $item->excerpt,
-                'route' => $route
-            ];
+
+            $item->created = $mydate;
+            $item->route = $route;
+            $item->tagsl = json_decode($item->tags);
+
      }
-     return  $allposts;
+     return  $post;
 
     }
 
+
+    public function renderPost($post)
+   {
+    setlocale(LC_TIME, 'es_ES.UTF-8');
+        
+        $mydate = Carbon::setLocale('es'); 
+        $mydate = Carbon::parse($post->created_at)->setTimezone('America/Santiago')->formatLocalized('Publicado el %d de %B, %Y');
+        $route = route('post.viewpost', ['slug' => $post->slug]);
+
+            $post->created = $mydate;
+            $post->route = $route;
+            $post->tagsl = json_decode($post->tags);
+
+     return  $post;
+
+    }
+
+    public function RenderDoctors($doctors)
+    {
+      foreach($doctors as $doctor){
+    
+        foreach($doctor->doctor_office as $item){
+      $doctor->listoffice .= $item->slug ." ";    
+      }
+    }
+      return  $doctors;
+ 
+     }
+
+     public function RenderExams($exams)
+     {
+       foreach($exams as $exam){
+     
+         foreach($exam->exam_office as $item){
+            $exam->listoffice .= $item->slug ." ";    
+       }
+     }
+       return  $exams;
+  
+      }
 }

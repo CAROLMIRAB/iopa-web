@@ -35,13 +35,7 @@ var Specialty = function () {
         },
 
         editHTML: function () {
-            $('#indications').summernote({
-                height: 200
-            });
-            $('#preparation').summernote({
-                height: 200
-            });
-            $('#description').summernote({
+            $('#body').summernote({
                 height: 200
             });
         },
@@ -55,19 +49,20 @@ var Specialty = function () {
                         required: true,
                         minlength: 5
                     },
-                    description: "required"
+                    body: "required"
                 },
                 messages: {
                     name: {
                         required: "El título es un campo requerido",
                         minlength: "Escriba un título más largo"
                     },
-                    description: "No ha agregado contenido",
+                    body: "No ha agregado contenido",
                 },
                 ignore: ":hidden, [contenteditable='true']:not([body])"
             });
 
             $('#btn-save').click(function (e) {
+                
                 if ($form.valid()) {
                     $(this).button('loading');
                     var formData = new FormData(document.getElementById("specialty"));
@@ -109,13 +104,13 @@ var Specialty = function () {
 
         createSpecialty: function () {
             var $form = $('#specialty');
-            var v = $('#specialty').validate({
+            var v = $form.validate({
                 rules: {
                     name: {
                         required: true,
                         minlength: 5
                     },
-                    description: "required",
+                    body: "required",
                     image: "required"
                 },
                 messages: {
@@ -123,13 +118,14 @@ var Specialty = function () {
                         required: "El título es un campo requerido",
                         minlength: "Escriba un título más largo"
                     },
-                    description: "No ha agregado contenido",
+                    body: "No ha agregado contenido",
                     image: "No ha agregado una imagen"
                 },
                 ignore: ":hidden, [contenteditable='true']:not([body])"
             });
 
             $('#btn-save').click(function (e) {
+                e.preventDefault();
                 if ($form.valid()) {
                     $(this).button('loading');
                     var formData = new FormData(document.getElementById("specialty"));
@@ -150,12 +146,9 @@ var Specialty = function () {
                         if (data.status == 200) {
                             toastr.success(data.message, '!Exitoso!');
                             $('#specialty')[0].reset();
-                            $("#description").summernote("reset");
-                            $("#preparation").summernote("reset");
-                            $("#indications").summernote("reset");
+                            $("#body").summernote("reset");
                             $("#image-preview").css('background-image', '');
                             $(".invalid-feedback").html('');
-                            $('#office').val(null).trigger('change');
                             var html = $('#slug-url').data('slug');
                             $('#slug-url').html(html);
                         }

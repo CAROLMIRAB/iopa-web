@@ -63,5 +63,8 @@ $(document).ready(function(){
     
     $('.filter-all').addClass("active");
 
+    $('.truncate').succinct({
+      size: 60
+  });
 
 });

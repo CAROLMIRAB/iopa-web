@@ -46,6 +46,7 @@
         "keen-ui": "^1.0.2",
         "moment": "^2.22.2",
         "postcss-loader": "^3.0.0",
+        "readmore-js": "^2.2.1",
         "sass": "^1.17.0",
         "sass-resources-loader": "^2.0.0",
         "select2": "^4.0.6-rc.1",

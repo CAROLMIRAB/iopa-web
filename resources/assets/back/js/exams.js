@@ -36,7 +36,7 @@ var Exams = function () {
 
         createExam: function () {
             var $form = $('#exam');
-            var v = $('#exam').validate({
+            var v = $form.validate({
                 rules: {
                     name: {
                         required: true,
@@ -57,6 +57,7 @@ var Exams = function () {
             });
 
             $('#btn-save').click(function (e) {
+                e.preventDefault();
                 if ($form.valid()) {
                     $(this).button('loading');
                     var formData = new FormData(document.getElementById("exam"));

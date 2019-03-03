@@ -7,6 +7,7 @@
     }
     .filter-button.btn.btn-theme02.border {
         color: $theme02!important;
+        margin-bottom: 4px;
 
         &:hover,
         &:focus,
@@ -27,12 +28,22 @@
     padding: 15px;
     border: none;
     background: #ffffff;
-    max-width: 300px;
-    margin: 5px auto;
+
 }
 
-.row-medicos {
+.image-flip {
+    max-width: 300px;
+    margin: 5px auto;
+    
+}
+
+.row-rotating-cards {
     margin-top: 40px;
+
+    @media(max-width: 767px) {
+        display: none;
+    }
+
     .image-flip:hover .backside,
     .image-flip.hover .backside {
         -webkit-transform: rotateY(0deg);
@@ -41,6 +52,18 @@
         -ms-transform: rotateY(0deg);
         transform: rotateY(0deg);
         border-radius: .25rem;
+        
+    }
+
+    .no-rotate.image-flip:hover .backside,
+    .image-flip.hover .backside {
+        -webkit-transform: unset;
+        -moz-transform: unset;
+        -o-transform: unset;
+        -ms-transform: unset;
+        transform: unset;
+        border-radius: .25rem;
+        
     }
     
     .image-flip:hover .frontside,
@@ -49,6 +72,22 @@
         -moz-transform: rotateY(180deg);
         -o-transform: rotateY(180deg);
         transform: rotateY(180deg);
+    }
+
+    .no-rotate.image-flip:hover .frontside,
+    .image-flip.hover .frontside {
+        -webkit-transform: unset;
+        -moz-transform: unset;
+        -o-transform: unset;
+        transform: unset;
+    }
+
+    .no-rotate.examenes {
+        .frontside .card,
+        .backside .card {
+            height: 100%;
+            
+        }
     }
     
     .mainflip {
@@ -70,6 +109,7 @@
         -ms-transform: rotateY(0deg);
         z-index: 2;
         margin-bottom: 30px;
+        box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.2);
     }
     
     .backside {
@@ -85,12 +125,11 @@
         transform: rotateY(-180deg);
         -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
         -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-        box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+        box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.2);
     
         .card {
             color: #fff !important;
             background: $theme02!important;
-
             .card-text,
             .card-subtitle,
             .card-title {
@@ -101,6 +140,7 @@
     
     .frontside,
     .backside {
+        height: 100%;
         border: 1px solid rgba($theme, .2);
         -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden;
@@ -117,12 +157,6 @@
         transition: 1s;
         transform-style: preserve-3d;
     }
-    
-    .frontside .card,
-    .backside .card {
-        min-height: 312px;
-    }
-    
     .frontside .card .card-title,
     .backside .card .card-title {
         font-size: 18px;
@@ -142,6 +176,11 @@
         width: 190px;
         height: 190px;
         border-radius: 50%;
+
+        &.square {
+            border-radius: 0px;
+        }
+
     }
 
     .card-subtitle {
@@ -154,11 +193,49 @@
         line-height: 20px;
     }
 
-    .btn.btn-light { 
-        color: #fff !important;
-        &:hover,
-        &:focus {
-            color: $theme !important;
-        }
+}
+
+.row-medicos-mobile {
+    display: none;
+    margin: 60px 0;
+    @media(max-width: 767px) {
+        display: block;
+    }
+}
+
+.mobile-medic-list {
+    a {
+        color: $theme;
+        transition: all ease-in-out .1s;
+        text-decoration: none;
+    }
+    .media {
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .media-left {
+        vertical-align: middle;
+    }
+    .media-heading {
+        margin-bottom: 3px;
+    }
+    .media-description{
+        font-size: 12px;
+    }
+    .media-object {
+       width: 60px;
+       height: 60px;
+       border-radius: 50%;
+    }
+    .doc-details {
+        font-size: 14px;
+        color: #666;
+    }
+    .well {
+        background: #fff;
+        border-radius: 0;
+        margin-bottom: 0;
+        box-shadow: none;
+        border: none;
     }
 }

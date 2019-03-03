@@ -49,7 +49,7 @@ var Surgery = function () {
 
         editSurgery: function () {
             var $form = $('#surgery');
-            var v = $('#surgery').validate({
+            var v = $form.validate({
                 rules: {
                     name: {
                         required: true,
@@ -68,6 +68,7 @@ var Surgery = function () {
             });
 
             $('#btn-save').click(function (e) {
+                e.preventDefault();
                 if ($form.valid()) {
                     $(this).button('loading');
                     var formData = new FormData(document.getElementById("surgery"));
@@ -109,7 +110,7 @@ var Surgery = function () {
 
         createSurgery: function () {
             var $form = $('#surgery');
-            var v = $('#surgery').validate({
+            var v = $form.validate({
                 rules: {
                     name: {
                         required: true,
@@ -130,6 +131,7 @@ var Surgery = function () {
             });
 
             $('#btn-save').click(function (e) {
+                e.preventDefault();
                 if ($form.valid()) {
                     $(this).button('loading');
                     var formData = new FormData(document.getElementById("surgery"));

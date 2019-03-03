@@ -154,7 +154,8 @@ mix.scripts([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
     'node_modules/wow.js/dist/wow.min.js',
-    'node_modules/slick-carousel/slick/slick.min.js'
+    'node_modules/slick-carousel/slick/slick.min.js',
+    'plugins/succinct/jQuery.succinct.min.js'
 ], 'public/front/js/front.min.js').version();
 
 mix.scripts([

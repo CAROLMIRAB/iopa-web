@@ -18,8 +18,9 @@
             <div class="recent-entries mb-40 wow fadeIn">
                 <div class="row mb-40">
                     <div class="col-sm-6">
+                        @if(isset($posts[0]))
                         <div class="post-preview">
-                            <a href="#!">
+                            <a href="{{ $posts[0]->route  }}">
                                 <figure>
 
                                     <img src="{{ $posts[0]->file }}" alt="">
@@ -35,9 +36,11 @@
                                 </div>
                             </a>
                         </div>
+                        @endif
                     </div>
                     <div class="col-sm-6">
                         <ul class="media-list preview-list">
+                            @if(isset($posts[1]))
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[1]->slug }}">
@@ -51,6 +54,8 @@
                                     <p>{{ $posts[1]->created }}</p>
                                 </div>
                             </li>
+                            @endif
+                            @if(isset($posts[2]))
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[2]->route }}">
@@ -64,6 +69,8 @@
                                     <p>{{ $posts[2]->created }}</p>
                                 </div>
                             </li>
+                            @endif
+                            @if(isset($posts[3]))
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[3]->route }}">
@@ -77,6 +84,8 @@
                                     <p>{{ $posts[3]->created }}</p>
                                 </div>
                             </li>
+                            @endif
+                            @if(isset($posts[4]))
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[4]->route }}">
@@ -90,8 +99,9 @@
                                     <p>{{ $posts[4]->created }}</p>
                                 </div>
                             </li>
+                            @endif
                             <li>
-                                <a href="#!" class="btn btn-theme04 btn-lg btn-block mt-20">Ir al blog</a>
+                                <a href="{{ route('post.viewallposts') }}" class="btn btn-theme04 btn-lg btn-block mt-20">Ir al blog</a>
                             </li>
                         </ul>
                     </div>

@@ -32,9 +32,29 @@ Route::get('500', [
     'uses' => 'Back\ErrorController@fatal'
 ]);
 
-Route::get('entradas/{slug}', [
+Route::get('blog/{slug}', [
     'as' => 'post.viewpost',
     'uses' => 'Front\PostController@viewFullPost'
+]);
+
+Route::get('blog/', [
+    'as' => 'post.viewallposts',
+    'uses' => 'Front\PostController@viewAllPosts'
+]);
+
+Route::get('medicos/', [
+    'as' => 'doctors.viewalldoctors',
+    'uses' => 'Front\PostController@viewAllDoctors'
+]);
+
+Route::get('examenes/', [
+    'as' => 'exams.viewallexams',
+    'uses' => 'Front\PostController@viewAllExams'
+]);
+
+Route::get('sucursales/', [
+    'as' => 'offices.viewalloffices',
+    'uses' => 'Front\PostController@viewAllOffices'
 ]);
 
 Route::get('sucursales/{slug}', [
@@ -43,10 +63,7 @@ Route::get('sucursales/{slug}', [
 ]);
 
 
-Route::get('entradas/', [
-    'as' => 'post.viewposts',
-    'uses' => 'Front\PostController@viewFullPost'
-]);
+
 
 Route::get('cirugias/', [
     'as' => 'surgery.viewposts',
@@ -58,20 +75,7 @@ Route::get('especialidades/', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
-Route::get('examenes/', [
-    'as' => 'exam.viewposts',
-    'uses' => 'Front\PostController@viewFullPost'
-]);
 
-Route::get('medicos/', [
-    'as' => 'doctor.viewposts',
-    'uses' => 'Front\PostController@viewFullPost'
-]);
-
-Route::get('sucursales/', [
-    'as' => 'office.viewposts',
-    'uses' => 'Front\PostController@viewFullPost'
-]);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
@@ -425,8 +429,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 Auth::routes();
 
-Route::get('blog', 'Front\PostController@viewAllPosts')->name('blog');
 
-Route::get('blog/{slug}', 'Front\PostController@viewFullPost')->name('post');
 
 

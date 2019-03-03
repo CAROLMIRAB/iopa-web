@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-top">
-                <a class="top-brand hidden-xs" href="{{ url('home') }}">
+                <a class="top-brand hidden-xs" href="{{ route('home') }}">
 							<img src="{{ asset('/img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
@@ -67,11 +67,11 @@
                             <li><a href="#">Otros Servicios</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Médicos</a></li>
-                    <li><a href="#">Especialidades</a></li>
-                    <li><a href="#">Exámenes</a></li>
+                <li><a href="{{ route('doctors.viewalldoctors') }}">Médicos</a></li>
+                    <li><a href="">Especialidades</a></li>
+                    <li><a href="{{ route('exams.viewallexams') }}">Exámenes</a></li>
                     <li><a href="#">Cirugías</a></li>
-                    <li><a href="#">Sucursales</a></li>
+                    <li><a href="{{ route('offices.viewalloffices') }}">Sucursales</a></li>
                     <li><a class="cta-link" href="#!">
 								<i class="fa fa-calendar calendar-icon"></i> Reserva<br> tu hora
 							</a>
