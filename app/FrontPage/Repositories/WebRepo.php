@@ -8,6 +8,7 @@ use App\Post;
 use App\Doctor;
 use App\Exam;
 use App\Office;
+use App\Surgery;
 
 
 
@@ -27,6 +28,32 @@ class WebRepo
         ->where('posts.slug', $slug)
         ->first();
         return $post;
+    }
+
+    public function viewSurgerySlug($slug)
+    {
+        $post = Surgery::select('name', 'slug', 'description', 'preparation', 'indications', 'status','file' )
+        ->where('slug', $slug)
+        ->first();
+        return $post;
+    }
+
+    public function viewExamSlug($slug)
+    {
+        $post = Exam::select('exams.id','exams.name', 'exams.slug', 'description', 'preparation', 'indications', 'exams.status','exams.file' )
+        ->where('exams.slug', $slug)
+        ->with(array('exam_office'=>function($query){
+            $query->select('name');
+          }))
+        ->first();
+        return $post;
+    }
+
+    public function showSurgeries()
+    {
+        $surgery = Surgery::select('name', 'slug', 'description', 'preparation', 'indications', 'status','file' )
+        ->get();
+        return $surgery;
     }
 
     public function showPostHome()

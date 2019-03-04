@@ -67,11 +67,11 @@
                             <li><a href="#">Otros Servicios</a></li>
                         </ul>
                     </li>
-                <li><a href="{{ route('doctors.viewalldoctors') }}">Médicos</a></li>
+                <li><a href="{{ route('doctor.viewalldoctors') }}">Médicos</a></li>
                     <li><a href="">Especialidades</a></li>
-                    <li><a href="{{ route('exams.viewallexams') }}">Exámenes</a></li>
-                    <li><a href="#">Cirugías</a></li>
-                    <li><a href="{{ route('offices.viewalloffices') }}">Sucursales</a></li>
+                    <li><a href="{{ route('exam.viewallexams') }}">Exámenes</a></li>
+                    <li><a href="{{ route('surgery.viewallsurgeries') }}">Cirugías</a></li>
+                    <li><a href="{{ route('office.viewalloffices') }}">Sucursales</a></li>
                     <li><a class="cta-link" href="#!">
 								<i class="fa fa-calendar calendar-icon"></i> Reserva<br> tu hora
 							</a>

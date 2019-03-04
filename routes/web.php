@@ -43,17 +43,22 @@ Route::get('blog/', [
 ]);
 
 Route::get('medicos/', [
-    'as' => 'doctors.viewalldoctors',
+    'as' => 'doctor.viewalldoctors',
     'uses' => 'Front\PostController@viewAllDoctors'
 ]);
 
 Route::get('examenes/', [
-    'as' => 'exams.viewallexams',
+    'as' => 'exam.viewallexams',
     'uses' => 'Front\PostController@viewAllExams'
 ]);
 
+Route::get('examenes/{slug}', [
+    'as' => 'exam.viewexam',
+    'uses' => 'Front\PostController@viewFullExam'
+]);
+
 Route::get('sucursales/', [
-    'as' => 'offices.viewalloffices',
+    'as' => 'office.viewalloffices',
     'uses' => 'Front\PostController@viewAllOffices'
 ]);
 
@@ -62,13 +67,17 @@ Route::get('sucursales/{slug}', [
     'uses' => 'Front\PostController@viewFullPost'
 ]);
 
-
-
-
 Route::get('cirugias/', [
-    'as' => 'surgery.viewposts',
-    'uses' => 'Front\PostController@viewFullPost'
+    'as' => 'surgery.viewallsurgeries',
+    'uses' => 'Front\PostController@viewAllSurgeries'
 ]);
+
+Route::get('cirugias/{slug}', [
+    'as' => 'surgery.viewsurgery',
+    'uses' => 'Front\PostController@viewFullSurgery'
+]);
+
+
 
 Route::get('especialidades/', [
     'as' => 'specialty.viewposts',

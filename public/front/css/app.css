@@ -14398,7 +14398,6 @@ button.close {
 .row-especialidades .item-especialidad:hover h5,
 .row-especialidades .item-especialidad:focus h5 {
   color: #2f4a9b;
-  min-height: 45px;
 }
 
 .row-especialidades .item-especialidad a {
@@ -14423,6 +14422,7 @@ button.close {
   text-transform: uppercase;
   font-size: 14px;
   margin: 5px 0;
+  min-height: 45px;
 }
 
 .row-especialidades .item-especialidad p {

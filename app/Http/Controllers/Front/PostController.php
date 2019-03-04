@@ -33,11 +33,9 @@ class PostController extends Controller
     public function viewAllPosts()
     {
         $postslist = $this->postRepo->showPosts();
-        $posts = $this->postCollect->RenderPostsHome($postslist);
+        $posts = $this->postCollect->renderPostsHome($postslist);
         return view('front.sections.all-posts', compact('posts'));
     }
-
- 
 
     /**
      * View full post content
@@ -49,6 +47,43 @@ class PostController extends Controller
         $postdata = $this->postRepo->viewPostSlug($slug);
         $post = $this->postCollect->renderPost($postdata);
         return view('front.sections.post', compact('post'));
+    }
+
+    /**
+     * View full post content
+     * 
+     * @return view
+     */
+    public function viewFullExam($slug)
+    {
+        $examdata = $this->postRepo->viewExamSlug($slug);
+        $exam = $this->postCollect->renderExam($examdata);
+        return view('front.sections.exam', compact('exam'));
+    }
+
+      /**
+     * View full surgery content
+     * 
+     * @return view
+     */
+    public function viewFullSurgery($slug)
+    {
+        $surgerydata = $this->postRepo->viewSurgerySlug($slug);
+        $surgery = $this->postCollect->renderSurgery($surgerydata);
+        return view('front.sections.surgery', compact('surgery'));
+    }
+
+     /**
+     * Show all surgeries view blog
+     * 
+     * @return view
+     */
+    public function viewAllSurgeries()
+    {
+        $surgerieslist = $this->postRepo->showSurgeries();
+        $surgeries = $this->postCollect->renderSurgeries($surgerieslist);
+      
+        return view('front.sections.all-surgeries', compact('surgeries'));
     }
 
 
@@ -64,6 +99,19 @@ class PostController extends Controller
         $doctors = $this->postCollect->renderDoctors($doctorsdata);
 
         return view('front.sections.all-doctors', compact('doctors'));
+    }
+
+
+     /**
+     * View full doctor content
+     * 
+     * @return view
+     */
+    public function viewFullDoctor($slug)
+    {
+        $postdata = $this->postRepo->viewPostSlug($slug);
+        $post = $this->postCollect->renderPost($postdata);
+        return view('front.sections.post', compact('post'));
     }
 
      /**
@@ -89,21 +137,10 @@ class PostController extends Controller
     {
         
         $offices = $this->postRepo->showOffices();
-        //$offices = $this->postCollect->renderOffices($officesdata);
 
         return view('front.sections.all-offices', compact('offices'));
     }
     
-    /**
-     * View full doctor content
-     * 
-     * @return view
-     */
-    public function viewFullDoctor($slug)
-    {
-        $postdata = $this->postRepo->viewPostSlug($slug);
-        $post = $this->postCollect->renderPost($postdata);
-        return view('front.sections.post', compact('post'));
-    }
+   
 
 }

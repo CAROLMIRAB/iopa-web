@@ -133,7 +133,7 @@ class Core
 
         $destinationPath = public_path('/uploads/thumbnail');
         $img = \Image::make($image->getRealPath());
-        $img->resize(200, 200, function ($constraint) {
+        $img->resize(300, null, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $input['imagename']);
 

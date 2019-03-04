@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class WebCollection
 {
-   public function RenderPostsHome($post)
+   public function renderPostsHome($post)
    {
     setlocale(LC_TIME, 'es_ES.UTF-8');
     $allposts = [];
@@ -45,7 +45,14 @@ class WebCollection
 
     }
 
-    public function RenderDoctors($doctors)
+    public function renderExam($exam)
+    {
+        
+       
+       return $exam;
+    }
+
+    public function renderDoctors($doctors)
     {
       foreach($doctors as $doctor){
     
@@ -57,10 +64,11 @@ class WebCollection
  
      }
 
-     public function RenderExams($exams)
+     public function renderExams($exams)
      {
        foreach($exams as $exam){
-     
+        $route = route('exam.viewexam', ['slug' => $exam->slug]);
+        $exam->route = $route;
          foreach($exam->exam_office as $item){
             $exam->listoffice .= $item->slug ." ";    
        }
@@ -68,4 +76,26 @@ class WebCollection
        return  $exams;
   
       }
+
+
+      public function renderSurgery($surgery)
+     {
+       
+       return  $surgery;
+  
+      }
+
+      public function renderSurgeries($surgeries)
+     {
+        
+        foreach($surgeries as $item){
+            $route = route('surgery.viewsurgery', ['slug' => $item->slug]);
+                $item->route = $route;
+         }
+
+       return  $surgeries;
+  
+      }
+
+     
 }

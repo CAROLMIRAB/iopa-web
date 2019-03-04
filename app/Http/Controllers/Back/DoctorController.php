@@ -271,9 +271,9 @@ class DoctorController extends Controller
                 })->save($path);
 
 
-                $destinationPath = public_path('/uploads/thumbnail') . $png_url;
+                $destinationPath = public_path('/uploads/thumbnail/') . $png_url;
                 $img = \Image::make($base64Image[1])->encode('jpg', 75);
-                $img->resize(100, 100, function ($constraint) {
+                $img->resize(200, 200, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath);
 
