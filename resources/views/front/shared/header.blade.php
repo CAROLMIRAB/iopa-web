@@ -72,6 +72,7 @@
                     <li><a href="{{ route('exam.viewallexams') }}">Exámenes</a></li>
                     <li><a href="{{ route('surgery.viewallsurgeries') }}">Cirugías</a></li>
                     <li><a href="{{ route('office.viewalloffices') }}">Sucursales</a></li>
+                    <li><a href="">Consulta</a></li>
                     <li><a class="cta-link" href="#!">
 								<i class="fa fa-calendar calendar-icon"></i> Reserva<br> tu hora
 							</a>
