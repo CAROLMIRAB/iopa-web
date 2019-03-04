@@ -77,7 +77,25 @@ Route::get('cirugias/{slug}', [
     'uses' => 'Front\PostController@viewFullSurgery'
 ]);
 
+Route::get('nosotros/', [
+    'as' => 'aboutus.aboutus',
+    'uses' => 'Front\PostController@viewAboutUs'
+]);
 
+Route::get('contactanos/', [
+    'as' => 'aboutus.contact',
+    'uses' => 'Front\PostController@viewContact'
+]);
+
+Route::get('solicitudes/', [
+    'as' => 'aboutus.requests',
+    'uses' => 'Front\PostController@viewRequests'
+]);
+
+Route::get('consulta/', [
+    'as' => 'aboutus.query',
+    'uses' => 'Front\PostController@viewQuery'
+]);
 
 Route::get('especialidades/', [
     'as' => 'specialty.viewposts',

@@ -17,7 +17,9 @@ class WebRepo
 {
     public function showPosts()
     {
-        $posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(10);
+        $posts = Post::orderBy('id', 'DESC')
+        ->where('status', 'PUBLISHED')
+        ->where('category_id', '<>', '1')->paginate(10);
         return $posts;
     }
 

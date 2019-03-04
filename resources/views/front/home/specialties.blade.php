@@ -1,4 +1,4 @@
-<section class="section-especialistas pb-10 wow slideInUp" data-wow-delay=".1s">
+<section class="section-especialistas pb-10" data-wow-delay=".1s">
     <div class="container">
         <div class="inner-section text-center">
             <h3 class="inner-title">
@@ -8,7 +8,7 @@
         </div>
         <div class="row row-especialidades">
             <div class="col-sm-3">
-                <div class="item-especialidad  wow slideInUp">
+                <div class="item-especialidad ">
                     <a href="#!">
                         <img src="{{ asset('img/home/papilas.jpg') }}" alt="Fotos de Papilas">
                         <h5>Fotos de Papilas</h5>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="item-especialidad  wow slideInUp" data-wow-delay=".3s">
+                <div class="item-especialidad " data-wow-delay=".3s">
                     <a href="#!">
                         <img src="{{ asset('img/home/diloscopia.jpg') }}" alt="Diploscopia">
                         <h5>Diploscopia</h5>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="item-especialidad wow slideInUp" data-wow-delay=".6s">
+                <div class="item-especialidad" data-wow-delay=".6s">
                     <a href="#!">
                         <img src="{{ asset('img/home/radiografia.jpg') }}" alt="Radiografía">
                         <h5>Radiografía</h5>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="item-especialidad wow slideInUp" data-wow-delay=".9s">
+                <div class="item-especialidad " data-wow-delay=".9s">
                     <a href="#!">
                         <img src="{{ asset('img/home/nuestros.jpg') }}" alt="Médicos">
                         <h5>Nuestros Médicos</h5>

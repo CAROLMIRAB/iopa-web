@@ -141,6 +141,54 @@ class PostController extends Controller
         return view('front.sections.all-offices', compact('offices'));
     }
     
+    /**
+     * Show about us
+     * 
+     * @return view
+     */
+    public function viewAboutUs()
+    {
+        return view('front.sections.aboutus');
+    }
+    
+    /**
+     * Show contact
+     * 
+     * @return view
+     */
+    public function viewContact()
+    {
+        return view('front.sections.contact');
+    }
+
+     /**
+     * Show query
+     * 
+     * @return view
+     */
+    public function viewQuery()
+    {
+        return view('front.sections.query');
+    }
+
+    /**
+     * Show request
+     * 
+     * @return view
+     */
+    public function viewRequest()
+    {
+        return view('front.sections.request');
+    }
    
+     /**
+     * Show opinion
+     * 
+     * @return view
+     */
+    public function viewOpinion()
+    {
+        return view('front.sections.opinion');
+    }
 
 }

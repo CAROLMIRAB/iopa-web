@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-top">
-                <a class="top-brand hidden-xs" href="{{ route('home') }}">
+                    <a class="top-brand hidden-xs" href="{{ route('home') }}">
 							<img src="{{ asset('/img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
@@ -61,18 +61,18 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conócenos <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Sobre nosotros</a></li>
+                            <li><a href="{{ route('aboutus.aboutus') }}">Sobre nosotros</a></li>
                             <li><a href="#">Arancéles y Convenios action</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="{{ route('aboutus.contact') }}">Contacto</a></li>
                             <li><a href="#">Otros Servicios</a></li>
                         </ul>
                     </li>
-                <li><a href="{{ route('doctor.viewalldoctors') }}">Médicos</a></li>
+                    <li><a href="{{ route('doctor.viewalldoctors') }}">Médicos</a></li>
                     <li><a href="">Especialidades</a></li>
                     <li><a href="{{ route('exam.viewallexams') }}">Exámenes</a></li>
                     <li><a href="{{ route('surgery.viewallsurgeries') }}">Cirugías</a></li>
                     <li><a href="{{ route('office.viewalloffices') }}">Sucursales</a></li>
-                    <li><a href="">Consulta</a></li>
+                    <li><a href="{{ route('aboutus.query') }}">Consulta</a></li>
                     <li><a class="cta-link" href="#!">
 								<i class="fa fa-calendar calendar-icon"></i> Reserva<br> tu hora
 							</a>
