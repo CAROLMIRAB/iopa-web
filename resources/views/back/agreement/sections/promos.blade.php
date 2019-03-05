@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="promo-title">{{ __('Titulo') }}</label>
                 <input id="promo-title" name="promo_title" class="form-control" value="{{ isset($promo['name']) ? $promo['name'] : ''  }}">
-                <input id="promo-slug" name="promo_slug" value="promos" class="hidden" type="hidden">
+                <input id="promo-slug" name="slug" value="promociones" class="hidden" type="hidden">
             </div>
             <div class="form-group">
                 <label for="promo-description">{{ __('Descripción') }}</label>

@@ -51,6 +51,19 @@ var Agreement = function () {
         return div;
     }
 
+    function arancelTr(img, route, name, title) {
+        var tr = '<tr>';
+        tr += '<td>';
+        tr += ' <a src="' + route + '"><img src="' + img + '" height="50"> "' + name + '" </a>';
+        tr += '</td>';
+        tr += '<td>';
+        tr += title;
+        tr += '</td>';
+        tr += '<td>';
+        tr += '</td>';
+        tr += '</tr>';
+    }
+
     return {
 
 
@@ -387,6 +400,30 @@ var Agreement = function () {
             });
         },
 
+        saveProm: function () {
+            var $form = $('#promo');
+            $('#promo-btn-save').click(function (e) {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("promo"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#promo-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
         saveConvenio: function () {
             var $form = $('#convenio');
             $('#convenio-btn-save').click(function (e) {
@@ -505,16 +542,16 @@ var Agreement = function () {
                     });
                     this.on("addedfile", function (file) {
                         var unique_field_id = new Date().getTime();
-                    
+
                         title = file.title == undefined ? "" : file.title;
                         file._titleLabel = Dropzone.createElement("<p>Title:</p>")
-                        file._titleBox = Dropzone.createElement("<input id='"+file.name+unique_field_id+"_title' type='text' name='title' value="+title+" >");
+                        file._titleBox = Dropzone.createElement("<input id='" + file.name + unique_field_id + "_title' type='text' name='title' value=" + title + " >");
                         file.previewElement.appendChild(file._titleLabel);
                         file.previewElement.appendChild(file._titleBox);
-                    
+
                         description = file.description == undefined ? "" : file.description;
                         file._descriptionLabel = Dropzone.createElement("<p>Description:</p>")
-                        file._descriptionBox = Dropzone.createElement("<input id='"+file.name+unique_field_id+"_desc' type='text' name='description' value="+description+" >");
+                        file._descriptionBox = Dropzone.createElement("<input id='" + file.name + unique_field_id + "_desc' type='text' name='description' value=" + description + " >");
                         file.previewElement.appendChild(file._descriptionLabel);
                         file.previewElement.appendChild(file._descriptionBox);
                     });
@@ -529,7 +566,7 @@ var Agreement = function () {
 
                         if (rmvFile) {
                             $.ajax({
-                                url: path, 
+                                url: path,
                                 type: "POST",
                                 data: {
                                     filenamenew: rmvFile,

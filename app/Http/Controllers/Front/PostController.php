@@ -86,7 +86,6 @@ class PostController extends Controller
         return view('front.sections.all-surgeries', compact('surgeries'));
     }
 
-
     /**
      * Show all doctors
      * 
@@ -100,7 +99,6 @@ class PostController extends Controller
 
         return view('front.sections.all-doctors', compact('doctors'));
     }
-
 
      /**
      * View full doctor content
@@ -178,7 +176,7 @@ class PostController extends Controller
      */
     public function viewRequest()
     {
-        return view('front.sections.request');
+        return view('front.sections.requests');
     }
    
      /**

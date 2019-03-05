@@ -236,11 +236,7 @@ class AgreementController extends Controller
     public function saveIsapres(Request $request)
     {
         try {
-            $img = $request->file('image');
-
-            if (isset($img)) {
-                $image_url = Core::uploadImage($request->file('image'));
-            }
+           
 
             $ges = $this->agreementRepo->changeAgreement($request->isapre_slug, $request->isapre_title, $request->isapre_description);
 
@@ -265,7 +261,16 @@ class AgreementController extends Controller
     public function saveFonasa(Request $request)
     {
         try {
-            $ges = $this->agreementRepo->changeAgreement($request->fonasa_slug, $request->fonasa_title, $request->fonasa_description, $request->image);
+      
+            $img = $request->file('image');
+          
+            $image_url = "";
+
+            if (isset($img)) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }
+
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->fonasa_title, $request->fonasa_description, $image_url);
 
             return response()->json([
                 'status' => 200,
@@ -283,6 +288,38 @@ class AgreementController extends Controller
             return $data;
         }
     }
+
+    public function savePromo(Request $request)
+    {
+        try {
+      
+            $img = $request->file('image');
+          
+            $image_url = "";
+
+            if (isset($img)) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }
+
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->promo_title, $request->promo_description, $image_url);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha Modificado Promociones de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
 
     public function saveConvenio(Request $request)
     {

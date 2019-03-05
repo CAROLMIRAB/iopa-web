@@ -88,13 +88,18 @@ Route::get('contactanos/', [
 ]);
 
 Route::get('solicitudes/', [
-    'as' => 'aboutus.requests',
-    'uses' => 'Front\PostController@viewRequests'
+    'as' => 'aboutus.request',
+    'uses' => 'Front\PostController@viewRequest'
 ]);
 
 Route::get('consulta/', [
     'as' => 'aboutus.query',
     'uses' => 'Front\PostController@viewQuery'
+]);
+
+Route::get('opinion/', [
+    'as' => 'aboutus.opinion',
+    'uses' => 'Front\PostController@viewOpinion'
 ]);
 
 Route::get('especialidades/', [
@@ -428,7 +433,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
         Route::post('save-promo', [
             'as' => 'agreement.save-promo',
-            'uses' => 'Back\AgreementController@saveConvenio'
+            'uses' => 'Back\AgreementController@savePromo'
         ]);
 
         Route::post('save-arancel', [

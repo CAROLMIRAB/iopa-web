@@ -18,7 +18,7 @@
               <div class="ui-box-description">
                  <p>Si necesita información general de nuestra clínica, reservar hora de Pabellón, Consulta o Exámenes, solicitar presupuesto, una copia de Ficha o Receta Médica, complete el formulario de Contacto y le responderémos a la brevedad.</p>
               </div>
-              <p class="mt-40"><a href="/solicitudes.html" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+            <p class="mt-40"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
           </div>
         </div>
         <div class="col-md-6">
@@ -27,7 +27,7 @@
             <div class="ui-box-description">
               <p>Su opinión es muy importante para nosotros, por esto contamos con usted para mejorar la calidad de nuestro servicio. Lo invitamos a envíar sus comentarios a tráves del formulario de Felicitaciones, Sugerencias y Reclamos.</p>
             </div>
-            <p class="mt-40"><a href="/opinion.html" class="btn btn-theme04 btn-lg">Dar su opinión</a></p>
+            <p class="mt-40"><a href="{{ route('aboutus.opinion') }}" class="btn btn-theme04 btn-lg">Dar su opinión</a></p>
           </div>
         </div>
       </div>

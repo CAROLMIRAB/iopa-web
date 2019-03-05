@@ -36,10 +36,15 @@
     <div class="field_row row">
         <div class="col-10">
             <div class="form-group form-group-sm">
-                <label for="arancel-subtitle">{{ __('Titulo') }}</label>
+                <label for="arancel-subtitle">{{ __('Titulo de descarga') }}</label>
                 <input id="arancel-subtitle" name="arancel_subtitle" class="form-control">
                 <input id="arancel-slug" name="arancel_slug" value="arancel" class="form-control hidden" type="hidden">
             </div>
+            <div class="form-group form-group-sm">
+                <label for="arancel-subtitle">{{ __('Archivo') }}</label>
+                <input id="arancel-archive" name="archive" class="form-control" type="file" accept="application/pdf">
+            </div>
+
         </div>
         <div class="col-2">
             <div class="form-group">
@@ -55,8 +60,8 @@
             <table class="table align-items-center table-flush table-arancel" style="width: 100%">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" width="20%">TITULO</th>
-                        <th scope="col" width="75%">DESCRIPCIÓN</th>
+                        <th scope="col" width="25%">ARCHIVO</th>
+                        <th scope="col" width="70%">TITULO DE DESCARGA</th>
                         <th scope="col" width="5%"></th>
                     </tr>
                 </thead>
@@ -76,6 +81,8 @@
                         @endforeach
                     </tr>
                     @endforeach @endif
+
+                    
                 </tbody>
             </table>
         </div>

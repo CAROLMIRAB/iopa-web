@@ -13,6 +13,7 @@
             <div class="form-group">
                 <label for="fonasa-title">{{ __('Titulo') }}</label>
                 <input id="fonasa-title" name="fonasa_title" class="form-control" value="{{ isset($fonasa['name']) ? $fonasa['name'] : ''  }}">
+                <input name="slug" value="fonasa" class="form-control hidden" type="hidden">
             </div>
             <div class="form-group">
                 <label for="fonasa-description">{{ __('Descripción') }}</label>

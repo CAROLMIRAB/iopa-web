@@ -114,6 +114,7 @@
         /**** Promociones *****/
         Agreement.imagesUpProm(img);
         Agreement.editHTMLProm();
+        Agreement.saveProm();
         
 
         /**** Medios de Pago ****/
