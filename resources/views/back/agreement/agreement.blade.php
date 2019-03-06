@@ -115,6 +115,9 @@
         Agreement.imagesUpProm(img);
         Agreement.editHTMLProm();
         Agreement.saveProm();
+
+        /**** Aranceles *****/
+        Agreement.addArancel();
         
 
         /**** Medios de Pago ****/

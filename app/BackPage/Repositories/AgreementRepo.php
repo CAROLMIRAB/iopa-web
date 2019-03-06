@@ -85,5 +85,15 @@ class AgreementRepo
         return $agreement;
     }
 
+    
+    public function addArancel($slug, $datarender)
+    {
+        $agreement = \DB::table('agreements')->where('slug', $slug)->update(
+            ['content' => $datarender]
+        );
+
+        return $agreement;
+    }
+
 
 }

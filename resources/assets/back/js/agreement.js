@@ -51,10 +51,10 @@ var Agreement = function () {
         return div;
     }
 
-    function arancelTr(img, route, name, title) {
+    function arancelTr(route, name, title, ky) {
         var tr = '<tr>';
         tr += '<td>';
-        tr += ' <a src="' + route + '"><img src="' + img + '" height="50"> "' + name + '" </a>';
+        tr += ' <a href="' + route + '">' + name + '</a>';
         tr += '</td>';
         tr += '<td>';
         tr += title;
@@ -63,6 +63,7 @@ var Agreement = function () {
         tr += '<button class="btn btn-primary min-aran-tr btn-sm" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
         tr += '</td>';
         tr += '</tr>';
+        return tr;
     }
 
     return {
@@ -145,10 +146,9 @@ var Agreement = function () {
                         contentType: false,
                         processData: false
                     }).done(function (data) {
-                           var  title = val.title,
-                                img = val.img,
-                                route = val.route,
-                                name = val.name,
+                           var  title = '',
+                                route = '',
+                                pdf = '',
                                 key = '';
                         if (data.status === 400) {
                             toastr.error(data.message, '!Error!');
@@ -158,13 +158,12 @@ var Agreement = function () {
                             $.each(json, function (k, val) {
                                 key = k;
                                 title = val.title;
-                                img = val.img;
                                 route = val.route;
-                                name = val.name;
+                                pdf = val.pdf;
                             });
     
-                            var tr = arancelTr(img, route, name, title);
-                            $('.table-arancel tbody').append(tr);
+                            var tr = arancelTr( route, pdf, title, key);
+                            $('.table-arancel > tbody').append(tr);
                             toastr.success(data.message, '!Exitoso!');
                         }
                     }).fail(function (data) {
@@ -174,6 +173,38 @@ var Agreement = function () {
                     });
                     return false;
                 });
+
+        },
+
+        minTrArancel: function () {
+            var wrapper = $('.table-arancel > tbody');
+            $(wrapper).on('click', '.min-aran-tr', function (e) {
+                e.preventDefault();
+                var tr = $(this).parents('tr').index() - 1;
+                var slug = $('#arancel-slug').val();
+                $(this).parents('tr').remove();
+                $.ajax({
+                    type: 'post',
+                    url: $('#arancel_add').data('route'),
+                    data: {
+                        index: $(this).data('key'),
+                        slug: slug
+                    },
+                    dataType: "json"
+                }).done(function (data) {
+                    if (data.status == 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                    if (data.status == 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addarancel').button('reset');
+                });
+                return false;
+            });
 
         },
 

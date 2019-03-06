@@ -141,7 +141,7 @@ class AgreementController extends Controller
     public function saveSubArancel(Request $request)
     {
         try {
-            $data = $this->agreementRepo->findArancel($request->arancel_slug);
+            $data = $this->agreementRepo->findFon($request->arancel_slug);
             $datarender = Core::renderArancel($request, $data->content);
             $ges = $this->agreementRepo->addArancel($request->arancel_slug, json_encode($datarender['full']));
 

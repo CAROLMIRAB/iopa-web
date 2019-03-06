@@ -149,7 +149,7 @@ class Core
     {
         $input = [];
 
-        $input['pdfname'] = time() . '.' . $image->getClientOriginalExtension();
+        $input['pdfname'] = time() . '.' . $pdf->getClientOriginalExtension();
 
         $destinationPath = public_path('/uploads/documents');
         $pdf->move($destinationPath, $input['pdfname']);
@@ -242,25 +242,26 @@ class Core
 
     }
 
-    public static function renderArancel($request)
+    public static function renderArancel($request, $arr)
     {
         $arancel = [];
         $subtitle = $request->arancel_subtitle;
-        
-        $pdf_url = Core::uploadPDF($request->file('convenio_image'));
+    
+        $pdf_url = Core::uploadPDF($request->file('archive'));
 
         $array = json_decode($arr, true);
 
-        $subfon = [
+        $arancel = [
             time() => [
-                'subtitle' => $subtitle,
-                'subdescription' => $subdescription
+                'title' => $subtitle,
+                'pdf' => $pdf_url,
+                'route' =>  asset('uploads/documents') . '/' . $pdf_url
             ]
         ];
 
-        array_push($array, $subfon);
+        array_push($array, $arancel);
 
-        return ['full' => $array, 'fonasa' => $subfon];
+        return ['full' => $array, 'arancel' => $arancel];
 
     }
 }

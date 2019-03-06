@@ -32,13 +32,13 @@
         </div>
     </div>
 </form>
-<form action="" method="post" id="arancel_add" enctype="multipart/form-data" data-route="">
+<form action="{{ route('agreement.save-subarancel') }}" method="post" id="arancel_add" enctype="multipart/form-data" data-route="">
     <div class="field_row row">
         <div class="col-10">
             <div class="form-group form-group-sm">
                 <label for="arancel-subtitle">{{ __('Titulo de descarga') }}</label>
                 <input id="arancel-subtitle" name="arancel_subtitle" class="form-control">
-                <input id="arancel-slug" name="arancel_slug" value="arancel" class="form-control hidden" type="hidden">
+                <input id="arancel-slug" name="arancel_slug" value="aranceles" class="form-control hidden" type="hidden">
             </div>
             <div class="form-group form-group-sm">
                 <label for="arancel-subtitle">{{ __('Archivo') }}</label>
@@ -69,13 +69,13 @@
                     <tr>
                         @foreach ($item as $ky => $it)
                         <td width="20%">
-                            {{ $it['subtitle'] }}
+                        <a href="{{ $it['route'] }}"> {{ $it['pdf'] }}</a>
                         </td>
                         <td width="75%">
-                            {{ $it['subdescription'] }}
+                                {{ $it['title'] }}
                         </td>
                         <td width="5%">
-                            <button class="btn btn-primary btn-sm min-tr-fon" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
+                            <button class="btn btn-primary btn-sm min-aran-tr" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
                         </td>
                         @endforeach
                     </tr>
