@@ -145,6 +145,21 @@ class Core
         return $image_url;
     }
 
+    public static function uploadPDF($pdf)
+    {
+        $input = [];
+
+        $input['pdfname'] = time() . '.' . $image->getClientOriginalExtension();
+
+        $destinationPath = public_path('/uploads/documents');
+        $pdf->move($destinationPath, $input['pdfname']);
+
+        $pdf_url = $input['pdfname'];
+
+        return $pdf_url;
+    }
+
+
     public static function renderGes($request, $arr)
     {
         $isapre = [];
@@ -224,6 +239,28 @@ class Core
         $image_url = Core::uploadImage($request->file('convenio_image'));
 
         return ['convenio' => $image_url];
+
+    }
+
+    public static function renderArancel($request)
+    {
+        $arancel = [];
+        $subtitle = $request->arancel_subtitle;
+        
+        $pdf_url = Core::uploadPDF($request->file('convenio_image'));
+
+        $array = json_decode($arr, true);
+
+        $subfon = [
+            time() => [
+                'subtitle' => $subtitle,
+                'subdescription' => $subdescription
+            ]
+        ];
+
+        array_push($array, $subfon);
+
+        return ['full' => $array, 'fonasa' => $subfon];
 
     }
 }

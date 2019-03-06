@@ -189,4 +189,14 @@ class PostController extends Controller
         return view('front.sections.opinion');
     }
 
+    /**
+     * Show opinion
+     * 
+     * @return view
+     */
+    public function viewAgreement()
+    {
+        return view('front.sections.agreements');
+    }
+
 }

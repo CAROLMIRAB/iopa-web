@@ -44,7 +44,6 @@
                 <label for="arancel-subtitle">{{ __('Archivo') }}</label>
                 <input id="arancel-archive" name="archive" class="form-control" type="file" accept="application/pdf">
             </div>
-
         </div>
         <div class="col-2">
             <div class="form-group">

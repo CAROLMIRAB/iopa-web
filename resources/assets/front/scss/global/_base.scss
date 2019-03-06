@@ -1,62 +1,91 @@
 /*--------------------------------------
 	[GENERAL]
   --------------------------------------*/
-  html { 
-   font-size: $font-size;
- }
- body {
+html {
+  font-size: $font-size;
+}
+
+body {
   font-family: $font-family;
   color: $font-color;
   font-size: 1.3em;
   background: $background;
   padding-top: 120px;
-  @media(max-width:1000px){
+
+  @media(max-width: 1000px) {
     //padding-top: 150px;
   }
-  @media(max-width:786px){
+
+  @media(max-width:786px) {
     padding-top: 130px;
   }
 
-  @media(max-width:767px){
+  @media(max-width:767px) {
     padding-top: 96px;
   }
 }
-h1,h2,h3,h4,h5,h6 {
-	font-family:$font-header;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-header;
 }
+
 .clearfix {
   clear: both;
 }
+
 .bold {
   font-weight: bold;
 }
+
 .text-white {
   color: #fff;
 }
+
 section {
   position: relative;
 }
-.section-boxes{
-  margin-top: -30px;
-  position: relative;
-  z-index: 2;
-  @media(max-width: 991px){
-    margin-top: -30px;
-  }
 
-  @media(max-width: 768px){
-    margin-top: 10px;
-  }
+.list-group {
+  border-radius: 0;
 
-  @media(max-width: 360px){
-    margin-top:-10px;
+  .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
-.inner-section{
+.section-boxes {
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+
+  @media(max-width: 991px) {
+    margin-top: -30px;
+  }
+
+  @media(max-width: 768px) {
+    margin-top: 10px;
+  }
+
+  @media(max-width: 360px) {
+    margin-top: -10px;
+  }
+}
+
+.inner-section {
   max-width: 600px;
   margin: 10px auto;
-  .inner-title{
+
+  .inner-title {
     font-size: 24px;
     line-height: 24px;
     margin: 5px 0 15px;
@@ -66,10 +95,12 @@ section {
     padding-bottom: 5px;
     border-bottom: 2px solid $theme;
   }
-  p{
+
+  p {
     opacity: .8;
   }
-  .ui-divider{
+
+  .ui-divider {
     max-width: 50px;
     margin: 10px auto;
     border-bottom: 2px solid $theme02;
@@ -79,17 +110,16 @@ section {
 .modal {
   .modal-header {
     background: #eee;
-    .close { 
+
+    .close {
       opacity: 1;
     }
   }
-  .modal-footer {
 
-  }
+  .modal-footer {}
 
-  .modal-body {
+  .modal-body {}
 
-  }
   .modal-content {
     box-shadow: none;
     border: 1px solid transparent;
@@ -97,21 +127,23 @@ section {
   }
 }
 
-.section-padding{
+.section-padding {
   padding: 10px 0 0;
 }
 
-.section-posts{
+.section-posts {
   color: #fff;
   background: #1d376b;
- // transform: translateY(-140px);
+  // transform: translateY(-140px);
   background: #1d376b url('../img/medics.jpg') bottom no-repeat;
   background-size: 100%;
   position: relative;
-  .inner-section{
+
+  .inner-section {
     position: relative;
     z-index: 1;
-    .ui-divider{
+
+    .ui-divider {
       border-bottom: 2px solid $theme02;
     }
   }
@@ -122,35 +154,37 @@ section {
   height: 100%;
   position: absolute;
   z-index: 0;
-  background: radial-gradient(ellipse at center, 180deg, rgba(93,194,253,.78) 0%, rgba(32,61,120,.8) 43%, rgba(28,49,116,0) 100%);
-  background: -webkit-gradient(radial, center center, rgba(93,194,253,.78) 0%, rgba(32,61,120,.8) 43%, rgba(28,51,116,0) 100%);
-  background: -webkit-radial-gradient(center top, ellipse cover, rgba(93,194,253,.78) 0%, rgba(32,61,120,.8) 43%, rgba(28,51,116,0) 100%);
+  background: radial-gradient(ellipse at center, 180deg, rgba(93, 194, 253, .78) 0%, rgba(32, 61, 120, .8) 43%, rgba(28, 49, 116, 0) 100%);
+  background: -webkit-gradient(radial, center center, rgba(93, 194, 253, .78) 0%, rgba(32, 61, 120, .8) 43%, rgba(28, 51, 116, 0) 100%);
+  background: -webkit-radial-gradient(center top, ellipse cover, rgba(93, 194, 253, .78) 0%, rgba(32, 61, 120, .8) 43%, rgba(28, 51, 116, 0) 100%);
 }
+
 /* 
 .section-partners{
   padding: 0 0 80px;
 } */
 
-.partners-caousel{
+.partners-caousel {
   margin: 20px 0;
 }
 
-.bt-whatsme{
+.bt-whatsme {
   width: 200px;
   height: 60px;
   cursor: pointer;
   position: fixed;
   right: 30px;
   bottom: 20px;
-  z-index:  9999;
-  @media(max-width:768px){
+  z-index: 9999;
+
+  @media(max-width: 768px) {
     right: 5px;
     bottom: 8px;
     width: auto;
   }
 }
 
-.bt-whatsme::after{
+.bt-whatsme::after {
   content: '';
   position: absolute;
   height: 60px;
@@ -158,12 +192,12 @@ section {
   right: 0px;
   border-radius: 100%;
   transition: all .4s linear;
-  box-shadow: 0px 0px 18px 0px rgba(148,148,148,1);
+  box-shadow: 0px 0px 18px 0px rgba(148, 148, 148, 1);
   //background-color: #25D366;
   background-color: #25D366;
 }
 
-svg.whatsapp-figure{
+svg.whatsapp-figure {
   max-width: 30px;
   height: 60px;
   z-index: 999;
@@ -172,12 +206,12 @@ svg.whatsapp-figure{
 }
 
 .bt-whatsme:hover::after,
-.bt-whatsme:active::after{
+.bt-whatsme:active::after {
   //background-color: #21bd5b;
   background-color: #25D366;
 }
 
-.callme{
+.callme {
   width: 160px;
   font-size: 14px;
   display: block;
@@ -196,14 +230,15 @@ svg.whatsapp-figure{
   padding-bottom: 10px;
   padding-left: 15px;
   border-radius: 3px;
-  @media(max-width:768px){
-    display: none!important;
+
+  @media(max-width: 768px) {
+    display: none !important;
   }
 }
 
 
 .bt-whatsme:hover .callme,
-.bt-whatsme:active .callme{
+.bt-whatsme:active .callme {
   visibility: visible;
   opacity: 1;
   right: 25px;
@@ -212,67 +247,73 @@ svg.whatsapp-figure{
   z-index: 998;
 }
 
-.btn-wsp{
-  color:#fff;
+.btn-wsp {
+  color: #fff;
   font-size: 35px;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:$theme;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $theme;
   border: 1px solid $theme02;
-  cursor:pointer;
-  transition:all ease-in-out .3s;
-  position:fixed;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+  position: fixed;
   z-index: 10;
-  right:50px;
-  bottom:50px;
-  @media(max-width:400px) {
-    right:10px;
-    bottom:10px;
+  right: 50px;
+  bottom: 50px;
+
+  @media(max-width: 400px) {
+    right: 10px;
+    bottom: 10px;
   }
+
   box-shadow: 0px 0 16px 6px rgba(0, 0, 0, 0.06);
+
   &:hover,
   &:focus {
-    background:$theme02;
-    .wsp-phone{
-      display:block;
+    background: $theme02;
+
+    .wsp-phone {
+      display: block;
     }
-      .fa-whatsapp{
-       margin-top:12px;
-      }
+
+    .fa-whatsapp {
+      margin-top: 12px;
+    }
   }
-  
-  .fa-whatsapp{
+
+  .fa-whatsapp {
     color: #fff;
-    margin-top:0;
+    margin-top: 0;
   }
-  
+
   .wsp-phone {
-    display:none;
-    color:$font-color;
-    text-align:right;
-    background:#f2f2f2;
+    display: none;
+    color: $font-color;
+    text-align: right;
+    background: #f2f2f2;
     //border:1px solid #f9f9f9;
-    padding:5px;
-    border-radius:3px;
-    position:relative;
-    left:-155px;
-    top:-50px;
-    width:140px;
-    font-size:14px;
-    z-index:10;
+    padding: 5px;
+    border-radius: 3px;
+    position: relative;
+    left: -155px;
+    top: -50px;
+    width: 140px;
+    font-size: 14px;
+    z-index: 10;
     transition: all ease-in-out .2s;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.16);
-    span{
-      color:#737373;
+
+    span {
+      color: #737373;
       font-weight: bold;
-      display:block;
+      display: block;
     }
   }
-  
+
 }
 
-.mobile-cta{
+.mobile-cta {
   color: #fff;
   font-weight: normal;
   background: $theme04;
@@ -287,15 +328,17 @@ svg.whatsapp-figure{
   font-size: 15px;
   z-index: 10;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.16);
-  @media(min-width:993px){
-    display: none; 
+
+  @media(min-width: 993px) {
+    display: none;
   }
 }
 
-.section-especialistas{
+.section-especialistas {
   padding: 40px 0;
   background: #F4F4F4;
 }
+
 .section-partners {
   padding: 40px 0;
 }

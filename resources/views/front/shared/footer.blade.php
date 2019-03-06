@@ -1,5 +1,6 @@
 <div class="bt-whatsme">
-	<svg class="whatsapp-figure" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+	<a href="https://api.whatsapp.com/send?phone=56935737234&text=Hola!%20Quiero%20obtener%20mas%20información">
+		<svg class="whatsapp-figure" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
 	 id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
 		  <g>
 			<path
@@ -9,6 +10,7 @@
 			/>
 		  </g>
 		</svg>
+	</a>
 	<span class="callme"> Escríbenos +56935737234</span>
 </div>
 <footer class="ui-footer">
@@ -21,8 +23,8 @@
 						@foreach($offices as $office)
 						<div class="row row-sucursales">
 							<div class="col-md-7">
-								<i class="fa fa-map-marker"></i> <span class="footer-sucursal"> 
-									<a class="link-sucursal" href="{{ route('office.viewpost', $office->slug) }}">{{ $office->name }}</a></span> - {{
+								<i class="fa fa-map-marker"></i> 
+									<a class="footer-sucursal" href="{{ route('office.viewpost', $office->slug) }}"><span class=""> {{ $office->name }}</span></a> - {{
 								$office->address }}
 							</div>
 							<div class="col-md-3">
@@ -69,12 +71,12 @@
 				</div>
 				<div class="col-sm-5  hidden-xs">
 					<div class="f-item">
-						<img src="{{ asset("img/f-logos.jpg ") }}" class="img-responsive center-block" alt="">
+						<img src="{{ asset("img/f-logos.jpg") }}" class="img-responsive center-block" alt="">
 					</div>
 				</div>
 				<div class="col-sm-4  ">
 					<div class="f-item">
-						<img src="{{ asset("img/logo-acreditado.jpg ") }}" class="img-responsive center-block img-acreditado" alt="">
+						<img src="{{ asset("img/logo-acreditado.jpg") }}" class="img-responsive center-block img-acreditado" alt="">
 					</div>
 				</div>
 			</div>

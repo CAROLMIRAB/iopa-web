@@ -102,6 +102,11 @@ Route::get('opinion/', [
     'uses' => 'Front\PostController@viewOpinion'
 ]);
 
+Route::get('convenios-y-aranceles/', [
+    'as' => 'aboutus.agreement',
+    'uses' => 'Front\PostController@viewAgreement'
+]);
+
 Route::get('especialidades/', [
     'as' => 'specialty.viewposts',
     'uses' => 'Front\PostController@viewFullPost'

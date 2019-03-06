@@ -138,6 +138,33 @@ class AgreementController extends Controller
 
     }
 
+    public function saveSubArancel(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findArancel($request->arancel_slug);
+            $datarender = Core::renderArancel($request, $data->content);
+            $ges = $this->agreementRepo->addArancel($request->arancel_slug, json_encode($datarender['full']));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Arancel de forma correcta",
+                'data' => json_encode($datarender['arancel'])
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
+
     public function saveSubFonasa(Request $request)
     {
         try {
@@ -161,7 +188,6 @@ class AgreementController extends Controller
 
             return $data;
         }
-
     }
 
     public function unsetFonasa(Request $request)
@@ -236,8 +262,6 @@ class AgreementController extends Controller
     public function saveIsapres(Request $request)
     {
         try {
-           
-
             $ges = $this->agreementRepo->changeAgreement($request->isapre_slug, $request->isapre_title, $request->isapre_description);
 
             return response()->json([

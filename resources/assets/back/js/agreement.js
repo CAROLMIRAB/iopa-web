@@ -60,13 +60,12 @@ var Agreement = function () {
         tr += title;
         tr += '</td>';
         tr += '<td>';
+        tr += '<button class="btn btn-primary min-aran-tr btn-sm" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
         tr += '</td>';
         tr += '</tr>';
     }
 
     return {
-
-
 
         minTrFonasa: function () {
             var wrapper = $('.table-fonasa > tbody');
@@ -129,6 +128,52 @@ var Agreement = function () {
                 });
                 return false;
             });
+
+        },
+
+        addArancel: function(){
+                var $form = $('#arancel_add');
+                $('#btn-addarancel').click(function () {
+                    $(this).button('loading');
+                    var formData = new FormData(document.getElementById("arancel_add"));
+                    $.ajax({
+                        type: 'post',
+                        url: $form.attr('action'),
+                        data: formData,
+                        dataType: "json",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (data) {
+                           var  title = val.title,
+                                img = val.img,
+                                route = val.route,
+                                name = val.name,
+                                key = '';
+                        if (data.status === 400) {
+                            toastr.error(data.message, '!Error!');
+                        }
+                        if (data.status === 200) {
+                            var json = JSON.parse(data.data);
+                            $.each(json, function (k, val) {
+                                key = k;
+                                title = val.title;
+                                img = val.img;
+                                route = val.route;
+                                name = val.name;
+                            });
+    
+                            var tr = arancelTr(img, route, name, title);
+                            $('.table-arancel tbody').append(tr);
+                            toastr.success(data.message, '!Exitoso!');
+                        }
+                    }).fail(function (data) {
+                        toastr.error(data.message, '!Error!');
+                    }).always(function () {
+                        $('#btn-addarancel').button('reset');
+                    });
+                    return false;
+                });
 
         },
 

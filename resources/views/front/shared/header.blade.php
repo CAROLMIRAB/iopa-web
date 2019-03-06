@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-sm-12 col-top">
                     <a class="top-brand hidden-xs" href="{{ route('home') }}">
-							<img src="{{ asset('/img/logo-iopa220px.png') }}"  alt="Logo IOPA">
+							<img src="{{ asset('img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
                         <li><a href="#!" class="btn-social">
@@ -62,7 +62,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conócenos <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('aboutus.aboutus') }}">Sobre nosotros</a></li>
-                            <li><a href="#">Arancéles y Convenios action</a></li>
+                            <li><a href="{{ route('aboutus.agreement') }}">Arancéles y Convenios</a></li>
                             <li><a href="{{ route('aboutus.contact') }}">Contacto</a></li>
                             <li><a href="#">Otros Servicios</a></li>
                         </ul>
