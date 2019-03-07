@@ -41,7 +41,7 @@ class DoctorController extends Controller
      */
     public function viewCreateDoctor()
     {
-        $specialties = $this->doctorRepo->showAllSpecialties();
+        $specialties = $this->specialtyRepo->showAllSpecialties();
         $offices = $this->officeRepo->showAllOffices();
         return view('back.doctors.create', compact('specialties', 'offices'));
     }

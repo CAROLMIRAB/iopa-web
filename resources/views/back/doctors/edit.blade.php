@@ -69,7 +69,7 @@
                                 <input size="65" type="text" name="slug" id="slug" value="{{ $doctor->slug }}" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
                                 <div class="example-text">
                                     <span class="url-example"><strong> Url:</strong> 
-                                                        <a target="_blank" href="{{ $doctor->slug_url }}" data-slug="{{ route('doctor.viewposts') }}" id="slug-url">{{ $doctor->slug_url }}</a></span></div>
+                                                        <a target="_blank" href="{{ $doctor->slug_url }}" data-slug="{{ route('doctor.viewalldoctors') }}" id="slug-url">{{ $doctor->slug_url }}</a></span></div>
                             </div>
                         </div>
                         <div class="col-lg-6">

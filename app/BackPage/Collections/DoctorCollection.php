@@ -37,7 +37,7 @@ class DoctorCollection
     {
     
         $doctor->image= url('') . "/uploads/images/" . $doctor->file;
-        $doctor->slug_url = route('surgery.viewposts') . "/" . $doctor->slug;
+        $doctor->slug_url = route('doctor.viewalldoctors') . "/" . $doctor->slug;
 
         return $doctor;
 
