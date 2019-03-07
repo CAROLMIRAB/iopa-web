@@ -1,7 +1,7 @@
 <form action="{{ route('agreement.save-pago') }}" method="post" id="pago" enctype="multipart/form-data">
     <div class="row">
         <div class="col-8 text-left">
-            <h2 class="mb-0">{{ __('Promociones, Campañas o Descuentos') }}</h2>
+            <h2 class="mb-0">{{ __('Medios de Pago') }}</h2>
         </div>
         <div class="col-4 text-right">
             <button id="pago-btn-save" class="btn  btn-primary" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Guardando...') }}">{{ __('Guardar Cambios') }}</button>
@@ -23,10 +23,11 @@
         <div class="col-4">
             <div class="form-group ">
                 <label for="image">{{ __('Imagen') }}</label>
-                <div id="pago-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed;">
+            <div id="pago-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$pago['image']) }}')">
                     <label for="image-upload" id="pago-image-label">
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="pago-image" accept="image/png, image/jpeg" />
+                    <input type="hidden" name="imageurl" value="{{ $pago['image'] }}" >
                 </div>
             </div>
         </div>

@@ -282,6 +282,16 @@ var Agreement = function () {
             });
         },
 
+        imagesUpArancel: function (image) {
+            $.uploadPreview({
+                input_field: "#arancel-image",
+                preview_box: "#arancel-image-preview",
+                label_field: "#arancel-image-label",
+                label_default: image,
+                label_selected: image
+            });
+        },
+
         imagesUpProm: function (image) {
             $.uploadPreview({
                 input_field: "#promo-image",
@@ -471,6 +481,31 @@ var Agreement = function () {
                     toastr.error(data.message, '!Error!');
                 }).always(function () {
                     $('#fonasa-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+
+        saveArancel: function () {
+            var $form = $('#arancel');
+            $('#arancel-btn-save').click(function (e) {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("arancel"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#arancel-btn-save').button('reset');
                 });
                 return false;
             });
@@ -695,6 +730,12 @@ var Agreement = function () {
 
         editHTMLProm: function () {
             $('#promo-description').summernote({
+                height: 150
+            });
+        },
+
+        editHTMLArancel: function () {
+            $('#arancel-description').summernote({
                 height: 150
             });
         }

@@ -118,6 +118,10 @@
 
         /**** Aranceles *****/
         Agreement.addArancel();
+        Agreement.minTrArancel();
+        Agreement.saveArancel();
+        Agreement.imagesUpArancel(img);
+        Agreement.editHTMLArancel();
         
 
         /**** Medios de Pago ****/

@@ -164,6 +164,39 @@ class AgreementController extends Controller
 
     }
 
+    public function unsetArancel(Request $request)
+    {
+        try {
+            $data = $this->agreementRepo->findFon($request->slug);
+            $arr = json_decode($data->content, true);
+
+            foreach ($arr as $key => $val) {
+                if (isset($val[$request->index])) {
+                    unset($arr[$key][$request->index]);
+                    unset($arr[$key]);
+                }
+            }
+
+            $ges = $this->agreementRepo->addArancel($request->slug, json_encode($arr));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha eliminado arancel de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
 
     public function saveSubFonasa(Request $request)
     {
@@ -209,7 +242,7 @@ class AgreementController extends Controller
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
-                'message' => "Ha agregado Isapre de forma correcta"
+                'message' => "Ha eliminado fonasa de forma correcta"
             ]);
 
         } catch (\Exception $ex) {
@@ -244,7 +277,7 @@ class AgreementController extends Controller
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
-                'message' => "Ha agregado Isapre de forma correcta"
+                'message' => "Ha eliminado de forma correcta"
             ]);
 
         } catch (\Exception $ex) {
@@ -290,8 +323,10 @@ class AgreementController extends Controller
           
             $image_url = "";
 
-            if (isset($img)) {
+            if (!is_null($img)) {
                 $image_url = Core::uploadImage($request->file('image'));
+            }else{
+                $image_url = $request->imageurl;
             }
 
             $ges = $this->agreementRepo->changeAgreement($request->slug, $request->fonasa_title, $request->fonasa_description, $image_url);
@@ -321,8 +356,10 @@ class AgreementController extends Controller
           
             $image_url = "";
 
-            if (isset($img)) {
+            if (!is_null($img)) {
                 $image_url = Core::uploadImage($request->file('image'));
+            }else{
+                $image_url = $request->imageurl;
             }
 
             $ges = $this->agreementRepo->changeAgreement($request->slug, $request->promo_title, $request->promo_description, $image_url);
@@ -344,6 +381,38 @@ class AgreementController extends Controller
         }
     }
 
+    public function saveArancel(Request $request)
+    {
+        try {
+     
+            $img = $request->file('image');
+          
+            $image_url = "";
+
+            if (!is_null($img)) {
+                $image_url = Core::uploadImage($request->file('image'));
+            }else{
+                $image_url = $request->imgurl;
+            }
+
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->arancel_title, $request->arancel_description, $image_url);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha Modificado Aranceles de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
 
     public function saveConvenio(Request $request)
     {

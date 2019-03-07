@@ -443,12 +443,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
         Route::post('save-arancel', [
             'as' => 'agreement.save-arancel',
-            'uses' => 'Back\AgreementController@saveConvenio'
+            'uses' => 'Back\AgreementController@saveArancel'
         ]);
 
         Route::post('save-subarancel', [
             'as' => 'agreement.save-subarancel',
             'uses' => 'Back\AgreementController@saveSubArancel'
+        ]);
+
+        Route::post('min-arancel', [
+            'as' => 'agreement.min-arancel',
+            'uses' => 'Back\AgreementController@unsetArancel'
         ]);
 
         Route::post('save-pago', [

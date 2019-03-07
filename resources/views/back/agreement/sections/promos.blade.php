@@ -23,10 +23,11 @@
         <div class="col-4">
                 <div class="form-group ">
                     <label for="image">{{ __('Imagen') }}</label>
-                    <div id="promo-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed;">
+                    <div id="promo-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$promo['image']) }}'); background-size: cover; background-position: center center;">
                         <label for="image-upload" id="promo-image-label">
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                         <input type="file" name="image" id="promo-image" accept="image/png, image/jpeg" />
+                        <input type="hidden" name="imageurl" value="{{ $promo['image'] }}" >
                     </div>
                 </div>
             </div>

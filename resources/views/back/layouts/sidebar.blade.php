@@ -6,16 +6,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0" href="./index.html">
+    <a class="navbar-brand pt-0" href="{{ route('post.view-all-posts') }}">
         <img src=" {{ asset('back/img/logo-iopa.png') }}" class="navbar-brand-img" alt="...">
       </a>
     <!-- Navigation -->
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="./index.html">
-              <i class="ni ni-tv-2 text-primary"></i> Panel
-            </a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('post.view-all-posts') }}">
               <i class="ni ni-planet text-primary"></i> Noticias
@@ -28,7 +23,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('surgery.view-all-surgeries') }}">
-              <i class="ni ni-single-02 text-yellow"></i> Cirugías 
+          <i class="ni ni-bullet-list-67 text-red"></i> Cirugías 
             </a>
       </li>
       <li class="nav-item">
@@ -38,12 +33,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('exam.view-all-exams') }}">
-                <i class="ni ni-pin-3 text-orange"></i> Examenes
+          <i class="ni ni-bullet-list-67 text-red"></i> Examenes
               </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('specialty.view-all-specialties') }}">
-                  <i class="ni ni-key-25 text-info"></i> Especialidades
+          <i class="ni ni-bullet-list-67 text-red"></i> Especialidades
                 </a>
       </li>
       <li class="nav-item">

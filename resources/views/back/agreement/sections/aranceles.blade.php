@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="arancel-title">{{ __('Titulo') }}</label>
                 <input id="arancel-title" name="arancel_title" class="form-control" value="{{ isset($arancel['name']) ? $arancel['name'] : ''  }}">
-                <input id="arancel-slug" name="arancel_slug" value="arancels" class="hidden" type="hidden">
+                <input id="aran-slug" name="slug" value="aranceles" class="hidden" type="hidden">
             </div>
             <div class="form-group">
                 <label for="arancel-description">{{ __('Descripción') }}</label>
@@ -23,16 +23,18 @@
         <div class="col-4">
             <div class="form-group ">
                 <label for="image">{{ __('Imagen') }}</label>
-                <div id="arancel-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed;">
+                <div id="arancel-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$arancel['image']) }}'); background-size: cover; background-position: center center; ">
                     <label for="image-upload" id="arancel-image-label">
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="arancel-image" accept="image/png, image/jpeg" />
+                    <input type="hidden" name="imageurl" value="{{ $arancel['image'] }}" id="arancelurl" />
+
                 </div>
             </div>
         </div>
     </div>
 </form>
-<form action="{{ route('agreement.save-subarancel') }}" method="post" id="arancel_add" enctype="multipart/form-data" data-route="">
+<form action="{{ route('agreement.save-subarancel') }}" method="post" id="arancel_add" enctype="multipart/form-data" data-route="{{ route('agreement.min-arancel') }}">
     <div class="field_row row">
         <div class="col-10">
             <div class="form-group form-group-sm">
