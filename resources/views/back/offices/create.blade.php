@@ -19,7 +19,7 @@
 					<input size="65" type="text" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
 					<div class="example-text">
 						<span class="url-example"><strong> Url:</strong> 
-							<a href="" data-slug="{{ route('office.viewposts') }}" id="slug-url">{{ route('office.viewposts') }}/</a></span>
+							<a href="" data-slug="{{ route('office.viewalloffices') }}" id="slug-url">{{ route('office.viewalloffices') }}/</a></span>
 					</div>
 				</div>
 				<div class="form-group">
