@@ -104,7 +104,7 @@
 							</div>
 							<div class="form-group">
 								<label for="specialty">{{ __('Especialidades') }}</label>
-								<select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialty')}}"> 				
+								<select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialties')}}"> 				
 										</select>
 								<p class="invalid-feedback specialty-error"></p>
 							</div>
@@ -184,7 +184,7 @@
 		Doctors.createDoctor();
 		Doctors.slug();
 		Offices.selectOffice();
-		Specialties.selectSpecialty();
+		Specialty.selectSpecialty();
 	});
 
 </script>

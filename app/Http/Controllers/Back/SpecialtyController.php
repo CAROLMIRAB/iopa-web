@@ -52,6 +52,18 @@ class SpecialtyController extends Controller
         return view('back.specialties.edit', compact('specialty'));
     }
 
+    public function findSpecialties(Request $request)
+    {
+       $spacialties = $this->specialtyRepo->findSpecialties($request->q);
+       $data = [
+        'code' => 200,
+        'data' => [
+            'tags' => $spacialties
+        ]
+    ];
+    return response()->json($data);
+    }
+
     /**
      * Show all specialties view 
      * 

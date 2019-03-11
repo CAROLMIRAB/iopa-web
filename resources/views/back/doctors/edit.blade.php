@@ -113,7 +113,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="specialty">{{ __('Especialidades') }}</label>
-                                <select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialty')}}" multiple="multiple"> 
+                                <select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialties')}}" multiple="multiple"> 
                                             @foreach ($specialtiesdoctor as $od)
                                                 <option selected="selected" value="{{ $od->office_id }}">{{ $od->name }}</option>
                                             @endforeach
@@ -198,7 +198,7 @@
         Doctors.editDoctor();
         Doctors.slug();
         Offices.selectOfficeEdit();
-        Specialties.selectSpecialtyEdit();
+        Specialty.selectSpecialtyEdit();
        
 	});
 

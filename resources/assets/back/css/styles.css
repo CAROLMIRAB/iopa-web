@@ -137,12 +137,11 @@ transform: translate(0,0);
   position: absolute;
   top: 61%;
   left: 50%;
-  transform: translate(-50%, -29.5%);
-  -ms-transform: translate(-50%, -29.5%);
+  transform: translate(-50%, -33.5%);
+  -ms-transform: translate(-50%, -33.5%);
   text-align: center;
-  background: #666666;
   padding: 2.7rem;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .icon-img i{

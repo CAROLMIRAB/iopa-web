@@ -28,7 +28,7 @@
 				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Descripción') }}</label>
-					<textarea id="body" name="body" class="form-control summernote">{{ $specialty->description }}</textarea>
+					<textarea id="body" name="body" class="form-control summernote">{{ $specialty->body }}</textarea>
 				</div>
 
 			</div>

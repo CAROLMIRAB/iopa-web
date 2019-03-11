@@ -114,6 +114,8 @@ Route::get('especialidades/', [
 
 
 
+
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::get('register', [
@@ -226,11 +228,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\OfficeController@findOffice'
         ]);
 
-        Route::get('find-specialty', [
-            'as' => 'specialty.find-specialty',
-            'uses' => 'Back\OfficeController@findOffice'
-        ]);
-
+      
         Route::get('editar', [
             'as' => 'office.editview',
             'uses' => 'Back\OfficeController@viewEditOffice'
@@ -336,6 +334,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\SpecialtyController@changeStatus'
         ]);
     });
+
+    Route::get('find-specialty', [
+        'as' => 'specialty.find-specialties',
+        'uses' => 'Back\SpecialtyController@findSpecialties'
+    ]);
+
 
 
     /************** ROUTES EXAMS ******************/

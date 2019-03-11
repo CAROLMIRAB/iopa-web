@@ -21,7 +21,9 @@ class OfficeRepo
 
     public function findOffices($var)
     {
-        $offices = Office::select('id', 'name')->whereRaw("LOWER(name) like '".strtolower($var)."%'")->orderBy('name', 'asc')->get();
+        $offices = Office::select('id', 'name')
+        ->whereRaw("LOWER(name) like '".strtolower($var)."%'")
+        ->orderBy('name', 'asc')->get();
         return $offices;
     }
 

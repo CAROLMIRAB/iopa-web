@@ -49,6 +49,16 @@ class SpecialtyRepo
         return $specialty;
     }
 
+    public function findSpecialties($var)
+    {
+        $specialty = Specialty::select('id', 'name', 'body', 'slug', 'status')
+        ->whereRaw("LOWER(name) like '".strtolower($var)."%'")
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return $specialty;
+    }
+
     public function editSpecialtyById($data, $id)
     { 
         $specialty = \DB::table('specialties')->where('id', $id)->update($data);

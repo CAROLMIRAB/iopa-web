@@ -19,7 +19,7 @@
                 <input type="text" name="slug" id="slug" value="{{ $post->slug }}" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
                     <div class="example-text">
                         <span class="url-example"><strong> Url:</strong> 
-                        <a href="{{ $post->slug_url }}" data-slug="{{ route('post.viewposts') }}" id="slug-url">{{ $post->slug_url }}</a></span>
+                        <a href="{{ $post->slug_url }}" data-slug="{{ route('post.viewallposts') }}" id="slug-url">{{ $post->slug_url }}</a></span>
                     </div>
                 </div>
                 <div class="form-group">
