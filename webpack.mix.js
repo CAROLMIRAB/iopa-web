@@ -115,19 +115,17 @@ mix.styles([
 
 
 mix.scripts([
-    'node_modules/jquery/dist/jquery.js',
-    'plugins/jquery-ui/jquery-ui.js',
-    'node_modules/bootstrap/dist/js/bootstrap.js',
+    'node_modules/jquery/dist/jquery.min.js',
+    'plugins/jquery-ui/jquery-ui.min.js',
+    'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/select2/dist/js/select2.min.js',
-    'node_modules/sweetalert2/dist/sweetalert2.js',
-    'plugins/stringToSlug/jquery.slugit.min.js',
     'plugins/summernote/summernote.min.js',
     'plugins/amsify-suggestags/js/jquery.amsify.suggestags.js',
     'plugins/upload-preview/uploadPreview.min.js',
-    'node_modules/cropper/dist/cropper.js',
-    'bower_components/datatables.net/js/jquery.dataTables.js',
-    'node_modules/toastr/toastr.js',
-    'node_modules/jquery-validation/dist/jquery.validate.js',
+    'node_modules/cropper/dist/cropper.min.js',
+    'bower_components/datatables.net/js/jquery.dataTables.min.js',
+    'node_modules/toastr/toastr.min.js',
+    'node_modules/jquery-validation/dist/jquery.validate.min.js',
     'bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js',
     'node_modules/dropzone/dist/min/dropzone.min.js'
 ], 'public/back/js/build.back.min.js').version();
