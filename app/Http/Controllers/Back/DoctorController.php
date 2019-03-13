@@ -207,6 +207,8 @@ class DoctorController extends Controller
                 ]);
             }
 
+            //dd($request->all());
+
             $data = array(
                 'name' => $request->name,
                 'lastname' => $request->lastname,

@@ -19,11 +19,12 @@ class DoctorCollection
             $date_create->setTimezone('America/Santiago');
             $doctor->created = $date_create->format('d/m/Y');
             $route = route('doctor.editview', ['slug' => $doctor->slug]);
+            $image= url('') . "/uploads/thumbnail/" . $doctor->file;
             $alldoctors->push([
                 'id' => $doctor->id,
                 'name' => $doctor->lastname.", ".$doctor->name,
                 'phone' => $doctor->phone,
-                'file' => $doctor->file,
+                'file' => $image,
                 'created' => $doctor->created,
                 'email' => $doctor->email,
                 'route' => $route,
