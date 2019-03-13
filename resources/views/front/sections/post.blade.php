@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="ui-blog-details">
                     <figure class="ui-blog-cover">
-                        <img src="{{ $post->file }}" alt="Portada">
+                        <img src="{{ $post->image }}" alt="Portada">
                     </figure>
                     <ul class="ui-breadcrum">
                         <li>

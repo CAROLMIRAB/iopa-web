@@ -18,7 +18,7 @@
                         <div class="media-left">
                             <a href="#">
                     @if($post->file)
-                        <img src="{{ $post->file }}" class="media-object">
+                        <img src="{{ $post->image }}" class="media-object">
                     @endif
                   </a>
                         </div>
