@@ -23,7 +23,7 @@
                             <a href="{{ $posts[0]->route  }}">
                                 <figure>
 
-                                    <img src="{{ $posts[0]->file }}" alt="">
+                                    <img src="{{ $posts[0]->image }}" alt="">
                                     <div class="post-title">
                                         <h3>{{ $posts[0]->name }}</h3>
                                     </div>
@@ -59,7 +59,7 @@
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[2]->route }}">
-                                    <img class="media-object" src="{{ $posts[2]->file }}" alt="...">
+                                    <img class="media-object" src="{{ $posts[2]->image }}" alt="...">
 										</a>
                                 </div>
                                 <div class="media-body">
@@ -74,7 +74,7 @@
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[3]->route }}">
-                                        <img class="media-object" src="{{ $posts[3]->file }}" alt="...">
+                                        <img class="media-object" src="{{ $posts[3]->image }}" alt="...">
                                             </a>
                                 </div>
                                 <div class="media-body">
@@ -89,7 +89,7 @@
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[4]->route }}">
-                                            <img class="media-object" src="{{ $posts[4]->file }}" alt="...">
+                                            <img class="media-object" src="{{ $posts[4]->image }}" alt="...">
                                                 </a>
                                 </div>
                                 <div class="media-body">
