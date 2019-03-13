@@ -11,7 +11,7 @@ class DoctorsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Doctor::class, 30)->create()->each(function (App\Doctor $post) {
+        factory(App\Doctor::class, 6)->create()->each(function (App\Doctor $post) {
             $post->doctor_office()->attach([
                 rand(1,5),
                 rand(1,5)
