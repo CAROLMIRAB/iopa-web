@@ -227,6 +227,8 @@ class DoctorController extends Controller
                     $offices
                 );
 
+                dd($offices);
+
                 $specialties = array_map(
                     function ($value) {
                         return (int)$value;
