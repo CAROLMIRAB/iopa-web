@@ -44,7 +44,7 @@
                             <li class="media">
                                 <div class="media-left">
                                     <a href="{{ $posts[1]->slug }}">
-                                            <img class="media-object" src="{{ asset('img/post-preview02.jpg') }}" alt="...">
+                                            <img class="media-object" src="{{ $posts[1]->image }}" alt="...">
 										</a>
                                 </div>
                                 <div class="media-body">

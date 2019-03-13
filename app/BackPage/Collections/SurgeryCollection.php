@@ -37,7 +37,7 @@ class SurgeryCollection
     {
     
         $surgery->image= url('') . "/uploads/images/" . $surgery->file;
-        $surgery->slug_url = route('surgery.viewposts') . "/" . $surgery->slug;
+        $surgery->slug_url = route('surgery.viewallsurgeries') . "/" . $surgery->slug;
 
         return $surgery;
 
