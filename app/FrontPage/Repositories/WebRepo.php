@@ -90,7 +90,6 @@ class WebRepo
     public function showOffices()
     {
       $offices = Office::select('name','photo','map','phone','address','slug')
-      ->where('offices.status', 'PUBLISHED')
       ->get();
  
         return $offices;
