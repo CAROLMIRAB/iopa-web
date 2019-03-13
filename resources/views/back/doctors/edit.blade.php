@@ -115,7 +115,7 @@
                                 <label for="specialty">{{ __('Especialidades') }}</label>
                                 <select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialties')}}" multiple="multiple"> 
                                             @foreach ($specialtiesdoctor as $od)
-                                                <option selected="selected" value="{{ $od->office_id }}">{{ $od->name }}</option>
+                                                <option selected="selected" value="{{ $od->specialty_id }}">{{ $od->name }}</option>
                                             @endforeach
                                             @foreach ($specialties as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
