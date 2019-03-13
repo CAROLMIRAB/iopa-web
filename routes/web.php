@@ -53,7 +53,7 @@ Route::get('examenes/', [
 ]);
 
 Route::get('examenes/{slug}', [
-    'as' => 'exam.viewpost',
+    'as' => 'exam.viewexam',
     'uses' => 'Front\PostController@viewFullExam'
 ]);
 
