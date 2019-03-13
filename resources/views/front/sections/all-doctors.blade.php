@@ -31,7 +31,7 @@
             <li class="media filter {{ $doctor->listoffice }}">
                   <div class="media-left">
                     <a href="javascript:void(0);">
-                    <img class="media-object" src="{{ $doctor->file }}" alt="...">
+                    <img class="media-object" src="{{ $doctor->image }}" alt="...">
                     </a>
                   </div>
                   <div class="media-body">

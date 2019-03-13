@@ -55,9 +55,9 @@ class WebCollection
     public function renderDoctors($doctors)
     {
       foreach($doctors as $doctor){
-    
+         $doctor->image= url('') . "/uploads/images/" . $doctor->file;
         foreach($doctor->doctor_office as $item){
-      $doctor->listoffice .= $item->slug ." ";    
+      $doctor->listoffice .= $item->slug ." ";
       }
     }
       return  $doctors;
