@@ -227,7 +227,6 @@ class DoctorController extends Controller
                     $offices
                 );
 
-                dd($offices);
 
                 $specialties = array_map(
                     function ($value) {
@@ -236,7 +235,6 @@ class DoctorController extends Controller
                     $specialties
                 );
 
-                dd($specialties);
 
                 $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices, $specialties);
               
@@ -248,7 +246,7 @@ class DoctorController extends Controller
             }
 
         } catch (\Exception $ex) {
-
+            dd($ex);
             $data = [
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se publicaba. Por favor intente nuevamente'),
