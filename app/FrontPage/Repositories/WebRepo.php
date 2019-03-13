@@ -66,7 +66,8 @@ class WebRepo
 
     public function showDoctors()
     {
-      $doctors = Doctor::with(array('doctor_office'=>function($query){
+      $doctors = Doctor::where('doctors.status', 'ACTIVE')
+      ->with(array('doctor_office'=>function($query){
         $query->select('slug');
       }))->get();
  
@@ -75,7 +76,8 @@ class WebRepo
 
     public function showExams()
     {
-      $exams = Exam::with(array('exam_office'=>function($query){
+      $exams = Exam::where('exams.status', 'PUBLISHED')
+      ->with(array('exam_office'=>function($query){
         $query->select('slug');
       }))->get();
  
@@ -84,7 +86,9 @@ class WebRepo
 
     public function showOffices()
     {
-      $offices = Office::select('name','photo','map','phone','address','slug')->get();
+      $offices = Office::select('name','photo','map','phone','address','slug')
+      ->where('offices.status', 'PUBLISHED')
+      ->get();
  
         return $offices;
     }
