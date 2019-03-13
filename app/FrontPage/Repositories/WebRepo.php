@@ -60,7 +60,10 @@ class WebRepo
 
     public function showPostHome()
     {
-        $post = Post::orderBy('created_at', 'desc')->take(5)->get();
+        $post = Post::where('status', 'PUBLISHED')
+        ->orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
         return $post;
     }
 
