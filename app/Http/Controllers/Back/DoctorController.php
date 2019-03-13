@@ -207,8 +207,6 @@ class DoctorController extends Controller
                 ]);
             }
 
-            //dd($request->all());
-
             $data = array(
                 'name' => $request->name,
                 'lastname' => $request->lastname,
@@ -235,6 +233,8 @@ class DoctorController extends Controller
                     },
                     $specialties
                 );
+
+                dd($specialties);
 
                 $doctor = $this->doctorRepo->editDoctorById($data, $request->id_doctor, $offices, $specialties);
               
