@@ -28,7 +28,7 @@
       <div class="col-sm-3 filter {{ $item->listoffice }}">
         <div class="item-especialidad">
         <a href="{{ $item->route}}">
-          <img src="{{ $item->file }}" alt="">
+          <img src="{{ $item->image }}" alt="">
           <h5>{{ $item->name }}</h5>
               <span class="ui-go">Ver más</span>
             </a>

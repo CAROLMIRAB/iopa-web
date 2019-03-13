@@ -7,7 +7,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="ui-blog-details">
                     <figure class="ui-blog-cover">
-                        <img src="{{ $exam->file }}" alt="Portada">
+                        <img src="{{ $exam->image }}" alt="Portada">
                     </figure>
                     <ul class="ui-breadcrum">
                         <li>

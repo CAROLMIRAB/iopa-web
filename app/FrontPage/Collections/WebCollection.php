@@ -45,10 +45,12 @@ class WebCollection
 
     }
 
+
     public function renderExam($exam)
     {
-        
-       
+     
+        $exam->image= url('') . "/uploads/images/" . $exam->file;
+    
        return $exam;
     }
 
@@ -67,6 +69,7 @@ class WebCollection
      public function renderExams($exams)
      {
        foreach($exams as $exam){
+        $exam->image= url('') . "/uploads/images/" . $exam->file;
         $route = route('exam.viewexam', ['slug' => $exam->slug]);
         $exam->route = $route;
          foreach($exam->exam_office as $item){
