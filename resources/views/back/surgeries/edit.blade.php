@@ -19,7 +19,7 @@
 				<input size="65" type="text" name="slug" id="slug" value="{{ $surgery->slug }}" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
 					<div class="example-text">
 					<span class="url-example"><strong> Url:</strong> 
-						<a target="_blank" href="{{ $surgery->slug_url }}" data-slug="{{ route('surgery.viewposts') }}" id="slug-url">{{ $surgery->slug_url }}</a></span></div>
+						<a target="_blank" href="{{ $surgery->slug_url }}" data-slug="{{ route('surgery.viewsurgery') }}" id="slug-url">{{ $surgery->slug_url }}</a></span></div>
 				</div>
 				<div class="form-group">
 					<label for="name">{{ __('Título') }}</label>
