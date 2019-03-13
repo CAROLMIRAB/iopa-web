@@ -8,7 +8,7 @@
                 <div class="col-lg-3 order-lg-2">
                     <div class="card-profile-image">
                         <a data-toggle="modal" data-target="#modal-notification" id="btnmodal">
-                                    <img src="{{ $doctor->file }}" class="rounded-circle" id="avatar-doctor">
+                                    <img src="{{ $doctor->image }}" class="rounded-circle" id="avatar-doctor">
                                     </a>
                         <div class="overlay-img " data-toggle="modal" data-target="#modal-notification" id="btnmodal">
                             <span class="icon-img rounded-circle" title="Imagen Médico">
