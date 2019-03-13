@@ -7,10 +7,10 @@ var Core = function () {
             $('.user-log > .nav-item').click(function () {
                 if ($('.dropdown-menu .dropdown-menu-arrow .dropdown-menu-right').hasClass('show')) {
                     $('.dropdown-menu .dropdown-menu-arrow .dropdown-menu-right').removeClass('show');
-                    $(this + '.dropdown').removeClass('show');
+                    $('.nav-item .dropdown').removeClass('show');
                 } else {
                     $('.dropdown-menu .dropdown-menu-arrow .dropdown-menu-right').addClass('show');
-                    $(this + '.dropdown').addClass('show');
+                    $('.nav-item .dropdown').addClass('show');
                 }
             });
         },
