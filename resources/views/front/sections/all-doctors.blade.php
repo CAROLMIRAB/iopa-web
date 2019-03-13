@@ -70,7 +70,7 @@
                     <p>
                       <img
                         class=" img-fluid "
-                        src="{{$doctor->file}}"
+                        src="{{ $doctor->image }}"
                         alt="card image"
                       />
                     </p>
