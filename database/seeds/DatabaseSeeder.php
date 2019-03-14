@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConfigurationsTableSeeder::class);
         $this->call(ChileTableSeeder::class);
         $this->call(AgreementsTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
         
     }
 }
