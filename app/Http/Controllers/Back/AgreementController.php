@@ -153,11 +153,12 @@ class AgreementController extends Controller
             ]);
 
         } catch (\Exception $ex) {
+            dd($ex);
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
-                'error' => $ex
+        
             ];
 
             return $data;
