@@ -129,8 +129,7 @@ class Core
     {
         $input = [];
 
-        $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
+        $input['imagename'] = time() . '.' . strtolower($image->getClientOriginalExtension());
         $destinationPath = public_path('/uploads/thumbnail');
         $img = \Image::make($image->getRealPath());
         $img->resize(300, null, function ($constraint) {
