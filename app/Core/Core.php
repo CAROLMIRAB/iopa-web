@@ -130,15 +130,15 @@ class Core
         $input = [];
 
         $input['imagename'] = time() . '.' . strtolower($image->getClientOriginalExtension());
-        $destinationPath = public_path('/uploads/thumbnail');
+        $destinationPath = public_path('/uploads/thumbnail/') . $input['imagename'];
         $img = \Image::make($image->getRealPath());
 
         $img->resize(300, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($destinationPath . '/' . $input['imagename']);
+        })->save($destinationPath);
 
-        $destination = public_path('/uploads/images');
-        $img->save($destination, $input['imagename']);
+        $destination = public_path('/uploads/images/') . $input['imagename'];
+        $img->save($destination);
 
         $image_url = $input['imagename'];
 
