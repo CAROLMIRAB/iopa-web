@@ -106,8 +106,10 @@ class OfficeController extends Controller
                 ]);
             }
 
-            if ($request->file('image')) {
-                $image_url = Core::uploadImage($request->file('image'));
+            $image_url = "";
+            
+            if (!empty($request->imgBase64)) {
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }
 
             $data = array(
@@ -170,9 +172,13 @@ class OfficeController extends Controller
                 ]);
             }
 
-            if ($request->file('image')) {
-                $image_url = Core::uploadImage($request->file('image'));
+            $image_url = "";
+            
+            if (!empty($request->imgBase64)) {
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }
+
+
             if (!empty($image_url)) {
                 $data = array(
                     'name' => $request->name,

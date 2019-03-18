@@ -101,9 +101,9 @@ class SpecialtyController extends Controller
                 ]);
             }
             $image_url = "";
-
-            if ($request->file('image')) {
-                $image_url = Core::uploadImage($request->file('image'));
+            
+            if (!empty($request->imgBase64)) {
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }
 
             $data = array(
@@ -161,8 +161,8 @@ class SpecialtyController extends Controller
 
             $image_url = "";
             
-            if ($request->file('image')) {
-                $image_url = Core::uploadImage($request->file('image'));
+            if (!empty($request->imgBase64)) {
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }
 
             if (!empty($image_url)) {
