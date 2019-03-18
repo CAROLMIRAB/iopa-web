@@ -202,7 +202,6 @@ class PostController extends Controller
            
             if (!empty($request->imgBase64)) {
                 $image_url = Core::uploadImageB64($request->imgBase64);
-                dd($image_url);
             }
 
             if (!empty($image_url)) {
