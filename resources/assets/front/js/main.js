@@ -97,4 +97,11 @@ $(document).ready(function () {
   $('.truncate').succinct({
     size: 60
   });
+
+  //Popup Sistema
+
+  $(document).on('click', '.--open-sys', function(){
+    $('#sysPopup').toggleClass('open');
+  });
+
 })

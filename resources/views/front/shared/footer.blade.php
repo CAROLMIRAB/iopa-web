@@ -13,6 +13,19 @@
 	</a>
 	<span class="callme"> Escríbenos +56935737234</span>
 </div>
+
+<div class="sys-popup" id="sysPopup">
+	<div class="sys-popup-header">
+		<div class="sys-popup-title --open-sys">Reserva <strong>tu Hora</strong></div>
+		<div class="sys-popup-controls">
+			<button class="sys-action --sys-close --open-sys"><i class="fa fa-times"></i></button>
+		</div>
+	</div>
+	<div class="sys-popup-content">
+		contenido
+	</div>
+</div>
+
 <footer class="ui-footer">
 	<div class="ui-footer-bg">
 		<div class="container">

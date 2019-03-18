@@ -1,0 +1,104 @@
+$position-right: 10px;
+$position-bottom: 0px;
+
+.sys-popup {
+    color: #737373;
+    bottom: $position-bottom;
+    right: $position-right;
+    height: 100%;
+    z-index: 99999;
+    position: fixed;
+    background: #fff;
+    //min-width: $sys-min-width;
+    overflow: hidden;
+    display: none;
+    @media (max-width:360px) {
+        right: 0px;
+
+    }
+    @media (max-width:767px) {
+        right: 10px;
+
+    }
+    &.open {
+        display: block;
+        .sys-popup-content {
+            display: block;
+        }
+        .sys-popup-header {
+            .sys-popup-controls {
+                .--sys-min {
+                    display: inline-block;
+                }
+                .--sys-max {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    .sys-popup-content {
+
+        width: 300px;
+        height: 400px;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        transition: all ease-out .2s;
+
+        @media (max-width:767px) {
+            max-width: 700px;
+        }
+        @media (max-width:420px) {
+            max-width: 410px;
+        }
+        @media (max-width:360px) {
+            max-width: 350px;
+        }
+        @media (max-width:320px) {
+            max-width: 300px;
+        }
+    } 
+
+    .sys-popup-header {
+        padding: 10px;
+        color: #fff;
+        position: relative;
+        background: $theme04;
+        border: 1px solid $theme04;
+        height: 45px;
+        .sys-popup-title {
+            font-size: 16px;
+            width: 60%;
+            float: left;
+            cursor: pointer;
+        }
+        .sys-popup-controls {
+            width: 40%;
+            float: left;
+            text-align: right;
+            .sys-action {
+                color: #fff;
+                font-size: 14px;
+                box-shadow: none;
+                background: $theme04-lighten;
+                border: 1px solid $theme04-lighten;
+                transition: all ease-in-out .1s;
+
+                &:hover,
+                &:focus {
+                    color: #fff;
+                    background: $theme04-darken;
+                    border: 1px solid $theme04-darken;
+                }
+            }
+
+            .--sys-min {
+                display: none;
+            }
+            .--sys-max {
+                display: inline-block;
+            }
+        }
+    }
+}

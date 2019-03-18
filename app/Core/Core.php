@@ -152,7 +152,7 @@ class Core
                 $path = public_path('/uploads/images/') . $png_url;
                 $base64Image = explode(',', $image);
                 $img = \Image::make($base64Image[1])->encode('png', 75);
-                $img->resize(600, null, function ($constraint) {
+                $img->resize(800, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($path);
 

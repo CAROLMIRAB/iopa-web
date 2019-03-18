@@ -49,6 +49,7 @@
 					<div id="image-preview" style="border: #619DC9 3px dashed;">
 						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
 						<input type="file" name="image" id="image" accept="image/png, image/jpeg" required/>
+						<input type="hidden" class="imgBase64">
 					</div>
 				</div>
 
