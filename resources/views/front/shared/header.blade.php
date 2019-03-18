@@ -73,7 +73,7 @@
                     <li><a href="{{ route('surgery.viewallsurgeries') }}">Cirugías</a></li>
                     <li><a href="{{ route('office.viewalloffices') }}">Sucursales</a></li>
                     <li><a href="{{ route('aboutus.query') }}">Consulta</a></li>
-                    <li><a class="cta-link" href="#!">
+                    <li><a class="cta-link --open-sys" href="#!">
 								<i class="fa fa-calendar calendar-icon"></i> Reserva<br> tu hora
 							</a>
                     </li>
