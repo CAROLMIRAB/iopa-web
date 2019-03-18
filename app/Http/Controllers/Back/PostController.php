@@ -105,7 +105,6 @@ class PostController extends Controller
     public function saveCreatePost(Request $request)
     {
         try {
-
             $validator = Validator::make($request->all(), [
                 'category_id' => 'required',
                 'name' => 'required',
@@ -202,7 +201,7 @@ class PostController extends Controller
             $tags = explode(",", $request->tags);
 
             if ($request->file('image')) {
-                $image_url = Core::uploadImage($request->file('image'));
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }
 
             if (!empty($image_url)) {

@@ -144,6 +144,27 @@ class Core
 
         return $image_url;
     }
+    
+    public static function uploadImageB64($image)
+    {
+
+                $png_url =  time() . ".png";
+                $path = public_path('/uploads/images/') . $png_url;
+                $base64Image = explode(',', $image);
+                $img = \Image::make($base64Image[1])->encode('png', 75);
+                $img->resize(600, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path);
+
+
+                $destinationPath = public_path('/uploads/thumbnail/') . $png_url;
+                $thumb = \Image::make($base64Image[1])->encode('png', 75);
+                $thumb->resize(200, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath);
+
+        return $png_url;
+    }
 
     public static function uploadPDF($pdf)
     {
