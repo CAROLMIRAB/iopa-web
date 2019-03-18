@@ -156,7 +156,6 @@ class Core
                     $constraint->aspectRatio();
                 })->save($path);
 
-
                 $destinationPath = public_path('/uploads/thumbnail/') . $png_url;
                 $thumb = \Image::make($base64Image[1])->encode('png', 75);
                 $thumb->resize(200, null, function ($constraint) {

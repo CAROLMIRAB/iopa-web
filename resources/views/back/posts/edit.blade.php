@@ -74,7 +74,7 @@
                     <div id="image-preview" style="border: #619DC9 3px dashed; background-image: url('{{ $post->image }}'); background-size: cover; background-position: center center; ">
                         <label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
                         <input type="file" name="image" id="image" accept="image/png, image/jpeg" />
-                        <input type="hidden" class="imgBase64">
+                        <input type="hidden" class="imgBase64" name="imgBase64">
                     </div>
                 </div>
                 {{ csrf_field() }}
