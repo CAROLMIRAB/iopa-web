@@ -200,7 +200,7 @@ class PostController extends Controller
             $image_url = "";
             $tags = explode(",", $request->tags);
 
-            if ($request->file('image')) {
+            if ($request->imgBase64) {
                 dd($request->imgBase64);
                 $image_url = Core::uploadImageB64($request->imgBase64);
             }
