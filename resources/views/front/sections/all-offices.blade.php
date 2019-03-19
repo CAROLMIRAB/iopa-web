@@ -14,6 +14,7 @@
 
         <div class="row row-sucursales-items">
             @foreach ($offices as $office)
+            {{ dd($office) }}
             <div class="col-md-4">
                 <div class="preview-box">
                     <div class="box-header text-center">
