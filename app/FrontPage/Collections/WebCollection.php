@@ -105,7 +105,7 @@ class WebCollection
      {
         
         foreach($offices as $item){
-          $office->image = url('') . "/uploads/images/" . $office->photo;
+          $item->image = url('') . "/uploads/images/" . $item->photo;
          }
 
        return  $offices;
