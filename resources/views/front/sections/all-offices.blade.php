@@ -14,7 +14,6 @@
 
         <div class="row row-sucursales-items">
             @foreach ($offices as $office)
-            {{ $office->image }}
             <div class="col-md-4">
                 <div class="preview-box">
                     <div class="box-header text-center">
@@ -23,7 +22,7 @@
                     </div>
                     <div class="box-body">
                         <img src="assets/img/googlemap-icon.png" class="sucursal-google" alt="">
-                        <img src="{{ $office->image }}" class="sucursal-cover" alt="">
+                        <img src="{{ $office->photo }}" class="sucursal-cover" alt="">
                     </div>
                     <div class="box-footer">
                         <button data-toggle="modal" data-target="#modalSucursal" class="btn btn-theme02 btn-block btn-lg" type="button">
