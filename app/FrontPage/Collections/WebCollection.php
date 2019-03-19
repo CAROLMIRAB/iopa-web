@@ -102,18 +102,18 @@ class WebCollection
 
 
        public function renderOffices($offices)
-     { 
+       { 
         foreach($offices as $office){
           if(!is_null($office->photo)){
-          $office->image = url('') . "/uploads/images/" . $office->photo;
+            $office->image = url('') . "/uploads/images/" . $office->photo;
           }else{
-          $office->image = url('') . "/images/no-foto.png";
+            $office->image = url('') . "/images/no-foto.png";
           }
          }
 
        return  $offices;
   
-      }
+       }
 
      
 }
