@@ -14,7 +14,9 @@
 
         <div class="row row-sucursales-items">
             @foreach ($offices as $office)
+            @if( $office->slug == 'santiago-centro')
             {{ dd($office) }}
+            @endif
             <div class="col-md-4">
                 <div class="preview-box">
                     <div class="box-header text-center">
