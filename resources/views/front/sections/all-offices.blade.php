@@ -22,7 +22,7 @@
                     </div>
                     <div class="box-body">
                         <img src="assets/img/googlemap-icon.png" class="sucursal-google" alt="">
-                        <img src="{{ url('') . "/uploads/images/" . $office->photo }}" class="sucursal-cover" alt="">
+                        <img src="{{ $image = (!is_null($office->photo)) ? url('') . "/uploads/images/" . $office->photo :  url('') . "/images/no-foto.png" }}" class="sucursal-cover" alt="">
                     </div>
                     <div class="box-footer">
                         <button data-toggle="modal" data-target="#modalSucursal" class="btn btn-theme02 btn-block btn-lg" type="button">
