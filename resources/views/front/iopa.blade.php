@@ -17,7 +17,7 @@
 	<meta name="twitter:description" content="" />
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:site" content="" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('front/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
