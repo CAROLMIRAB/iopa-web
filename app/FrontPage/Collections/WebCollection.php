@@ -102,10 +102,9 @@ class WebCollection
 
 
        public function renderOffices($offices)
-     {
-        
-        foreach($offices as $item){
-          $item->image = url('') . "/uploads/images/" . $item->photo;
+     { 
+        foreach($offices as $office){
+          $office->image = url('') . "/uploads/images/" . $office->photo;
          }
 
        return  $offices;
