@@ -28,7 +28,7 @@
       <div class="col-sm-3 filter florida buin">
         <div class="item-especialidad">
         <a href="{{ $surgery->route }}">
-              <img src="{{ $surgery->file }}" >
+              <img src="{{ $surgery->image }}" >
               <h5>{{ $surgery->name }}</h5>
               <span class="ui-go">Ver más</span>
             </a>
