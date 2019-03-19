@@ -13,12 +13,12 @@ class DoctorsTableSeeder extends Seeder
     {
         factory(App\Doctor::class, 6)->create()->each(function (App\Doctor $post) {
             $post->doctor_office()->attach([
-                rand(1,5),
-                rand(1,5)
+                rand(1,2),
+                rand(1,2)
             ]);
             $post->doctor_specialty()->attach([
-                rand(1,5),
-                rand(5,10)
+                rand(1,2),
+                rand(2,3)
             ]);
         });
     }
