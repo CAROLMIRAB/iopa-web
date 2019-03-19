@@ -6,8 +6,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?2c720851a95b1b465c14c0b63732d162);
-  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?2c720851a95b1b465c14c0b63732d162?#iefix&v=4.7.0) format('embedded-opentype'), url(/fonts/vendor/font-awesome/fontawesome-webfont.woff2?8d3d170b6b53643820e274a9a873fe7a) format('woff2'), url(/fonts/vendor/font-awesome/fontawesome-webfont.woff?01f7a5783b3073b3e5095d6c00018ff3) format('woff'), url(/fonts/vendor/font-awesome/fontawesome-webfont.ttf?f349dc3d0f4b23a73d508e3413983726) format('truetype'), url(/fonts/vendor/font-awesome/fontawesome-webfont.svg?bd5ddf7705395b752e6f41a7b2d92386#fontawesomeregular) format('svg');
+  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?25de9b6ba9887fa7d3ec81ddbda087b8);
+  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?25de9b6ba9887fa7d3ec81ddbda087b8?#iefix&v=4.7.0) format('embedded-opentype'), url(/fonts/vendor/font-awesome/fontawesome-webfont.woff2?8d3d170b6b53643820e274a9a873fe7a) format('woff2'), url(/fonts/vendor/font-awesome/fontawesome-webfont.woff?01f7a5783b3073b3e5095d6c00018ff3) format('woff'), url(/fonts/vendor/font-awesome/fontawesome-webfont.ttf?57c7933c1fa6aae1f4b3c68596c5032d) format('truetype'), url(/fonts/vendor/font-awesome/fontawesome-webfont.svg?d22ca1eadcaa14a9858dde1e7389744a#fontawesomeregular) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -2460,8 +2460,8 @@
     font-weight: normal;
     font-style: normal;
 
-    src: url(/fonts/vendor/slick-carousel/slick/slick.eot?dfcb91c27fbd4fb0bca6a10bbf3dce30);
-    src: url(/fonts/vendor/slick-carousel/slick/slick.eot?dfcb91c27fbd4fb0bca6a10bbf3dce30?#iefix) format('embedded-opentype'), url(/fonts/vendor/slick-carousel/slick/slick.woff?0583fd1a50f7a896d203d914a5729998) format('woff'), url(/fonts/vendor/slick-carousel/slick/slick.ttf?6545a3b4514aad694e2fd1d24b1078dd) format('truetype'), url(/fonts/vendor/slick-carousel/slick/slick.svg?be65daededbb81c3e2091e34c7832c1e#slick) format('svg');
+    src: url(/fonts/vendor/slick-carousel/slick/slick.eot?a0d2dc06b6bcc7f4a4d26bacd70afe74);
+    src: url(/fonts/vendor/slick-carousel/slick/slick.eot?a0d2dc06b6bcc7f4a4d26bacd70afe74?#iefix) format('embedded-opentype'), url(/fonts/vendor/slick-carousel/slick/slick.woff?0583fd1a50f7a896d203d914a5729998) format('woff'), url(/fonts/vendor/slick-carousel/slick/slick.ttf?d00488006243913c0899a5e0e2ab41c2) format('truetype'), url(/fonts/vendor/slick-carousel/slick/slick.svg?9ddea2696780ff6e701ef62cad300278#slick) format('svg');
 }
 /* Arrows */
 .slick-prev,
