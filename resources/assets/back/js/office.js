@@ -72,7 +72,7 @@ var Offices = function () {
                 rules: {
                     name: {
                         required: true,
-                        minlength: 5
+                        minlength: 3
                     },
                     phone: {
                         number: true,
@@ -142,7 +142,7 @@ var Offices = function () {
                 rules: {
                     name: {
                         required: true,
-                        minlength: 5
+                        minlength: 3
                     },
                     phone: {
                         number: true,

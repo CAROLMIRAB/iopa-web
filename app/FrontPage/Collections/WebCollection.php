@@ -93,7 +93,7 @@ class WebCollection
         
         foreach($surgeries as $item){
             $route = route('surgery.viewsurgery', ['slug' => $item->slug]);
-            $item->image = url('') . "/uploads/images/" . $office->file;
+            $item->image = url('') . "/uploads/images/" . $item->file;
             $item->route = $route;
          }
 
