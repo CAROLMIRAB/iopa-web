@@ -100,5 +100,17 @@ class WebCollection
   
       }
 
+
+       public function renderOffices($offices)
+     {
+        
+        foreach($offices as $item){
+          $office->image = url('') . "/uploads/images/" . $office->photo;
+         }
+
+       return  $offices;
+  
+      }
+
      
 }

@@ -22,7 +22,7 @@
                     </div>
                     <div class="box-body">
                         <img src="assets/img/googlemap-icon.png" class="sucursal-google" alt="">
-                        <img src="{{ $office->photo }}" class="sucursal-cover" alt="">
+                        <img src="{{ $office->image }}" class="sucursal-cover" alt="">
                     </div>
                     <div class="box-footer">
                         <button data-toggle="modal" data-target="#modalSucursal" class="btn btn-theme02 btn-block btn-lg" type="button">
@@ -49,6 +49,7 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-6 col-xs-12">
                         <div id="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106523.03619374221!2d-70.7492336917453!3d-33.453347660405186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d0069af23abb%3A0x879d59f409ed4897!2sSantiago%2C+Santiago+Metropolitan+Region!5e0!3m2!1sen!2scl!4v1553002379985" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12">

@@ -133,7 +133,8 @@ class PostController extends Controller
      */
     public function viewAllOffices()
     {
-        $offices = $this->postRepo->showOffices();
+        $officesdata = $this->postRepo->showOffices();
+        $offices = $this->postCollect->renderOffices($officesdata);
         
         return view('front.sections.all-offices', compact('offices'));
     }

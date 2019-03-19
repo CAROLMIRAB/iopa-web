@@ -34,7 +34,7 @@ class OfficeCollection
 
     public function editData($office)
     {
-        $office->image = $office->photo;
+        $office->image = url('') . "/uploads/images/" . $office->photo;
         $office->slug_url = route('office.viewalloffices') . "/" . $office->slug;
 
         return $office;
