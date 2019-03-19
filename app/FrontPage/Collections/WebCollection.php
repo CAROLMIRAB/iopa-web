@@ -104,7 +104,7 @@ class WebCollection
        public function renderOffices($offices)
      { 
         foreach($offices as $office){
-          $office->img = url('') . "/uploads/images/" . $office->photo;
+          $office->image= url('') . "/uploads/images/" . $office->photo;
          }
 
        return  $offices;
