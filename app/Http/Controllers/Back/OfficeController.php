@@ -206,7 +206,7 @@ class OfficeController extends Controller
             }
 
         } catch (\Exception $ex) {
-
+         dd($ex);
             $data = [
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se publicaba la sucursal. Por favor intente nuevamente'),
