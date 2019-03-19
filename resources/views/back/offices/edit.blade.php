@@ -19,7 +19,7 @@
 				<input size="65" type="text" value="{{ $office->slug }}" name="slug" id="slug" class="slug hidden" readonly data-route="{{ route('core.slug-create') }}">
 					<div class="example-text">
 						<span class="url-example"><strong> Url:</strong> 
-									<a href="{{ $office->slug_url }}" data-slug="{{ route('office.viewposts') }}" id="slug-url">{{ $office->slug_url }}</a></span>
+									<a href="{{ $office->slug_url }}" data-slug="{{ route('office.viewalloffices') }}" id="slug-url">{{ $office->slug_url }}</a></span>
 					</div>
 				</div>
 				<div class="form-group">
