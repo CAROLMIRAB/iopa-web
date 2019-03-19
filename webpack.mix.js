@@ -14,7 +14,7 @@ mix.webpackConfig({
                             return '/fonts/[name].[ext]?[hash]';
                         }
 
-                        return '/css/fonts/vendor/' + path
+                        return '/fonts/vendor/' + path
                             .replace(/\\/g, '/')
                             .replace(
                                 /((.*(node_modules|bower_components|plugins))|fonts|font|assets)\//g, ''
@@ -31,7 +31,7 @@ mix.webpackConfig({
                             return '/fonts/[name].[ext]?[hash]';
                         }
 
-                        return 'css/fonts/vendor/' + path
+                        return '/fonts/vendor/' + path
                             .replace(/\\/g, '/')
                             .replace(
                                 /((.*(node_modules|bower_components|plugins))|fonts|font|assets)\//g, ''
