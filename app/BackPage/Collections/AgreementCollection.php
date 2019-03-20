@@ -58,7 +58,7 @@ class AgreementCollection
             }
         }
 
-        $image_url = Core::uploadImage($request->file('isapre_image'));
+        $image_url = Core::uploadImageB64($request->imageBase64);
 
         $isapre = [
             time() => [
@@ -102,14 +102,6 @@ class AgreementCollection
 
     }
 
-    public static function renderConvenio($request)
-    {
-
-        $image_url = Core::uploadImage($request->file('convenio_image'));
-
-        return ['convenio' => $image_url];
-
-    }
 
     public static function renderArancel($request, $arr)
     {

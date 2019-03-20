@@ -63,9 +63,7 @@ class AgreementController extends Controller
     {
         try {
             $data = $this->agreementRepo->findGes($request->isapre_slug);
-            dd($data);
             $datarender = $this->agreementCollection->renderGes($request, $data->content);
-            dd($datarender);
             $ges = $this->agreementRepo->addGes($request->isapre_slug, json_encode($datarender['full']));
 
             return response()->json([
