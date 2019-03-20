@@ -92,7 +92,7 @@ class AgreementController extends Controller
     {
         try {
 
-            $image_url = Core::uploadImageB64($request->imageBase64);
+            $image_url = Core::uploadImageB64($request->imgBase64);
             $img = asset('uploads/images') . '/' . $image_url;
 
             return response()->json([
@@ -155,7 +155,6 @@ class AgreementController extends Controller
             ]);
 
         } catch (\Exception $ex) {
-            dd($ex);
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),
