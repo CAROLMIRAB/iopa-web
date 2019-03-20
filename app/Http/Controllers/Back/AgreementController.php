@@ -90,7 +90,7 @@ class AgreementController extends Controller
     {
         try {
 
-            $image_url = Core::uploadImage($request->file('file'));
+            $image_url = Core::uploadImage($request->imageBase64);
             $img = asset('uploads/images') . '/' . $image_url;
 
             return response()->json([
@@ -116,7 +116,7 @@ class AgreementController extends Controller
     {
         try {
 
-            $image_url = Core::uploadImage($request->file('image'));
+            $image_url = Core::uploadImage($request->imgBase64);
             $img = asset('uploads/images') . '/' . $image_url;
 
             return response()->json([
@@ -321,12 +321,12 @@ class AgreementController extends Controller
     {
         try {
       
-            $img = $request->file('image');
+            $img = $request->imgBase64;
           
             $image_url = "";
 
             if (!is_null($img)) {
-                $image_url = Core::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->imgBase64);
             }else{
                 $image_url = $request->imageurl;
             }
@@ -354,12 +354,12 @@ class AgreementController extends Controller
     {
         try {
       
-            $img = $request->file('image');
+            $img = $request->imgBase64;
           
             $image_url = "";
 
             if (!is_null($img)) {
-                $image_url = Core::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->imgBase64);
             }else{
                 $image_url = $request->imageurl;
             }
@@ -387,12 +387,12 @@ class AgreementController extends Controller
     {
         try {
      
-            $img = $request->file('image');
+            $img = $request->imgBase64;
           
             $image_url = "";
 
             if (!is_null($img)) {
-                $image_url = Core::uploadImage($request->file('image'));
+                $image_url = Core::uploadImage($request->imgBase64);
             }else{
                 $image_url = $request->imgurl;
             }

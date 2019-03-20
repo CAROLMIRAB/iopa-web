@@ -40,6 +40,7 @@
             <label for="image-upload" id="isapre-image-label">
                 <i class='ni ni-cloud-download-95 i-img'></i></label>
             <input type="file" name="isapre_image" id="isapre-image" class="isapre-image" accept="image/png, image/jpeg" />
+            <input type="hidden" class="imgBase64" name="imgBase64">
         </div>
     </div>
     <div class="col-4">

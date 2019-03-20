@@ -31,6 +31,7 @@
                     <label for="image-upload" id="convenio-image-label">
                         <i class='ni ni-cloud-download-95 i-img'></i></label>
                     <input type="file" name="image" id="convenio-image" class="convenio-image" accept="image/png, image/jpeg" />
+                    <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
             </div>
         </div>

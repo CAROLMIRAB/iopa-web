@@ -28,6 +28,7 @@
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="pago-image" accept="image/png, image/jpeg" />
                     <input type="hidden" name="imageurl" value="{{ $pago['image'] }}" >
+                    <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
             </div>
         </div>
