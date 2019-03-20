@@ -63,7 +63,7 @@ class AgreementController extends Controller
     {
         try {
             $data = $this->agreementRepo->findGes($request->isapre_slug);
-            $datarender = Core::renderGes($request, $data->content);
+            $datarender = $this->agreementCollection->renderGes($request, $data->content);
             $ges = $this->agreementRepo->addGes($request->isapre_slug, json_encode($datarender['full']));
 
             return response()->json([
@@ -90,7 +90,7 @@ class AgreementController extends Controller
     {
         try {
 
-            $image_url = Core::uploadImage($request->imageBase64);
+            $image_url = Core::uploadImageB64($request->imageBase64);
             $img = asset('uploads/images') . '/' . $image_url;
 
             return response()->json([
@@ -116,7 +116,7 @@ class AgreementController extends Controller
     {
         try {
 
-            $image_url = Core::uploadImage($request->imgBase64);
+            $image_url = Core::uploadImageB64($request->imgBase64);
             $img = asset('uploads/images') . '/' . $image_url;
 
             return response()->json([
@@ -142,7 +142,7 @@ class AgreementController extends Controller
     {
         try {
             $data = $this->agreementRepo->findFon($request->arancel_slug);
-            $datarender = Core::renderArancel($request, $data->content);
+            $datarender = $this->agreementCollection->renderArancel($request, $data->content);
             $ges = $this->agreementRepo->addArancel($request->arancel_slug, json_encode($datarender['full']));
 
             return response()->json([
@@ -204,7 +204,7 @@ class AgreementController extends Controller
     {
         try {
             $data = $this->agreementRepo->findFon($request->fonasa_slug);
-            $datarender = Core::renderFonasa($request, $data->content);
+            $datarender = $this->agreementCollection->renderFonasa($request, $data->content);
             $ges = $this->agreementRepo->addFonasa($request->fonasa_slug, json_encode($datarender['full']));
 
             return response()->json([
@@ -326,7 +326,7 @@ class AgreementController extends Controller
             $image_url = "";
 
             if (!is_null($img)) {
-                $image_url = Core::uploadImage($request->imgBase64);
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }else{
                 $image_url = $request->imageurl;
             }
@@ -359,7 +359,7 @@ class AgreementController extends Controller
             $image_url = "";
 
             if (!is_null($img)) {
-                $image_url = Core::uploadImage($request->imgBase64);
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }else{
                 $image_url = $request->imageurl;
             }
@@ -392,7 +392,7 @@ class AgreementController extends Controller
             $image_url = "";
 
             if (!is_null($img)) {
-                $image_url = Core::uploadImage($request->imgBase64);
+                $image_url = Core::uploadImageB64($request->imgBase64);
             }else{
                 $image_url = $request->imgurl;
             }
