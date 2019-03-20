@@ -62,9 +62,10 @@ class AgreementController extends Controller
     public function saveGes(Request $request)
     {
         try {
-            dd($request->all());
+            
             $data = $this->agreementRepo->findGes($request->isapre_slug);
             $datarender = $this->agreementCollection->renderGes($request, $data->content);
+            dd($datarender);
             $ges = $this->agreementRepo->addGes($request->isapre_slug, json_encode($datarender['full']));
 
             return response()->json([
