@@ -57,7 +57,7 @@ class AgreementCollection
                 ];
             }
         }
-        dd($request->imageBase64);
+        dd($request->all());
         $image_url = Core::uploadImageB64($request->imageBase64);
 
         $isapre = [
