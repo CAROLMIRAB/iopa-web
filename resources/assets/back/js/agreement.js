@@ -307,6 +307,23 @@ var Agreement = function () {
             $('#btn-addisapre').click(function (e) {
                 $(this).button('loading');
                 var formData = new FormData(document.getElementById("isapre_add"));
+                $form.validate({
+                    rules: {
+                        account_title: {
+                            required: true,
+                            minlength: 2
+                        },
+                    },
+                    messages: {
+                        account_title: {
+                            required: "El nombre es un campo requerido",
+                            minlength: "Escriba un nombre más largo"
+                            
+                        }
+                       
+                    },
+                });
+    
                 $.ajax({
                     type: 'post',
                     url: $form.attr('action'),
