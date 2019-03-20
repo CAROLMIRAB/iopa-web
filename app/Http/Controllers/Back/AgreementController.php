@@ -74,6 +74,7 @@ class AgreementController extends Controller
             ]);
 
         } catch (\Exception $ex) {
+            \Log::error('AgreementsController.saveGes.catch', ['exception' => $ex]);
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),
