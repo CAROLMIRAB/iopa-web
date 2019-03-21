@@ -5,8 +5,8 @@ var Agreement = function () {
         tr += '<td width="20%">';
         tr += title;
         tr += '</td>';
-        tr += ' <td width="75%">';
-        tr += '<div style="word-wrap: break-word">' + description +'</div>';
+        tr += ' <td width="75%" style="white-space: normal">';
+        tr += description;
         tr += '</td>';
         tr += ' <td width="5%">';
         tr += '<button class="btn btn-primary btn-sm min-tr-fon" data-key="' + key + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
