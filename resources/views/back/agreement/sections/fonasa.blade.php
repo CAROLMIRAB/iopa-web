@@ -74,7 +74,9 @@
                             {{ $it['subtitle'] }}
                         </td>
                         <td width="75%">
-                            {{ $it['subdescription'] }}
+                            <div style="word-wrap: break-word">
+                                {{ $it['subdescription'] }}
+                            </div>
                         </td>
                         <td width="5%">
                             <button class="btn btn-primary btn-sm min-tr-fon" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
