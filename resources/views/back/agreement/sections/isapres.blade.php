@@ -88,17 +88,17 @@
                 @if(!empty($isapre['content'])) @foreach($isapre['content'] as $key => $item)
                 <tr>
                     @foreach ($item as $ky => $it)
-                    <td width="35%">
+                    <td width="35%" >
                         <img src="{{ $it['image'] }}" width="100%">
                     </td>
-                    <td width="30%">
+                    <td width="30%" style="white-space: normal">
                         <ul>
                             @foreach($it['ges'] as $val)
                             <li>{{ $val['name'] }}</li>
                             @endforeach
                         </ul>
                     </td>
-                    <td width="30%">
+                    <td width="30%" style="white-space: normal">
                         <ul>
                             <strong>{{ $it['account']['title'] }}</strong> @foreach($it['account']['content'] as $vl)
                             <li>{{ $vl['name'] }}</li>

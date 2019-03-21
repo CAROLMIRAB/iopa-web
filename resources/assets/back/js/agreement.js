@@ -23,12 +23,12 @@ var Agreement = function () {
         tr += '<td width="35%">'
         tr += '<img src="' + img + '" width="100%">'
         tr += ' </td>'
-        tr += '<td width="30%">'
+        tr += '<td width="30%" style="white-space: normal">'
         tr += '<ul class="is-ges">'
         tr += ges
         tr += '</ul>'
         tr += ' </td>'
-        tr += '<td width="30%">'
+        tr += '<td width="30%" style="white-space: normal">'
         tr += cuenta_title
         tr += ' <ul class="is-cu">'
         tr += cuenta
