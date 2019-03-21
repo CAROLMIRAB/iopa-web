@@ -6,7 +6,7 @@ var Agreement = function () {
         tr += title;
         tr += '</td>';
         tr += ' <td width="75%">';
-        tr += description;
+        tr += '<div style="word-wrap: break-word">' + description +'</div>';
         tr += '</td>';
         tr += ' <td width="5%">';
         tr += '<button class="btn btn-primary btn-sm min-tr-fon" data-key="' + key + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
@@ -316,8 +316,8 @@ var Agreement = function () {
                     },
                     messages: {
                         account_title: {
-                            required: "El nombre es un campo requerido",
-                            minlength: "Escriba un nombre más largo"
+                            required: "El nombre de la cuenta es un campo requerido",
+                            minlength: "Escriba un nombre de cuenta más largo"
                             
                         }
                        
