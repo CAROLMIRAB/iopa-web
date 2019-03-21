@@ -97,7 +97,7 @@
                             <li>{{ $val['name'] }}</li>
                             @endforeach
                         </ul>
-                    </td>
+                    </td> 
                     <td width="30%" style="white-space: normal">
                         <ul>
                             <strong>{{ $it['account']['title'] }}</strong> @foreach($it['account']['content'] as $vl)

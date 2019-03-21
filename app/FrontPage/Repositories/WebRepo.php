@@ -95,4 +95,13 @@ class WebRepo
         return $offices;
     }
 
+    public function findAllAgreement()
+    {
+        $agreement = Agreement::select('name', 'description', 'image', 'content', 'slug')
+            ->orderBy('id')
+            ->get();
+
+        return $agreement;
+    }
+
 }

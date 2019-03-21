@@ -116,5 +116,25 @@ class WebCollection
   
        }
 
+       public function renderData($data)
+    {
+        $dataarr = [];
+        $arr = '';
+        foreach ($data as $item) {
+            $arr = json_decode($item->content, true);
+            $dataarr[] = [
+                $item->slug => [
+                    'name' => $item->name,
+                    'description' => $item->description,
+                    'image' => $item->image,
+                    'content' => $arr
+                ]
+            ];
+
+        }
+        return $dataarr;
+    }
+
+
      
 }
