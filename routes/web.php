@@ -34,82 +34,82 @@ Route::get('500', [
 
 Route::get('blog/{slug}', [
     'as' => 'post.viewpost',
-    'uses' => 'Front\PostController@viewFullPost'
+    'uses' => 'Front\WebController@viewFullPost'
 ]);
 
 Route::get('blog/', [
     'as' => 'post.viewallposts',
-    'uses' => 'Front\PostController@viewAllPosts'
+    'uses' => 'Front\WebController@viewAllPosts'
 ]);
 
 Route::get('medicos/', [
     'as' => 'doctor.viewalldoctors',
-    'uses' => 'Front\PostController@viewAllDoctors'
+    'uses' => 'Front\WebController@viewAllDoctors'
 ]);
 
 Route::get('examenes/', [
     'as' => 'exam.viewallexams',
-    'uses' => 'Front\PostController@viewAllExams'
+    'uses' => 'Front\WebController@viewAllExams'
 ]);
 
 Route::get('examenes/{slug}', [
     'as' => 'exam.viewexam',
-    'uses' => 'Front\PostController@viewFullExam'
+    'uses' => 'Front\WebController@viewFullExam'
 ]);
 
 Route::get('sucursales/', [
     'as' => 'office.viewalloffices',
-    'uses' => 'Front\PostController@viewAllOffices'
+    'uses' => 'Front\WebController@viewAllOffices'
 ]);
 
 Route::get('sucursales/{slug}', [
     'as' => 'office.viewpost',
-    'uses' => 'Front\PostController@viewFullPost'
+    'uses' => 'Front\WebController@viewFullPost'
 ]);
 
 Route::get('cirugias/', [
     'as' => 'surgery.viewallsurgeries',
-    'uses' => 'Front\PostController@viewAllSurgeries'
+    'uses' => 'Front\WebController@viewAllSurgeries'
 ]);
 
 Route::get('cirugias/{slug}', [
     'as' => 'surgery.viewsurgery',
-    'uses' => 'Front\PostController@viewFullSurgery'
+    'uses' => 'Front\WebController@viewFullSurgery'
 ]);
 
 Route::get('nosotros/', [
     'as' => 'aboutus.aboutus',
-    'uses' => 'Front\PostController@viewAboutUs'
+    'uses' => 'Front\WebController@viewAboutUs'
 ]);
 
 Route::get('contactanos/', [
     'as' => 'aboutus.contact',
-    'uses' => 'Front\PostController@viewContact'
+    'uses' => 'Front\WebController@viewContact'
 ]);
 
 Route::get('solicitudes/', [
     'as' => 'aboutus.request',
-    'uses' => 'Front\PostController@viewRequest'
+    'uses' => 'Front\WebController@viewRequest'
 ]);
 
 Route::get('consulta/', [
     'as' => 'aboutus.query',
-    'uses' => 'Front\PostController@viewQuery'
+    'uses' => 'Front\WebController@viewQuery'
 ]);
 
 Route::get('opinion/', [
     'as' => 'aboutus.opinion',
-    'uses' => 'Front\PostController@viewOpinion'
+    'uses' => 'Front\WebController@viewOpinion'
 ]);
 
 Route::get('convenios-y-aranceles/', [
     'as' => 'aboutus.agreement',
-    'uses' => 'Front\PostController@viewAgreement'
+    'uses' => 'Front\WebController@viewAgreement'
 ]);
 
 Route::get('especialidades/', [
     'as' => 'specialty.viewposts',
-    'uses' => 'Front\PostController@viewFullPost'
+    'uses' => 'Front\WebController@viewFullPost'
 ]);
 
 

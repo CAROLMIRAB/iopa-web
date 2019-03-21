@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\FrontPage\Repositories\WebRepo;
 use App\FrontPage\Collections\WebCollection;
 
-class PostController extends Controller
+class WebController extends Controller
 {
 
     private $postRepo;
