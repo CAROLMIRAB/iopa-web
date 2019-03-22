@@ -24,7 +24,7 @@
           <div class="ui-blog-content mt-10 mb-10">
             @include('front.sections.agreesections.fonasa', ['fonasa' => isset($agreement[0]['fonasa']) ? $agreement[0]['fonasa'] : ''])
             
-            @include('front.sections.agreesections.isapres', ['isapre' => isset($agreement[1]['isapres']) ? $agreement[1]['isapres']
+            @include('front.sections.agreesections.isapre', ['isapre' => isset($agreement[1]['isapres']) ? $agreement[1]['isapres']
             : ''])
             @include('front.sections.agreesections.convenios', ['convenio' => isset($agreement[2]['convenios']) ? $agreement[2]['convenios']
             : '' ])
