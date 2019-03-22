@@ -30,6 +30,7 @@
                     <input type="hidden" name="imageurl" value="{{ $promo['image'] }}">
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
+                <a href="javascript:" class="removeImg" role="button" style="font-size: 10px">Remove imagen</a>
             </div>
             <div class="form-group">
                 <label for="status">{{ __('Estado') }}</label>
