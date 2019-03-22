@@ -17,10 +17,9 @@
                                     <!--<p class="details-download">Actualizado 12 Enero, 2019</p>-->
                                 </a> @endforeach @endforeach @endif
                 </div>
-
             </div>
             <div class="col-md-6">
-                <img src="{{ asset('uploads/images/'.$fonasa['image']) }}" class="img-responsive center-block" alt="">
+                <img src="{{ asset('uploads/images/'.$arancel['image']) }}" class="img-responsive center-block" alt="">
             </div>
         </div>
     </div>
