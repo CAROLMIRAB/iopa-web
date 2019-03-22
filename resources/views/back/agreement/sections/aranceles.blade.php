@@ -19,6 +19,13 @@
                 <label for="arancel-description">{{ __('Descripción') }}</label>
                 <textarea id="arancel-description" name="arancel_description" class="form-control">{{ isset($arancel['description']) ? $arancel['description'] : '' }}</textarea>
             </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+							<option value="ACTIVE">Publicado</option>
+							<option value="INACTIVE">No publicado</option>
+						</select>
+            </div>
         </div>
         <div class="col-4">
             <div class="form-group ">
@@ -71,10 +78,10 @@
                     <tr>
                         @foreach ($item as $ky => $it)
                         <td width="20%">
-                        <a href="{{ $it['route'] }}"> {{ $it['pdf'] }}</a>
+                            <a href="{{ $it['route'] }}"> {{ $it['pdf'] }}</a>
                         </td>
                         <td width="75%">
-                                {{ $it['title'] }}
+                            {{ $it['title'] }}
                         </td>
                         <td width="5%">
                             <button class="btn btn-primary btn-sm min-aran-tr" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
@@ -83,7 +90,7 @@
                     </tr>
                     @endforeach @endif
 
-                    
+
                 </tbody>
             </table>
         </div>

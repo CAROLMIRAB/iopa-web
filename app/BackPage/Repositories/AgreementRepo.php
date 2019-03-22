@@ -39,13 +39,14 @@ class AgreementRepo
     }
 
 
-    public function changeAgreement($slug, $name, $description, $image = null, $content = null)
+    public function changeAgreement($slug, $name, $description, $status, $image = null, $content = null)
     {
         $agreement = \DB::table('agreements')->where('slug', $slug)->update(
             [
                 'name' => $name,
                 'description' => $description,
-                'image' => $image
+                'image' => $image,
+                'status' => $status
             ]
         );
 
@@ -59,7 +60,8 @@ class AgreementRepo
                 'name' => $name,
                 'description' => $description,
                 'image' => $image,
-                'content' => $content
+                'content' => $content,
+                'status' => $status
             ]
         );
 

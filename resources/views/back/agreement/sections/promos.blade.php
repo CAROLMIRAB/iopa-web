@@ -19,19 +19,25 @@
                 <label for="promo-description">{{ __('Descripción') }}</label>
                 <textarea id="promo-description" name="promo_description" class="form-control">{{ isset($promo['description']) ? $promo['description'] : '' }}</textarea>
             </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+							<option value="ACTIVE">Publicado</option>
+							<option value="INACTIVE">No publicado</option>
+						</select>
+            </div>
         </div>
         <div class="col-4">
-                <div class="form-group ">
-                    <label for="image">{{ __('Imagen') }}</label>
-                    <div id="promo-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$promo['image']) }}'); background-size: cover; background-position: center center;">
-                        <label for="image-upload" id="promo-image-label">
+            <div class="form-group ">
+                <label for="image">{{ __('Imagen') }}</label>
+                <div id="promo-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$promo['image']) }}'); background-size: cover; background-position: center center;">
+                    <label for="image-upload" id="promo-image-label">
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
-                        <input type="file" name="image" id="promo-image" accept="image/png, image/jpeg" />
-                        <input type="hidden" name="imageurl" value="{{ $promo['image'] }}" >
-                        <input type="hidden" class="imgBase64" name="imgBase64">
-                    </div>
+                    <input type="file" name="image" id="promo-image" accept="image/png, image/jpeg" />
+                    <input type="hidden" name="imageurl" value="{{ $promo['image'] }}">
+                    <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
             </div>
+        </div>
     </div>
 </form>
-

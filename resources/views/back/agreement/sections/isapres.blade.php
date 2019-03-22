@@ -19,6 +19,13 @@
                 <label for="isapre-description">{{ __('Descripción') }}</label>
                 <textarea id="isapre-description" name="isapre_description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
             </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+							<option value="ACTIVE">Publicado</option>
+							<option value="INACTIVE">No publicado</option>
+						</select>
+            </div>
         </div>
     </div>
     {{ csrf_field() }}
@@ -88,7 +95,7 @@
                 @if(!empty($isapre['content'])) @foreach($isapre['content'] as $key => $item)
                 <tr>
                     @foreach ($item as $ky => $it)
-                    <td width="35%" >
+                    <td width="35%">
                         <img src="{{ $it['image'] }}" width="100%">
                     </td>
                     <td width="30%" style="white-space: normal">
@@ -97,7 +104,7 @@
                             <li>{{ $val['name'] }}</li>
                             @endforeach
                         </ul>
-                    </td> 
+                    </td>
                     <td width="30%" style="white-space: normal">
                         <ul>
                             <strong>{{ $it['account']['title'] }}</strong> @foreach($it['account']['content'] as $vl)
@@ -116,5 +123,3 @@
     </div>
     {{ csrf_field() }}
 </form>
-
-

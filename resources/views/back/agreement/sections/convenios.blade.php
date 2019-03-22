@@ -19,6 +19,13 @@
                 <label for="convenio-description">{{ __('Descripción') }}</label>
                 <textarea id="convenio-description" name="convenio_description" class="form-control">{{ isset($convenio['description']) ? $convenio['description'] : '' }}</textarea>
             </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+							<option value="ACTIVE">Publicado</option>
+							<option value="INACTIVE">No publicado</option>
+						</select>
+            </div>
         </div>
     </div>
 </form>
@@ -45,16 +52,14 @@
         </div>
         <div class="col-12">
             <ul class="clearfix" id="sortable">
-                @if(!empty($convenio['content'])) 
-                    @foreach($convenio['content'] as $key => $item)
+                @if(!empty($convenio['content'])) @foreach($convenio['content'] as $key => $item)
                 <li data-img="{{ $item['img'] }}">
                     <div class="box-image nostatus">
                         <button type="button" class="btn btn-success btn-sm pull-right conv-delete">x</button>
                         <img src="{{ $item['img'] }}" width="100%">
-                     </div>
+                    </div>
                 </li>
-                    @endforeach 
-                @endif
+                @endforeach @endif
             </ul>
         </div>
     </div>

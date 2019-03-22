@@ -19,6 +19,13 @@
                 <label for="fonasa-description">{{ __('Descripción') }}</label>
                 <textarea id="fonasa-description" name="fonasa_description" class="form-control">{{ isset($fonasa['description']) ? $fonasa['description'] : '' }}</textarea>
             </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+							<option value="ACTIVE">Publicado</option>
+							<option value="INACTIVE">No publicado</option>
+						</select>
+            </div>
         </div>
         <div class="col-4">
             <div class="form-group ">
@@ -27,7 +34,7 @@
                     <label for="image-upload" id="image-label">
                         <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="fonasa-image" accept="image/png, image/jpeg" />
-                    <input type="hidden" name="imageurl" value="{{ $fonasa['image'] }}" >
+                    <input type="hidden" name="imageurl" value="{{ $fonasa['image'] }}">
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
             </div>
@@ -74,7 +81,7 @@
                             {{ $it['subtitle'] }}
                         </td>
                         <td width="75%" style="white-space: normal">
-                                {{ $it['subdescription'] }}
+                            {{ $it['subdescription'] }}
                         </td>
                         <td width="5%">
                             <button class="btn btn-primary btn-sm min-tr-fon" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
@@ -87,4 +94,3 @@
         </div>
     </div>
 </form>
-

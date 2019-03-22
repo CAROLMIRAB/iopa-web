@@ -298,7 +298,7 @@ class AgreementController extends Controller
     public function saveIsapres(Request $request)
     {
         try {
-            $ges = $this->agreementRepo->changeAgreement($request->isapre_slug, $request->isapre_title, $request->isapre_description);
+            $ges = $this->agreementRepo->changeAgreement($request->isapre_slug, $request->isapre_title, $request->isapre_description, $request->status);
 
             return response()->json([
                 'status' => 200,
@@ -332,7 +332,7 @@ class AgreementController extends Controller
                 $image_url = $request->imageurl;
             }
 
-            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->fonasa_title, $request->fonasa_description, $image_url);
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->fonasa_title, $request->fonasa_description, $request->status, $image_url);
 
             return response()->json([
                 'status' => 200,
@@ -365,7 +365,7 @@ class AgreementController extends Controller
                 $image_url = $request->imageurl;
             }
 
-            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->promo_title, $request->promo_description, $image_url);
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->promo_title, $request->promo_description, $request->status, $image_url);
 
             return response()->json([
                 'status' => 200,
@@ -398,7 +398,7 @@ class AgreementController extends Controller
                 $image_url = $request->imgurl;
             }
 
-            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->arancel_title, $request->arancel_description, $image_url);
+            $ges = $this->agreementRepo->changeAgreement($request->slug, $request->arancel_title, $request->arancel_description, $request->status, $image_url);
 
             return response()->json([
                 'status' => 200,
@@ -424,7 +424,7 @@ class AgreementController extends Controller
         try {
            
             $convenios = json_encode($request->list);
-            $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, null, $convenios);
+            $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, $request->status, null, $convenios);
             
             return response()->json([
                 'status' => 200,
