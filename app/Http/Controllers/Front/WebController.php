@@ -198,7 +198,7 @@ class WebController extends Controller
     {
         $data = $this->postRepo->findAllAgreement();
         $agreement = $this->postCollect->renderData($data);
-        return view('front.sections.agreements', concat('agreement'));
+        return view('front.sections.agreements', compact('agreement'));
     }
 
 }
