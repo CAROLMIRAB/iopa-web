@@ -129,51 +129,49 @@ var Agreement = function () {
                 });
                 return false;
             });
-
         },
 
-        addArancel: function(){
-                var $form = $('#arancel_add');
-                $('#btn-addarancel').click(function () {
-                    $(this).button('loading');
-                    var formData = new FormData(document.getElementById("arancel_add"));
-                    $.ajax({
-                        type: 'post',
-                        url: $form.attr('action'),
-                        data: formData,
-                        dataType: "json",
-                        cache: false,
-                        contentType: false,
-                        processData: false
-                    }).done(function (data) {
-                           var  title = '',
-                                route = '',
-                                pdf = '',
-                                key = '';
-                        if (data.status === 400) {
-                            toastr.error(data.message, '!Error!');
-                        }
-                        if (data.status === 200) {
-                            var json = JSON.parse(data.data);
-                            $.each(json, function (k, val) {
-                                key = k;
-                                title = val.title;
-                                route = val.route;
-                                pdf = val.pdf;
-                            });
-    
-                            var tr = arancelTr( route, pdf, title, key);
-                            $('.table-arancel > tbody').append(tr);
-                            toastr.success(data.message, '!Exitoso!');
-                        }
-                    }).fail(function (data) {
+        addArancel: function () {
+            var $form = $('#arancel_add');
+            $('#btn-addarancel').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("arancel_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    var title = '',
+                        route = '',
+                        pdf = '',
+                        key = '';
+                    if (data.status === 400) {
                         toastr.error(data.message, '!Error!');
-                    }).always(function () {
-                        $('#btn-addarancel').button('reset');
-                    });
-                    return false;
-                });
+                    }
+                    if (data.status === 200) {
+                        var json = JSON.parse(data.data);
+                        $.each(json, function (k, val) {
+                            key = k;
+                            title = val.title;
+                            route = val.route;
+                            pdf = val.pdf;
+                        });
 
+                        var tr = arancelTr(route, pdf, title, key);
+                        $('.table-arancel > tbody').append(tr);
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addarancel').button('reset');
+                });
+                return false;
+            });
         },
 
         minTrArancel: function () {
@@ -318,12 +316,12 @@ var Agreement = function () {
                         account_title: {
                             required: "El nombre de la cuenta es un campo requerido",
                             minlength: "Escriba un nombre de cuenta más largo"
-                            
+
                         }
-                       
+
                     },
                 });
-    
+
                 $.ajax({
                     type: 'post',
                     url: $form.attr('action'),

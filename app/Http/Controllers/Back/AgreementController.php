@@ -392,10 +392,14 @@ class AgreementController extends Controller
           
             $image_url = "";
 
-            if (!is_null($img)) {
+            if (!is_null($img) && is_null($request->imgurl)) {
                 $image_url = Core::uploadImageB64($request->imgBase64);
             }else{
                 $image_url = $request->imgurl;
+            }
+
+            if(is_null($img) && is_null($request->imgurl)){
+                $image_url = '';
             }
 
             $ges = $this->agreementRepo->changeAgreement($request->slug, $request->arancel_title, $request->arancel_description, $request->status, $image_url);

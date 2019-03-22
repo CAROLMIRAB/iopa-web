@@ -29,6 +29,7 @@
                     <input type="file" name="image" id="arancel-image" accept="image/png, image/jpeg" />
                     <input type="hidden" name="imageurl" value="{{ $arancel['image'] }}" id="arancelurl" />
                     <input type="hidden" class="imgBase64" name="imgBase64">
+                    <a href="" class="removeImg">Remove imagen</a>
                 </div>
             </div>
             <div class="form-group">

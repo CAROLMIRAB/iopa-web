@@ -58,15 +58,15 @@
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-4" role="tabpanel" aria-labelledby="tabs-text-3-tab">
     @include('back.agreement.sections.promos', ['promo' => isset($datarender[3]['promociones']) ? $datarender[3]['promociones']
-                                        : '' ])
+                                    : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-3-tab">
     @include('back.agreement.sections.aranceles', ['arancel' => isset($datarender[4]['aranceles']) ? $datarender[4]['aranceles']
-                                            : '' ])
+                                    : '' ])
                                 </div>
                                 <div class="tab-pane fade" id="tabs-text-6" role="tabpanel" aria-labelledby="tabs-text-3-tab">
     @include('back.agreement.sections.pago', ['pago' => isset($datarender[5]['medios-pagos']) ? $datarender[5]['medios-pagos']
-                                        : '' ])
+                                    : '' ])
                                 </div>
                             </div>
                         </div>
@@ -88,6 +88,9 @@
            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
            }
        });
+        
+        Core.removeImg();
+
         /**** Fonasa *****/
         Agreement.fonasaAdd();
         Agreement.minTrFonasa();
