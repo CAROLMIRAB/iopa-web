@@ -19,13 +19,6 @@
                 <label for="fonasa-description">{{ __('Descripción') }}</label>
                 <textarea id="fonasa-description" name="fonasa_description" class="form-control">{{ isset($fonasa['description']) ? $fonasa['description'] : '' }}</textarea>
             </div>
-            <div class="form-group">
-                <label for="status">{{ __('Estado') }}</label>
-                <select id="status" name="status" class="form-control">
-							<option value="ACTIVE">Publicado</option>
-							<option value="INACTIVE">No publicado</option>
-						</select>
-            </div>
         </div>
         <div class="col-4">
             <div class="form-group ">
@@ -37,6 +30,13 @@
                     <input type="hidden" name="imageurl" value="{{ $fonasa['image'] }}">
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+                                <option value="ACTIVE">Publicado</option>
+                                <option value="INACTIVE">No publicado</option>
+                            </select>
             </div>
         </div>
     </div>

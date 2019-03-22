@@ -19,13 +19,7 @@
                 <label for="pago-description">{{ __('Descripción') }}</label>
                 <textarea id="pago-description" name="pago_description" class="form-control">{{ isset($pago['description']) ? $pago['description'] : '' }}</textarea>
             </div>
-            <div class="form-group">
-                <label for="status">{{ __('Estado') }}</label>
-                <select id="status" name="status" class="form-control">
-							<option value="ACTIVE">Publicado</option>
-							<option value="INACTIVE">No publicado</option>
-						</select>
-            </div>
+
         </div>
         <div class="col-4">
             <div class="form-group ">
@@ -37,6 +31,13 @@
                     <input type="hidden" name="imageurl" value="{{ $pago['image'] }}">
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+                                <option value="ACTIVE">Publicado</option>
+                                <option value="INACTIVE">No publicado</option>
+                            </select>
             </div>
         </div>
     </div>

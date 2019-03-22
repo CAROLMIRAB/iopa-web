@@ -19,13 +19,6 @@
                 <label for="convenio-description">{{ __('Descripción') }}</label>
                 <textarea id="convenio-description" name="convenio_description" class="form-control">{{ isset($convenio['description']) ? $convenio['description'] : '' }}</textarea>
             </div>
-            <div class="form-group">
-                <label for="status">{{ __('Estado') }}</label>
-                <select id="status" name="status" class="form-control">
-							<option value="ACTIVE">Publicado</option>
-							<option value="INACTIVE">No publicado</option>
-						</select>
-            </div>
         </div>
     </div>
 </form>
@@ -40,6 +33,13 @@
                     <input type="file" name="image" id="convenio-image" class="convenio-image" accept="image/png, image/jpeg" />
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+                                <option value="ACTIVE">Publicado</option>
+                                <option value="INACTIVE">No publicado</option>
+                            </select>
             </div>
         </div>
         <div class="col-6 text-right">

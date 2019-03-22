@@ -19,13 +19,6 @@
                 <label for="arancel-description">{{ __('Descripción') }}</label>
                 <textarea id="arancel-description" name="arancel_description" class="form-control">{{ isset($arancel['description']) ? $arancel['description'] : '' }}</textarea>
             </div>
-            <div class="form-group">
-                <label for="status">{{ __('Estado') }}</label>
-                <select id="status" name="status" class="form-control">
-							<option value="ACTIVE">Publicado</option>
-							<option value="INACTIVE">No publicado</option>
-						</select>
-            </div>
         </div>
         <div class="col-4">
             <div class="form-group ">
@@ -37,6 +30,13 @@
                     <input type="hidden" name="imageurl" value="{{ $arancel['image'] }}" id="arancelurl" />
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+                                <option value="ACTIVE">Publicado</option>
+                                <option value="INACTIVE">No publicado</option>
+                            </select>
             </div>
         </div>
     </div>
