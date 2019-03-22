@@ -13,7 +13,6 @@
                               <th scope="col">ISAPRES</th>
                               <th scope="col">GES</th>
                               <th scope="col">CUENTA CONOCIDA</th>
-                              <th scope="col"></th>
                           </tr>
                       </thead>
                       <tbody>
@@ -36,9 +35,6 @@
                                       <li>{{ $vl['name'] }}</li>
                                       @endforeach
                                   </ul>
-                              </td>
-                              <td width="5%">
-                                  <button class="btn btn-primary min-tr btn-sm" data-key="{{ $ky }}"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>
                               </td>
                               @endforeach
                           </tr>
