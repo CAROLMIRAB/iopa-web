@@ -28,7 +28,7 @@
             : ''])
             @include('front.sections.agreesections.convenios', ['convenio' => isset($agreement[2]['convenios']) ? $agreement[2]['convenios']
             : '' ])
-            @include('front.sections.agreesections.promo', ['promo' => isset($agreement[3]['promociones']) ? $agreement[3]['promociones']
+            @include('front.sections.agreesections.promociones', ['promo' => isset($agreement[3]['promociones']) ? $agreement[3]['promociones']
             : '' ])
             @include('front.sections.agreesections.aranceles', ['arancel' => isset($agreement[4]['aranceles']) ? $agreement[4]['aranceles']
             : '' ])
