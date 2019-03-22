@@ -6,9 +6,12 @@
 
                 <p>{!! isset($fonasa['description']) ? $fonasa['description'] : '' !!}</p>
 
-                @if(!empty($fonasa['content'])) @foreach ($fonasa['content'] as $key => $item)
+                @if(!empty($fonasa['content'])) 
+                @foreach ($fonasa['content'] as $key => $item)
+                @foreach ($item as $ky => $it)
                 <h3>{{ $it['subtitle'] }}</h3>
                 <p>{!! $it['subdescription'] !!}</p>
+                @endforeach
                 @endforeach @endif
             </div>
             <div class="col-md-6">
