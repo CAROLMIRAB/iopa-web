@@ -753,6 +753,12 @@ var Agreement = function () {
             $('#arancel-description').summernote({
                 height: 150
             });
+        },
+
+        editHTMLPago: function () {
+            $('#pago-description').summernote({
+                height: 150
+            });
         }
 
     }

@@ -25,7 +25,7 @@ var Core = function () {
                 $('.imgBase64').val('');
                 $('.imgurl').val('');
                 $('.img-style').css({ 'background': '' });
-            })
+            });
         },
 
     }
