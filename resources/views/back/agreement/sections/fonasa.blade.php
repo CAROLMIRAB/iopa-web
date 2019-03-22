@@ -45,6 +45,9 @@
 
 <form action="{{ route('agreement.save-subfonasa') }}" method="post" id="fonasa_add" enctype="multipart/form-data" data-route="{{ route('agreement.min-fonasa') }}">
     <div class="field_row row">
+        <div class="col-12">
+            <hr class="my-4">
+        </div>
         <div class="col-10">
             <div class="form-group form-group-sm">
                 <label for="fonasa-subtitle">{{ __('Titulo') }}</label>

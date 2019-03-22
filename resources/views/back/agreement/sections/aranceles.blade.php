@@ -28,7 +28,7 @@
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="arancel-image" accept="image/png, image/jpeg" />
                     <input type="hidden" name="imageurl" value="{{ $arancel['image'] }}" id="arancelurl" />
-                    <input type="hidden" class="imgBase64" name="imgBase64">     
+                    <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
                 <a href="javascript:" class="removeImg" role="button" style="font-size: 10px">Remove imagen</a>
             </div>
@@ -44,6 +44,9 @@
 </form>
 <form action="{{ route('agreement.save-subarancel') }}" method="post" id="arancel_add" enctype="multipart/form-data" data-route="{{ route('agreement.min-arancel') }}">
     <div class="field_row row">
+        <div class="col-12">
+            <hr class="my-4">
+        </div>
         <div class="col-10">
             <div class="form-group form-group-sm">
                 <label for="arancel-subtitle">{{ __('Titulo de descarga') }}</label>

@@ -37,6 +37,9 @@
 <form action="{{ route('agreement.save-ges') }}" method="post" id="isapre_add" enctype="multipart/form-data" class="row"
     data-route="{{ route('agreement.min-isapre') }}">
     <div class="col-12">
+        <hr class="my-4">
+    </div>
+    <div class="col-12">
         <div class="form-group form-group-sm">
             <label for="isapre-title">{{ __('Nombre de Convenio') }}</label>
             <input id="isapre_slug" name="isapre_slug" class="hidden" value="isapres" type="hidden">

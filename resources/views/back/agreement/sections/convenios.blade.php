@@ -34,6 +34,9 @@
 
 <form action="{{ route('agreement.save-images') }}" method="post" id="convenio_add" enctype="multipart/form-data">
     <div class="row">
+        <div class="col-12">
+            <hr class="my-4">
+        </div>
         <div class="col-6">
             <div class="form-group">
                 <div style="" id="convenio-image-preview" class="image-preview-class">
