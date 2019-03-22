@@ -24,7 +24,7 @@
         <div class="col-4">
             <div class="form-group ">
                 <label for="image">{{ __('Imagen') }}</label>
-                <div id="pago-image-preview" class="image-preview-class2" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$pago['image']) }}')">
+                <div id="pago-image-preview" class="image-preview-class2 img-style" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$pago['image']) }}')">
                     <label for="image-upload" id="pago-image-label">
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="pago-image" accept="image/png, image/jpeg" />

@@ -24,8 +24,8 @@ var Core = function () {
             $('.removeImg').click(function () {
                 $('.imgBase64').val('');
                 $('.imgurl').val('');
+                $('.img-style').css({ 'background': '' });
             })
-
         },
 
     }
