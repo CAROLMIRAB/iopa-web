@@ -21,6 +21,13 @@
             </div>
         </div>
         <div class="col-4">
+            <div class="form-group">
+                <label for="status">{{ __('Estado') }}</label>
+                <select id="status" name="status" class="form-control">
+                                        <option value="ACTIVE">Publicado</option>
+                                        <option value="INACTIVE">No publicado</option>
+                                    </select>
+            </div>
             <div class="form-group ">
                 <label for="image">{{ __('Imagen') }}</label>
                 <div id="promo-image-preview" class="image-preview-class2 img-style" style="border: #619DC9 3px dashed; background: url('{{asset('uploads/images/'.$promo['image']) }}'); background-size: cover; background-position: center center;">
@@ -31,13 +38,6 @@
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
                 <a href="javascript:" class="removeImg" role="button" style="font-size: 10px">Remove imagen</a>
-            </div>
-            <div class="form-group">
-                <label for="status">{{ __('Estado') }}</label>
-                <select id="status" name="status" class="form-control">
-                                <option value="ACTIVE">Publicado</option>
-                                <option value="INACTIVE">No publicado</option>
-                            </select>
             </div>
         </div>
     </div>
