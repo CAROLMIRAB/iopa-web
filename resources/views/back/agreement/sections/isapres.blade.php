@@ -9,7 +9,7 @@
         <div class="col-12">
             <hr class="my-4">
         </div>
-        <div class="col-12">
+        <div class="col-8">
             <div class="form-group">
                 <label for="isapre-title">{{ __('Titulo') }}</label>
                 <input id="isapre_title" name="isapre_title" value="{{ isset($isapre['name']) ? $isapre['name'] : ''   }}" class="form-control">
@@ -19,12 +19,14 @@
                 <label for="isapre-description">{{ __('Descripción') }}</label>
                 <textarea id="isapre-description" name="isapre_description" class="form-control">{{ isset($isapre['description']) ? $isapre['description'] : ''   }}</textarea>
             </div>
+        </div>
+        <div class="col-4">
             <div class="form-group">
                 <label for="status">{{ __('Estado') }}</label>
                 <select id="status" name="status" class="form-control">
-							<option value="ACTIVE">Publicado</option>
-							<option value="INACTIVE">No publicado</option>
-						</select>
+                                    <option value="ACTIVE">Publicado</option>
+                                    <option value="INACTIVE">No publicado</option>
+                                </select>
             </div>
         </div>
     </div>
