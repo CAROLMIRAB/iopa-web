@@ -28,9 +28,9 @@
                             <i class="ni ni-cloud-download-95 i-img"></i></label>
                     <input type="file" name="image" id="arancel-image" accept="image/png, image/jpeg" />
                     <input type="hidden" name="imageurl" value="{{ $arancel['image'] }}" id="arancelurl" />
-                    <input type="hidden" class="imgBase64" name="imgBase64">
-                    <a href="" class="removeImg">Remove imagen</a>
+                    <input type="hidden" class="imgBase64" name="imgBase64">     
                 </div>
+                <a href="" class="removeImg" style="font-size: 10px">Remove imagen</a>
             </div>
             <div class="form-group">
                 <label for="status">{{ __('Estado') }}</label>
