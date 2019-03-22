@@ -1,27 +1,26 @@
 <article class="item-aranceles" id="aranceles">
     <div class="item-aranceles-content">
         <div class="row">
-            <div class="col-md-12">
-                <h2>{{ isset($arancel['name']) ? $arancel['name'] : ''  }}</h2>
+            <div class="col-md-6">
+                <h2>{{ isset($arancel['name']) ? $arancel['name'] : '' }}</h2>
 
                 {!! isset($arancel['description']) ? $arancel['description'] : '' !!}
                 <div class="ui-download-box">
 
-                        @if(!empty($arancel['content']))
-                         @foreach ($arancel['content'] as $key => $item)
-                        
-                        <tr>
-                            @foreach ($item as $ky => $it)
-                            <a href="{{ $it['route'] }}">
+                    @if(!empty($arancel['content'])) @foreach ($arancel['content'] as $key => $item)
+
+                    <tr>
+                        @foreach ($item as $ky => $it)
+                        <a href="{{ $it['route'] }}">
                                     <i class="fa fa-download ico-download"></i>
                                     <p class="title-download">{{ $it['title'] }}</p>
                                     <!--<p class="details-download">Actualizado 12 Enero, 2019</p>-->
-                                </a>
-                            @endforeach
-                    
-                        @endforeach @endif
+                                </a> @endforeach @endforeach @endif
                 </div>
 
+            </div>
+            <div class="col-md-6">
+                <img src="{{ asset('uploads/images/'.$fonasa['image']) }}" class="img-responsive center-block" alt="">
             </div>
         </div>
     </div>
