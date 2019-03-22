@@ -9,7 +9,7 @@ use App\Doctor;
 use App\Exam;
 use App\Office;
 use App\Surgery;
-
+use App\Agreement;
 
 
 
