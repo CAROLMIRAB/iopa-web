@@ -66,7 +66,7 @@
         <h2>Pagos</h2>
     </div>
     <div class="col-12">
-        <ul class="clearfix" id="sortable" class="sortable pago-sort">
+        <ul class="clearfix" class="sortable pago-sort">
             @if(!empty($pago['content'])) @foreach($pago['content'] as $key => $item)
             <li data-img="{{ $item['img'] }}">
                 <div class="box-image nostatus">
