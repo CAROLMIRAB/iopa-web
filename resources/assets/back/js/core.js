@@ -5,11 +5,11 @@ var Core = function () {
 
         dropdown: function () {
             $('.user-log > .nav-item ').click(function () {
-                if ($('.dropdown-menu .dropdown-menu-arrow .dropdown-menu-right').hasClass('show')) {
-                    $('.dropdown-menu .dropdown-menu-arrow .dropdown-menu-right').removeClass('show');
+                if ($('.dropdown-drop').hasClass('show')) {
+                    $('.dropdown-drop').removeClass('show');
                     $('.nav-item .dropdown-drop').removeClass('show');
                 } else {
-                    $('.dropdown-menu .dropdown-menu-arrow .dropdown-menu-right').addClass('show');
+                    $('.dropdown-drop').addClass('show');
                     $('.nav-item .dropdown-drop').addClass('show');
                 }
             });
