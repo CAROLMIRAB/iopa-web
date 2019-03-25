@@ -5,12 +5,12 @@ var Core = function () {
 
         dropdown: function () {
             $('.nav-link .pr-0').click(function () {
-                if ($('.dropdown-drop').hasClass('show')) {
+                if ($('.dropdown-menu-right').hasClass('show')) {
+                    $('.dropdown-menu-right').removeClass('show');
                     $('.dropdown-drop').removeClass('show');
-                    $('.nav-item .dropdown-drop').removeClass('show');
                 } else {
+                    $('.dropdown-menu-right').addClass('show');
                     $('.dropdown-drop').addClass('show');
-                    $('.nav-item .dropdown-drop').addClass('show');
                 }
             });
         },
