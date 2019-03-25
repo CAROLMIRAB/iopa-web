@@ -57,7 +57,7 @@
             <h2>Logos Convenios</h2>
         </div>
         <div class="col-12">
-            <ul class="clearfix" id="sortable" class="sortable conv-sort">
+            <ul id="sortable" class="sortable conv-sort">
                 @if(!empty($convenio['content'])) @foreach($convenio['content'] as $key => $item)
                 <li data-img="{{ $item['img'] }}">
                     <div class="box-image nostatus">

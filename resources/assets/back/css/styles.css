@@ -463,7 +463,7 @@ textarea.form-control{
     text-align: center;
 }
 
-#sortable li{
+.sortable li{
   display: inline-block;
   text-align: center;
   margin-bottom: 20px;
@@ -471,7 +471,7 @@ textarea.form-control{
   margin-left: 5px; 
 }
 
-#sortable{
+.sortable{
 	list-style: none;
 	margin: 0;
 	padding: 20px;
