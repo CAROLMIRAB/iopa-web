@@ -125,11 +125,11 @@
         Agreement.saveArancel();
         Agreement.imagesUpArancel(img);
         Agreement.editHTMLArancel();
-        
 
         /**** Medios de Pago ****/
         Agreement.editHTMLPago();
         Agreement.imagesUpPago();
+
 	});
 
 </script>

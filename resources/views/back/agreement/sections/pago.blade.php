@@ -48,7 +48,7 @@
     <div class="col-12">
         <hr class="my-4">
     </div>
-    <div class="col-4">
+    <div class="col-6">
         <h5>IMAGEN</h5>
         <div style="" id="pago-image-preview" class="table-img-prev">
             <label for="image-upload" id="pago-image-label">
@@ -57,10 +57,24 @@
             <input type="hidden" class="imgBase64" name="imgBase64">
         </div>
     </div>
-    <div class="col-4">
-
+    <div class="col-6 text-right">
+        <div class="form-group">
+            <button type="button" id="btn-addpago" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner'></i> {{ __('Agregando...') }}"> Agregar</button>
+        </div>
     </div>
-    <div class="col-4">
-        <button class="btn btn-primary add-pago" type="button">Agregar</button>
+    <div class="col-12">
+        <h2>Pagos</h2>
+    </div>
+    <div class="col-12">
+        <ul class="clearfix" id="sortable">
+            @if(!empty($pago['content'])) @foreach($pago['content'] as $key => $item)
+            <li data-img="{{ $item['img'] }}">
+                <div class="box-image nostatus">
+                    <button type="button" class="btn btn-success btn-sm pull-right conv-delete">x</button>
+                    <img src="{{ $item['img'] }}" width="100%">
+                </div>
+            </li>
+            @endforeach @endif
+        </ul>
     </div>
 </form>
