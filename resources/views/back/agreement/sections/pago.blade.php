@@ -44,8 +44,20 @@
     </div>
 </form>
 
-<form action="{{ route('agreement.save-pdf') }}" class="dropzone needsclick dz-clickable dz-started">
-    <div class="fallback">
-        <input name="image" type="file" multiple />
+<form action="{{  }}" class="dropzone needsclick dz-clickable dz-started">
+    <div class="col-4">
+        <h5>IMAGEN</h5>
+        <div style="" id="pago-image-preview" class="table-img-prev">
+            <label for="image-upload" id="pago-image-label">
+                <i class='ni ni-cloud-download-95 i-img'></i></label>
+            <input type="file" name="pago_image" id="pago-image" class="pago-image" accept="image/png, image/jpeg" />
+            <input type="hidden" class="imgBase64" name="imgBase64">
+        </div>
+    </div>
+    <div class="col-4">
+       
+    </div>
+    <div class="col-4">
+        <button class="btn btn-primary add-pago" type="button"><i class="ni ni-fat-add " style=""></i> Agregar</button>
     </div>
 </form>
