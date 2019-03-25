@@ -4,12 +4,12 @@ var Core = function () {
     return {
 
         dropdown: function () {
-            $('.user-log > .nav-item ').click(function () {
-                if ($('.nav-link .pr-0').hasClass('show')) {
-                    $('.nav-link .pr-0').removeClass('show');
+            $('.nav-link .pr-0').click(function () {
+                if ($('.dropdown-drop').hasClass('show')) {
+                    $('.dropdown-drop').removeClass('show');
                     $('.nav-item .dropdown-drop').removeClass('show');
                 } else {
-                    $('.nav-link .pr-0').addClass('show');
+                    $('.dropdown-drop').addClass('show');
                     $('.nav-item .dropdown-drop').addClass('show');
                 }
             });
