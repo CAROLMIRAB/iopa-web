@@ -128,7 +128,6 @@
         
 
         /**** Medios de Pago ****/
-        Agreement.pagoDropzone(); 
         Agreement.editHTMLPago();
 	});
 
