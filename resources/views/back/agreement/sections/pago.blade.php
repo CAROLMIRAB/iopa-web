@@ -50,10 +50,10 @@
     </div>
     <div class="col-6">
         <h5>IMAGEN</h5>
-        <div style="" id="pago-image-preview" class="image-preview-class">
-            <label for="image-upload" id="pago-image-label">
+        <div style="" id="pago-image-preview-sub" class="image-preview-class">
+            <label for="image-upload" id="pago-image-label-sub">
                 <i class='ni ni-cloud-download-95 i-img'></i></label>
-            <input type="file" name="pago_image" id="pago-image" class="pago-image" accept="image/png, image/jpeg" />
+            <input type="file" name="pago_image" id="pago-image-sub" class="pago-image" accept="image/png, image/jpeg" />
             <input type="hidden" class="imgBase64" name="imgBase64">
         </div>
     </div>

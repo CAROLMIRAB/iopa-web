@@ -303,9 +303,9 @@ var Agreement = function () {
 
         imagesUpPago: function (image) {
             $.uploadPreview({
-                input_field: "#pago-image",
-                preview_box: "#pago-image-preview",
-                label_field: "#pago-image-label",
+                input_field: "#pago-image-sub",
+                preview_box: "#pago-image-preview-sub",
+                label_field: "#pago-image-label-sub",
                 label_default: image,
                 label_selected: image
             });
