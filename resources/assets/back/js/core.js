@@ -4,7 +4,7 @@ var Core = function () {
     return {
 
         dropdown: function () {
-            $('.nav-link .pr-0').click(function () {
+            $('.user-click').click(function () {
                 if ($('.dropdown-menu-right').hasClass('show')) {
                     $('.dropdown-menu-right').removeClass('show');
                     $('.dropdown-drop').removeClass('show');
