@@ -5,11 +5,11 @@ var Core = function () {
 
         dropdown: function () {
             $('.user-log > .nav-item ').click(function () {
-                if ($('.dropdown-drop').hasClass('show')) {
-                    $('.dropdown-drop').removeClass('show');
+                if ($('.nav-link .pr-0').hasClass('show')) {
+                    $('.nav-link .pr-0').removeClass('show');
                     $('.nav-item .dropdown-drop').removeClass('show');
                 } else {
-                    $('.dropdown-drop').addClass('show');
+                    $('.nav-link .pr-0').addClass('show');
                     $('.nav-item .dropdown-drop').addClass('show');
                 }
             });

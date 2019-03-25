@@ -60,7 +60,7 @@
       <!-- User -->
       <ul class="navbar-nav user-log align-items-center d-none d-md-flex">
         <li class="nav-item dropdown dropdown-drop">
-          <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link pr-0" href="javascript:" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <div class="ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm font-weight-bold">{{ Auth::user()->name }}</span>
