@@ -45,6 +45,9 @@
 </form>
 
 <form action="" class="row">
+    <div class="col-12">
+        <hr class="my-4">
+    </div>
     <div class="col-4">
         <h5>IMAGEN</h5>
         <div style="" id="pago-image-preview" class="table-img-prev">
@@ -55,9 +58,9 @@
         </div>
     </div>
     <div class="col-4">
-       
+
     </div>
     <div class="col-4">
-        <button class="btn btn-primary add-pago" type="button"><i class="ni ni-fat-add " style=""></i> Agregar</button>
+        <button class="btn btn-primary add-pago" type="button">Agregar</button>
     </div>
 </form>

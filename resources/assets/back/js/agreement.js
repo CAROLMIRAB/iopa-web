@@ -300,6 +300,17 @@ var Agreement = function () {
             });
         },
 
+
+        imagesUpPago: function (image) {
+            $.uploadPreview({
+                input_field: "#pago-image",
+                preview_box: "#pago-image-preview",
+                label_field: "#pago-image-label",
+                label_default: image,
+                label_selected: image
+            });
+        },
+
         isapreAdd: function () {
             var $form = $('#isapre_add');
             $('#btn-addisapre').click(function (e) {
