@@ -44,7 +44,7 @@
     </div>
 </form>
 
-<form action="{{  }}" class="dropzone needsclick dz-clickable dz-started">
+<form action="" class="dropzone needsclick dz-clickable dz-started">
     <div class="col-4">
         <h5>IMAGEN</h5>
         <div style="" id="pago-image-preview" class="table-img-prev">
