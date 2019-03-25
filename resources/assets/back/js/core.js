@@ -16,8 +16,8 @@ var Core = function () {
         },
 
         sortableImg: function () {
-            $("#sortable").sortable();
-            $("#sortable").disableSelection();
+            $(".sortable").sortable();
+            $(".sortable").disableSelection();
         },
 
         removeImg: function () {

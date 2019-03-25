@@ -383,6 +383,46 @@ var Agreement = function () {
 
         },
 
+        pagoAdd: function () {
+            var $form = $('#pago_add');
+            $('#btn-addpago').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("pago_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+
+                        var img = data.data;
+
+                        var div = imgSort(img);
+                        $('.pago-sort').append(div);
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addpago').button('reset');
+                });
+                return false;
+            });
+
+            $('.pago-sort').on('click', '.conv-delete', function (e) {
+                e.preventDefault();
+                $(this).parents('li').remove();
+            })
+        },
+
         convenioAdd: function () {
             var $form = $('#convenio_add');
             $('#btn-addconvenio').click(function () {

@@ -44,7 +44,7 @@
     </div>
 </form>
 
-<form action="" class="row">
+<form action="{{ route('agreement.save-images') }}" method="post" id="pago_add" enctype="multipart/form-data" class="row">
     <div class="col-12">
         <hr class="my-4">
     </div>
@@ -66,7 +66,7 @@
         <h2>Pagos</h2>
     </div>
     <div class="col-12">
-        <ul class="clearfix" id="sortable">
+        <ul class="clearfix" id="sortable" class="sortable pago-sort">
             @if(!empty($pago['content'])) @foreach($pago['content'] as $key => $item)
             <li data-img="{{ $item['img'] }}">
                 <div class="box-image nostatus">

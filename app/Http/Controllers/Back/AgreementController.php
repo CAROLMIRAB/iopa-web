@@ -114,7 +114,7 @@ class AgreementController extends Controller
 
     }
 
-    public function saveSubConvenio(Request $request)
+    public function saveImages(Request $request)
     {
         try {
 

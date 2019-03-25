@@ -90,6 +90,7 @@
        });
         
         Core.removeImg();
+        Core.sortableImg();
 
         /**** Fonasa *****/
         Agreement.fonasaAdd();
@@ -109,7 +110,6 @@
 
         /**** Convenios *****/
         Agreement.imagesUpCon(img);
-        Core.sortableImg();
         Agreement.convenioAdd();
         Agreement.saveConvenio();
         Agreement.editHTMLConvenio();
@@ -129,6 +129,7 @@
         /**** Medios de Pago ****/
         Agreement.editHTMLPago();
         Agreement.imagesUpPago(img);
+        Agreement.pagoAdd();
 
 	});
 
