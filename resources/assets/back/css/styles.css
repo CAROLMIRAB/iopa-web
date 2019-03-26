@@ -502,3 +502,12 @@ textarea.form-control{
   box-shadow: none;
   font-size: 16px;
 }
+
+.conv-delete :hover{
+  background: none;
+  border: none;
+  position: absolute;
+  color:green;
+  box-shadow: none;
+  font-size: 16px;
+}
