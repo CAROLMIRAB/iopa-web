@@ -446,6 +446,30 @@ class AgreementController extends Controller
             return $data;
         }
     }
+
+    public function savePago(Request $request)
+    {
+        try {
+           
+            $pagos = json_encode($request->list);
+            $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, $request->status, null, $pagos);
+            
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Medios de Pagos de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
 }
 
 
