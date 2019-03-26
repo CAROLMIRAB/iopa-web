@@ -450,8 +450,9 @@ class AgreementController extends Controller
     public function savePago(Request $request)
     {
         try {
-           
+
             $pagos = json_encode($request->list);
+            dd($pagos);
             $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, $request->status, null, $pagos);
             
             return response()->json([

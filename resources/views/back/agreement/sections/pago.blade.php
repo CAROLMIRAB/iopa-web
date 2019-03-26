@@ -49,7 +49,6 @@
         <hr class="my-4">
     </div>
     <div class="col-6">
-        <h5>IMAGEN</h5>
         <div style="" id="pago-image-preview-sub" class="image-preview-class">
             <label for="image-upload" id="pago-image-label-sub">
                 <i class='ni ni-cloud-download-95 i-img'></i></label>
