@@ -80,7 +80,7 @@ class AgreementRepo
 
     public function findAll()
     {
-        $agreement = Agreement::select('name', 'description', 'image', 'content', 'slug')
+        $agreement = Agreement::select('name', 'description', 'image', 'content', 'status', 'slug')
             ->orderBy('id')
             ->get();
 
