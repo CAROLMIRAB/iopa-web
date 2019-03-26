@@ -133,4 +133,17 @@
             display: block;
         }
     }
+
+}
+
+.navbar-vertical{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: block;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 250px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 }
