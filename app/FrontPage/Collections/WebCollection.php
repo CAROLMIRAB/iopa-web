@@ -127,7 +127,8 @@ class WebCollection
                     'name' => $item->name,
                     'description' => $item->description,
                     'image' => $item->image,
-                    'content' => $arr
+                    'content' => $arr, 
+                    'status' => $item->status
                 ]
             ];
 
