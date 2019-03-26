@@ -11,7 +11,7 @@
     <div class="row row-aranceles mt-40">
       <div class="col-md-3 pt-20 list-aranceles-sticky">
         <div class="list-group list-aranceles mt-40 mb-10">
-          {{ dd($agreement[0]['fonasa']) }}
+    
           @if($agreement[0]['fonasa']['status'] == 'ACTIVE')
             <a href="#fonasa" class="list-group-item smooth">FONASA</a>
           @endif
@@ -45,23 +45,23 @@
   @include('front.sections.agreesections.fonasa', ['fonasa' => isset($agreement[0]['fonasa'])
             ? $agreement[0]['fonasa'] : '']) @endif
             
-            @if($agreement[0]['isapres']['status'] == 'ACTIVE')
+            @if($agreement[1]['isapres']['status'] == 'ACTIVE')
   @include('front.sections.agreesections.isapre',
             ['isapre' => isset($agreement[1]['isapres']) ? $agreement[1]['isapres'] : '']) @endif 
             
-            @if($agreement[0]['convenios']['status']== 'ACTIVE')
+            @if($agreement[2]['convenios']['status']== 'ACTIVE')
   @include('front.sections.agreesections.convenios', ['convenio' => isset($agreement[2]['convenios']) 
             ? $agreement[2]['convenios'] : '' ]) @endif 
             
-            @if($agreement[0]['promociones']['status'] == 'ACTIVE')
+            @if($agreement[3]['promociones']['status'] == 'ACTIVE')
   @include('front.sections.agreesections.promociones',
             ['promo' => isset($agreement[3]['promociones']) ? $agreement[3]['promociones'] : '' ]) @endif
 
-            @if($agreement[0]['aranceles']['status'] == 'ACTIVE')
+            @if($agreement[4]['aranceles']['status'] == 'ACTIVE')
   @include('front.sections.agreesections.aranceles',
             ['arancel' => isset($agreement[4]['aranceles']) ? $agreement[4]['aranceles'] : '' ]) @endif
 
-            @if($agreement[0]['medios-pagos']['status'] == 'ACTIVE')
+            @if($agreement[5]['medios-pagos']['status'] == 'ACTIVE')
   @include('front.sections.agreesections.pago',
             ['pago' => isset($agreement[5]['medios-pagos']) ? $agreement[5]['medios-pagos'] : '' ]) @endif
 
