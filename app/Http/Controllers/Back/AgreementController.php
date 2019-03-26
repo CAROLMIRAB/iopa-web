@@ -119,7 +119,7 @@ class AgreementController extends Controller
         try {
 
             $image_url = Core::uploadImageB64($request->imgBase64);
-            $img = asset('uploads/thumbnails') . '/' . $image_url;
+            $img = asset('uploads/thumbnail') . '/' . $image_url;
 
             return response()->json([
                 'status' => 200,
