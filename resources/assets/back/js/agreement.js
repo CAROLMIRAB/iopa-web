@@ -301,11 +301,21 @@ var Agreement = function () {
         },
 
 
-        imagesUpPago: function (image) {
+        imagesSubUpPago: function (image) {
             $.uploadPreview({
                 input_field: "#pago-image-sub",
                 preview_box: "#pago-image-preview-sub",
                 label_field: "#pago-image-label-sub",
+                label_default: image,
+                label_selected: image
+            });
+        },
+
+        imagesUpPago: function (image) {
+            $.uploadPreview({
+                input_field: "#pago-image",
+                preview_box: "#pago-image-preview",
+                label_field: "#pago-image-label",
                 label_default: image,
                 label_selected: image
             });
@@ -601,6 +611,46 @@ var Agreement = function () {
             });
         },
 
+        savePago: function () {
+            var $form = $('#pago');
+            $('#pago-btn-save').click(function (e) {
+                $(this).button('loading');
+                var title = $('#pago-title').val();
+                var slug = $('#pago-slug').val();
+                var description = $('textarea#pago-description').val();
+                var mylist = [];
+                var i = 1;
+                $("ul#sortable > li").each(function () {
+                    mylist.push({
+                        "id": i,
+                        "img": $(this).data('img')
+                    });
+                    i++
+                });
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: {
+                        slug: slug,
+                        title: title,
+                        description: description,
+                        list: mylist
+                    },
+                    dataType: "json"
+
+                }).done(function (data) {
+                    toastr.success(data.message, '!Exitoso!');
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#pago-btn-save').button('reset');
+                });
+                return false;
+            });
+
+
+        },
+
         saveConvenio: function () {
             var $form = $('#convenio');
             $('#convenio-btn-save').click(function (e) {
@@ -616,9 +666,7 @@ var Agreement = function () {
                         "img": $(this).data('img')
                     });
                     i++
-                })
-
-                console.log(mylist);
+                });
                 $.ajax({
                     type: 'post',
                     url: $form.attr('action'),

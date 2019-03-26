@@ -129,6 +129,7 @@
         /**** Medios de Pago ****/
         Agreement.editHTMLPago();
         Agreement.imagesUpPago(img);
+        Agreement.imagesSubUpPago(img);
         Agreement.pagoAdd();
 
 	});
