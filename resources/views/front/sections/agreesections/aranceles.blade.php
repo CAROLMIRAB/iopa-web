@@ -5,10 +5,9 @@
                 <h2>{{ isset($arancel['name']) ? $arancel['name'] : '' }}</h2>
 
                 {!! isset($arancel['description']) ? $arancel['description'] : '' !!}
+                
                 <div class="ui-download-box">
-
                     @if(!empty($arancel['content'])) @foreach ($arancel['content'] as $key => $item)
-
                     <tr>
                         @foreach ($item as $ky => $it)
                         <a href="{{ $it['route'] }}">

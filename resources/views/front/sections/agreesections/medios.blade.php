@@ -2,11 +2,9 @@
     <div class="item-aranceles-content">
         <div class="row">
             <div class="col-md-12">
-                <h2>MEDIOS DE PAGO</h2>
+                <h2>{{ isset($pago['name']) ? $pago['name'] : ''   }}</h2>
 
-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sit amet consectetur adipiscing
-                    elit ut aliquam purus. Sociis natoque penatibus et magnis dis parturient montes nascetur. Diam vel quam
-                    elementum pulvinar etiam non.</p>
+                {!! isset($pago['description']) ? $pago['description'] : ''   !!}
 
             </div>
             <div class="col-md-12">

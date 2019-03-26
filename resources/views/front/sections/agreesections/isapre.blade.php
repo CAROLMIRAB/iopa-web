@@ -4,7 +4,8 @@
           <div class="row mt-20 mb-20">
             <div class="col-md-12">
               <h2>{{ isset($isapre['name']) ? $isapre['name'] : ''   }}</h2>
-              <p>{!! isset($isapre['description']) ? $isapre['description'] : ''   !!}</p>
+              
+              {!! isset($isapre['description']) ? $isapre['description'] : ''   !!}
 
               <div class="table-responsive">
                   <table class="table align-items-center table-flush table-isapres" style="width: 100%">

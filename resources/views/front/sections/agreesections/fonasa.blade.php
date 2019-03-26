@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <h2>{{ isset($fonasa['name']) ? $fonasa['name'] : '' }}</h2>
 
-                <p>{!! isset($fonasa['description']) ? $fonasa['description'] : '' !!}</p>
+                {!! isset($fonasa['description']) ? $fonasa['description'] : '' !!}
 
                 @if(!empty($fonasa['content'])) 
                 @foreach ($fonasa['content'] as $key => $item)

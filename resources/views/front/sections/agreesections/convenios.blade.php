@@ -4,7 +4,7 @@
             <div class="col-md-12">
               <h2>{{ isset($convenio['name']) ? $convenio['name'] : ''  }}</h2>
 
-              <p>{!! isset($convenio['description']) ? $convenio['description'] : '' !!}</p>
+              {!! isset($convenio['description']) ? $convenio['description'] : '' !!}
 
             </div> 
             <div class="col-md-12">
