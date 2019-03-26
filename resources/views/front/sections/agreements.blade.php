@@ -40,8 +40,7 @@
     </div>
 
     <div class="row row-aranceles mt-40">
-      
-      <div class="col-md-9">
+      <div class="col-md-9 offset-md-3">
         <div class="ui-blog-body">
           <div class="ui-blog-content mt-10 mb-10">
 
