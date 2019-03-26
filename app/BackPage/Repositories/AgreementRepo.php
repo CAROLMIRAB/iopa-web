@@ -53,7 +53,7 @@ class AgreementRepo
         return $agreement;
     }
 
-    public function changeConvenio($slug, $name, $description, $image = null, $content = null)
+    public function changeConvenio($slug, $name, $description, $status, $image = null, $content = null)
     {
         $agreement = \DB::table('agreements')->where('slug', $slug)->update(
             [

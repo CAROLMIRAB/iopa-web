@@ -33,6 +33,7 @@ class AgreementsTableSeeder extends Seeder
                 'name' => $agreement[2],
                 'description' => $agreement[3],
                 'content' => $agreement[4],
+                'status' => 'INACTIVE',
                 'updated_at' => $now,
                 'created_at' => $now,
             ];
