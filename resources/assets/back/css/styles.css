@@ -494,7 +494,7 @@ textarea.form-control{
  width: 100%;
 }
 
-.conv-delete{
+.box-image .conv-delete{
   background: none;
   border: none;
   position: absolute;
@@ -503,7 +503,7 @@ textarea.form-control{
   font-size: 16px;
 }
 
-.conv-delete:hover{
+.box-image .conv-delete:hover{
   background: none;
   border: none;
   position: absolute;
