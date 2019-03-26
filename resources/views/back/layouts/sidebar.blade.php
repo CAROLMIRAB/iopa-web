@@ -22,14 +22,14 @@
             </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('surgery.view-all-surgeries') }}">
-          <i class="ni ni-bullet-list-67 text-red"></i> Cirugías 
-            </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{{ route('office.view-all-offices') }}">
               <i class="ni ni-pin-3 text-orange"></i> Sucursales
             </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('agreement.view-agreement') }}">
+                <i class="ni ni-bullet-list-67 text-red"></i> Convenios
+              </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('exam.view-all-exams') }}">
@@ -37,14 +37,14 @@
               </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('surgery.view-all-surgeries') }}">
+            <i class="ni ni-bullet-list-67 text-red"></i> Cirugías 
+              </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ route('specialty.view-all-specialties') }}">
           <i class="ni ni-bullet-list-67 text-red"></i> Especialidades
                 </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('agreement.view-agreement') }}">
-              <i class="ni ni-bullet-list-67 text-red"></i> Convenios
-            </a>
       </li>
     </ul>
   </div>

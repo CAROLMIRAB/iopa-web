@@ -449,9 +449,23 @@ class AgreementController extends Controller
     public function savePago(Request $request)
     {
         try {
+
+            $img = $request->imgBase64;
+          
+            $image_url = "";
+
+            if (!is_null($img) && is_null($request->imgurl)) {
+                $image_url = Core::uploadImageB64($request->imgBase64);
+            }else{
+                $image_url = $request->imgurl;
+            }
+
+            if(is_null($img) && is_null($request->imgurl)){
+                $image_url = '';
+            }
+            
             $pagos = is_null($request->list) ? '[]' : json_encode($request->list);
             $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, $request->status, null, $pagos);
-          
             
             return response()->json([
                 'status' => 200,
