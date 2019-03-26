@@ -620,7 +620,7 @@ var Agreement = function () {
                 var description = $('textarea#pago-description').val();
                 var mylist = [];
                 var i = 1;
-                $("ul#sortable > li").each(function () {
+                $("ul.pago-sort > li").each(function () {
                     mylist.push({
                         "id": i,
                         "img": $(this).data('img')
