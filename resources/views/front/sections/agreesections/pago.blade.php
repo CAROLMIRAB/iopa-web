@@ -2,22 +2,18 @@
     <div class="item-aranceles-content">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ isset($pago['name']) ? $pago['name'] : ''   }}</h2>
+                <h2>{{ isset($pago['name']) ? $pago['name'] : '' }}</h2>
 
-                {!! isset($pago['description']) ? $pago['description'] : ''   !!}
+                {!! isset($pago['description']) ? $pago['description'] : '' !!}
 
             </div>
             <div class="col-md-12">
                 <ul class="list-medio-pago">
+                    @if(!empty($pago['content'])) @foreach($pago['content'] as $key => $item)
                     <li class="list-medio-item">
-                        <img src="{{ asset('img/aranceles/payment-webpay.jpg') }}" />
+                        <img src="{{ $item['img'] }}" />
                     </li>
-                    <li class="list-medio-item">
-                        <img src="{{ asset('img/aranceles/payment-servipag.jpg') }}" />
-                    </li>
-                    <li class="list-medio-item">
-                        <img src="{{ asset(" img/aranceles/payment-santander.jpg ") }}" />
-                    </li>
+                    @endforeach @endif
                 </ul>
             </div>
         </div>

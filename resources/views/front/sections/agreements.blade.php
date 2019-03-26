@@ -32,7 +32,7 @@
             : '' ])
             @include('front.sections.agreesections.aranceles', ['arancel' => isset($agreement[4]['aranceles']) ? $agreement[4]['aranceles']
             : '' ])
-            @include('front.sections.agreesections.medios', ['pago' => isset($agreement[5]['medios-pagos']) ? $agreement[5]['medios-pagos']
+            @include('front.sections.agreesections.pago', ['pago' => isset($agreement[5]['medios-pagos']) ? $agreement[5]['medios-pagos']
             : '' ])
 
           </div>
