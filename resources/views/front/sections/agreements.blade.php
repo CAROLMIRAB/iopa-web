@@ -11,12 +11,29 @@
     <div class="row row-aranceles mt-40">
       <div class="col-md-3 pt-20 list-aranceles-sticky">
         <div class="list-group list-aranceles mt-40 mb-10">
-          <a href="#fonasa" class="list-group-item smooth">FONASA</a>
-          <a href="#isapres" class="list-group-item smooth">ISAPRES</a>
-          <a href="#convenios" class="list-group-item smooth">CONVENIOS EMPRESA</a>
-          <a href="#promociones" class="list-group-item smooth">PROMOCIONES</a>
-          <a href="#aranceles" class="list-group-item smooth">ARANCELES</a>
-          <a href="#medios" class="list-group-item smooth">MEDIOS DE PAGO</a>
+          @if($agreement[0]['fonasa']['status'] == 'ACTIVE')
+            <a href="#fonasa" class="list-group-item smooth">FONASA</a>
+          @endif
+
+          @if($agreement[0]['isapres']['status'] == 'ACTIVE')
+            <a href="#isapres" class="list-group-item smooth">ISAPRES</a>
+          @endif
+
+          @if($agreement[0]['convenios']['status'] == 'ACTIVE')
+            <a href="#convenios" class="list-group-item smooth">CONVENIOS EMPRESA</a>
+          @endif
+
+          @if($agreement[0]['promociones']['status'] == 'ACTIVE')
+            <a href="#promociones" class="list-group-item smooth">PROMOCIONES</a>
+          @endif
+
+          @if($agreement[0]['aranceles']['status'] == 'ACTIVE')
+            <a href="#aranceles" class="list-group-item smooth">ARANCELES</a>
+          @endif
+
+          @if($agreement[0]['medios-pagos']['status'] == 'ACTIVE')
+            <a href="#medios" class="list-group-item smooth">MEDIOS DE PAGO</a>
+          @endif
         </div>
       </div>
       <div class="col-md-9">
