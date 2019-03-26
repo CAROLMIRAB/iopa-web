@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="pago-title">{{ __('Titulo') }}</label>
                 <input id="pago-title" name="pago_title" class="form-control" value="{{ isset($pago['name']) ? $pago['name'] : ''  }}">
-                <input id="pago-slug" name="pago_slug" value="pagos" class="hidden" type="hidden">
+                <input id="pago-slug" name="pago_slug" value="medios-pagos" class="hidden" type="hidden">
             </div>
             <div class="form-group">
                 <label for="pago-description">{{ __('Descripción') }}</label>
