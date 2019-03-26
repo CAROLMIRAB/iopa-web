@@ -23,7 +23,7 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="status">{{ __('Estado') }}</label>
-                <select id="status" name="status" class="form-control">
+                <select id="isapre-status" name="status" class="form-control">
                                     <option value="ACTIVE">Publicado</option>
                                     <option value="INACTIVE">No publicado</option>
                                 </select>

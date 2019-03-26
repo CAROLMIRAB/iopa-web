@@ -617,6 +617,7 @@ var Agreement = function () {
                 $(this).button('loading');
                 var title = $('#pago-title').val();
                 var slug = $('#pago-slug').val();
+                var status = $('#pago-status').val();
                 var description = $('textarea#pago-description').val();
                 var mylist = [];
                 var i = 1;
@@ -634,7 +635,8 @@ var Agreement = function () {
                         slug: slug,
                         title: title,
                         description: description,
-                        list: mylist
+                        list: mylist,
+                        status: status
                     },
                     dataType: "json"
 
@@ -657,6 +659,7 @@ var Agreement = function () {
                 $(this).button('loading');
                 var title = $('#convenio-title').val();
                 var slug = $('#convenio-slug').val();
+                var status = $('#convenio-status').val();
                 var description = $('textarea#convenio-description').val();
                 var mylist = [];
                 var i = 1;
@@ -674,7 +677,8 @@ var Agreement = function () {
                         slug: slug,
                         title: title,
                         description: description,
-                        list: mylist
+                        list: mylist,
+                        status: status
                     },
                     dataType: "json"
 
