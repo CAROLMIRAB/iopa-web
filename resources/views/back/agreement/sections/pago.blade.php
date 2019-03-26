@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h2>Pagos</h2>
+        <h2>Medios de Pago Agregados</h2>
     </div>
     <div class="col-12">
         <ul class="sortable pago-sort">

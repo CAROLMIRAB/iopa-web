@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="col-12">
-            <h2>Logos Convenios</h2>
+            <h2>Convenios Agregados</h2>
         </div>
         <div class="col-12">
             <ul id="sortable" class="sortable conv-sort">
