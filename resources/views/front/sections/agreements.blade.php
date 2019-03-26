@@ -2,7 +2,39 @@
 @section('content')
 
 <section class="section-aranceles" id="top">
+    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+        <div class="list-aranceles-sticky">
+            <div class="list-group list-aranceles mt-40 mb-10">
+        
+              @if($agreement[0]['fonasa']['status'] == 'ACTIVE')
+                <a href="#fonasa" class="list-group-item smooth">FONASA</a>
+              @endif
+    
+              @if($agreement[1]['isapres']['status'] == 'ACTIVE')
+                <a href="#isapres" class="list-group-item smooth">ISAPRES</a>
+              @endif
+    
+              @if($agreement[2]['convenios']['status'] == 'ACTIVE')
+                <a href="#convenios" class="list-group-item smooth">CONVENIOS EMPRESA</a>
+              @endif
+    
+              @if($agreement[3]['promociones']['status'] == 'ACTIVE')
+                <a href="#promociones" class="list-group-item smooth">PROMOCIONES</a>
+              @endif
+    
+              @if($agreement[4]['aranceles']['status'] == 'ACTIVE')
+                <a href="#aranceles" class="list-group-item smooth">ARANCELES</a>
+              @endif
+    
+              @if($agreement[5]['medios-pagos']['status'] == 'ACTIVE')
+                <a href="#medios" class="list-group-item smooth">MEDIOS DE PAGO</a>
+              @endif
+            </div>
+          </div>
+      
+      </nav>
   <div class="container wow fadeIn" data-wow-delay=".1s">
+     
     <div class="inner-section text-center">
       <h3 class="inner-title">
         Aranceles y Convenios
@@ -10,37 +42,7 @@
     </div>
 
     <div class="row row-aranceles mt-40">
-        <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
-            <div class="list-aranceles-sticky">
-                <div class="list-group list-aranceles mt-40 mb-10">
-            
-                  @if($agreement[0]['fonasa']['status'] == 'ACTIVE')
-                    <a href="#fonasa" class="list-group-item smooth">FONASA</a>
-                  @endif
-        
-                  @if($agreement[1]['isapres']['status'] == 'ACTIVE')
-                    <a href="#isapres" class="list-group-item smooth">ISAPRES</a>
-                  @endif
-        
-                  @if($agreement[2]['convenios']['status'] == 'ACTIVE')
-                    <a href="#convenios" class="list-group-item smooth">CONVENIOS EMPRESA</a>
-                  @endif
-        
-                  @if($agreement[3]['promociones']['status'] == 'ACTIVE')
-                    <a href="#promociones" class="list-group-item smooth">PROMOCIONES</a>
-                  @endif
-        
-                  @if($agreement[4]['aranceles']['status'] == 'ACTIVE')
-                    <a href="#aranceles" class="list-group-item smooth">ARANCELES</a>
-                  @endif
-        
-                  @if($agreement[5]['medios-pagos']['status'] == 'ACTIVE')
-                    <a href="#medios" class="list-group-item smooth">MEDIOS DE PAGO</a>
-                  @endif
-                </div>
-              </div>
-          
-          </nav>
+       
       <div class="col-md-3">
       </div>
       <div class="col-md-9 offset-md-3">

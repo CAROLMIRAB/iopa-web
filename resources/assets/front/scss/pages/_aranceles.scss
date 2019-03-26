@@ -11,6 +11,7 @@
 .list-aranceles-sticky {
     position: sticky;
     top: 130px;
+    width: 100%;
 
     @media(max-width:768px) {
         position: relative;
@@ -120,10 +121,13 @@
     }
 }
 
+
 .list-aranceles 
 {
+    width: 100%;
     .list-group-item{
         border: none;
+        background: none;
     }
 }
 
@@ -150,7 +154,7 @@
     display: block;
     overflow-y: auto;
     width: 100%;
-    max-width: 250px;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
+    background: #eee;
 }
