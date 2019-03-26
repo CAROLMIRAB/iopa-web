@@ -122,12 +122,14 @@
 }
 
 
+
 .list-aranceles 
 {
     width: 100%;
     .list-group-item{
         border: none;
         background: none;
+        width: 100%;
     }
 }
 
@@ -153,7 +155,7 @@
     bottom: 0;
     display: block;
     overflow-y: auto;
-    width: 100%;
+    width: 250px;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
     background: #eee;
