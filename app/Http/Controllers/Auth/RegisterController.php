@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -37,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-       // $this->middleware('auth');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -52,6 +53,17 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+        ],
+        [
+            'name.required' => 'El nombre es requerido',
+            'name.string' => 'Solo se permiten letras',
+            'name.string' => 'El nombre debe tener un maximo de 255 caracteres',
+            'email.required' => 'El email es requerido',
+            'email.email' => 'El email no es válido',
+            'email.unique' => 'Este email ya existe',
+            'password.required' => 'El email es requerido',
+            'password.min' => 'La contraseña debe tener un minimo de 6 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
     }
 
@@ -63,16 +75,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+       // dd($data);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'active' => $data['active'],
             'password' => Hash::make($data['password']),
         ]);
 
         $user
         ->roles()
-        ->attach(Role::where('name', 'user')->first());
+        ->attach($data['role']);
 
+        dd($user);
         return $user;
     }
 

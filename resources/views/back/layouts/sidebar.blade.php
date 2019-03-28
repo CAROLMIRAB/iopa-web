@@ -47,7 +47,16 @@
                 </a>
       </li>
     </ul>
-  </div>
+    @if(Auth::user()->hasRole('admin'))
+    <hr class="" style="width: 100%; margin-top: 0px; margin-bottom: 0px">
+    <ul class="navbar-nav mb-md-3">
+      <li class="nav-item">
+        <a class="nav-link" href="./docs/getting-started/overview.html">
+           <i class="ni ni-spaceship"></i> Getting started
+         </a>
+      </li>
+    </ul>
+    @endif
   </div>
 </nav>
 
@@ -71,10 +80,6 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Bienvenido!</h6>
             </div>
-            <a href="{{ route('auth.view-register') }}" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Register</span>
-                </a>
             <a href="{{route('password.request')}}" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>Cambiar Contraseña</span>

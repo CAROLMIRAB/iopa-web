@@ -32,6 +32,11 @@ Route::get('500', [
     'uses' => 'Back\ErrorController@fatal'
 ]);
 
+Route::get('403', [
+    'as' => '403',
+    'uses' => 'Back\ErrorController@notAuthorize'
+]);
+
 Route::get('blog/{slug}', [
     'as' => 'post.viewpost',
     'uses' => 'Front\WebController@viewFullPost'
@@ -118,10 +123,18 @@ Route::get('especialidades/', [
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
-    Route::get('register', [
-        'as' => 'auth.view-register',
-        'uses' => 'Auth\RegisterController@viewRegister'
-    ]);
+   /************** ROUTES ADMIN **************/
+   Auth::routes();
+
+   Route::group(['prefix' => '', 'middleware' => ['role:admin']], function () {
+        Route::get('register', [
+            'as' => 'auth.view-register',
+            'uses' => 'Auth\RegisterController@viewRegister'
+        ]);
+   });
+
+
+    
 
     /************** ROUTES POST ******************/
     Route::group(['prefix' => 'noticias'], function () {
@@ -479,7 +492,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 });
 
 
-Auth::routes();
+
 
 
 

@@ -26,4 +26,11 @@ class ErrorController extends Controller
             return view('front.errors.500');
           }
     }
+
+    public function notAuthorize(Request $request)
+    {
+        if(\Auth::check()){  
+            return view('back.errors.403');
+          }
+    }
 }
