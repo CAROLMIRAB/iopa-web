@@ -127,9 +127,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
    Auth::routes();
 
    Route::group(['prefix' => '', 'middleware' => ['role:admin']], function () {
-        Route::get('register', [
+        
+    Route::get('register', [
             'as' => 'auth.view-register',
             'uses' => 'Auth\RegisterController@viewRegister'
+        ]);
+
+        Route::post('change-status', [
+            'as' => 'user.change-status',
+            'uses' => 'Back\UserController@changeStatus'
+        ]);
+
+        Route::get('usuarios', [
+            'as' => 'user.view-all-users',
+            'uses' => 'Back\UserController@viewAllUsers'
+        ]);
+
+        Route::get('all-users', [
+            'as' => 'user.all-users',
+            'uses' => 'Back\UserController@allUsers'
         ]);
    });
 

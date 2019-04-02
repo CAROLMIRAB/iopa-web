@@ -45,6 +45,7 @@
         "jquery-validation": "^1.19.0",
         "keen-ui": "^1.1.2",
         "moment": "^2.24.0",
+        "npm": "^6.9.0",
         "postcss-loader": "^3.0.0",
         "readmore-js": "^2.2.1",
         "sass": "^1.17.3",

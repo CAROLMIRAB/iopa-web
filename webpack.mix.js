@@ -139,7 +139,8 @@ mix.scripts([
     'resources/assets/back/js/exams.js',
     'resources/assets/back/js/specialty.js',
     'resources/assets/back/js/agreement.js',
-    'resources/assets/back/js/core.js'
+    'resources/assets/back/js/core.js',
+    'resources/assets/back/js/user.js'
 ], 'public/back/js/custom.back.min.js').version();
 
 
