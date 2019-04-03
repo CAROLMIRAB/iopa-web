@@ -64,7 +64,7 @@ var User = function () {
         changeStatus: function () {
             $(document).on('click', '.toggle', function () {
                 var $input = $(this).find('input.toggle-check');
-                var status = ($input.is(':checked')) ? true : false;
+                var status = ($input.is(':checked')) ? 'true' : 'false';
                 $.ajax({
                     type: 'post',
                     url: $('.datatable-users').data('route-status'),
