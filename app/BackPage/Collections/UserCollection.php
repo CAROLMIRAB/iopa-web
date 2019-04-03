@@ -23,7 +23,7 @@ class UserCollection
                 'name' => $user->name,
                 'email' => $user->email,
                 'created' => $user->created,
-                'active' => $user->status,
+                'active' => $user->active,
                 'id' => $user->id
             ]);
         }

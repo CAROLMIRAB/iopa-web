@@ -25,12 +25,11 @@ var User = function () {
                         width: "120px"
                     },
                     {
-                        data: 'status',
+                        data: 'active',
                         width: "80px",
                         render: function (data, type, row, meta) {
                             var button;
-                            console.log(data);
-                            if (data == FALSE) {
+                            if (data == 'INACTIVE') {
                                 button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="info" data-size="small">';
                             } else {
                                 button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Activo" data-off="Inactivo"  data-onstyle="info" data-size="small">';
@@ -65,7 +64,7 @@ var User = function () {
         changeStatus: function () {
             $(document).on('click', '.toggle', function () {
                 var $input = $(this).find('input.toggle-check');
-                var status = ($input.is(':checked')) ? 1 : 0;
+                var status = ($input.is(':checked')) ? 'ACTIVE' : 'INACTIVE';
                 $.ajax({
                     type: 'post',
                     url: $('.datatable-users').data('route-status'),
