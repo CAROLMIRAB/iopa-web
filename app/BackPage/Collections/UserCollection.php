@@ -21,7 +21,7 @@ class UserCollection
     
             $allusers->push([
                 'name' => $user->name,
-                'email' => $user->body,
+                'email' => $user->email,
                 'created' => $user->created,
                 'active' => $user->status,
                 'id' => $user->id
