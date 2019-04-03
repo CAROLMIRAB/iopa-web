@@ -51,8 +51,8 @@
     <hr class="" style="width: 100%; margin-top: 0px; margin-bottom: 0px">
     <ul class="navbar-nav mb-md-3">
       <li class="nav-item">
-        <a class="nav-link" href="./docs/getting-started/overview.html">
-           <i class="ni ni-spaceship"></i> Getting started
+      <a class="nav-link" href="{{ route('user.view-all-users') }}">
+           <i class="ni ni-key-25"></i> Usuarios
          </a>
       </li>
     </ul>
@@ -85,7 +85,7 @@
                   <span>Cambiar Contraseña</span>
                 </a>
             <div class="dropdown-divider"></div>
-            <a href="{{ route('logout') }}" class="dropdown-item">
+            <a href="{{ route('user.logout') }}" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Cerrar Sesión</span>    
             </a>

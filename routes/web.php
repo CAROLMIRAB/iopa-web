@@ -118,13 +118,21 @@ Route::get('especialidades/', [
 ]);
 
 
+Auth::routes();
 
+
+Route::get('logout/', [
+    'as' => 'user.logout',
+    'uses' => 'Auth\LoginController@logout'
+]);
+
+//Route::get('logout', 'Auth\LoginController@logout')->name('logout'); 
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
-   /************** ROUTES ADMIN **************/
-   Auth::routes();
+
+      /************** ROUTES ADMIN **************/
 
    Route::group(['prefix' => '', 'middleware' => ['role:admin']], function () {
         
