@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Carol Mirabal',
             'email' => 'carolmirabal27@gmail.com',
             'password' => bcrypt('123'),
-            'active' => true
+            'active' => 'ACTIVE'
 
         ])->each(function (App\User $post) {
             $post->roles()->attach([

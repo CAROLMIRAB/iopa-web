@@ -29,7 +29,8 @@ var User = function () {
                         width: "80px",
                         render: function (data, type, row, meta) {
                             var button;
-                            if (data == "INACTIVE") {
+                            console.log(data);
+                            if (data == FALSE) {
                                 button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="info" data-size="small">';
                             } else {
                                 button = '<input type="checkbox" class="toggle-check" data-id="' + row.id + '" data-toggle="toggle" checked data-on="Activo" data-off="Inactivo"  data-onstyle="info" data-size="small">';
