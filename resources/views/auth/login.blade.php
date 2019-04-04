@@ -69,7 +69,13 @@
                             <div class="text-center text-muted mb-4">
                                 <small>Entra con tus credenciales</small>
                             </div>
-                            <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                            @if ($message = Session::get('error'))
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ $message }}</strong>
+                            </div>
+                            @endif
+                            <form method="POST" action="{{ route('auth.login') }}" aria-label="{{ __('Login') }}">
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
@@ -110,7 +116,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-6 text-left">
-                            
+
                         </div>
                         <div class="col-6 text-right">
                             <a class="text-light" href="{{ route('password.request') }}">

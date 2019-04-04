@@ -53,7 +53,7 @@
                                     </span> @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
 
@@ -66,8 +66,8 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
                             <div class="col-md-6">
                                 <select name="role" id="role" class="form-control {{ $errors->has('role') ? ' is-invalid' : '' }}" autofocus>
-                                    <option value="user">Usuario</option>
-                                    <option value="admin">Administrador</option>    
+                                    <option value="2">Usuario</option>
+                                    <option value="1">Administrador</option>    
                                     </select> @if ($errors->has('role'))
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('role') }}</strong>

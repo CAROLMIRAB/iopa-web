@@ -126,8 +126,10 @@ Route::get('logout/', [
     'uses' => 'Auth\LoginController@logout'
 ]);
 
-//Route::get('logout', 'Auth\LoginController@logout')->name('logout'); 
-
+Route::post('authlogin', [
+    'as' => 'auth.login',
+    'uses' => 'Auth\LoginController@login'
+]);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 

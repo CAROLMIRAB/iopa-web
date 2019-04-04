@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
+use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Else_;
+use Illuminate\Support\Facades\Redirect;
+
 
 class LoginController extends Controller
 {
@@ -25,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/noticias/';
+    protected $redirectTo = '/admin/noticias';
 
     /**
      * Create a new controller instance.
@@ -37,11 +42,43 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function logout(){
+
+    public function login(Request $request)
+    {
+        $email = $request->get('email');
+        $password = $request->get('password');
+
+        $user = User::where('email', $email)->first();
+        $active = $user->active;
+        if ($active ==  'ACTIVE') {
+            if (\Auth::attempt(array(
+                'email' => $email,
+                'password' => $password
+            ))) {
+                session([
+                    'email' => $email,
+                    'active' => $active
+
+                ]);
+
+            return redirect()->route('post.view-all-posts');
+
+            } else {
+                //Session::flash('message', "Invalid Credentials , Please try again.");
+                return redirect()->back()->with('error','Tus credenciales son invalidas');
+            }
+        } else {
+            //Session::flash('message', "Usuario inactivo, contactese con su administrador");
+             return redirect()->back()->with('error','Usuario inactivo, contactese con su administrador');
+        }
+    }
+
+    public function logout()
+    {
         auth()->logout();
-    
+
         session()->flash('message', 'Some goodbye message');
-    
+
         return redirect('/login');
-      }
+    }
 }
