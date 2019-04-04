@@ -117,6 +117,11 @@ Route::get('especialidades/', [
     'uses' => 'Front\WebController@viewFullPost'
 ]);
 
+Route::post('reserva/', [
+    'as' => 'reserve.doctors',
+    'uses' => 'Front\WebController@reserve'
+]);
+
 
 Auth::routes();
 

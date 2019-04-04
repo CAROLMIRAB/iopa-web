@@ -25,16 +25,21 @@ class HomeController extends Controller
         $this->webCollection = $webCollection;
     }
 
-     /**
+    /**
      * Show three post home
      * 
      * @return view
      */
     public function home()
     {
-       $post = $this->webRepo->showPostHome();
-       $posts = $this->webCollection->RenderPostsHome($post);
-       return view('front.home.index', compact('posts'));
+        $post = $this->webRepo->showPostHome();
+        $posts = $this->webCollection->RenderPostsHome($post);
+        return view('front.home.index', compact('posts'));
     }
 
+    public function reserve(){
+        $doctorsdata = $this->webRepo->showDoctors();
+        $doctorres = $this->webCollection->renderDoctorsReserva($doctorsdata);
+        return $doctorres;
+    }
 }

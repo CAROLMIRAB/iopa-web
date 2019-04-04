@@ -99,9 +99,23 @@ $(document).ready(function () {
   });
 
   //Popup Sistema
-  $(document).on('click', '.--open-sys', function(){
+  $(document).on('click', '.--open-sys', function () {
     $('#sysPopup').toggleClass('open');
   });
 
+  $(document).on('click', '#sub-reserve', function () {
+    $.ajax({
+      type: 'post',
+      url: $('.sys-popup-content').data('doctor'),
+      dataType: "json"
+    }).done(function (data) {
+      $('.sys-popup-content').html(data);
+    }).fail(function (data) {
+      
+    }).always(function () {
+      $('#sub-reserve').button('reset');
+    });
+
+  });
 
 })
