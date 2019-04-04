@@ -104,6 +104,15 @@ $(document).ready(function () {
   });
 
   $(document).on('click', '#sub-reserve', function () {
+    $(this).text('Enviando...');
+    $('#sendSuccess').addClass('hide');
+    $('.form-loader').removeClass('hide');
+    setTimeout(() => {
+      $(this).text('Enviar mensaje');
+      $('.form-loader').addClass('hide');
+      $('#sendSuccess').removeClass('hide');
+
+    }, 2000);
     $.ajax({
       type: 'post',
       url: $('.sys-popup-content').data('doctor'),
