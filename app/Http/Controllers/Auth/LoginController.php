@@ -49,7 +49,9 @@ class LoginController extends Controller
         $password = $request->get('password');
 
         $user = User::where('email', $email)->first();
-        if ($user === null) {  
+    
+        if ($user != null) {  
+            
         $active = $user->active;
         if ($active ==  'ACTIVE') {
             if (\Auth::attempt(array(
@@ -65,11 +67,11 @@ class LoginController extends Controller
             return redirect()->route('post.view-all-posts');
 
             } else {
-                //Session::flash('message', "Invalid Credentials , Please try again.");
+                
                 return redirect()->back()->with('error','Tus credenciales son invalidas');
             }
         } else {
-            //Session::flash('message', "Usuario inactivo, contactese con su administrador");
+            
              return redirect()->back()->with('error','Usuario inactivo, contactese con su administrador');
         }
     }else{
