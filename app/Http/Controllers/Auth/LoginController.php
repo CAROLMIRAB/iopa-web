@@ -49,6 +49,7 @@ class LoginController extends Controller
         $password = $request->get('password');
 
         $user = User::where('email', $email)->first();
+        if ($user === null) {  
         $active = $user->active;
         if ($active ==  'ACTIVE') {
             if (\Auth::attempt(array(
@@ -71,6 +72,10 @@ class LoginController extends Controller
             //Session::flash('message', "Usuario inactivo, contactese con su administrador");
              return redirect()->back()->with('error','Usuario inactivo, contactese con su administrador');
         }
+    }else{
+
+        return redirect()->back()->with('error','Este usuario no existe');
+    }
     }
 
     public function logout()
