@@ -37,7 +37,6 @@
 
     .sys-popup-content {
         padding: 10px;
-        margin-top: 50%;
         width: 300px;
         height: 400px;
         transition: all ease-out .2s;
@@ -99,7 +98,6 @@
     }
 
     .row-medicos {
-        display: none;
         margin: 60px 0;
         @media(max-width: 767px) {
             display: block;

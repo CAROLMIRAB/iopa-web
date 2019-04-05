@@ -119,7 +119,12 @@ Route::get('especialidades/', [
 
 Route::post('reserva/', [
     'as' => 'reserve.doctors',
-    'uses' => 'Front\WebController@reserve'
+    'uses' => 'Front\HomeController@reserve'
+]);
+
+Route::post('reserva-hour/', [
+    'as' => 'reserve.reserve',
+    'uses' => 'Front\HomeController@reserveHour'
 ]);
 
 

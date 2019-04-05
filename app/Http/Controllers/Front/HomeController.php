@@ -37,9 +37,21 @@ class HomeController extends Controller
         return view('front.home.index', compact('posts'));
     }
 
-    public function reserve(){
+    public function reserve(Request $request)
+    {
         $doctorsdata = $this->webRepo->showDoctors();
-        $doctorres = $this->webCollection->renderDoctorsReserva($doctorsdata);
-        return $doctorres;
+        $doctorres = $this->webCollection->renderDoctors($doctorsdata);
+        $view = \View::make('front.shared.sectionreserve.medicos', ['doctorres' => $doctorres, 'rut' => $request->rut]);
+        $contents = $view->render();
+        $contents = (string) $view;
+        return $contents;
+    }
+
+    public function reserveHour()
+    {
+        $view = \View::make('front.shared.sectionreserve.rutform');
+        $contents = $view->render();
+        $contents = (string) $view;
+        return $contents;
     }
 }

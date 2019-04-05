@@ -8,8 +8,8 @@
 	<title>{{ config('app.name', 'Cliníca IOPA') }}</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<meta name="description" content="" />
-	<meta property="og:site_name" content="" />
-	<meta property="og:title" content="" />
+	<meta property="og:site_name" content="Clínica oftalmológica IOPA" />
+	<meta property="og:title" content="Clínica oftalmológica IOPA" />
 	<meta property="og:description" content="" />
 	<meta property="og:image" content="" />
 	<meta property="og:image:width" content="" />
@@ -30,6 +30,13 @@
 	
 
 <script type="text/javascript" src="{{ asset('front/js/front.min.js') }}"></script>
+<script type="text/javascript">
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+</script>
 <script type="text/javascript" src="{{ asset('front/js/main.min.js') }}"></script>
 
 </body>

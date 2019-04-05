@@ -1,19 +1,19 @@
 <div class="row row-medicos row-medicos-res">
     <div class="col-xs-12">
-        <ul class="media-list medic-list">
+            <input id="reserve-buscador" type="input" value="" class="form-control" placeholder="Busca a tu médico">
+    </div>
+            <div class="col-xs-12">
+        <ul class="media-list medic-list reserve-medic-ul">
             @foreach ($doctorres as $doctor)
-            <li class="media filter {{ $doctor->listoffice }}">
+            <li class="media reserve-li filter {{ $doctor->listoffice }}">
                 <div class="media-left">
                     <a href="javascript:void(0);">
                     <img class="media-object" src="{{ $doctor->image }}" alt="...">
                     </a>
                 </div>
-                <div class="media-body">
-                    <h4 class="media-heading">{{ $doctor->name." ".$doctor->lastname }}</h4>
+                <div class="media-body ">
+                    <label class="media-heading reserve-names">{{ $doctor->name." ".$doctor->lastname }}</label>
                     <p class="media-description">
-                        <a class="show-details" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver detalles
-                      </a>
                     </p>
                 </div>
                 <div class="collapse doc-details" id="collapseExample">

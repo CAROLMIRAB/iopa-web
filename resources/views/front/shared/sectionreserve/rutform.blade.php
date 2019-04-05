@@ -1,4 +1,4 @@
-<div class="ui-form contact-form" style="height: calc(100% - 100px);">
+<div class="ui-form contact-form" style="height: calc(100% - 100px); margin-top: 50%">
         <div class="form-loader hide">
             <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
         </div>
@@ -14,13 +14,13 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ingresa tu rut">
+                            <input type="text" id="reserve-rut" class="form-control" placeholder="Ingresa tu rut">
                         </div>
                     </div>
 
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg" id="submit" style="width: 100%">Ir a reservar</button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="sub-reserve" style="width: 100%">Ir a reservar</button>
                         </div>
                     </div>
                 </div>

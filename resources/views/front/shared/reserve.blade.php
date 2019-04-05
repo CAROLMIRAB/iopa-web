@@ -5,7 +5,8 @@
             <button class="sys-action --sys-close --open-sys"><i class="fa fa-times"></i></button>
         </div>
     </div>
-<div class="sys-popup-content" style="margin-top: 50%" data-doctor="{{ route('reserve.doctors') }}">
+<div class="sys-popup-content"  data-doctor="{{ route('reserve.doctors') }}" data-reserve="{{ route('reserve.reserve') }}">
+    <div class="reserve-content">
         <div class="ui-form contact-form rutform" style="height: calc(100% - 100px);">
             <div class="form-loader hide">
                 <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
@@ -36,5 +37,6 @@
             </div>
 
         </div>
+    </div>
     </div>
 </div>

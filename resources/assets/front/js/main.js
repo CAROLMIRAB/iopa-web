@@ -99,8 +99,21 @@ $(document).ready(function () {
   });
 
   //Popup Sistema
-  $(document).on('click', '.--open-sys', function () {
+
+});
+
+$(document).on('click', '.--open-sys', function () {
     $('#sysPopup').toggleClass('open');
+    $.ajax({
+      type: 'post',
+      url: $('.sys-popup-content').data('reserve')
+    }).done(function (data) {
+      $('.reserve-content').html(data);
+    }).fail(function (data) {
+      
+    }).always(function () {
+      $('.--open-sys').button('reset');
+    });
   });
 
   $(document).on('click', '#sub-reserve', function () {
@@ -111,14 +124,16 @@ $(document).ready(function () {
       $(this).text('Enviar mensaje');
       $('.form-loader').addClass('hide');
       $('#sendSuccess').removeClass('hide');
-
     }, 2000);
+    
     $.ajax({
       type: 'post',
-      url: $('.sys-popup-content').data('doctor'),
-      dataType: "json"
+      data: {
+        rut: $('#reserve-rut').val()
+      },
+      url: $('.sys-popup-content').data('doctor')
     }).done(function (data) {
-      $('.sys-popup-content').html(data);
+      $('.reserve-content').html(data);
     }).fail(function (data) {
       
     }).always(function () {
@@ -127,4 +142,20 @@ $(document).ready(function () {
 
   });
 
-})
+  
+    $(document).on('keyup', '#reserve-buscador', function(){
+       var nombres = $('.reserve-names');
+       var buscando = $(this).val().toLowerCase();
+       var item='';
+       for( var i = 0; i < nombres.length; i++ ){
+           item = $(nombres[i]).html().toLowerCase();
+            for(var x = 0; x < item.length; x++ ){
+                if( buscando.length == 0 || item.indexOf( buscando ) > -1 ){
+                    $(nombres[i]).parents('.reserve-li').show(); 
+                }else{
+                     $(nombres[i]).parents('.reserve-li').hide();
+                }
+            }
+       }
+    });
+  

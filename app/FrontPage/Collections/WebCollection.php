@@ -62,39 +62,6 @@ class WebCollection
     return  $doctors;
   }
 
-  public function renderDoctorsReserva($doctors)
-  {
-    $listoffice = "";
-    $data = "";
-    $data .= '<div class="row row-medicos row-medicos-res">
-    <div class="col-xs-12">
-        <ul class="media-list medic-list">';
-    foreach ($doctors as $doctor) {
-      foreach ($doctor->doctor_office as $item) {
-        $listoffice .= $item->slug . " ";
-      }
-      $doctor->image = url('') . "/uploads/images/" . $doctor->file;
-
-      $data .= '<li class="media filter ' . $listoffice . ' }}">
-      <div class="media-left">
-          <a href="javascript:void(0);">
-          <img class="media-object" src="' . $doctor->image . '" alt="...">
-          </a>
-      </div>
-      <div class="media-body">
-          <h4 class="media-heading">' . $doctor->name . ' ' . $doctor->lastname . ' }}</h4>
-          <p class="media-description">
-          </p>
-      </div>
-     
-  </li>';
-    }
-    $data .= '</ul>
-    </div>
-</div>';
-    return  $data;
-  }
-
   public function renderExams($exams)
   {
     foreach ($exams as $exam) {
