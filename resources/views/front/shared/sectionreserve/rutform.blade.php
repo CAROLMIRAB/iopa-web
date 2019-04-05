@@ -1,7 +1,4 @@
 <div class="ui-form contact-form" style="height: calc(100% - 100px); margin-top: 50%">
-        <div class="form-loader hide">
-            <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
-        </div>
         <div class="ui-contact-body">
             <div class="ui-fields">
                 <div class="row">

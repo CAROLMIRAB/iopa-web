@@ -127,6 +127,11 @@ Route::post('reserva-hour/', [
     'uses' => 'Front\HomeController@reserveHour'
 ]);
 
+Route::post('reserva-agenda/', [
+    'as' => 'reserve.agenda',
+    'uses' => 'Front\HomeController@reserveAgenda'
+]);
+
 
 Auth::routes();
 

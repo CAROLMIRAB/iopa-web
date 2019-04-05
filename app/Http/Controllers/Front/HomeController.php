@@ -39,19 +39,31 @@ class HomeController extends Controller
 
     public function reserve(Request $request)
     {
+        $rut = $request->rut;
         $doctorsdata = $this->webRepo->showDoctors();
         $doctorres = $this->webCollection->renderDoctors($doctorsdata);
-        $view = \View::make('front.shared.sectionreserve.medicos', ['doctorres' => $doctorres, 'rut' => $request->rut]);
+        $view = \View::make('front.shared.sectionreserve.medicos', ['doctorres' => $doctorres]);
         $contents = $view->render();
-        $contents = (string) $view;
-        return $contents;
+        $contents = (string)$view;
+        $data = ['url' => $contents, 'rut' => $rut];
+        return $data;
     }
 
     public function reserveHour()
     {
         $view = \View::make('front.shared.sectionreserve.rutform');
         $contents = $view->render();
-        $contents = (string) $view;
+        $contents = (string)$view;
         return $contents;
+    }
+
+    public function reserveAgenda(Request $request)
+    {
+        $doctor = $request->name;
+        $view = \View::make('front.shared.sectionreserve.agenda');
+        $contents = $view->render();
+        $contents = (string)$view;
+        $data = ['url' => $contents, 'doctor' => $doctor];
+        return $data;
     }
 }
