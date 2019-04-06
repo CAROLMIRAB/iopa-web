@@ -1,4 +1,4 @@
-<ul class="media-list mobile-medic-list">
+<ul class="media-list medic-list">
     <li class="media filter la-florida la-florida ">
         <div class="media-body">
             <div class="well">

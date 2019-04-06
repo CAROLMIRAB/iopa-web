@@ -1,8 +1,6 @@
-<div class="row row-medicos row-medicos-res ">
-    <div class="col-xs-12">
+
         <input id="reserve-buscador" type="input" value="" class="form-control" placeholder="Busca a tu médico">
-    </div>
-    <div class="col-xs-12 reserve-scroll-medic">
+
         <ul class="media-list medic-list reserve-medic-ul">
             @foreach ($doctorres as $doctor)
             <li class="media reserve-li filter {{ $doctor->listoffice }}">
@@ -21,6 +19,4 @@
             </li>
             @endforeach
         </ul>
-    </div>
-
-</div>
+    
