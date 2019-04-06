@@ -143,6 +143,7 @@
             color: $theme;
             transition: all ease-in-out .1s;
             text-decoration: none;
+            float: right;
         }
         .media {
             padding: 5px 0;
@@ -172,9 +173,7 @@
             margin-bottom: 0;
             box-shadow: none;
             border: none;
-            .btn{
-                float: right;
-            }
+            
         }
     }
 }
