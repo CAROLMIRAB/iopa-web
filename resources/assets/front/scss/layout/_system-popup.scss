@@ -9,7 +9,9 @@
     overflow: hidden;
     display: none;
     margin-top: 20px;
-  
+    .list-reserve-content{
+        overflow-y: scroll;
+    }
     .alert{
         border: 1px solid #ddd;
         font-size: 16px;

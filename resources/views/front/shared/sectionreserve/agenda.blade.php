@@ -1,3 +1,6 @@
+
+
+<div class="list-reserve-content">
 <ul class="media-list medic-list">
     <li class="media filter la-florida la-florida ">
         <div class="media-body">
@@ -16,3 +19,4 @@
         </div>
     </li>
 </ul>
+ </div>

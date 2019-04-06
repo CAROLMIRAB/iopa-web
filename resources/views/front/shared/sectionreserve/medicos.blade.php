@@ -1,6 +1,7 @@
 
         <input id="reserve-buscador" type="input" value="" class="form-control" placeholder="Busca a tu médico">
-
+        
+        <div class="list-reserve-content">
         <ul class="media-list medic-list reserve-medic-ul">
             @foreach ($doctorres as $doctor)
             <li class="media reserve-li filter {{ $doctor->listoffice }}">
@@ -19,4 +20,4 @@
             </li>
             @endforeach
         </ul>
-    
+        </div>
