@@ -1,6 +1,5 @@
 <ul class="media-list mobile-medic-list">
     <li class="media filter la-florida la-florida ">
-        
         <div class="media-body">
             <div class="well">
                 19-02-2019 5:54
