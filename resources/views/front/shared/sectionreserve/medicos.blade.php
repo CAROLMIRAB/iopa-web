@@ -1,6 +1,6 @@
-
+<div style="padding: 10px">
         <input id="reserve-buscador" type="input" value="" class="form-control" placeholder="Busca a tu médico">
-        
+</div>   
         <div class="list-reserve-content">
         <ul class="media-list medic-list reserve-medic-ul">
             @foreach ($doctorres as $doctor)

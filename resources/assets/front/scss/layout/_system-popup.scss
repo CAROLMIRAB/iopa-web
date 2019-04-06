@@ -1,8 +1,8 @@
 .sys-popup {
     color: #737373;
-    bottom: 0px;
-    right: 10px;
-    height: 100%;
+    bottom: 0;
+    right: 0px;
+    top: 0;
     z-index: 99999;
     position: fixed;
     background: #fff;
@@ -10,7 +10,15 @@
     display: none;
     margin-top: 20px;
     .list-reserve-content{
-        overflow-y: scroll;
+        overflow-y: auto;
+        bottom: 0;
+        top: 250px;
+        margin-top: 20px;
+        position: fixed;
+    }
+    #reserve-buscador{
+        background-color: #fff;
+        border: 1px solid #ccc;  
     }
     .alert{
         border: 1px solid #ddd;
@@ -56,7 +64,6 @@
     }
 
     .sys-popup-content {
-        padding: 10px;
         min-width: 300px;
         width: 350px;
         height: 400px;
@@ -133,6 +140,11 @@
         overflow: auto;
     }
 
+    .reserve-filter{
+        background: #f1f1f1;
+        padding: 10px; 
+    }
+
     .row-medicos {
         margin: 30px 0;
         @media(max-width: 767px) {
@@ -147,7 +159,7 @@
             text-decoration: none;
         }
         .media {
-            padding: 5px 0;
+            padding: 5px 10px;
             border-bottom: 1px solid #ddd;
         }
         .media-left {
