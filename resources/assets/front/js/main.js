@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 });
 
-/*************** SISTEMA DE RESERVA ********************/
+/****************** SISTEMA DE RESERVA ********************/
 
 $(document).on('click', '.--open-sys', function () {
   $('#sysPopup').toggleClass('open');
@@ -131,7 +131,7 @@ $(document).on('click', '.link-reserve-doctor', function () {
     }
   }).done(function (data) {
     $('.reserve-filter').append('<div class="alert alert-light alert-dismissible show" role="alert">' + data.doctor + ' <button type="button" class="close reserve-filter-doctor" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-    $('.reserve-content').html(data.url);
+    $('.reserve-content').html(data.url); 
   }).fail(function (data) {
 
   }).always(function () {
@@ -149,6 +149,7 @@ $(document).on('click', '.reserve-filter-rut', function () {
     type: 'post',
     url: $('.sys-popup-content').data('reserve')
   }).done(function (data) {
+    $('.reserve-filter').html('');
     $('.reserve-content').html(data);
   }).fail(function (data) {
 
