@@ -100,7 +100,6 @@ $(document).ready(function () {
     size: 60
   });
 
-  //Popup Sistema
 
 });
 
@@ -114,6 +113,7 @@ $(document).on('click', '.--open-sys', function () {
     type: 'post',
     url: $('.sys-popup-content').data('reserve')
   }).done(function (data) {
+    $('.reserve-filter').html('');
     $('.reserve-content').html(data);
   }).fail(function (data) {
 

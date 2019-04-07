@@ -11,7 +11,7 @@
                     </a>
                 </div>
                 <div class="media-body ">
-                    <a href="javascript:;" class="link-reserve-doctor" data-name="{{ $doctor->name." ".$doctor->lastname }}">
+                <a href="javascript:;" class="link-reserve-doctor" data-name="{{ $doctor->name." ".$doctor->lastname }}" data-rut="{{ $doctor->rut }}">
                             <label class="media-heading reserve-names">{{ $doctor->name." ".$doctor->lastname }}</label>
                         </a>
                     <p class="media-description">
