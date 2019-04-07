@@ -108,6 +108,8 @@ $(document).ready(function () {
 
 $(document).on('click', '.--open-sys', function () {
   $('#sysPopup').toggleClass('open');
+  $('#sendSuccess').addClass('hide');
+  $('.form-loader').removeClass('hide');
   $.ajax({
     type: 'post',
     url: $('.sys-popup-content').data('reserve')
@@ -116,7 +118,8 @@ $(document).on('click', '.--open-sys', function () {
   }).fail(function (data) {
 
   }).always(function () {
-    $('.--open-sys').button('reset');
+    $('.form-loader').addClass('hide');
+    $('#sendSuccess').removeClass('hide');
   });
 });
 

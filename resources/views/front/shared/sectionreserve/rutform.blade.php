@@ -1,13 +1,15 @@
-<div class="ui-form contact-form" style="height: calc(100% - 100px); margin-top: 50%">
+<div class="ui-form contact-form" style="">
         <div class="ui-contact-body">
             <div class="ui-fields">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="title-reserva" style="">
-                            <h1>Reserva</h1>
-                            <h4 style="">tu hora</h4>
-                            <i class="fa fa-calendar calendar-icon" style="position: absolute; right: 3px; font-size: 6rem; top: -10px;"></i>
-                        </div>
+                        <div class="title-reserva text-center" style="">
+                            <i class="fa fa-calendar calendar-icon" style="right: 3px;font-size: 6rem;"></i>
+                                                   <h1>Reserva</h1>
+                                                   <h4 style="">tu hora</h4>
+                                                  
+                                               
+                                                   </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
