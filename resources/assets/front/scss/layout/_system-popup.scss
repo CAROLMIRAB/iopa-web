@@ -8,21 +8,26 @@
     background: #fff;
     overflow: hidden;
     display: none;
+    -webkit-box-shadow: -14px 7px 24px -8px rgba(143,143,143,0.32);
+    -moz-box-shadow: -14px 7px 24px -8px rgba(143,143,143,0.32);
+    box-shadow: -14px 7px 24px -8px rgba(143,143,143,0.32);
     .list-reserve-content{
         overflow-y: auto;
         bottom: 0;
         top: 200px;
         position: fixed;
-        background: #f1f1f1;
+        -webkit-box-shadow: inset 0px 13px 24px -8px rgba(143,143,143,0.32);
+        -moz-box-shadow: inset 0px 13px 24px -8px rgba(143,143,143,0.32);
+        box-shadow: inset 0px 13px 24px -8px rgba(143,143,143,0.32);
     }
     #reserve-buscador{
         background-color: #fff;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
         font-size: 18px;  
     }
     #reserve-rut{
         background-color: #fff;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
         font-size: 18px;  
     }
     .alert{
@@ -186,7 +191,7 @@
             color: #666;
         }
         .well {
-            background: #f1f1f1;
+            background: #fff;
             border-radius: 0;
             margin-bottom: 0;
             box-shadow: none;
