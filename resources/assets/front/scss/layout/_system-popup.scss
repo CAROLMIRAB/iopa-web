@@ -8,17 +8,22 @@
     background: #fff;
     overflow: hidden;
     display: none;
-    margin-top: 20px;
     .list-reserve-content{
         overflow-y: auto;
         bottom: 0;
-        top: 250px;
-        margin-top: 20px;
+        top: 200px;
         position: fixed;
+        background: #f1f1f1;
     }
     #reserve-buscador{
         background-color: #fff;
-        border: 1px solid #ccc;  
+        border: 1px solid #ccc;
+        font-size: 18px;  
+    }
+    #reserve-rut{
+        background-color: #fff;
+        border: 1px solid #ccc;
+        font-size: 18px;  
     }
     .alert{
         border: 1px solid #ddd;
@@ -141,7 +146,7 @@
     }
 
     .reserve-filter{
-        background: #f1f1f1;
+        background: #fff;
         padding: 10px; 
     }
 
@@ -181,7 +186,7 @@
             color: #666;
         }
         .well {
-            background: #fff;
+            background: #f1f1f1;
             border-radius: 0;
             margin-bottom: 0;
             box-shadow: none;
