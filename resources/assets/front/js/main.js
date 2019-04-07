@@ -152,6 +152,7 @@ $(document).on('click', '.reserve-filter-rut', function () {
     type: 'post',
     url: $('.sys-popup-content').data('reserve')
   }).done(function (data) {
+    $('.reserve-filter').html('');
     $('.reserve-content').html(data);
   }).fail(function (data) {
 
