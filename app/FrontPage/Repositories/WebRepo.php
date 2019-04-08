@@ -79,7 +79,7 @@ class WebRepo
 
     public function showExams()
     {
-      $exams = Exam::where('specialties.status', 'PUBLISHED')
+      $exams = Exam::where('exams.status', 'PUBLISHED')
       ->with(array('exam_office'=>function($query){
         $query->select('slug');
       }))->get();

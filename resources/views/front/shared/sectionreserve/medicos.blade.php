@@ -1,8 +1,7 @@
-<div class="row row-medicos row-medicos-res ">
-    <div class="col-xs-12">
+<div style="padding: 10px">
         <input id="reserve-buscador" type="input" value="" class="form-control" placeholder="Busca a tu médico">
-    </div>
-    <div class="col-xs-12 reserve-scroll-medic">
+</div>   
+        <div class="list-reserve-content">
         <ul class="media-list medic-list reserve-medic-ul">
             @foreach ($doctorres as $doctor)
             <li class="media reserve-li filter {{ $doctor->listoffice }}">
@@ -12,7 +11,7 @@
                     </a>
                 </div>
                 <div class="media-body ">
-                    <a href="javascript:;" class="link-reserve-doctor" data-name="{{ $doctor->name." ".$doctor->lastname }}">
+                <a href="javascript:;" class="link-reserve-doctor" data-name="{{ $doctor->name." ".$doctor->lastname }}" data-rut="{{ $doctor->rut }}">
                             <label class="media-heading reserve-names">{{ $doctor->name." ".$doctor->lastname }}</label>
                         </a>
                     <p class="media-description">
@@ -21,6 +20,4 @@
             </li>
             @endforeach
         </ul>
-    </div>
-
-</div>
+        </div>

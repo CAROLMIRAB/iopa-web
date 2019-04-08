@@ -113,7 +113,7 @@ class WebController extends Controller
     }
 
      /**
-     * Show all exams
+     * Show all doctors
      * 
      * @return view
      */
@@ -126,23 +126,8 @@ class WebController extends Controller
         return view('front.sections.all-exams', compact('exams'));
     }
 
-    /**
-     * Show all especialties
-     * 
-     * @return view
-     */
-    public function viewAllSpecialties()
-    {
-        
-        $especialtiesdata = $this->postRepo->showExams();
-        $especialties = $this->postCollect->renderExams($especialtiesdata);
-
-        return view('front.sections.all-especialties', compact('especialties'));
-    }
-
-
       /**
-     * Show all offices
+     * Show all doctors
      * 
      * @return view
      */
@@ -205,7 +190,7 @@ class WebController extends Controller
     }
 
     /**
-     * Show agreement
+     * Show opinion
      * 
      * @return view
      */
