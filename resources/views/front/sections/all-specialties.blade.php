@@ -18,7 +18,7 @@
           <div class="col-sm-3">
             <div class="item-especialidad ">
               <a href="#!">
-                <img src="./assets/img/home/papilas.jpg" alt="Fotos de Papilas">
+                <img src="./assets/img/home/papilas.jpg" alt="">
                 <h5>{{ $specialty->name }}</h5>
                 <p class="truncate">{{ $specialty->body }}</p>
                 <span class="ui-go">Ver más</span>
