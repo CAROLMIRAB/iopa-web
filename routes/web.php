@@ -62,6 +62,16 @@ Route::get('examenes/{slug}', [
     'uses' => 'Front\WebController@viewFullExam'
 ]);
 
+Route::get('especialidades/', [
+    'as' => 'specialty.viewallspecialties',
+    'uses' => 'Front\WebController@viewAllSpecialties'
+]);
+
+Route::get('especialidades/{slug}', [
+    'as' => 'specialty.viewspecialty',
+    'uses' => 'Front\WebController@viewFullSpecialty'
+]);
+
 Route::get('sucursales/', [
     'as' => 'office.viewalloffices',
     'uses' => 'Front\WebController@viewAllOffices'

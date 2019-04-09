@@ -68,7 +68,7 @@
                         </ul>
                     </li>
                     <li><a href="{{ route('doctor.viewalldoctors') }}">Médicos</a></li>
-                    <li><a href="">Especialidades</a></li>
+                    <li><a href="{{ route('specialty.viewallspecialties') }}">Especialidades</a></li>
                     <li><a href="{{ route('exam.viewallexams') }}">Exámenes</a></li>
                     <li><a href="{{ route('surgery.viewallsurgeries') }}">Cirugías</a></li>
                     <li><a href="{{ route('office.viewalloffices') }}">Sucursales</a></li>

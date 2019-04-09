@@ -10,8 +10,7 @@ use App\Exam;
 use App\Office;
 use App\Surgery;
 use App\Agreement;
-
-
+use App\Specialty;
 
 class WebRepo
 {
@@ -85,6 +84,16 @@ class WebRepo
       }))->get();
  
         return $exams;
+    }
+
+    public function showSpecialties()
+    {
+      $specialties = Specialty::where('specialties.status', 'PUBLISHED')
+      ->with(array('specialty_doctor'=>function($query){
+        $query->select('slug');
+      }))->get();
+ 
+        return $specialties;
     }
 
     public function showOffices()
