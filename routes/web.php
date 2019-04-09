@@ -122,11 +122,6 @@ Route::get('convenios-y-aranceles/', [
     'uses' => 'Front\WebController@viewAgreement'
 ]);
 
-Route::get('especialidades/', [
-    'as' => 'specialty.viewposts',
-    'uses' => 'Front\WebController@viewFullPost'
-]);
-
 Route::post('reserva/', [
     'as' => 'reserve.doctors',
     'uses' => 'Front\HomeController@reserve'
