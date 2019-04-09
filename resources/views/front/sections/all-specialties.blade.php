@@ -20,7 +20,7 @@
               <a href="#!">
                 <img src="./assets/img/home/papilas.jpg" alt="Fotos de Papilas">
                 <h5>{{ $specialty->name }}</h5>
-                <p class="truncate">{{ $specialty->description }}</p>
+                <p class="truncate">{{ $specialty->body }}</p>
                 <span class="ui-go">Ver más</span>
               </a>
             </div>
