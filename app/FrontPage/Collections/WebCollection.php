@@ -62,6 +62,12 @@ class WebCollection
     return  $doctors;
   }
 
+  public function renderSpecialties($specialties)
+  {
+   
+    return  $specialties;
+  }
+
   public function renderExams($exams)
   {
     foreach ($exams as $exam) {
