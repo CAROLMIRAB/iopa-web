@@ -64,7 +64,9 @@ class WebCollection
 
   public function renderSpecialties($specialties)
   {
-   
+    foreach($specialties as $specialty){
+      $specialty->image = url('') . "/uploads/images/" . $specialty->file;
+    }
     return  $specialties;
   }
 
