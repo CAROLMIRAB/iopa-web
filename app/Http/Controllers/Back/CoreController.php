@@ -4,10 +4,32 @@ namespace App\Http\Controllers\Back;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\BackPage\Collections\CoreCollection;
+use App\BackPage\Repositories\CoreRepo;
 use App\Core\Core;
 
 class CoreController extends Controller
 {
+
+    private $coreRepo;
+    private $coreCollection;
+
+     /**
+     * Class construct 
+     * 
+     * @return void
+     */
+    public function __construct(CoreRepo $coreRepo, CoreCollection $coreCollection)
+    {
+        $this->coreRepo = $coreRepo;
+        $this->coreCollection = $coreCollection;
+    }
+
+    /**
+     * Make slug all pages
+     * 
+     * @return json
+     */
     public function titleAndSlug(Request $request)
     {
         $slug = Core::titleAndSlug($request);
@@ -23,8 +45,22 @@ class CoreController extends Controller
         return response()->json($data);
     }
 
-    public function generalAdmin(Request $request)
+    /**
+     * Description of pages web
+     * 
+     * @return json
+     */
+    public function descriptionPages(Request $request)
     {
+        $data = $this->coreRepo->findGes($request->descriptions_slug);
+        $datarender = $this->coreCollection->renderDescriptionPage($request, $data);
+
+        return response()->json([
+            'status' => 200,
+            'title' => '¡Exitoso!',
+            'message' => "Ha agregado Isapre de forma correcta",
+            'data' => json_encode($datarender['generalPages'])
+        ]);
 
     }
 }

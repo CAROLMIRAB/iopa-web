@@ -17,6 +17,7 @@ class CreateConfigurationTable extends Migration
             $table->increments('id');
             $table->string('title', 128);
             $table->text('content');
+            $table->string('slug', 128)->unique();
             $table->timestamps();
         });
     }
