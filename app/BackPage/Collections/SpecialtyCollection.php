@@ -36,7 +36,7 @@ class SpecialtyCollection
     {
     
         $specialty->image= url('') . "/uploads/images/" . $specialty->file;
-        $specialty->slug_url = route('specialty.viewposts') . "/" . $specialty->slug;
+        $specialty->slug_url = route('specialty.viewallspecialties') . "/" . $specialty->slug;
 
         return $specialty;
 

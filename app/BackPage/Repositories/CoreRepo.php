@@ -10,18 +10,16 @@ use App\Configuration;
 class CoreRepo
 {
 
-    public function changeGeneral($slug, $name, $description, $status, $image = null, $content = null)
+    public function changeGeneral($slug, $name, $content)
     {
-        $agreement = \DB::table('agreements')->where('slug', $slug)->update(
+        $general= \DB::table('configuration')->where('slug', $slug)->update(
             [
-                'name' => $name,
-                'content' => $description,
-                'image' => $image,
-                'status' => $status
+                'title' => $name,
+                'content' => $content
             ]
         );
 
-        return $agreement;
+        return $general;
     }
 
 }

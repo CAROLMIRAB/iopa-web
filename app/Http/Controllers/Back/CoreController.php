@@ -58,7 +58,7 @@ class CoreController extends Controller
         return response()->json([
             'status' => 200,
             'title' => '¡Exitoso!',
-            'message' => "Ha agregado Isapre de forma correcta",
+            'message' => "Ha modificado las descripciones de forma correcta",
             'data' => json_encode($datarender['generalPages'])
         ]);
 
