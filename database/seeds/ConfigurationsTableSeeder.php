@@ -15,77 +15,94 @@ class ConfigurationsTableSeeder extends Seeder
         {
             \DB::table('configurations')->insert([
                 [
-                    'title' => 'title',
+                    'id' => 1,
+                    'title' => 'Titulo Página',
+                    'slug' => 'title',
                     'content' => 'IOPA - Clínica Oftalmológica',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'descripcion',
+                    'id' => 2,
+                    'title' => 'Descripción de la Página',
+                    'slug' => 'description',
                     'content' => 'IOPA - Clínica Oftalmológica',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
+                    'id' => 3,
                     'title' => 'logo',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'slug' => 'logo',
+                    'content' => '',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'call_center',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 4,
+                    'title' => 'Redes y Call Center',
+                    'slug' => 'rrss',
+                    'content' => '[]',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ],
+               
+                [
+                    'id' => 5,
+                    'title' => 'Popup Principal',
+                    'slug' => 'popup',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'whatsapp',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 6,
+                    'title' => 'Slides del home',
+                    'slug' => 'slides',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'facebook',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 7,
+                    'title' => 'Descripcion de páginas',
+                    'slug' => 'pages-description',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'twitter',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 8,
+                    'title' => 'Logos de acreditacion',
+                    'slug' => 'logos-acred',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'instagram',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 9,
+                    'title' => 'Sobre Nosotros',
+                    'slug' => 'aboutus',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'youtube',
-                    'content' => 'IOPA - Clínica Oftalmológica',
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ],
-                [
-                    'title' => 'modal',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 10,
+                    'title' => 'Descripcion de una consulta general',
+                    'slug' => 'query',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
                 [
-                    'title' => 'slides',
-                    'content' => 'IOPA - Clínica Oftalmológica',
+                    'id' => 11,
+                    'title' => 'Contacto',
+                    'slug' => 'contact',
+                    'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
                 ],
-                [
-                    'title' => 'acreditacion',
-                    'content' => 'IOPA - Clínica Oftalmológica',
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
-                ]
             ]);
         }
     }

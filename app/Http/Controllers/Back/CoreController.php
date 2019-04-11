@@ -52,7 +52,7 @@ class CoreController extends Controller
      */
     public function descriptionPages(Request $request)
     {
-        $data = $this->coreRepo->findGes($request->descriptions_slug);
+        $data = $this->coreRepo->findConf($request->descriptions_slug);
         $datarender = $this->coreCollection->renderDescriptionPage($request, $data);
 
         return response()->json([
@@ -63,4 +63,24 @@ class CoreController extends Controller
         ]);
 
     }
+
+    /**
+     * Description of pages web
+     * 
+     * @return json
+     */
+    public function showAllConfigurations(Request $request)
+    {
+        $data = $this->coreRepo->findAll();
+    
+        return response()->json([
+            'status' => 200,
+            'title' => '¡Exitoso!',
+            'message' => "Ha modificado las descripciones de forma correcta",
+            'data' => $data
+        ]);
+
+    }
+
+
 }
