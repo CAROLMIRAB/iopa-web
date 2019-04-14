@@ -1,4 +1,4 @@
-var Agreement = function () {
+var Configuration = function () {
 
     function tableTrFon(title, description, key) {
         var tr = '<tr>';
@@ -246,38 +246,8 @@ var Agreement = function () {
             return false;
         },
 
-        editHTMLFonasa: function () {
-            $('#fonasa-description').summernote({
-                height: 150
-            });
-        },
-
-        editHTMLIsapre: function () {
-            $('#isapre-description').summernote({
-                height: 150
-            });
-        },
-
-        editHTMLConvenio: function () {
-            $('#slides-description').summernote({
-                height: 150
-            });
-        },
-
-        editHTMLProm: function () {
-            $('#promo-description').summernote({
-                height: 150
-            });
-        },
-
-        editHTMLArancel: function () {
-            $('#arancel-description').summernote({
-                height: 150
-            });
-        },
-
-        editHTMLPago: function () {
-            $('#pago-description').summernote({
+        editHTMLAboutus: function () {
+            $('#aboutus-description').summernote({
                 height: 150
             });
         }

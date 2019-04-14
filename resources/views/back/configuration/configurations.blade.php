@@ -52,16 +52,16 @@
                                     : '' ])
                                 </div>
 
-                                <div class="tab-pane fade active in" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
+                                <div class="tab-pane fade" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
     @include('back.configuration.sections.pagesdescription', ['pagesdescription' => isset($datarender[7]['pages-description'])
                                     ? $datarender[7]['pages-description'] : ''])
                                 </div>
 
-                                <div class="tab-pane fade active in" id="tabs-text-4" role="tabpanel" aria-labelledby="tabs-text-4-tab">
+                                <div class="tab-pane fade" id="tabs-text-4" role="tabpanel" aria-labelledby="tabs-text-4-tab">
     @include('back.configuration.sections.query', ['query' => isset($datarender[10]['query']) ? $datarender[10]['query'] : ''])
                                 </div>
 
-                                <div class="tab-pane fade active in" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
+                                <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
     @include('back.configuration.sections.contact', ['contact' => isset($datarender[11]['contact']) ? $datarender[11]['contact'] : ''])
                                 </div>
 
@@ -90,46 +90,7 @@
         Core.removeImg();
         Core.sortableImg();
 
-        /**** Fonasa *****/
-        Agreement.fonasaAdd();
-        Agreement.minTrFonasa();
-        Agreement.saveFonasa();
-        Agreement.imageUpload(img);
-        Agreement.editHTMLFonasa();
-       
-        /**** Isapres *****/
-        Agreement.addGes();
-        Agreement.addCu();
-        Agreement.imagesUp(img);
-        Agreement.minTr();
-        Agreement.saveIsapre();
-        Agreement.isapreAdd();
-        Agreement.editHTMLIsapre();
-
-        /**** Convenios *****/
-        Agreement.imagesUpCon(img);
-        Agreement.convenioAdd();
-        Agreement.saveConvenio();
-        Agreement.editHTMLConvenio();
-
-        /**** Promociones *****/
-        Agreement.imagesUpProm(img);
-        Agreement.editHTMLProm();
-        Agreement.saveProm();
-
-        /**** Aranceles *****/
-        Agreement.addArancel();
-        Agreement.minTrArancel();
-        Agreement.saveArancel();
-        Agreement.imagesUpArancel(img);
-        Agreement.editHTMLArancel();
-
-        /**** Medios de Pago ****/
-        Agreement.editHTMLPago();
-        Agreement.imagesUpPago(img);
-        Agreement.imagesSubUpPago(img);
-        Agreement.pagoAdd();
-        Agreement.savePago();
+        Configuration.EditHTMLAboutus();
 
 	});
 

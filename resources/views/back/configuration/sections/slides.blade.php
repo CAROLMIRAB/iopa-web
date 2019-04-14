@@ -8,13 +8,10 @@
     <div class="col-12">
         <hr class="my-4">
     </div>
-    <div class="col-12">
-        <hr class="my-4">
-    </div>
 </div>
 <form action="{{ route('core.save-images') }}" method="post" id="slides_add" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-6">
+        <div class="col-5">
             <div class="form-group">
                 <div style="" id="slide-image-preview" class="image-preview-class">
                     <label for="image-upload" id="slide-image-label">
@@ -23,9 +20,11 @@
                     <input type="hidden" class="imgBase64" name="imgBase64">
                 </div>
             </div>
-
         </div>
-        <div class="col-6 text-right">
+        <div class="col-5">
+            <textarea></textarea>
+        </div>
+        <div class="col-2 text-right">
             <div class="form-group">
                 <button type="button" id="btn-addslide" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner'></i> {{ __('Agregando...') }}"> Agregar</button>
             </div>
