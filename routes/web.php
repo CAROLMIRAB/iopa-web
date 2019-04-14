@@ -529,7 +529,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
       /************** ROUTES CONFIGURATIONS ******************/
       Route::group(['prefix' => 'configuracion'], function () {
 
-        Route::get('allconfigurations', [
+        Route::get('', [
             'as' => 'core.allconfigurations',
             'uses' => 'Back\CoreController@showAllConfigurations'
         ]); 
@@ -539,6 +539,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\CoreController@addSlides'
         ]);
 
+        Route::post('save-slides', [
+            'as' => 'core.save-slides',
+            'uses' => 'Back\CoreController@saveSlides'
+        ]);
     });
 
 

@@ -12,7 +12,7 @@ class CoreRepo
 
     public function changeConfiguration($slug, $content)
     {
-        $general= \DB::table('configuration')->where('slug', $slug)->update(
+        $general= \DB::table('configurations')->where('slug', $slug)->update(
             [
                 'content' => $content
             ]

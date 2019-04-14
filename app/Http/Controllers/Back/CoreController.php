@@ -73,7 +73,7 @@ class CoreController extends Controller
 
     {
         $data = $this->coreRepo->findAll();
-        $datarender = $this->coreCollection->renderDescriptionPage($request, $data);
+        $datarender = $this->coreCollection->renderData($data);
         return view('back.configuration.configurations', compact('datarender'));
     }
 
@@ -96,10 +96,12 @@ class CoreController extends Controller
             ]);
 
         } catch (\Exception $ex) {
+           
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),
                 'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+                'error' => $ex
             ];
 
             return $data;
@@ -110,16 +112,18 @@ class CoreController extends Controller
     public function saveSlides(Request $request)
     {
         try {
+           
             $slides = is_null($request->list) ? '[]' : json_encode($request->list);
             $slide = $this->coreRepo->changeConfiguration($request->slug, $slides);
             
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
-                'message' => "Ha agregado el Convenio de forma correcta"
+                'message' => "Ha guardado los slides de forma correcta"
             ]);
 
         } catch (\Exception $ex) {
+            dd($ex);
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),

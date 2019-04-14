@@ -10,6 +10,22 @@ use App\Core\Core;
 class CoreCollection
 {
 
+    public function renderData($data)
+    {
+        $dataarr = [];
+        $arr = '';
+        foreach ($data as $item) {
+            $arr = json_decode($item->content, true);
+            $dataarr[] = [
+                $item->slug => [
+                    'content' => $arr
+                ]
+            ];
+
+        }
+        return $dataarr;
+    }
+
     public static function renderDescriptionPage($request, $arr)
     {
         $pageSpecialty = $request->pageSpecialty;
@@ -41,6 +57,7 @@ class CoreCollection
         return ['full' => $array, 'generalPages' => $general];
 
     }
+
 }
 
 

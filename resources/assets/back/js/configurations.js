@@ -1,124 +1,27 @@
 var Configuration = function () {
 
-    function tableTrFon(title, description, key) {
-        var tr = '<tr>';
-        tr += '<td width="20%">';
-        tr += title;
-        tr += '</td>';
-        tr += ' <td width="75%" style="white-space: normal">';
-        tr += description;
-        tr += '</td>';
-        tr += ' <td width="5%">';
-        tr += '<button class="btn btn-primary btn-sm min-tr-fon" data-key="' + key + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
-        tr += '</td>';
-        tr += '</tr>';
-
-        return tr;
-
-    }
-
-
-    function tableTr(img, ges, cuenta, cuenta_title, ky) {
-        var tr = '<tr>'
-        tr += '<td width="35%">'
-        tr += '<img src="' + img + '" width="100%">'
-        tr += ' </td>'
-        tr += '<td width="30%" style="white-space: normal">'
-        tr += '<ul class="is-ges">'
-        tr += ges
-        tr += '</ul>'
-        tr += ' </td>'
-        tr += '<td width="30%" style="white-space: normal">'
-        tr += cuenta_title
-        tr += ' <ul class="is-cu">'
-        tr += cuenta
-        tr += ' </ul>'
-        tr += '</td>'
-        tr += '<td width="5%">'
-        tr += '<button class="btn btn-primary min-tr btn-sm" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
-        tr += '</td>'
-        tr += '</tr>'
-        return tr;
-    }
-
     function imgSort(img, desc) {
-        var div = '<li data-img="' + img + '" data-desc="' + desc + '">';
+        var div = '<li data-img="' + img + '" data-desc="' + desc + '" style="background: url('+ img +') ">';
         div += '<div class="box-image nostatus">';
-        div += '<button type="button" class="btn btn-success btn-sm pull-right img-delete">x</button>'
-        div += '<img src="' + img + '" width="100%">';
+        div += '<button type="button" class="btn btn-success btn-sm pull-right slide-delete">x</button>';
+        div += '<div class="box-text">' + desc +'</div>';
         div += '</div>';
         div += '</li>';
         return div;
     }
 
-    function arancelTr(route, name, title, ky) {
-        var tr = '<tr>';
-        tr += '<td>';
-        tr += ' <a href="' + route + '">' + name + '</a>';
-        tr += '</td>';
-        tr += '<td>';
-        tr += title;
-        tr += '</td>';
-        tr += '<td>';
-        tr += '<button class="btn btn-primary min-aran-tr btn-sm" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
-        tr += '</td>';
-        tr += '</tr>';
-        return tr;
-    }
-
     return {
         
-        imagesUpCon: function (image) {
+        imagesUpSlide: function (image) {
             $.uploadPreview({
-                input_field: "#slides-image",
-                preview_box: "#slides-image-preview",
-                label_field: "#slides-image-label",
+                input_field: "#slide-image",
+                preview_box: "#slide-image-preview",
+                label_field: "#slide-image-label",
                 label_default: image,
                 label_selected: image
             });
         },
 
-        slidesAdd: function () {
-            var $form = $('#slides_add');
-            $('#btn-addslides').click(function () {
-                $(this).button('loading');
-                var formData = new FormData(document.getElementById("slides_add"));
-                $.ajax({
-                    type: 'post',
-                    url: $form.attr('action'),
-                    data: formData,
-                    dataType: "json",
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                }).done(function (data) {
-
-                    if (data.status === 400) {
-                        toastr.error(data.message, '!Error!');
-                    }
-                    if (data.status === 200) {
-
-                        var img = data.data;
-
-                        var div = imgSort(img);
-                        $('#sortable').append(div);
-                        toastr.success(data.message, '!Exitoso!');
-                    }
-                }).fail(function (data) {
-                    toastr.error(data.message, '!Error!');
-                }).always(function () {
-                    $('#btn-addslides').button('reset');
-                });
-                return false;
-            });
-
-            $('#sortable').on('click', '.conv-delete', function (e) {
-                e.preventDefault();
-                $(this).parents('li').remove();
-            })
-        },
-
-    
 
         slideAdd: function () {
             var $form = $('#slide_add');
@@ -144,8 +47,10 @@ var Configuration = function () {
                         var desc = data.data.description;
 
                         var div = imgSort(img, desc);
-                        $('#sortable').append(div);
+                        $('.sortable-slide').append(div);
+                        $('#modal-addslide').modal('hide');
                         toastr.success(data.message, '!Exitoso!');
+
                     }
                 }).fail(function (data) {
                     toastr.error(data.message, '!Error!');
@@ -155,7 +60,7 @@ var Configuration = function () {
                 return false;
             });
 
-            $('#sortable').on('click', '.conv-delete', function (e) {
+            $('.sortable-slide').on('click', '.slide-delete', function (e) {
                 e.preventDefault();
                 $(this).parents('li').remove();
             })
@@ -163,11 +68,9 @@ var Configuration = function () {
 
 
         saveSlide: function () {
-            var $form = $('#slide');
             $('#slide-btn-save').click(function (e) {
                 $(this).button('loading');
                 var slug = $('#slide-slug').val();
-                var description = $('textarea#slide-description').val();
                 var mylist = [];
                 var i = 1;
                 $("ul#sortable > li").each(function () {
@@ -180,7 +83,7 @@ var Configuration = function () {
                 });
                 $.ajax({
                     type: 'post',
-                    url: $form.attr('action'),
+                    url: $(this).data('url'),
                     data: {
                         slug: slug,
                         list: mylist

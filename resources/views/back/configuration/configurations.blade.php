@@ -41,28 +41,28 @@
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active in" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
-    @include('back.configuration.sections.slides', ['slides' => isset($datarender[6]['slides']) ? $datarender[6]['slides'] :
-                                    '', 'popup' => isset($datarender[5]['popup']) ? $datarender[5]['popup'] :
-                                    '', 'rrss' => isset($datarender[4]['rrss']) ? $datarender[4]['rrss'] :
+    @include('back.configuration.sections.slides', ['slide' =>  isset($datarender[5]['slides']) ? $datarender[5]['slides'] :
+                                    '', 'popup' => isset($datarender[4]['popup']) ? $datarender[4]['popup'] :
+                                    '', 'rrss' => isset($datarender[3]['rrss']) ? $datarender[3]['rrss'] :
                                     ''])
                                 </div>
 
                                 <div class="tab-pane fade" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
-    @include('back.configuration.sections.aboutus', ['aboutus' => isset($datarender[9]['aboutus']) ? $datarender[9]['aboutus']
+    @include('back.configuration.sections.aboutus', ['aboutus' => isset($datarender[8]['aboutus']) ? $datarender[8]['aboutus']
                                     : '' ])
                                 </div>
 
                                 <div class="tab-pane fade" id="tabs-text-3" role="tabpanel" aria-labelledby="tabs-text-3-tab">
-    @include('back.configuration.sections.pagesdescription', ['pagesdescription' => isset($datarender[7]['pages-description'])
-                                    ? $datarender[7]['pages-description'] : ''])
+    @include('back.configuration.sections.pagesdescription', ['pagesdescription' => isset($datarender[6]['pages-description'])
+                                    ? $datarender[6]['pages-description'] : ''])
                                 </div>
 
                                 <div class="tab-pane fade" id="tabs-text-4" role="tabpanel" aria-labelledby="tabs-text-4-tab">
-    @include('back.configuration.sections.query', ['query' => isset($datarender[10]['query']) ? $datarender[10]['query'] : ''])
+    @include('back.configuration.sections.query', ['query' => isset($datarender[9]['query']) ? $datarender[9]['query'] : ''])
                                 </div>
 
                                 <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
-    @include('back.configuration.sections.contact', ['contact' => isset($datarender[11]['contact']) ? $datarender[11]['contact'] : ''])
+    @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : ''])
                                 </div>
 
                                 </div>
@@ -90,8 +90,10 @@
         Core.removeImg();
         Core.sortableImg();
 
-        Configuration.EditHTMLAboutus();
+        Configuration.editHTMLAboutus();
         Configuration.slideAdd();
+        Configuration.imagesUpSlide(img);
+        Configuration.saveSlide();
 
 	});
 
