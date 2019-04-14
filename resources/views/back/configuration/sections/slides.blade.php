@@ -18,11 +18,12 @@
                         <i class='ni ni-cloud-download-95 i-img'></i></label>
                     <input type="file" name="image" id="slide-image" class="slide-image" accept="image/png, image/jpeg" />
                     <input type="hidden" class="imgBase64" name="imgBase64">
+                    <input type="hidden" name="slide_slug" id="slide-slug" value="slides">
                 </div>
             </div>
         </div>
         <div class="col-5">
-            <textarea></textarea>
+            <textarea class="form-control" name="slide_description" id="slide-description"></textarea>
         </div>
         <div class="col-2 text-right">
             <div class="form-group">

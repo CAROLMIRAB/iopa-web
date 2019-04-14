@@ -41,10 +41,10 @@ var Configuration = function () {
         return tr;
     }
 
-    function imgSort(img) {
-        var div = '<li data-img="' + img + '">';
+    function imgSort(img, desc) {
+        var div = '<li data-img="' + img + '" data-desc="' + desc + '">';
         div += '<div class="box-image nostatus">';
-        div += '<button type="button" class="btn btn-success btn-sm pull-right conv-delete">x</button>'
+        div += '<button type="button" class="btn btn-success btn-sm pull-right img-delete">x</button>'
         div += '<img src="' + img + '" width="100%">';
         div += '</div>';
         div += '</li>';
@@ -118,56 +118,56 @@ var Configuration = function () {
             })
         },
 
-        savePago: function () {
-            var $form = $('#pago');
-            $('#pago-btn-save').click(function (e) {
+    
+
+        slideAdd: function () {
+            var $form = $('#slide_add');
+            $('#btn-addslide').click(function () {
                 $(this).button('loading');
-                var title = $('#pago-title').val();
-                var slug = $('#pago-slug').val();
-                var status = $('#pago-status').val();
-                var description = $('textarea#pago-description').val();
-                var mylist = [];
-                var i = 1;
-                $("ul.pago-sort > li").each(function () {
-                    mylist.push({
-                        "id": i,
-                        "img": $(this).data('img')
-                    });
-                    i++
-                });
+                var formData = new FormData(document.getElementById("slide_add"));
                 $.ajax({
                     type: 'post',
                     url: $form.attr('action'),
-                    data: {
-                        slug: slug,
-                        title: title,
-                        description: description,
-                        list: mylist,
-                        status: status
-                    },
-                    dataType: "json"
-
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
                 }).done(function (data) {
-                    toastr.success(data.message, '!Exitoso!');
+
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+
+                        var img = data.data.image;
+                        var desc = data.data.description;
+                        
+                        var div = imgSort(img, desc);
+                        $('#sortable').append(div);
+                        toastr.success(data.message, '!Exitoso!');
+                    }
                 }).fail(function (data) {
                     toastr.error(data.message, '!Error!');
                 }).always(function () {
-                    $('#pago-btn-save').button('reset');
+                    $('#btn-addslide').button('reset');
                 });
                 return false;
             });
 
-
+            $('#sortable').on('click', '.conv-delete', function (e) {
+                e.preventDefault();
+                $(this).parents('li').remove();
+            })
         },
 
-        saveSlides: function () {
-            var $form = $('#slides');
-            $('#slides-btn-save').click(function (e) {
+
+        saveSlide: function () {
+            var $form = $('#slide');
+            $('#slide-btn-save').click(function (e) {
                 $(this).button('loading');
-                var title = $('#slides-title').val();
-                var slug = $('#slides-slug').val();
-                var status = $('#slides-status').val();
-                var description = $('textarea#slides-description').val();
+                var slug = $('#slide-slug').val();
+                var description = $('textarea#slide-description').val();
                 var mylist = [];
                 var i = 1;
                 $("ul#sortable > li").each(function () {
@@ -182,10 +182,8 @@ var Configuration = function () {
                     url: $form.attr('action'),
                     data: {
                         slug: slug,
-                        title: title,
                         description: description,
-                        list: mylist,
-                        status: status
+                        list: mylist
                     },
                     dataType: "json"
 
@@ -194,13 +192,12 @@ var Configuration = function () {
                 }).fail(function (data) {
                     toastr.error(data.message, '!Error!');
                 }).always(function () {
-                    $('#slides-btn-save').button('reset');
+                    $('#slide-btn-save').button('reset');
                 });
                 return false;
             });
-
-
         },
+
 
         showAgreements: function () {
             $.ajax({

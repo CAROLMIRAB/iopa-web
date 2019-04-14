@@ -91,6 +91,7 @@
         Core.sortableImg();
 
         Configuration.EditHTMLAboutus();
+        Configuration.slideAdd();
 
 	});
 

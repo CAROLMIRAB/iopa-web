@@ -77,18 +77,22 @@ class CoreController extends Controller
         return view('back.configuration.configurations', compact('datarender'));
     }
 
-    public function saveImages(Request $request)
+    public function addSlides(Request $request)
     {
         try {
 
             $image_url = Core::uploadImageB64($request->imgBase64);
             $img = asset('uploads/images') . '/' . $image_url;
+            $description = $request->slide_description;
 
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
                 'message' => "Ha agregado un slide de forma correcta",
-                'data' => $img
+                'data' => [
+                    'image' => $img,
+                    'description' => $description
+                ]
             ]);
 
         } catch (\Exception $ex) {
@@ -101,6 +105,29 @@ class CoreController extends Controller
             return $data;
         }
 
+    }
+
+    public function saveSlides(Request $request)
+    {
+        try {
+            $slides = is_null($request->list) ? '[]' : json_encode($request->list);
+            $ges = $this->coreRepo->changeConfiguration($request->slug, $request->description, $request->content);
+            
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado el Convenio de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
     }
 
 

@@ -536,7 +536,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
         Route::post('save-images', [
             'as' => 'core.save-images',
-            'uses' => 'Back\CoreController@saveImages'
+            'uses' => 'Back\CoreController@addSlides'
         ]);
 
     });
