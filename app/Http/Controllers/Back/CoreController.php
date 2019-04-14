@@ -111,7 +111,7 @@ class CoreController extends Controller
     {
         try {
             $slides = is_null($request->list) ? '[]' : json_encode($request->list);
-            $ges = $this->coreRepo->changeConfiguration($request->slug, $request->description, $request->content);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $slides);
             
             return response()->json([
                 'status' => 200,

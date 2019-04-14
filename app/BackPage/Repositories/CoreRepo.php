@@ -10,11 +10,10 @@ use App\Configuration;
 class CoreRepo
 {
 
-    public function changeGeneral($slug, $name, $content)
+    public function changeConfiguration($slug, $content)
     {
         $general= \DB::table('configuration')->where('slug', $slug)->update(
             [
-                'title' => $name,
                 'content' => $content
             ]
         );

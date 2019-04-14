@@ -142,7 +142,7 @@ var Configuration = function () {
 
                         var img = data.data.image;
                         var desc = data.data.description;
-                        
+
                         var div = imgSort(img, desc);
                         $('#sortable').append(div);
                         toastr.success(data.message, '!Exitoso!');
@@ -173,7 +173,8 @@ var Configuration = function () {
                 $("ul#sortable > li").each(function () {
                     mylist.push({
                         "id": i,
-                        "img": $(this).data('img')
+                        "img": $(this).data('img'),
+                        "description": $(this).data('desc')
                     });
                     i++
                 });
@@ -182,7 +183,6 @@ var Configuration = function () {
                     url: $form.attr('action'),
                     data: {
                         slug: slug,
-                        description: description,
                         list: mylist
                     },
                     dataType: "json"
