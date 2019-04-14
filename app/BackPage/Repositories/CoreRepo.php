@@ -22,4 +22,13 @@ class CoreRepo
         return $general;
     }
 
+    public function findAll()
+    {
+        $config = Configuration::select('title', 'content', 'slug')
+            ->orderBy('id')
+            ->get();
+
+        return $config;
+    }
+
 }

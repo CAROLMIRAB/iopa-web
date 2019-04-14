@@ -526,6 +526,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     });
 
+      /************** ROUTES CONFIGURATIONS ******************/
+      Route::group(['prefix' => 'configuracion'], function () {
+
+        Route::get('allconfigurations', [
+            'as' => 'core.allconfigurations',
+            'uses' => 'Back\CoreController@showAllConfigurations'
+        ]); 
+
+        Route::post('save-images', [
+            'as' => 'core.save-images',
+            'uses' => 'Back\CoreController@saveImages'
+        ]);
+
+    });
+
 
     Route::post('slug/slug-create', [
         'as' => 'core.slug-create',

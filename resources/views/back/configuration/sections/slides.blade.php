@@ -12,7 +12,7 @@
         <hr class="my-4">
     </div>
 </div>
-<form action="{{ route('agreement.save-images') }}" method="post" id="slides_add" enctype="multipart/form-data">
+<form action="{{ route('core.save-images') }}" method="post" id="slides_add" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6">
             <div class="form-group">

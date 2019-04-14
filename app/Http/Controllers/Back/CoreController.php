@@ -65,20 +65,41 @@ class CoreController extends Controller
     }
 
     /**
-     * Description of pages web
+     * Show all configurations
      * 
      * @return json
      */
     public function showAllConfigurations(Request $request)
+
     {
         $data = $this->coreRepo->findAll();
-    
-        return response()->json([
-            'status' => 200,
-            'title' => '¡Exitoso!',
-            'message' => "Ha modificado las descripciones de forma correcta",
-            'data' => $data
-        ]);
+        $datarender = $this->coreCollection->renderDescriptionPage($request, $data);
+        return view('back.configuration.configurations', compact('datarender'));
+    }
+
+    public function saveImages(Request $request)
+    {
+        try {
+
+            $image_url = Core::uploadImageB64($request->imgBase64);
+            $img = asset('uploads/images') . '/' . $image_url;
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado un slide de forma correcta",
+                'data' => $img
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
 
     }
 
