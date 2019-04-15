@@ -477,6 +477,26 @@ textarea.form-control{
   margin-bottom: 20px;
   width: 100%;
   margin-left: 5px; 
+  background-position: center center;
+  background-size: cover;
+}
+
+.sortable-slide .box-image{ 
+  height: 200px;
+}
+
+.sortable-query li{
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+  margin-left: 5px; 
+  background-position: center center;
+  background-size: cover;
+}
+
+.sortable-query .box-image{ 
+  height: 200px;
 }
 
 .sortable{
@@ -520,6 +540,86 @@ textarea.form-control{
 }
 
 .box-text{
-  background: #fff; 
+  background: rgba(17,172,200,.7); 
   width: 30%; 
+  margin-left: 30px; 
+  color: #fff;
+}
+
+.h3{
+  color: #fff;
+}
+
+.checkcontent {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkcontent input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkcontent:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkcontent input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkcontent input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkcontent .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.box-image button{
+  border-radius: unset;
+  width: 25px;
+  height: 25px;
+  padding: .20rem .5rem;
 }

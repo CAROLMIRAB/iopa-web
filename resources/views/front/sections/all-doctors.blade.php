@@ -46,7 +46,7 @@
                     <div class="well">
                         {!! $doctor->excerpt !!}
                         <div class="mt-20"></div>
-                        <a href="#" class="btn btn-theme04">Reserva tu hora</a>
+                        <a href="javascript:;" class="btn btn-theme04 --open-sys">Reserva tu hora</a>
                     </div>
                   </div>
                 </li>
@@ -91,7 +91,7 @@
                         {!! $doctor->excerpt !!}
                     </p>
                     <p>
-                      <a href="#!" class="btn btn-theme04">
+                      <a href="javascript:;" class="btn btn-theme04 --open-sys">
                         RESERVA TU HORA</a>
                     </p>
                   </div>

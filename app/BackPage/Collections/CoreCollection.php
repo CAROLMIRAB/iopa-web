@@ -26,35 +26,28 @@ class CoreCollection
         return $dataarr;
     }
 
-    public static function renderDescriptionPage($request, $arr)
+    public static function renderDescriptionPage($request)
     {
-        $pageSpecialty = $request->pageSpecialty;
-        $pageOffices = $request->pageOffices;
-        $pageAgreement = $request->pageAgreement;
-        $pageContact = $request->pageContact;
-        $pageAboutUs = $request->pageAboutUs;
-        $pageDoctors = $request->pageDoctors;
-        $pageExams = $request->pageExams;
-        $pageSurgeries = $request->pageSurgeries;
-        $pageQuery = $request->pageQuery;
+        $pageSpecialty = $request->specialty_description;
+        $pageOffices = $request->offices_description;
+        $pageDoctors = $request->doctors_description;
+        $pageExams = $request->exams_description;
+        $pageSurgeries = $request->surgeries_description;
+        $pageQuery = $request->query_description;
 
-        $array = json_decode($arr, true);
+       // $array = json_decode($arr, true);
 
         $general = [
                 'pageSpecialty' => $pageSpecialty,
                 'pageOffices' =>  $pageOffices,
-                'pageAgreement' => $pageAgreement,
-                'pageContact' => $pageContact,
-                'pageAboutUs' => $pageAboutUs,
                 'pageDoctors' => $pageDoctors,
                 'pageExams' => $pageExams,
                 'pageSurgeries' => $pageSurgeries,
                 'pageQuery' => $pageQuery
         ];
 
-        array_push($array, $general);
 
-        return ['full' => $array, 'generalPages' => $general];
+        return ['generalPages' => $general];
 
     }
 

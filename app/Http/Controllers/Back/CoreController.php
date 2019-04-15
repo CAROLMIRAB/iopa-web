@@ -77,13 +77,14 @@ class CoreController extends Controller
         return view('back.configuration.configurations', compact('datarender'));
     }
 
-    public function addSlides(Request $request)
+    public function addQueries(Request $request)
     {
         try {
 
             $image_url = Core::uploadImageB64($request->imgBase64);
             $img = asset('uploads/images') . '/' . $image_url;
-            $description = $request->slide_description;
+            $description = $request->query_description;
+            $title = $request->query_title;
 
             return response()->json([
                 'status' => 200,
@@ -91,7 +92,69 @@ class CoreController extends Controller
                 'message' => "Ha agregado un slide de forma correcta",
                 'data' => [
                     'image' => $img,
-                    'description' => $description
+                    'description' => $description,
+                    'title' => $title
+
+                ]
+            ]);
+
+        } catch (\Exception $ex) {
+           
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+                'error' => $ex
+            ];
+
+            return $data;
+        }
+
+    }
+
+    public function saveQuery(Request $request)
+    {
+        try {
+           
+            $slides = is_null($request->list) ? '[]' : json_encode($request->list);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $slides);
+            
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha guardado los slides de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            dd($ex);
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+    public function addSlides(Request $request)
+    {
+        try {
+
+            $image_url = Core::uploadImageB64($request->imgBase64);
+            $img = asset('uploads/images') . '/' . $image_url;
+            $description = $request->slide_description;
+            $title = $request->slide_title;
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado un slide de forma correcta",
+                'data' => [
+                    'image' => $img,
+                    'description' => $description,
+                    'title' => $title
+
                 ]
             ]);
 
@@ -120,6 +183,32 @@ class CoreController extends Controller
                 'status' => 200,
                 'title' => '¡Exitoso!',
                 'message' => "Ha guardado los slides de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            dd($ex);
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+
+    public function savePagesDescription(Request $request)
+    {
+        try {
+            $query = $this->coreCollection->renderDescriptionPage($request);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $query);
+            
+            
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha guardado los cambios de forma correcta"
             ]);
 
         } catch (\Exception $ex) {

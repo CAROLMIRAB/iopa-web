@@ -163,6 +163,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Auth\RegisterController@viewRegister'
         ]);
 
+        Route::post('register', [
+            'as' => 'auth.register',
+            'uses' => 'Auth\RegisterController@register'
+        ]);
+
         Route::post('change-status', [
             'as' => 'user.change-status',
             'uses' => 'Back\UserController@changeStatus'
@@ -543,6 +548,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'as' => 'core.save-slides',
             'uses' => 'Back\CoreController@saveSlides'
         ]);
+
+        Route::post('add-query', [
+            'as' => 'core.add-query',
+            'uses' => 'Back\CoreController@addQueries'
+        ]);
+
+        Route::post('save-queries', [
+            'as' => 'core.save-queries',
+            'uses' => 'Back\CoreController@saveQuery'
+        ]);
+
+        Route::post('save-pagesdescription', [
+            'as' => 'core.save-pagesdescription',
+            'uses' => 'Back\CoreController@savePagesDescription'
+        ]);
+
+       
     });
 
 

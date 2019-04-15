@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="{{ route('auth.register') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
                         <div class="form-group row">

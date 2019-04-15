@@ -91,9 +91,14 @@
         Core.sortableImg();
 
         Configuration.editHTMLAboutus();
+       
         Configuration.slideAdd();
         Configuration.imagesUpSlide(img);
         Configuration.saveSlide();
+
+        Configuration.queryAdd();
+        Configuration.imagesUpQuery(img);
+        Configuration.saveQuery();
 
 	});
 
