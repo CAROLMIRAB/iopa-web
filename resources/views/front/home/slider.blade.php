@@ -45,7 +45,7 @@
 	</div>
 </section>
 
-@if(isset($config[4]['popup']) )
+@if(isset($config[4]['popup']['content']) )
 @if($config[4]['popup']['content']['status'] == 'PUBLISHED')
 <div class="modal fade modal-sucursal" id="popup-principal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
