@@ -48,7 +48,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('core.allconfigurations') }}">
-          <i class="ni ni-bullet-list-67 text-red"></i> Configuracion
+          <i class="ni ni-bullet-list-67 text-red"></i> Configuración
                 </a>
       </li>
     </ul>
