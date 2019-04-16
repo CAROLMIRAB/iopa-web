@@ -231,73 +231,101 @@ var Configuration = function () {
 
 
         savePagesDescription: function () {
-            $('#pages-btn-save').click(function (e) {
-                var formData = new FormData(document.getElementById("slide_add"));
+            var $form = $('#pages_add');
+            $('#pages-btn-save').click(function () {
                 $(this).button('loading');
-                var slug = $('#pages-slug').val();
+                var formData = new FormData(document.getElementById("pages_add"));
                 $.ajax({
                     type: 'post',
-                    url: $(this).data('url'),
+                    url: $form.attr('action'),
                     data: formData,
-                    dataType: "json"
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
                 }).done(function (data) {
-                    toastr.success(data.message, '!Exitoso!');
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
                 }).fail(function (data) {
                     toastr.error(data.message, '!Error!');
                 }).always(function () {
-                    $('#slide-btn-save').button('reset');
+                    $('#pages-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+        saveAboutUs: function () {
+            var $form = $('#aboutus_add');
+            $('#aboutus-btn-save').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("aboutus_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#aboutus-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+        saveContact: function () {
+            var $form = $('#contact_add');
+            $('#contact-btn-save').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("contact_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#contact-btn-save').button('reset');
                 });
                 return false;
             });
         },
 
 
-        showAgreements: function () {
-            $.ajax({
-                type: 'post',
-                url: $('.agreements-content').data('route'),
-                dataType: "json"
-            }).done(function (data) {
-                var ky = '';
-                var cuenta = '';
-                var cuenta_title = '';
-                var ges = '';
-                var image = '';
-                if (data.status == 400) {
-                    toastr.error(data.message, '!Error!');
-                }
-                if (data.status == 200) {
-                    var json = JSON.parse(data.data);
-                    $.each(json, function (k, val) {
-                        ky = k;
-                        image = val.image;
-                        $.each(val, function (key, value) {
-                            if (key == 'ges') {
-                                $.each(value, function (keyg, valueg) {
-                                    ges += '<li>' + valueg.name + '</li>';
-                                });
-                            }
-                            if (key == 'account') {
-                                cuenta_title = value.title;
-                                $.each(value.content, function (keyc, valuec) {
-                                    cuenta += '<li>' + valuec.name + '</li>';
-                                });
-                            }
-                        });
-                    });
-                    var tr = tableTr(image, ges, cuenta, cuenta_title, ky);
-                    $('.table-isapres tbody').append(tr);
-                    toastr.success(data.message, '!Exitoso!');
-                }
-                toastr.success(data.message, '!Exitoso!');
-            }).fail(function (data) {
-                toastr.error(data.message, '!Error!');
-            });
-            return false;
-        },
-
         editHTMLAboutus: function () {
             $('#aboutus-description').summernote({
+                height: 150
+            });
+        },
+
+        editHTMLContact: function () {
+            $('#contact-description').summernote({
                 height: 150
             });
         }

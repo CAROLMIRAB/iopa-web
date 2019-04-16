@@ -26,28 +26,36 @@ class CoreCollection
         return $dataarr;
     }
 
+    public function renderText($data)
+    {
+        $dataarr = [
+            'description' => $data
+        ];
+      
+       
+        return json_encode($dataarr);
+    }
+
     public static function renderDescriptionPage($request)
     {
-        $pageSpecialty = $request->specialty_description;
-        $pageOffices = $request->offices_description;
-        $pageDoctors = $request->doctors_description;
-        $pageExams = $request->exams_description;
-        $pageSurgeries = $request->surgeries_description;
-        $pageQuery = $request->query_description;
-
-       // $array = json_decode($arr, true);
+        $pageSpecialty = is_null($request->specialty_description) ? '' : $request->specialty_description;
+        $pageOffices = is_null($request->offices_description) ? '' : $request->offices_description;
+        $pageDoctors = is_null($request->doctors_description) ? '' : $request->doctors_description;
+        $pageExams = is_null($request->exams_description) ? '' : $request->exams_description;
+        $pageSurgeries = is_null($request->surgeries_description) ? '' : $request->surgeries_description;
+        $pageQuery = is_null($request->query_description) ? '' : $request->query_description;
 
         $general = [
-                'pageSpecialty' => $pageSpecialty,
-                'pageOffices' =>  $pageOffices,
-                'pageDoctors' => $pageDoctors,
-                'pageExams' => $pageExams,
-                'pageSurgeries' => $pageSurgeries,
-                'pageQuery' => $pageQuery
+                'page-specialty' => $pageSpecialty,
+                'page-offices' =>  $pageOffices,
+                'page-doctors' => $pageDoctors,
+                'page-exams' => $pageExams,
+                'page-surgeries' => $pageSurgeries,
+                'page-query' => $pageQuery
         ];
 
 
-        return ['generalPages' => $general];
+        return json_encode($general);
 
     }
 

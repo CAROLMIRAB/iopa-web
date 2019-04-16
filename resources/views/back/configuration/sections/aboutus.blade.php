@@ -9,14 +9,15 @@
         <hr class="my-4">
     </div>
 </div>
-<form action="{{ route('agreement.save-images') }}" method="post" id="aboutus_add" enctype="multipart/form-data">
+<form action="{{ route('core.save-aboutus') }}" method="post" id="aboutus_add" enctype="multipart/form-data">
     <div class="row">
         <div class="col-12">
             <div class="form-group">
                 <label for="aboutus-description">{{ __('Descripción') }}</label>
-                <textarea id="aboutus-description" name="aboutus_description" class="form-control">{{ isset($aboutus['description']) ? $aboutus['description'] : '' }}</textarea>
+                <textarea id="aboutus-description" name="aboutus_description" class="form-control">{{ isset($aboutus['content']['description']) ? $aboutus['content']['description'] : '' }}</textarea>
             </div>
 
         </div>
     </div>
+    <input type="hidden" name="slug" id="aboutus-slug" value="aboutus">
 </form>

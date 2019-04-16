@@ -564,6 +564,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\CoreController@savePagesDescription'
         ]);
 
+        Route::post('save-aboutus', [
+            'as' => 'core.save-aboutus',
+            'uses' => 'Back\CoreController@saveAboutUs'
+        ]);
+
+        Route::post('save-contact', [
+            'as' => 'core.save-contact',
+            'uses' => 'Back\CoreController@saveContact'
+        ]);
+
        
     });
 

@@ -91,6 +91,7 @@
         Core.sortableImg();
 
         Configuration.editHTMLAboutus();
+        Configuration.editHTMLContact();
        
         Configuration.slideAdd();
         Configuration.imagesUpSlide(img);
@@ -99,6 +100,12 @@
         Configuration.queryAdd();
         Configuration.imagesUpQuery(img);
         Configuration.saveQuery();
+
+        Configuration.savePagesDescription();
+        
+        Configuration.saveContact();
+
+        Configuration.saveAboutUs();
 
 	});
 

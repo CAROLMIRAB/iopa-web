@@ -59,7 +59,7 @@
                                             <i class='ni ni-cloud-download-95 i-img'></i></label>
                                         <input type="file" name="image" id="query-image" class="convenio-image" accept="image/png, image/jpeg" />
                                         <input type="hidden" class="imgBase64" name="imgBase64">
-                                        <input type="hidden" name="query_slug" id="query-slug" value="querys">
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -86,6 +86,7 @@
     
     
                         </div>
+                        <input type="hidden" name="slug" id="query-slug" value="query">
                     </form>
                 </div>
             </div>

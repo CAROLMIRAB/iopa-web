@@ -186,7 +186,6 @@ class CoreController extends Controller
             ]);
 
         } catch (\Exception $ex) {
-            dd($ex);
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),
@@ -203,8 +202,7 @@ class CoreController extends Controller
         try {
             $query = $this->coreCollection->renderDescriptionPage($request);
             $slide = $this->coreRepo->changeConfiguration($request->slug, $query);
-            
-            
+          
             return response()->json([
                 'status' => 200,
                 'title' => '¡Exitoso!',
@@ -212,7 +210,6 @@ class CoreController extends Controller
             ]);
 
         } catch (\Exception $ex) {
-            dd($ex);
             $data = [
                 'status' => 400,
                 'title' => __('Publicación fallida'),
@@ -223,5 +220,52 @@ class CoreController extends Controller
         }
     }
 
+    public function saveAboutUs(Request $request)
+    {
+        try {
+            $aboutus = $request->aboutus_description;
+            $data = $this->coreCollection->renderText($aboutus);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $data);
+          
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha guardado los cambios de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+    public function saveContact(Request $request)
+    {
+        try {
+            $contact = $request->contact_description;
+            $data = $this->coreCollection->renderText($contact);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $data);
+          
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha guardado los cambios de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
 
 }
