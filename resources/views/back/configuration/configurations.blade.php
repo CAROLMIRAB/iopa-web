@@ -17,23 +17,27 @@
                         <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text" role="tablist">
                             <li class="nav-item active">
                                 <a class="nav-link mb-sm-3 mb-md-0 show" id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-1" role="tab" aria-controls="tabs-text-1"
-                                    aria-selected="true">{{ __('GENERAL') }}</a>
+                                    aria-selected="true">{{ __('SLIDES') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-2-tab" data-toggle="tab" href="#tabs-text-2" role="tab" aria-controls="tabs-text-2"
-                                    aria-selected="false">{{ __('SOBRE NOSOTROS') }}</a>
+                                    aria-selected="false">{{ __('NOSOTROS') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-2-tab" data-toggle="tab" href="#tabs-text-3" role="tab" aria-controls="tabs-text-3"
+                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-3-tab" data-toggle="tab" href="#tabs-text-3" role="tab" aria-controls="tabs-text-3"
                                     aria-selected="false">{{ __('PAGINAS') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-3-tab" data-toggle="tab" href="#tabs-text-4" role="tab" aria-controls="tabs-text-4"
+                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-4-tab" data-toggle="tab" href="#tabs-text-4" role="tab" aria-controls="tabs-text-4"
                                     aria-selected="false">{{ __('CONSULTA') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-4-tab" data-toggle="tab" href="#tabs-text-5" role="tab" aria-controls="tabs-text-5"
-                                    aria-selected="false">{{ __('CONTACTO') }}</a>
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-6-tab" data-toggle="tab" href="#tabs-text-6" role="tab" aria-controls="tabs-text-6"
+                                        aria-selected="false">{{ __('POPUP') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <!--<a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-5-tab" data-toggle="tab" href="#tabs-text-5" role="tab" aria-controls="tabs-text-5"
+                                    aria-selected="false">{{ __('CONTACTO') }}</a>-->
                             </li>
                         </ul>
                     </div>
@@ -42,7 +46,6 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active in" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
     @include('back.configuration.sections.slides', ['slide' =>  isset($datarender[5]['slides']) ? $datarender[5]['slides'] :
-                                    '', 'popup' => isset($datarender[4]['popup']) ? $datarender[4]['popup'] :
                                     '', 'rrss' => isset($datarender[3]['rrss']) ? $datarender[3]['rrss'] :
                                     ''])
                                 </div>
@@ -61,9 +64,15 @@
     @include('back.configuration.sections.query', ['query' => isset($datarender[9]['query']) ? $datarender[9]['query'] : ''])
                                 </div>
 
-                                <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
-    @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : ''])
+                                <div class="tab-pane fade" id="tabs-text-6" role="tabpanel" aria-labelledby="tabs-text-6-tab">
+                                        @include('back.configuration.sections.popup', ['popup' => isset($datarender[4]['popup']) ? $datarender[4]['popup'] : ''])
                                 </div>
+
+                                <!--<div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
+    @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : ''])
+                                </div>-->
+
+                                
 
                                 </div>
                             </div>
@@ -92,6 +101,7 @@
 
         Configuration.editHTMLAboutus();
         Configuration.editHTMLContact();
+        Configuration.editHTMLPopup();
        
         Configuration.slideAdd();
         Configuration.imagesUpSlide(img);
@@ -106,6 +116,8 @@
         Configuration.saveContact();
 
         Configuration.saveAboutUs();
+
+        Configuration.savePopup();
 
 	});
 

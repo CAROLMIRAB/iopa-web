@@ -92,6 +92,6 @@
 </footer>
 
 
-<a href="tel:+935737208" class="btn mobile-cta --open-sys">
+<a href="javascript:;" class="btn mobile-cta --open-sys">
 		<i class="fa fa-calendar"></i> RESERVAR AHORA
 	</a>

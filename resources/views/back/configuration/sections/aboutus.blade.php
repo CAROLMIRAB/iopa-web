@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-8 text-left">
-        <h2 class="mb-0">{{ __('Sobre Nosotros') }}</h2>
+        <h2 class="mb-0">{{ __('Nosotros') }}</h2>
     </div>
     <div class="col-4 text-right">
         <button id="aboutus-btn-save" class="btn  btn-primary" type="button" data-loading-text="<i class='fa fa-spin fa-spinner'></i> {{ __('Guardando...') }}">{{ __('Guardar Cambios') }}</button>

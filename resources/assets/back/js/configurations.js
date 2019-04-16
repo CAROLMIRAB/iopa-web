@@ -1,7 +1,7 @@
 var Configuration = function () {
 
     function imgSort(img, desc, check, title) {
-        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background: url('+ img +') ">';
+        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background-image: url('+ img +') ">';
         div += '<div class="box-image nostatus">';
         div += '<button type="button" class="btn btn-success btn-sm pull-right slide-delete">x</button>';
         div += '<label class="checkcontent pull-right">';
@@ -15,7 +15,7 @@ var Configuration = function () {
     }
 
     function imgSortQuery(img, desc, check, title) {
-        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background: url('+ img +') ">';
+        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background-image: url('+ img +') ">';
         div += '<div class="box-image nostatus">';
         div += '<button type="button" class="btn btn-success btn-sm pull-right query-delete">x</button>';
         div += '<label class="checkcontent pull-right">';
@@ -199,7 +199,7 @@ var Configuration = function () {
                 var mylist = [];
                 var i = 1;  
                 var check = ($(this).find('.check-slide').is(':checked')) == true ? 'active' : 'inactive';
-                $("ul#sortable > li").each(function () {
+                $("ul.sortable-slide > li").each(function () {
                     mylist.push({
                         "id": i,
                         "img": $(this).data('img'),
@@ -314,6 +314,41 @@ var Configuration = function () {
                     $('#contact-btn-save').button('reset');
                 });
                 return false;
+            });
+        },
+
+        savePopup: function () {
+            var $form = $('#popup_add');
+            $('#popup-btn-save').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("popup_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#popup-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
+        editHTMLPopup: function () {
+            $('#popup-description').summernote({
+                height: 150
             });
         },
 

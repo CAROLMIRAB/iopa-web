@@ -574,6 +574,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\CoreController@saveContact'
         ]);
 
+        Route::post('save-popup', [
+            'as' => 'core.save-popup',
+            'uses' => 'Back\CoreController@savepopup'
+        ]);
+
        
     });
 

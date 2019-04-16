@@ -7,7 +7,8 @@
                 Consulta
             </h3>
             <p>
-                Consequat posuere viverra fringilla volutpat parturient sociosqu tincidunt potenti, quis gravida Semper.
+                {!! isset($config[6]['pages-description']['content']['page-query']) ? $config[6]['pages-description']['content']['page-query']
+                : '' !!}
             </p>
         </div>
 
@@ -16,26 +17,26 @@
                 <div id="carousel-consultas" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-consultas" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-consultas" data-slide-to="1"></li>
+                        @if(isset($config[9]['query']['content']))
+                        <?php $i = 1; ?> @foreach ($config[9]['query']['content'] as $key => $item) @if($item['active'] == 'active')
+                        <li data-target="#carousel-consultas" data-slide-to="0" class="{{ ($i == 1) ? 'active' : '' }}"></li>
+                        <?php $i++; ?> @endif @endforeach @endif
                     </ol>
 
                     <!-- Wrapper for slides -->
+
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="http://placehold.it/1920x800" alt="..." />
+
+                        @if(isset($config[9]['query']['content']))
+                        <?php $i = 1; ?> @foreach ($config[9]['query']['content'] as $key => $item) @if($item['active'] == 'active')
+                        <div class="item {{ ($i == 1) ? 'active' : '' }}">
+                            <img src="{{ $item['img'] }}" alt="..." class="center" />
                             <div class="carousel-caption">
-                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sit amet consectetur adipiscing elit ut aliquam
-                                purus. Sociis natoque penatibus et magnis dis parturient montes nascetur. Diam vel quam elementum
-                                pulvinar etiam non.
+                                {!! $item['description'] !!}
                             </div>
                         </div>
-                        <div class="item">
-                            <img src="http://placehold.it/1920x800" alt="..." />
-                            <div class="carousel-caption">
-                                Diam vel quam elementum pulvinar etiam non.
-                            </div>
-                        </div>
+                        <?php $i++; ?> @endif @endforeach @endif
+
                     </div>
 
                     <!-- Controls -->

@@ -268,4 +268,29 @@ class CoreController extends Controller
         }
     }
 
+    public function savePopup(Request $request)
+    {
+        try {
+            $popup = $request->popup_description;
+            $status = $request->status;
+            $data = $this->coreCollection->renderPopup($popup, $status);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $data);
+          
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha guardado los cambios de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
 }

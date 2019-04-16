@@ -17,7 +17,7 @@
     <div class="col-12">
         <ul id="sortable" class="sortable sortable-slide conv-sort">
             @if(!empty($slide['content'])) @foreach($slide['content'] as $key => $item)
-            <li data-img="{{ $item['img'] }}" data-desc="{{ $item['description'] }}" data-title="{{ $item['title'] }}" data-check="{{ $item['active'] }}"  style="background: url('{{ $item['img'] }}'); ">
+            <li data-img="{{ $item['img'] }}" data-desc="{{ $item['description'] }}" data-title="{{ $item['title'] }}" data-check="{{ $item['active'] }}"  style="background-image: url('{{ $item['img'] }}'); ">
                 <div class="box-image nostatus">
                     <button type="button" class="btn btn-success btn-sm pull-right slide-delete">x</button>
                     <label class="checkcontent pull-right">

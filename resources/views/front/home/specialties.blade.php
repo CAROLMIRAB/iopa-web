@@ -5,8 +5,7 @@
           Especialidades
         </h3>
         <p>
-          Consequat posuere viverra fringilla volutpat parturient sociosqu
-          tincidunt potenti, quis gravida Semper.
+            {!! isset($config[6]['pages-description']['content']['page-specialty']) ? $config[6]['pages-description']['content']['page-specialty'] : '' !!}
         </p>
       </div>
 

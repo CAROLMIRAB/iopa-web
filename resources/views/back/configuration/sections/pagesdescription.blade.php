@@ -35,9 +35,14 @@
                 <textarea id="offices-description" name="offices_description" class="form-control">{{ isset($pagesdescription['content']['page-offices']) ? $pagesdescription['content']['page-offices'] : '' }}</textarea>
             </div>
             <div class="form-group">
-                <label for="offices-description">{{ __('Descripción Consulta') }}</label>
+                <label for="query-description">{{ __('Descripción Consulta') }}</label>
                 <textarea id="query-description" name="query_description" class="form-control">{{ isset($pagesdescription['content']['page-query']) ? $pagesdescription['content']['page-query'] : '' }}</textarea>
             </div>
+
+            <div class="form-group">
+                    <label for="blog-description">{{ __('Descripción Blog') }}</label>
+                    <textarea id="blog-description" name="blog_description" class="form-control">{{ isset($pagesdescription['content']['page-blog']) ? $pagesdescription['content']['page-blog'] : '' }}</textarea>
+                </div>
         
         </div>
     </div>

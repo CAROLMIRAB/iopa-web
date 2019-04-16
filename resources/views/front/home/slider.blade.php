@@ -9,18 +9,19 @@
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-
-			<div class="item active">
-				<img src="{{ asset('img/slider/slider-01.jpg') }}"  alt="Slider 01">
+				@if(isset($config[5]['slides']['content']))
+				<?php $i = 1; ?> @foreach ($config[5]['slides']['content'] as $key => $item) @if($item['active'] == 'active')
+			<div class="item {{ ($i == 1) ? 'active' : '' }}">
+				<img src="{{ $item['img'] }}" alt="Slider 01">
 				<div class="carousel-layer">
 					<div class="carousel-caption">
-						<h3>ESPECIALISTAS DE PRIMER NIVEL</h3>
-						<p>Que entregan una atención de excelencia.</p>
+						<h3>{{ $item['title'] }}</h3>
+						<p>{{ $item['description'] }}</p>
 					</div>
 				</div>
-			</div>
-			<div class="item">
-				<img src="{{ asset('img/slider/slider-03.jpg') }}"  alt="Slider 01">
+			</div><?php $i++; ?> @endif @endforeach @else
+			<div class="item active">
+				<img src="{{ asset('img/slider/slider-03.jpg') }}" alt="Slider 01">
 				<div class="carousel-layer">
 					<div class="carousel-caption">
 						<h3>30 AÑOS DE EXITOSA <br>EXPERIECIA</h3>
@@ -28,6 +29,7 @@
 					</div>
 				</div>
 			</div>
+			@endif
 		</div>
 
 		<!-- Controls -->
@@ -42,3 +44,23 @@
 
 	</div>
 </section>
+
+@if(isset($config[4]['popup']) )
+@if($config[4]['popup']['content']['status'] == 'PUBLISHED')
+<div class="modal fade modal-sucursal" id="popup-principal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				{!! $config[4]['popup']['content']['description'] !!}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+@endif
+@endif

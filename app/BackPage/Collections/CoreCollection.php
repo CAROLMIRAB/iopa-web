@@ -36,6 +36,17 @@ class CoreCollection
         return json_encode($dataarr);
     }
 
+    public function renderPopup($data, $status)
+    {
+        $dataarr = [
+            'status' => $status,
+            'description' => $data
+        ];
+      
+       
+        return json_encode($dataarr);
+    }
+
     public static function renderDescriptionPage($request)
     {
         $pageSpecialty = is_null($request->specialty_description) ? '' : $request->specialty_description;
@@ -44,6 +55,7 @@ class CoreCollection
         $pageExams = is_null($request->exams_description) ? '' : $request->exams_description;
         $pageSurgeries = is_null($request->surgeries_description) ? '' : $request->surgeries_description;
         $pageQuery = is_null($request->query_description) ? '' : $request->query_description;
+        $pageBlog = is_null($request->blog_description) ? '' : $request->blog_description;
 
         $general = [
                 'page-specialty' => $pageSpecialty,
@@ -51,7 +63,8 @@ class CoreCollection
                 'page-doctors' => $pageDoctors,
                 'page-exams' => $pageExams,
                 'page-surgeries' => $pageSurgeries,
-                'page-query' => $pageQuery
+                'page-query' => $pageQuery,
+                'page-blog' => $pageBlog
         ];
 
 

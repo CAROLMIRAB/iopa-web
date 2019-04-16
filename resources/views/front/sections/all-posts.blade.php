@@ -6,6 +6,9 @@
             <h3 class="inner-title">
                 LO VISTE PRIMERO
             </h3>
+            <p>
+        {!! isset($config[6]['pages-description']['content']['page-blog']) ? $config[6]['pages-description']['content']['page-blog']: '' !!}
+            </p>
         </div>
     </div>
     <div class="container">
@@ -24,9 +27,8 @@
                         </div>
                         <div class="media-body">
                             <div class="post-tags">
-                                    @foreach ($post->tagsl as $item)
-                                    <span class="post-tag">{{ $item }}</span>
-                                    @endforeach
+                                @foreach ($post->tagsl as $item)
+                                <span class="post-tag">{{ $item }}</span> @endforeach
                             </div>
                             <h4 class="media-heading"><a href="/post.html">{{ $post->name }}</a></h4>
                             <div class="post-preview-meta">
@@ -46,7 +48,4 @@
         </div>
     </div>
 </section>
-
-
-
 @endsection

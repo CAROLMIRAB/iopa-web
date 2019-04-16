@@ -8,8 +8,7 @@
           Nuestros Médicos
         </h3>
         <p>
-          Consequat posuere viverra fringilla volutpat parturient sociosqu
-          tincidunt potenti, quis gravida Semper.
+            {!! isset($config[6]['pages-description']['content']['page-doctors']) ? $config[6]['pages-description']['content']['page-doctors'] : '' !!}
         </p>
       </div>
 
