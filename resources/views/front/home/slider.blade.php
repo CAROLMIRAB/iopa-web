@@ -9,7 +9,7 @@
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-				@if(isset($config[5]['slides']['content']))
+				@if(isset($config[5]['slides']['content']['slides']))
 				<?php $i = 1; ?> @foreach ($config[5]['slides']['content'] as $key => $item) @if($item['active'] == 'active')
 			<div class="item {{ ($i == 1) ? 'active' : '' }}">
 				<img src="{{ $item['img'] }}" alt="Slider 01">
