@@ -16,6 +16,7 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 128);
+            $table->string('code', 128);
             $table->string('slug', 128)->unique();
             $table->text('description');
             $table->text('preparation');

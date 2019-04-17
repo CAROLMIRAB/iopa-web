@@ -30,7 +30,7 @@ class ExamRepo
 
     public function showAllExams()
     {
-        $exam = Exam::select('id', 'name', 'description', 'slug', 'preparation', 'indications', 'status')
+        $exam = Exam::select('id', 'name', 'code','description', 'slug', 'preparation', 'indications', 'status')
             ->orderBy('name', 'DESC')
             ->get();
         return $exam;
@@ -47,7 +47,7 @@ class ExamRepo
 
     public function showExamSlug($slug)
     {
-        $exam = Exam::select('id', 'name', 'description', 'preparation', 'indications', 'file', 'slug')
+        $exam = Exam::select('id', 'name', 'code','description', 'preparation', 'indications', 'file', 'slug')
             ->where('exams.slug', $slug)
             ->orderBy('id', 'DESC')
             ->first();

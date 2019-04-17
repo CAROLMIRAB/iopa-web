@@ -63,7 +63,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('aboutus.aboutus') }}">Sobre nosotros</a></li>
                             <li><a href="{{ route('aboutus.agreement') }}">Arancéles y Convenios</a></li>
-                            <li><a href="{{ route('aboutus.contact') }}">Contacto</a></li>
+                            <li><a href="{{ route('aboutus.query') }}">Consulta Médica</a></li>
                             <li><a href="#">Otros Servicios</a></li>
                         </ul>
                     </li>
@@ -72,7 +72,7 @@
                     <li><a href="{{ route('exam.viewallexams') }}">Exámenes</a></li>
                     <li><a href="{{ route('surgery.viewallsurgeries') }}">Cirugías</a></li>
                     <li><a href="{{ route('office.viewalloffices') }}">Sucursales</a></li>
-                    <li><a href="{{ route('aboutus.query') }}">Consulta</a></li>
+                    <li><a href="{{ route('aboutus.contact') }}">Contacto</a></li>
                     <li><a class="cta-link --open-sys" href="#!">
 								<i class="fa fa-calendar calendar-icon"></i> Reserva<br> tu hora
 							</a>

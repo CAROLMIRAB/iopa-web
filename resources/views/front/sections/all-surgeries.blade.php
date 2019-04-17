@@ -11,18 +11,6 @@
       </p>
     </div>
 
-    <div class="row row-filters">
-      <div class="col-md-12">
-        <div align="center">
-          <button class="btn btn-theme02 filter-all border filter-button" data-filter="all"><div class="btn-sucursal">Ver todas</div>Nuestras cirugías</button>
-          <button class="btn btn-theme02 border filter-button" data-filter="providencia"><div class="btn-sucursal">Tus cirugías en</div> Providencia</button>
-          <button class="btn btn-theme02 border filter-button" data-filter="florida"><div class="btn-sucursal">Tus cirugías en</div>La Florida</button>
-          <button class="btn btn-theme02 border filter-button" data-filter="centro"><div class="btn-sucursal">Tus cirugías en</div>Santiago Centro</button>
-          <button class="btn btn-theme02 border filter-button" data-filter="buin"><div class="btn-sucursal">Tus cirugías en</div>Buin</button>
-          <button class="btn btn-theme02 border filter-button" data-filter="maipu"><div class="btn-sucursal">Tus cirugías en</div>Maipú </button>
-        </div>
-      </div>
-    </div>
     <div class="row row-especialidades">
     @foreach ($surgeries as $surgery)
       <div class="col-sm-3 filter florida buin">

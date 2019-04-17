@@ -23,6 +23,7 @@ class ExamCollection
             $allexams->push([
                 'name' => $exam->name,
                 'status' => $exam->status,
+                'code' => $exam->code,
                 'slug' => $exam->slug,
                 'file' => $exam->file,
                 'created' => $exam->created,

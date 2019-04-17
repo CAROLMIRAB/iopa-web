@@ -28,6 +28,12 @@
 					 data-slugit-target="#slug"> 
 					<p class="invalid-feedback"></p> 
 				</div>
+
+				<div class="form-group">
+					<label for="name">{{ __('Código') }}</label>
+					<input type="text" name="codigo" id="codigo" class="form-control"> 
+					
+				</div>
 				<div class="form-group">
 					<label for="body">{{ __('Descripción') }}</label>
 					<textarea id="description" name="description" class="form-control summernote"></textarea>
