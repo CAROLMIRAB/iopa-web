@@ -6,6 +6,7 @@ $factory->define(App\Exam::class, function (Faker $faker) {
     $title = $faker->sentence(3);
     return [
         'name' => $title,
+        'code' => $faker->randomDigit(),
         'slug' => str_slug($title),
         'description' => $faker->text(500),
         'preparation' => $faker->text(500),
