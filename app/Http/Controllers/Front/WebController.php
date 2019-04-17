@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\FrontPage\Repositories\WebRepo;
 use App\FrontPage\Collections\WebCollection;
+use Yajra\DataTables\Facades\DataTables;
 
 class WebController extends Controller
 {
@@ -119,11 +120,23 @@ class WebController extends Controller
      */
     public function viewAllExams()
     {
+
+        return view('front.sections.all-exams');
+    }
+
+
+    /**
+     * All exams datatable
+     * 
+     * @return json
+     */
+    public function allExams()
+    {
         
         $examsdata = $this->postRepo->showExams();
         $exams = $this->postCollect->renderExams($examsdata);
 
-        return view('front.sections.all-exams', compact('exams'));
+        return Datatables::of($exams)->make(true);
     }
 
     /**

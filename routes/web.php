@@ -57,6 +57,11 @@ Route::get('examenes/', [
     'uses' => 'Front\WebController@viewAllExams'
 ]);
 
+Route::post('examenes-all/', [
+    'as' => 'exam.allexams',
+    'uses' => 'Front\WebController@allExams'
+]);
+
 Route::get('examenes/{slug}', [
     'as' => 'exam.viewexam',
     'uses' => 'Front\WebController@viewFullExam'

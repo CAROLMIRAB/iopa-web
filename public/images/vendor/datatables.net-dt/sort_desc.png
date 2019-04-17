@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "/images/vendor/datatables.net-dt/images/sort_desc.png?1fc418e33fd5a687290258b23fac4e98";

@@ -80,7 +80,7 @@ class WebRepo
     {
       $exams = Exam::where('exams.status', 'PUBLISHED')
       ->with(array('exam_office'=>function($query){
-        $query->select('slug');
+        $query->select('name');
       }))->get();
  
         return $exams;

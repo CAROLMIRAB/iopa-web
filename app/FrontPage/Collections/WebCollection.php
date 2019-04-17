@@ -77,7 +77,7 @@ class WebCollection
       $route = route('exam.viewexam', ['slug' => $exam->slug]);
       $exam->route = $route;
       foreach ($exam->exam_office as $item) {
-        $exam->listoffice .= $item->slug . " ";
+        $exam->listoffice .= $item->name . " ";
       }
     }
     return  $exams;

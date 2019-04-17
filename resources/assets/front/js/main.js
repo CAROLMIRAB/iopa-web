@@ -134,7 +134,7 @@ $(document).on('click', '.link-reserve-doctor', function () {
     }
   }).done(function (data) {
     $('.reserve-filter').append('<div class="alert alert-light alert-dismissible show" role="alert">' + data.doctor + ' <button type="button" class="close reserve-filter-doctor" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-    $('.reserve-content').html(data.url); 
+    $('.reserve-content').html(data.url);
   }).fail(function (data) {
 
   }).always(function () {
@@ -228,3 +228,50 @@ $(document).on('keyup', '#reserve-buscador', function () {
 $(document).on('keyup', 'input#reserve-rut', function (event) {
   $(this).rut({ formatOn: 'keyup', ignoreControlKeys: false, useThousandsSeparator: false, minimumLength: 8 });
 });
+
+var route = $('.datatable-exams').data('route');
+var table = $('.datatable-exams').DataTable({
+  "processing": true,
+  "serverSide": false,
+  "ajax": route,
+  "responsive": true,
+  "order": [[1, "asc"]],
+  columns: [
+    {
+      data: 'name',
+      width: "100px",
+      render: function (data, type, row, meta) {
+        var concat = '<div><a href="' + row.route + '">' + data + '</a></div>';
+        return concat;
+      }
+    },
+    {
+      data: 'code',
+      width: "120px"
+    },
+    {
+      data: 'listoffice',
+      width: "80px",
+    },
+    {
+      data: 'route',
+      visible: false
+    },
+    {
+      data: 'id',
+      visible: false
+    }
+
+  ],
+  columnDefs: [
+    { className: "cdatatable-td", targets: [0] },
+    { className: "cdatatable-td", targets: [1] },
+    { className: "cdatatable-td", targets: [2] },
+    { className: "cdatatable-td", targets: [3] },
+  ],
+  fnInitComplete: function () {
+    $(".datatable-exams").css("width", "100%");
+  },
+  "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
+});
+table.columns.adjust().draw();
