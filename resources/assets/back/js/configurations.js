@@ -259,6 +259,35 @@ var Configuration = function () {
             });
         },
 
+        saveRRSS: function () {
+            var $form = $('#rrss_add');
+            $('#rrss-btn-save').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("rrss_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#rrss-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
+
         saveAboutUs: function () {
             var $form = $('#aboutus_add');
             $('#aboutus-btn-save').click(function () {

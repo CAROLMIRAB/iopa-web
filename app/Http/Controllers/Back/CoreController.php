@@ -65,6 +65,25 @@ class CoreController extends Controller
     }
 
     /**
+     * Show RRSS
+     * 
+     * @return json
+     */
+    public function rrss(Request $request)
+    {
+        $data = $this->coreRepo->findConf($request->rrss_slug);
+        $datarender = $this->coreCollection->renderRRSS($request, $data);
+
+        return response()->json([
+            'status' => 200,
+            'title' => '¡Exitoso!',
+            'message' => "Ha modificado las descripciones de forma correcta",
+            'data' => json_encode($datarender['rrss'])
+        ]);
+
+    }
+
+    /**
      * Show all configurations
      * 
      * @return json
@@ -201,6 +220,29 @@ class CoreController extends Controller
     {
         try {
             $query = $this->coreCollection->renderDescriptionPage($request);
+            $slide = $this->coreRepo->changeConfiguration($request->slug, $query);
+          
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha guardado los cambios de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
+
+    public function saveRRSS(Request $request)
+    {
+        try {
+            $query = $this->coreCollection->renderRRSS($request);
             $slide = $this->coreRepo->changeConfiguration($request->slug, $query);
           
             return response()->json([

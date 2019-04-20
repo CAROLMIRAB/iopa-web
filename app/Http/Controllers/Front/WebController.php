@@ -50,6 +50,30 @@ class WebController extends Controller
         return view('front.sections.post', compact('post'));
     }
 
+       /**
+     * Show all posts view blog
+     * 
+     * @return view
+     */
+    public function viewAllServices()
+    {
+        $postslist = $this->postRepo->showServices();
+        $posts = $this->postCollect->renderPostsHome($postslist);
+        return view('front.sections.all-services', compact('posts'));
+    }
+
+    /**
+     * View full post content
+     * 
+     * @return view
+     */
+    public function viewFullService($slug)
+    {
+        $postdata = $this->postRepo->viewPostSlug($slug);
+        $post = $this->postCollect->renderPost($postdata);
+        return view('front.sections.service', compact('service'));
+    }
+
     /**
      * View full post content
      * 
@@ -132,7 +156,6 @@ class WebController extends Controller
      */
     public function allExams()
     {
-        
         $examsdata = $this->postRepo->showExams();
         $exams = $this->postCollect->renderExams($examsdata);
 

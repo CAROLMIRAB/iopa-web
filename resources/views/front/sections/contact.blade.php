@@ -7,28 +7,62 @@
           Contacto
         </h1>
         <p>
-          Consequat posuere viverra fringilla volutpat parturient sociosqu
-          tincidunt potenti, quis gravida Semper.
+            {!! isset($config[6]['pages-description']['content']['page-contact']) ? $config[6]['pages-description']['content']['page-contact'] : '' !!}
+
         </p>
       </div>
       <div class="row row-contacto">
-        <div class="col-md-6">
-          <div class="ui-select-box">
-              <h3>Seleccione esta opción si necesita</h3>
-              <div class="ui-box-description">
-                 <p>Si necesita información general de nuestra clínica, reservar hora de Pabellón, Consulta o Exámenes, solicitar presupuesto, una copia de Ficha o Receta Médica, complete el formulario de Contacto y le responderémos a la brevedad.</p>
-              </div>
-            <p class="mt-40"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="ui-select-box">
-            <h3>Seleccione esta opción si necesita</h3>
-            <div class="ui-box-description">
-              <p>Su opinión es muy importante para nosotros, por esto contamos con usted para mejorar la calidad de nuestro servicio. Lo invitamos a envíar sus comentarios a tráves del formulario de Felicitaciones, Sugerencias y Reclamos.</p>
+        <div class="col-md-12">
+          <div class="ui-select-box row">
+            <div class="col-md-8 col-sm-12">
+              <h3 class="pull-left mt-10">Solicitar una copia de su ficha clínica o receta médica.</h3>
             </div>
-            <p class="mt-40"><a href="{{ route('aboutus.opinion') }}" class="btn btn-theme04 btn-lg">Dar su opinión</a></p>
+          
+            <div class="col-md-4 col-sm-12">
+            <p class="mt-10"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+            </div>
           </div>
+          <div class="ui-select-box row">
+              <div class="col-md-8 col-sm-12">
+                <h3 class="pull-left mt-10">Solicitar presupuesto quirúrgico</h3>
+              </div>
+              <div class="col-md-4 col-sm-12">
+              <p class="mt-10"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+              </div>
+            </div>
+            <div class="ui-select-box row">
+                <div class="col-md-8 col-sm-12">
+                  <h3 class="pull-left mt-10">Reservar hora para pabellón, consulta o exámenes.</h3>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                <p class="mt-10"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+                </div>
+              </div>
+              <div class="ui-select-box row">
+                  <div class="col-md-8 col-sm-12">
+                    <h3 class="pull-left mt-10">Información sobre promociones y/o convenios.</h3>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                  <p class="mt-10"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+                  </div>
+                </div>
+                <div class="ui-select-box row">
+                    <div class="col-md-8 col-sm-12">
+                      <h3 class="pull-left mt-10">Sugerencias y Reclamos.</h3>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                    <p class="mt-10"><a href="{{ route('aboutus.opinion') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+                    </div>
+                  </div>
+                <div class="ui-select-box row">
+                    <div class="col-md-8 col-sm-12">
+                      <h3 class="pull-left mt-10">Otras solicitudes.</h3>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                    <p class="mt-10"><a href="{{ route('aboutus.request') }}" class="btn btn-theme04 btn-lg">Hacer solicitud</a></p>
+                    </div>
+                  </div>
         </div>
       </div>
     </div>

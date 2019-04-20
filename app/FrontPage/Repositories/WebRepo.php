@@ -18,7 +18,15 @@ class WebRepo
     {
         $posts = Post::orderBy('id', 'DESC')
         ->where('status', 'PUBLISHED')
-        ->where('category_id', '<>', '1')->paginate(10);
+        ->where('category_id', '=', '1')->paginate(10);
+        return $posts;
+    }
+
+    public function showServices()
+    {
+        $posts = Post::orderBy('id', 'DESC')
+        ->where('status', 'PUBLISHED')
+        ->where('category_id', '=', '2')->paginate(10);
         return $posts;
     }
 
@@ -53,6 +61,7 @@ class WebRepo
     public function showSurgeries()
     {
         $surgery = Surgery::select('name', 'slug', 'description', 'preparation', 'indications', 'status','file' )
+        ->orderBy('name', 'ASC')
         ->get();
         return $surgery;
     }
@@ -71,7 +80,7 @@ class WebRepo
       $doctors = Doctor::where('doctors.status', 'ACTIVE')
       ->with(array('doctor_office'=>function($query){
         $query->select('slug');
-      }))->get();
+      }))->orderBy('name', 'ASC')->get();
  
         return $doctors;
     }
@@ -81,7 +90,9 @@ class WebRepo
       $exams = Exam::where('exams.status', 'PUBLISHED')
       ->with(array('exam_office'=>function($query){
         $query->select('name');
-      }))->get();
+      }))
+      ->orderBy('name', 'ASC')
+      ->get();
  
         return $exams;
     }
@@ -91,7 +102,9 @@ class WebRepo
       $specialties = Specialty::where('specialties.status', 'PUBLISHED')
       ->with(array('specialty_doctor'=>function($query){
         $query->select('slug');
-      }))->get();
+      }))
+      ->orderBy('name', 'ASC')      
+      ->get();
  
         return $specialties;
     }

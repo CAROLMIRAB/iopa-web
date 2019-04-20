@@ -36,8 +36,12 @@
                                         aria-selected="false">{{ __('POPUP') }}</a>
                             </li>
                             <li class="nav-item">
-                                <!--<a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-5-tab" data-toggle="tab" href="#tabs-text-5" role="tab" aria-controls="tabs-text-5"
-                                    aria-selected="false">{{ __('CONTACTO') }}</a>-->
+                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-7-tab" data-toggle="tab" href="#tabs-text-7" role="tab" aria-controls="tabs-text-7"
+                                        aria-selected="false">{{ __('RRSS') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-5-tab" data-toggle="tab" href="#tabs-text-5" role="tab" aria-controls="tabs-text-5"
+                                    aria-selected="false">{{ __('CONTACTO') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -68,9 +72,13 @@
                                         @include('back.configuration.sections.popup', ['popup' => isset($datarender[4]['popup']) ? $datarender[4]['popup'] : ''])
                                 </div>
 
-                                <!--<div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
+                                <div class="tab-pane fade" id="tabs-text-7" role="tabpanel" aria-labelledby="tabs-text-7-tab">
+    @include('back.configuration.sections.rrss', ['rrss' => isset($datarender[3]['rrss']) ? $datarender[3]['rrss'] : ''])
+                                </div>
+
+                                <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
     @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : ''])
-                                </div>-->
+                                </div>
 
                                 
 
@@ -118,6 +126,8 @@
         Configuration.saveAboutUs();
 
         Configuration.savePopup();
+
+        Configuration.saveRRSS();
 
 	});
 

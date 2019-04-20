@@ -23,6 +23,7 @@
 </head>
 
 <body>
+	<div id="preloader_3"></div>
 	@include('front.shared.header') 
 	
 	@yield('content')
@@ -31,9 +32,18 @@
 
 	<script type="text/javascript" src="{{ asset('front/js/front.min.js') }}"></script>
 	<script type="text/javascript">
+	
+
 	  $(document).ready(function(){
-        $("#popup-principal").modal('show');
-    });
+				$("#popup-principal").modal('show');
+			
+				window.onload = function() {
+					$("#preloader_3").fadeOut("slow");
+				}
+		});
+
+
+
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

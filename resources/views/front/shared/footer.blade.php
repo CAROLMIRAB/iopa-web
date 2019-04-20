@@ -1,5 +1,6 @@
+@if(!is_null($config[3]['rrss']['content']['whatsapp']) && $config[3]['rrss']['content']['whatsapp'])
 <div class="bt-whatsme">
-	<a href="https://api.whatsapp.com/send?phone=56935737234&text=Hola!%20Quiero%20obtener%20mas%20información">
+	<a target="_blank" href="https://api.whatsapp.com/send?phone={{ trim(str_replace("", "+", $config[3]['rrss']['content']['whatsapp'])) }}&text=Hola!%20Quiero%20obtener%20mas%20información">
 		<svg class="whatsapp-figure" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
 	 id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
 		  <g>
@@ -9,10 +10,11 @@
 			  fill="#FFF"
 			/>
 		  </g>
-		</svg>
-	</a>
-	<span class="callme"> Escríbenos +56935737234</span>
+		</svg>	
+	<span class="callme"> Escríbenos {{ $config[3]['rrss']['content']['whatsapp'] }}</span>
+</a>
 </div>
+@endif
 
 @include('front.shared.reserve')
 
@@ -59,15 +61,23 @@
 					<div class="f-item ">
 						<div class="f-social-buttons">
 							<span>SÍGUENOS EN </span>
-							<a href="#!" class="btn-social">
+							@if(!is_null($config[3]['rrss']['content']['facebook']) && $config[3]['rrss']['content']['facebook'] <> "")
+							<a href="{{ $config[3]['rrss']['content']['facebook'] }}" class="btn-social">
 									<img src="{{ asset("img/rrss/icon-facebook.png") }}" alt="Facebook">
 								</a>
-							<a href="#!" class="btn-social">
+							@endif
+
+							@if(!is_null($config[3]['rrss']['content']['instagram']) && $config[3]['rrss']['content']['instagram'] != "")
+							<a href="{{ $config[3]['rrss']['content']['instagram'] }}" class="btn-social">
 									<img src="{{ asset("img/rrss/icon-instagram.png") }}" alt="Instagram">
-								</a>
-							<a href="#!" class="btn-social">
+							</a>
+							@endif
+
+							@if(!is_null($config[3]['rrss']['content']['youtube']) && $config[3]['rrss']['content']['youtube'] <> "")
+						<a href="{{ $config[3]['rrss']['content']['youtube'] }}" class="btn-social">
 									<img src="{{ asset("img/rrss/icon-youtube.png") }}" alt="Youtube">
 								</a>
+							@endif
 
 						</div>
 					</div>

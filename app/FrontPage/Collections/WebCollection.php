@@ -76,9 +76,11 @@ class WebCollection
       $exam->image = url('') . "/uploads/images/" . $exam->file;
       $route = route('exam.viewexam', ['slug' => $exam->slug]);
       $exam->route = $route;
+      $listoffice = new Collection();
       foreach ($exam->exam_office as $item) {
-        $exam->listoffice .= $item->name . " ";
+        $listoffice->push([$item->name]);
       }
+      $exam->listoffice = $listoffice;
     }
     return  $exams;
   }

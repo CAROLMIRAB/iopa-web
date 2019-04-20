@@ -47,6 +47,16 @@ Route::get('blog/', [
     'uses' => 'Front\WebController@viewAllPosts'
 ]);
 
+Route::get('services/{slug}', [
+    'as' => 'post.viewservice',
+    'uses' => 'Front\WebController@viewFullService'
+]);
+
+Route::get('services/', [
+    'as' => 'post.viewallservices',
+    'uses' => 'Front\WebController@viewAllServices'
+]);
+
 Route::get('medicos/', [
     'as' => 'doctor.viewalldoctors',
     'uses' => 'Front\WebController@viewAllDoctors'
@@ -57,7 +67,7 @@ Route::get('examenes/', [
     'uses' => 'Front\WebController@viewAllExams'
 ]);
 
-Route::post('examenes-all/', [
+Route::get('todos-los-examenes/', [
     'as' => 'exam.allexams',
     'uses' => 'Front\WebController@allExams'
 ]);
@@ -537,7 +547,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     });
 
       /************** ROUTES CONFIGURATIONS ******************/
-      Route::group(['prefix' => 'configuracion'], function () {
+      Route::group(['prefix' => 'configuration'], function () {
 
         Route::get('', [
             'as' => 'core.allconfigurations',
@@ -581,9 +591,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
         Route::post('save-popup', [
             'as' => 'core.save-popup',
-            'uses' => 'Back\CoreController@savepopup'
+            'uses' => 'Back\CoreController@savePopup'
         ]);
 
+        Route::post('save-rrss', [
+            'as' => 'core.save-rrss',
+            'uses' => 'Back\CoreController@saveRRSS'
+        ]);
        
     });
 

@@ -7,7 +7,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
     $array =  ['medico', 'medicina', 'examen'];
     return [
         'user_id' => 1,
-        'category_id' => rand(1,20),
+        'category_id' => rand(1,2),
         'name' => $title,
         'slug' => str_slug($title),
         'excerpt' => $faker->text(200),

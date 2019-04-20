@@ -252,6 +252,13 @@ var table = $('.datatable-exams').DataTable({
     {
       data: 'listoffice',
       width: "80px",
+      render: function (data, type, row, meta) {
+        var concat = "";
+        jQuery.each(data, function (i, val) {
+            concat += '<span class="badge badge-info">' + val + '</span>'
+        });
+        return concat;
+    }
     },
     {
       data: 'route',
@@ -272,6 +279,17 @@ var table = $('.datatable-exams').DataTable({
   fnInitComplete: function () {
     $(".datatable-exams").css("width", "100%");
   },
-  "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]]
+  "lengthMenu": [[10, 25, 50, 100, 200, 300, 400, 500], [10, 25, 50, 100, 200, 300, 400, 500]],
+  "lengthChange": false,
+  "paging": false,
+  "bInfo" : false,
+  language: {
+    "emptyTable": "No hay información",
+    "loadingRecords": "Cargando...",
+    "processing": "Procesando...",
+    "search": "Buscar:",
+    "zeroRecords": "Sin resultados encontrados",
+    
+},
 });
 table.columns.adjust().draw();

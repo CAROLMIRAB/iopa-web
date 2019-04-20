@@ -8,26 +8,13 @@
                 Solicitudes
             </h1>
             <p>
-                Si necesita información general de nuestra clínica, reservar hora de Pabellón, Consulta o Exámenes, solicitar presupuesto,
-                una copia de Ficha o Receta Médica, complete el formulario de Contacto y le responderémos a la brevedad.
+             {!! isset($config[6]['pages-description']['content']['page-contactr']) ? $config[6]['pages-description']['content']['page-contactr'] : '' !!}
             </p>
         </div>
 
 
         <div class="row mt-40">
-            <div class="col-md-4">
-                <div class="ui-box-contact">
-                    <h4>Complete el siguiente formulario si necesita:</h4>
-                    <ul>
-                        <li>Solicitar una copia de su ficha clínica o receta médica.</li>
-                        <li> Solicitar presupuesto quirúrgico</li>
-                        <li>Reservar hora para pabellón, consulta o exámenes.</li>
-                        <li>Información sobre promociones y/o convenios.</li>
-                        <li>Otras solicitudes.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="ui-form contact-form">
                     <div class="form-loader hide">
                         <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>

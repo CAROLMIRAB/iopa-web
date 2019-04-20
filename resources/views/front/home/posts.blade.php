@@ -5,7 +5,8 @@
                 <h3 class="inner-title">
                     LO VISTE PRIMERO
                 </h3>
-                <p>Consequat posuere viverra fringilla volutpat parturient sociosqu tincidunt potenti, quis gravida Semper.</p>
+                <p>        {!! isset($config[6]['pages-description']['content']['page-blog']) ? $config[6]['pages-description']['content']['page-blog']: '' !!}
+                    </p>
             </div>
         </div>
     </div>

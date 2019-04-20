@@ -38,11 +38,22 @@
                 <label for="query-description">{{ __('Descripción Consulta') }}</label>
                 <textarea id="query-description" name="query_description" class="form-control">{{ isset($pagesdescription['content']['page-query']) ? $pagesdescription['content']['page-query'] : '' }}</textarea>
             </div>
-
+            <div class="form-group">
+                    <label for="query-description">{{ __('Descripción Contacto') }}</label>
+                    <textarea id="contact_description" name="contact_description" class="form-control">{{ isset($pagesdescription['content']['page-query']) ? $pagesdescription['content']['page-query'] : '' }}</textarea>
+                </div>
+            <div class="form-group">
+                    <label for="query-description">{{ __('Descripción Formulario Contacto Solicitudes') }}</label>
+                    <textarea id="contacto_description" name="contacto_description" class="form-control">{{ isset($pagesdescription['content']['page-query']) ? $pagesdescription['content']['page-query'] : '' }}</textarea>
+            </div>
+            <div class="form-group">
+                    <label for="query-description">{{ __('Descripción Formulario Contacto Reclamos') }}</label>
+                    <textarea id="contactr_description" name="contactr_description" class="form-control">{{ isset($pagesdescription['content']['page-query']) ? $pagesdescription['content']['page-query'] : '' }}</textarea>
+            </div>
             <div class="form-group">
                     <label for="blog-description">{{ __('Descripción Blog') }}</label>
                     <textarea id="blog-description" name="blog_description" class="form-control">{{ isset($pagesdescription['content']['page-blog']) ? $pagesdescription['content']['page-blog'] : '' }}</textarea>
-                </div>
+            </div>
         
         </div>
     </div>

@@ -56,6 +56,9 @@ class CoreCollection
         $pageSurgeries = is_null($request->surgeries_description) ? '' : $request->surgeries_description;
         $pageQuery = is_null($request->query_description) ? '' : $request->query_description;
         $pageBlog = is_null($request->blog_description) ? '' : $request->blog_description;
+        $pageContact = is_null($request->contact_description) ? '' : $request->contact_description;
+        $pageContactOpinion = is_null($request->contacto_description) ? '' : $request->contacto_description;
+        $pageContactRequest = is_null($request->contactr_description) ? '' : $request->contactr_description;
 
         $general = [
                 'page-specialty' => $pageSpecialty,
@@ -64,7 +67,32 @@ class CoreCollection
                 'page-exams' => $pageExams,
                 'page-surgeries' => $pageSurgeries,
                 'page-query' => $pageQuery,
-                'page-blog' => $pageBlog
+                'page-blog' => $pageBlog,
+                'page-contact' => $pageContact,
+                'page-contacto' => $pageContactOpinion,
+                'page-contactr' => $pageContactRequest
+        ];
+
+
+        return json_encode($general);
+
+    }
+
+    public static function renderRRSS($request)
+    {
+        $facebook = is_null($request->facebook) ? '' : $request->facebook;
+        $instagram = is_null($request->instagram) ? '' : $request->instagram;
+        $youtube = is_null($request->youtube) ? '' : $request->youtube;
+        $callcenter = is_null($request->callcenter) ? '' : $request->callcenter;
+        $whatsapp = is_null($request->whatsapp) ? '' : $request->whatsapp;
+       
+
+        $general = [
+                'whatsapp' => $whatsapp,
+                'callcenter' =>  $callcenter,
+                'youtube' => $youtube,
+                'facebook' => $facebook,
+                'instagram' => $instagram       
         ];
 
 

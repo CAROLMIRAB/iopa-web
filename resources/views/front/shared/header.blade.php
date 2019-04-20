@@ -22,21 +22,40 @@
 							<img src="{{ asset('img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
-                        <li><a href="#!" class="btn-social">
-									<img src="{{ asset('img/rrss/icon-facebook.png') }}"  alt="Facebook">
-								</a></li>
-                        <li><a href="#!" class="btn-social">
+                        @if(!is_null($config[3]['rrss']['content']['facebook']) && $config[3]['rrss']['content']['facebook'] <> "")
+                        <li>
+                        <a href="{{ $config[3]['rrss']['content']['facebook'] }}" class="btn-social">
+                                <img src="{{ asset('img/rrss/icon-facebook.png') }}"  alt="Facebook">
+                            </a>
+                        </li>
+                        @endif
+                        
+                        @if(!is_null($config[3]['rrss']['content']['instagram']) && $config[3]['rrss']['content']['instagram']<>"")
+                        <li>
+                        <a href="{{ $config[3]['rrss']['content']['instagram'] }}" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-instagram.png') }}" alt="Instagram">
-								</a> </li>
-                        <li><a href="#!" class="btn-social">
+                            </a> 
+                        </li>
+                        @endif
+                        
+                        @if(!is_null($config[3]['rrss']['content']['youtube'])  && $config[3]['rrss']['content']['youtube']<>"")
+                        <li>
+                            <a href="{{ $config[3]['rrss']['content']['youtube'] }}" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-youtube.png') }}"  alt="Youtube">
-								</a> </li>
+                            </a> 
+                        </li>
+                        @endif
+                       
+                        @if(!is_null($config[3]['rrss']['content']['callcenter']) && $config[3]['rrss']['content']['callcenter'])
                         <li class="visible-xs"><a href="#!" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-phone.png') }}" alt="Teléfono">
 								</a> </li>
                         <li><a href="tel:+56933445672" class="call-link">
                              <img src="{{ asset('img/ico-support-04.png') }}"  alt="Support">
-									<span>+56 9 334 45 672</span></a></li>
+                        <span>{{ $config[3]['rrss']['content']['callcenter'] }}</span></a>
+                        </li>
+                        @endif
+
                     </ul>
                 </div>
             </div>
@@ -64,7 +83,7 @@
                             <li><a href="{{ route('aboutus.aboutus') }}">Sobre nosotros</a></li>
                             <li><a href="{{ route('aboutus.agreement') }}">Arancéles y Convenios</a></li>
                             <li><a href="{{ route('aboutus.query') }}">Consulta Médica</a></li>
-                            <li><a href="#">Otros Servicios</a></li>
+                            <li><a href="{{ route('post.viewallservices') }}">Otros Servicios</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('doctor.viewalldoctors') }}">Médicos</a></li>

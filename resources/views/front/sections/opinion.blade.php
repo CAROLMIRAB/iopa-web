@@ -9,12 +9,12 @@
             </h1>
             <p>
 
-                Su opinión es muy importante para nosotros, por esto contamos con usted para mejorar la calidad de nuestro servicio. Lo invitamos
-                a envíar sus comentarios a tráves del formulario de Felicitaciones, Sugerencias y Reclamos.
+             {!! isset($config[6]['pages-description']['content']['page-contacto']) ? $config[6]['pages-description']['content']['page-contacto'] : '' !!}
+
             </p>
         </div>
         <div class="row mt-40">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <div class="ui-form contact-form">
                     <div class="form-loader hide">
                         <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
