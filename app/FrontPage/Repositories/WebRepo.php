@@ -126,4 +126,32 @@ class WebRepo
         return $agreement;
     }
 
+    public function showRegions()
+    {
+        $regions = DB::table('regions')->select('id','name', 'ordinal_symbol')
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        return $regions;
+    }
+
+    public function showComRegion($region)
+    {
+            $regions = DB::table('communes')->select('id','name')
+            ->where('region_id', $region)
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        return $regions;
+    }
+
+    public function showCommunes()
+    {
+            $regions = DB::table('communes')->select('id','name')
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        return $regions;
+    }
+
 }

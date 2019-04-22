@@ -293,3 +293,29 @@ var table = $('.datatable-exams').DataTable({
 },
 });
 table.columns.adjust().draw();
+
+$('.region_chile').on('change', function(e){
+  var id = e.target.value;
+  var url = $(this).data('url');
+  $.ajax({
+    type: "post",
+    url: url, 
+    dataType: "json",
+    data: {
+      id: id
+    }
+  }).done(function (data) {
+    
+    $('.comuna_chile').empty();
+    $('.comuna_chile').append('<option value="0" disable="true" selected="true">Seleccione una opción</option>');
+    $.each( data, function( key, value ) {
+      console.log(key+"  " +value,name);
+      $('.comuna_chile').append('<option value="'+ value.id +'">'+ value.name +'</option>');
+    });
+    
+    
+  });
+});
+
+
+

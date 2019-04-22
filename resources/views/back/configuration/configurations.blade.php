@@ -77,7 +77,7 @@
                                 </div>
 
                                 <div class="tab-pane fade" id="tabs-text-5" role="tabpanel" aria-labelledby="tabs-text-5-tab">
-    @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : ''])
+    @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : '', 'offices' => $offices])
                                 </div>
 
                                 
@@ -114,6 +114,7 @@
         Configuration.slideAdd();
         Configuration.imagesUpSlide(img);
         Configuration.saveSlide();
+        Specialty.selectSpecialty();
 
         Configuration.queryAdd();
         Configuration.imagesUpQuery(img);

@@ -1,28 +1,32 @@
 var Configuration = function () {
 
-    function imgSort(img, desc, check, title) {
-        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background-image: url('+ img +') ">';
+    function imgSort(img, desc, check, title, imgurl) {
+        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background-image: url('+ imgurl +') ">';
         div += '<div class="box-image nostatus">';
         div += '<button type="button" class="btn btn-success btn-sm pull-right slide-delete">x</button>';
         div += '<label class="checkcontent pull-right">';
         div += '<input type="checkbox" class="btn check-slide" checked>';
         div += '<span class="checkmark"></span>';
         div += '</label>';
-        div += '<div class="box-text"><h3>'+ title +'</h3>' + desc +'</div>';
+        if(title !== null || desc !== null){
+        div += '<div class="box-text"><h3>'+ (title !== null) ? title : ''  +'</h3>' + (desc !== null) ? desc : '' +'</div>';
+        }
         div += '</div>';
         div += '</li>';
         return div;
     }
 
-    function imgSortQuery(img, desc, check, title) {
-        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background-image: url('+ img +') ">';
+    function imgSortQuery(img, desc, check, title, imgurl) {
+        var div = '<li data-img="' + img + '" data-desc="' + desc + '" data-title="' + title+ '" data-check="' + check + '" style="background-image: url('+ imgurl +') ">';
         div += '<div class="box-image nostatus">';
         div += '<button type="button" class="btn btn-success btn-sm pull-right query-delete">x</button>';
         div += '<label class="checkcontent pull-right">';
         div += '<input type="checkbox" class="btn check-query" checked>';
         div += '<span class="checkmark"></span>';
         div += '</label>';
-        div += '<div class="box-text"><h3>'+ title +'</h3>' + desc +'</div>';
+        if(title !== null || desc !== null){
+        div += '<div class="box-text"><h3>'+ (title !== null) ? title : '' +'</h3>' + (desc !== null) ? desc : '' +'</div>';
+        }
         div += '</div>';
         div += '</li>';
         return div;
@@ -73,10 +77,11 @@ var Configuration = function () {
                     if (data.status === 200) {
                         var img = data.data.image;
                         var desc = data.data.description;
+                        var imgurl = data.data.imgurl;
                         var check = 'active';
                         var title = data.data.title;
 
-                        var div = imgSortQuery(img, desc, check, title);
+                        var div = imgSortQuery(img, desc, check, title, imgurl);
                         $('.sortable-query').append(div);
                         $('#modal-addquery').modal('hide');
                         toastr.success(data.message, '!Exitoso!');
@@ -162,10 +167,11 @@ var Configuration = function () {
                     if (data.status === 200) {
                         var img = data.data.image;
                         var desc = data.data.description;
+                        var imgurl = data.data.imgurl;
                         var check = 'active';
                         var title = data.data.title;
 
-                        var div = imgSort(img, desc, check, title);
+                        var div = imgSort(img, desc, check, title, imgurl);
                         $('.sortable-slide').append(div);
                         $('#modal-addslide').modal('hide');
                         toastr.success(data.message, '!Exitoso!');

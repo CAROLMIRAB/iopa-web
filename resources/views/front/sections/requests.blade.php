@@ -72,8 +72,11 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="comuna">Comuna</label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="" id="" class="form-control comuna_chile">
                         <option value="">Selecciona una opción</option>
+                        @foreach ($communes as $com)
+                                        <option value="{{ $com->id }}">{{ $com->name }}</option>
+                            @endforeach
                       </select>
                                     </div>
                                 </div>

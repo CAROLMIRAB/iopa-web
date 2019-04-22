@@ -152,6 +152,11 @@ Route::post('reserva-agenda/', [
     'uses' => 'Front\HomeController@reserveAgenda'
 ]);
 
+Route::post('comunas/', [
+    'as' => 'contact.communes',
+    'uses' => 'Front\WebController@allCommunes'
+]);
+
 
 Auth::routes();
 

@@ -92,15 +92,18 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="region">Región</label>
-                                        <select name="" id="" class="form-control">
-                            <option value="">Selecciona una opción</option>
-                          </select>
+                                    <select name="" id="" class="form-control region_chile" data-url="{{ route('contact.communes') }}">
+                                    <option value="">Selecciona una opción</option>
+                                    @foreach ($regions as $region)
+                                        <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                    @endforeach
+                                    </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="comuna">Comuna</label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="" id="" class="form-control comuna_chile">
                             <option value="">Selecciona una opción</option>
                           </select>
                                     </div>
@@ -115,6 +118,9 @@
                                         <label class="ui-label" for="sucursales">Sucursal</label>
                                         <select name="" id="" class="form-control">
                         <option value="">Selecciona una opción</option>
+                        @foreach($offices as $office)
+                                        <option value="{{ $office->id }}">{{ $office->name }}</option>
+                        @endforeach
                       </select>
                                     </div>
                                 </div>

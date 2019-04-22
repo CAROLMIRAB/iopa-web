@@ -226,7 +226,9 @@ class WebController extends Controller
      */
     public function viewRequest()
     {
-        return view('front.sections.requests');
+        $region = '7';
+        $communes = $this->postRepo->showComRegion($region);
+        return view('front.sections.requests', compact('communes'));
     }
    
      /**
@@ -236,11 +238,23 @@ class WebController extends Controller
      */
     public function viewOpinion()
     {
-        return view('front.sections.opinion');
+        $regions = $this->postRepo->showRegions();
+        return view('front.sections.opinion', compact('regions'));
     }
 
     /**
-     * Show opinion
+     * All communes
+     * 
+     * @return view
+     */
+    public function allCommunes(Request $request)
+    {
+        $communes = $this->postRepo->showComRegion($request->id);
+        return response()->json($communes);
+    }
+
+    /**
+     * Show Agreement
      * 
      * @return view
      */

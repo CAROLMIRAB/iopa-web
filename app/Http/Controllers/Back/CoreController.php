@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BackPage\Collections\CoreCollection;
 use App\BackPage\Repositories\CoreRepo;
+use App\BackPage\Repositories\OfficeRepo;
 use App\Core\Core;
 
 class CoreController extends Controller
@@ -13,16 +14,18 @@ class CoreController extends Controller
 
     private $coreRepo;
     private $coreCollection;
+    private $officeRepo;
 
      /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(CoreRepo $coreRepo, CoreCollection $coreCollection)
+    public function __construct(CoreRepo $coreRepo, CoreCollection $coreCollection, OfficeRepo $officeRepo)
     {
         $this->coreRepo = $coreRepo;
         $this->coreCollection = $coreCollection;
+        $this->officeRepo = $officeRepo;
     }
 
     /**
@@ -89,19 +92,19 @@ class CoreController extends Controller
      * @return json
      */
     public function showAllConfigurations(Request $request)
-
     {
         $data = $this->coreRepo->findAll();
         $datarender = $this->coreCollection->renderData($data);
-        return view('back.configuration.configurations', compact('datarender'));
+        $offices = $this->officeRepo->showAllOffices();
+        return view('back.configuration.configurations', compact('datarender', 'offices'));
     }
 
     public function addQueries(Request $request)
     {
         try {
-
             $image_url = Core::uploadImageB64($request->imgBase64);
-            $img = asset('uploads/images') . '/' . $image_url;
+            $img = $image_url;
+            $imgurl = asset('uploads/images') . '/' . $image_url;
             $description = $request->query_description;
             $title = $request->query_title;
 
@@ -110,6 +113,7 @@ class CoreController extends Controller
                 'title' => '¡Exitoso!',
                 'message' => "Ha agregado un slide de forma correcta",
                 'data' => [
+                    'imgurl' => $imgurl,
                     'image' => $img,
                     'description' => $description,
                     'title' => $title
@@ -161,7 +165,8 @@ class CoreController extends Controller
         try {
 
             $image_url = Core::uploadImageB64($request->imgBase64);
-            $img = asset('uploads/images') . '/' . $image_url;
+            $img = $image_url;
+            $imgurl = asset('uploads/images') . '/' .$image_url;
             $description = $request->slide_description;
             $title = $request->slide_title;
 
@@ -170,6 +175,7 @@ class CoreController extends Controller
                 'title' => '¡Exitoso!',
                 'message' => "Ha agregado un slide de forma correcta",
                 'data' => [
+                    'imgurl' => $imgurl,
                     'image' => $img,
                     'description' => $description,
                     'title' => $title
@@ -188,14 +194,13 @@ class CoreController extends Controller
 
             return $data;
         }
-
     }
 
     public function saveSlides(Request $request)
     {
         try {
            
-            $slides = is_null($request->list) ? '[]' : json_encode($request->list);
+            $slides = is_null($request->list) ? '[]' : json_encode(['slides' => $request->list]);
             $slide = $this->coreRepo->changeConfiguration($request->slug, $slides);
             
             return response()->json([

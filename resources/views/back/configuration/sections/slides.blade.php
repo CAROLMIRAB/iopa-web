@@ -16,8 +16,8 @@
     </div>
     <div class="col-12">
         <ul id="sortable" class="sortable sortable-slide conv-sort">
-            @if(!empty($slide['content'])) @foreach($slide['content'] as $key => $item)
-            <li data-img="{{ $item['img'] }}" data-desc="{{ $item['description'] }}" data-title="{{ $item['title'] }}" data-check="{{ $item['active'] }}"  style="background-image: url('{{ $item['img'] }}'); ">
+            @if(!empty($slide['content']['slides'])) @foreach($slide['content']['slides'] as $key => $item)
+            <li data-img="{{ $item['img'] }}" data-desc="{{ $item['description'] }}" data-title="{{ $item['title'] }}" data-check="{{ $item['active'] }}"  style="background-image: url('{{ asset('uploads/images') . '/' .$item['img'] }}'); ">
                 <div class="box-image nostatus">
                     <button type="button" class="btn btn-success btn-sm pull-right slide-delete">x</button>
                     <label class="checkcontent pull-right">
@@ -32,6 +32,15 @@
             </li>
             @endforeach @endif
         </ul>
+    </div>
+    <div class="col-md-12">
+        <div style="height: 30px"> </div>
+        <div class="form-group">
+            <label for="specialty">{{ __('Especialidades') }}</label>
+            <select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialties')}}"> 				
+                    </select>
+            <p class="invalid-feedback specialty-error"></p>
+        </div>
     </div>
 </div>
 
@@ -90,3 +99,4 @@
         </div>
     </div>
 </div>
+

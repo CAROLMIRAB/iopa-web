@@ -59,6 +59,7 @@ class CoreCollection
         $pageContact = is_null($request->contact_description) ? '' : $request->contact_description;
         $pageContactOpinion = is_null($request->contacto_description) ? '' : $request->contacto_description;
         $pageContactRequest = is_null($request->contactr_description) ? '' : $request->contactr_description;
+        $pagePrevision = is_null($request->prevision_description) ? '' : $request->prevision_description;
 
         $general = [
                 'page-specialty' => $pageSpecialty,
@@ -70,7 +71,8 @@ class CoreCollection
                 'page-blog' => $pageBlog,
                 'page-contact' => $pageContact,
                 'page-contacto' => $pageContactOpinion,
-                'page-contactr' => $pageContactRequest
+                'page-contactr' => $pageContactRequest,
+                'page-prevision' => $pagePrevision
         ];
 
 

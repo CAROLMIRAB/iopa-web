@@ -9,15 +9,18 @@
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
+		
 				@if(isset($config[5]['slides']['content']['slides']))
-				<?php $i = 1; ?> @foreach ($config[5]['slides']['content'] as $key => $item) @if($item['active'] == 'active')
+				<?php $i = 1; ?> @foreach ($config[5]['slides']['content']['slides'] as $key => $item) @if($item['active'] == 'active')
 			<div class="item {{ ($i == 1) ? 'active' : '' }}">
-				<img src="{{ $item['img'] }}" alt="Slider 01">
+				<img src="{{ asset('uploads/images') . '/' .$item['img'] }}" alt="Slider 01">
 				<div class="carousel-layer">
+                  @if(isset($item['title']) || isset($item['description']))
 					<div class="carousel-caption">
 						<h3>{{ $item['title'] }}</h3>
 						<p>{{ $item['description'] }}</p>
 					</div>
+				  @endif
 				</div>
 			</div><?php $i++; ?> @endif @endforeach @else
 			<div class="item active">

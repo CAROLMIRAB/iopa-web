@@ -12,12 +12,23 @@
     <form action="{{ route('core.save-contact') }}" method="post" id="contact_add" enctype="multipart/form-data">
         <div class="row">
             <div class="col-12">
-                <div class="form-group">
-                    <label for="contact-description">{{ __('Descripción') }}</label>
-
-                    <textarea id="contact-description" name="contact_description" class="form-control">{{ isset($contact['content']['description']) ? $contact['content']['description'] : '' }}</textarea>
-                </div>
-    
+            <ul>
+             @foreach ($offices as $item)
+             <li class="contact_offices">
+              {{ $item->name }}
+             <ul class="ul-{{ $item->slug }}">
+                 <li class="li-{{ $item->slug }}">
+                    <div class="input-group input-group-sm mb-3">
+                    <input type="text" class="form-control input-sm" name="{{ $item->slug }}[]" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                        <button class="btn btn-primary add-email" type="button" data-office="{{ $item->slug }}"><i class="ni ni-fat-add " style=""></i></button>
+                        </div>
+                    </div>
+                 </li>
+            </ul>
+            </li>
+             @endforeach
+            </ul>
             </div>
         </div>
         <input type="hidden" name="slug" id="contact-slug" value="contact">

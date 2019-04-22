@@ -54,6 +54,11 @@
                     <label for="blog-description">{{ __('Descripción Blog') }}</label>
                     <textarea id="blog-description" name="blog_description" class="form-control">{{ isset($pagesdescription['content']['page-blog']) ? $pagesdescription['content']['page-blog'] : '' }}</textarea>
             </div>
+
+            <div class="form-group">
+                <label for="prevision-description">{{ __('Descripción Prevision') }}</label>
+                <textarea id="prevision-description" name="prevision_description" class="form-control">{{ isset($pagesdescription['content']['page-prevision']) ? $pagesdescription['content']['page-prevision'] : '' }}</textarea>
+        </div>
         
         </div>
     </div>
