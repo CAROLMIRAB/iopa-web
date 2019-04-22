@@ -14,7 +14,6 @@ var Agreement = function () {
         tr += '</tr>';
 
         return tr;
-
     }
 
 

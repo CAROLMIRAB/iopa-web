@@ -130,6 +130,8 @@
 
         Configuration.saveRRSS();
 
+        Configuration.addEmailContact();
+
 	});
 
 </script>

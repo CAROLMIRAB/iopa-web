@@ -32,6 +32,18 @@ var Configuration = function () {
         return div;
     }
 
+    function addEmail(slug) {
+       var li =  '<li class="li-'+ slug +'">';
+        li += '<div class="input-group input-group-sm mb-3">'
+        li += '<input type="text" class="form-control input-sm" name="'+ slug +'[]" placeholder="" aria-label="" aria-describedby="basic-addon2">'
+        li += '<div class="input-group-append">'
+        li += '<button class="btn btn-primary delete-email" type="button" data-office="'+ slug +'"><i class="ni ni-fat-delete " style=""></i></button>'
+        li += '</div>'
+        li += '</div>'
+        li += '</li>'
+        return li;
+    }
+
     return {
         
         imagesUpSlide: function (image) {
@@ -397,6 +409,32 @@ var Configuration = function () {
         editHTMLContact: function () {
             $('#contact-description').summernote({
                 height: 150
+            });
+        }, 
+
+
+        addEmailContact: function () {
+            var maxField = 100;
+            var addButton = $('.add-email');
+            var x = 1;
+
+            $(addButton).click(function () {
+                var slug =  $(this).data('office');
+                var wrapper = '.ul-' + slug; 
+                var input = addEmail(slug);
+                if (x < maxField) {
+                    x++;
+                    $(wrapper).append(input);
+                }
+            });
+
+            $(document).on('click', '.delete-email', function (e) {
+                e.preventDefault();
+                var slug =  $(this).data('office');
+                var li = '.li-' + slug;
+                //var wrapper = '.ul-' + slug; 
+                $(this).parents(li).remove();
+                x--;
             });
         }
 
