@@ -85,6 +85,9 @@
                                         <label class="ui-label" for="sucursales">Sucursal</label>
                                         <select name="" id="" class="form-control">
                         <option value="">Selecciona una opción</option>
+                        @foreach($offices as $office)
+                                        <option value="{{ $office->id }}">{{ $office->name }}</option>
+                        @endforeach
                       </select>
                                     </div>
                                 </div>
