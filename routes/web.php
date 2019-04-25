@@ -569,6 +569,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\CoreController@saveSlides'
         ]);
 
+        Route::post('save-home', [
+            'as' => 'core.save-home',
+            'uses' => 'Back\CoreController@saveHome'
+        ]);
+
+        Route::post('save-subpoliticas', [
+            'as' => 'core.save-subpoliticas',
+            'uses' => 'Back\CoreController@saveQuery'
+        ]);
+
+        Route::post('min-politicas', [
+            'as' => 'core.min-politicas',
+            'uses' => 'Back\CoreController@saveQuery'
+        ]); 
+
         Route::post('add-query', [
             'as' => 'core.add-query',
             'uses' => 'Back\CoreController@addQueries'

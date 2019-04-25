@@ -199,9 +199,9 @@ class CoreController extends Controller
     public function saveSlides(Request $request)
     {
         try {
-           
             $slides = is_null($request->list) ? '[]' : json_encode(['slides' => $request->list]);
             $slide = $this->coreRepo->changeConfiguration($request->slug, $slides);
+            $specialty = $this->coreRepo->changeConfiguration('specialties-home', json_encode($request->specialty));
             
             return response()->json([
                 'status' => 200,
@@ -294,8 +294,8 @@ class CoreController extends Controller
     public function saveContact(Request $request)
     {
         try {
-            $contact = $request->contact_description;
-            $data = $this->coreCollection->renderText($contact);
+            $offices = $this->officeRepo->showAllOffices();
+            $data = $this->coreCollection->renderContact($offices, $request);
             $slide = $this->coreRepo->changeConfiguration($request->slug, $data);
           
             return response()->json([
@@ -339,5 +339,9 @@ class CoreController extends Controller
             return $data;
         }
     }
+
+  
+
+ 
 
 }

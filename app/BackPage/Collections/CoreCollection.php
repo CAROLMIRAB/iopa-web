@@ -102,6 +102,26 @@ class CoreCollection
 
     }
 
+    public function renderContact($offices, $request)
+    {
+        $emails = [];
+        $contact = [];
+        foreach($offices as $off){
+        $office = $off->slug; 
+       
+        foreach ($request->$office as $key => $n) {
+            if (!is_null($request->$office[$key])) {
+               $emails[] =  [ 
+                   $office => $request->$office[$key]
+               ];
+            }
+        }
+    }
+
+    return  json_encode($emails);
+
+    }
+
 }
 
 

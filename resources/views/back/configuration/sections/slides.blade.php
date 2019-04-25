@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-6 text-left">
-        <h2 class="mb-0">{{ __('Slides') }}</h2>
+        <h2 class="mb-0">{{ __('Home') }}</h2>
     </div>
     <div class="col-3 pull-right">
             <button data-toggle="modal" data-target="#modal-addslide" id="btnmodalslide" class="btn  btn-success pull-right">Agregar Slides</button>
@@ -33,15 +33,7 @@
             @endforeach @endif
         </ul>
     </div>
-    <div class="col-md-12">
-        <div style="height: 30px"> </div>
-        <div class="form-group">
-            <label for="specialty">{{ __('Especialidades') }}</label>
-            <select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialties')}}"> 				
-                    </select>
-            <p class="invalid-feedback specialty-error"></p>
-        </div>
-    </div>
+    
 </div>
 
 

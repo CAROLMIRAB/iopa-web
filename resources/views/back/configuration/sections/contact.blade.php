@@ -18,6 +18,7 @@
               {{ $item->name }}
              <ul class="ul-{{ $item->slug }}">
                  <li class="li-{{ $item->slug }}">
+                    <label style="font-size: 12px">Correos Electronicos</label>
                     <div class="input-group input-group-sm mb-3">
                     <input type="text" class="form-control input-sm" name="{{ $item->slug }}[]" placeholder="" aria-label="" aria-describedby="basic-addon2">
                         <div class="input-group-append">

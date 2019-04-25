@@ -16,8 +16,13 @@
                     <div class="nav-wrapper">
                         <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text" role="tablist">
                             <li class="nav-item active">
-                                <a class="nav-link mb-sm-3 mb-md-0 show" id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-1" role="tab" aria-controls="tabs-text-1"
-                                    aria-selected="true">{{ __('SLIDES') }}</a>
+                                <a class="nav-link mb-sm-3 mb-md-0 show" id="tabs-text-8-tab" data-toggle="tab" href="#tabs-text-8" role="tab" aria-controls="tabs-text-8"
+                                    aria-selected="false">{{ __('HOME') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0 " id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-1" role="tab" aria-controls="tabs-text-1"
+                                    aria-selected="true">{{ __('SLIDE') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-2-tab" data-toggle="tab" href="#tabs-text-2" role="tab" aria-controls="tabs-text-2"
@@ -43,15 +48,14 @@
                                 <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-5-tab" data-toggle="tab" href="#tabs-text-5" role="tab" aria-controls="tabs-text-5"
                                     aria-selected="false">{{ __('CONTACTO') }}</a>
                             </li>
+                           
                         </ul>
                     </div>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade active in" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
-    @include('back.configuration.sections.slides', ['slide' =>  isset($datarender[5]['slides']) ? $datarender[5]['slides'] :
-                                    '', 'rrss' => isset($datarender[3]['rrss']) ? $datarender[3]['rrss'] :
-                                    ''])
+                                <div class="tab-pane fade " id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
+    @include('back.configuration.sections.slides', ['slide' =>  isset($datarender[5]['slides']) ? $datarender[5]['slides'] : ''])
                                 </div>
 
                                 <div class="tab-pane fade" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
@@ -80,13 +84,14 @@
     @include('back.configuration.sections.contact', ['contact' => isset($datarender[10]['contact']) ? $datarender[10]['contact'] : '', 'offices' => $offices])
                                 </div>
 
-                                
+                                <div class="tab-pane fade active in" id="tabs-text-8" role="tabpanel" aria-labelledby="tabs-text-8-tab">
+    @include('back.configuration.sections.home', ['home' => isset($datarender[11]['home']) ? $datarender[11]['home'] : ''])
+                                </div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -114,7 +119,7 @@
         Configuration.slideAdd();
         Configuration.imagesUpSlide(img);
         Configuration.saveSlide();
-        Specialty.selectSpecialty();
+        Configuration.selectSpecialty();
 
         Configuration.queryAdd();
         Configuration.imagesUpQuery(img);
