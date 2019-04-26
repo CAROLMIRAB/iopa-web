@@ -340,8 +340,87 @@ class CoreController extends Controller
         }
     }
 
-  
 
- 
+    public function saveSubPolitica(Request $request)
+    {
+        try {
+            
+            $data = $this->coreRepo->findConfigSlug($request->slug);
+            $datarender = $this->coreCollection->renderPolitica($request, $data->content);
+            $ges = $this->coreRepo->addPolitica($request->slug, json_encode($datarender['full']));
 
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado Politica de forma correcta",
+                'data' => json_encode($datarender['politica'])
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+        
+            ];
+
+            return $data;
+        }
+
+    }
+
+    public function unsetPolitica(Request $request)
+    {
+        try {
+            $data = $this->coreRepo->findConfigSlug($request->slug);
+            $arr = json_decode($data->content, true);
+
+            foreach ($arr as $key => $val) {
+                if (isset($val[$request->index])) {
+                    unset($arr[$key][$request->index]);
+                    unset($arr[$key]);
+                }
+            }
+
+            $ges = $this->coreRepo->addPolitica($request->slug, json_encode($arr));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha eliminado politica de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+
+    }
+
+    public function homeConfig(Request $request)
+    {
+        try {
+            $slide = $this->coreRepo->changeConfiguration($request->slug, json_encode($request->specialty));
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado specialty de forma correcta"
+            ]);
+
+        } catch (\Exception $ex) {
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+            ];
+
+            return $data;
+        }
+    }
 }

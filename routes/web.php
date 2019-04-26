@@ -559,6 +559,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
             'uses' => 'Back\CoreController@showAllConfigurations'
         ]); 
 
+        Route::post('save-politica', [
+            'as' => 'core.save-politica',
+            'uses' => 'Back\CoreController@homeConfig'
+        ]);
+
+        Route::post('save-subpolitica', [
+            'as' => 'core.save-subpolitica',
+            'uses' => 'Back\CoreController@saveSubPolitica'
+        ]);
+
+        Route::post('min-politica', [
+            'as' => 'core.min-politica',
+            'uses' => 'Back\CoreController@unsetPolitica'
+        ]);
+
         Route::post('save-images', [
             'as' => 'core.save-images',
             'uses' => 'Back\CoreController@addSlides'

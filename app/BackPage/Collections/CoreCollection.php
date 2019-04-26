@@ -122,6 +122,29 @@ class CoreCollection
 
     }
 
+    public static function renderPolitica($request, $arr)
+    {
+        $politica = [];
+        $subtitle = $request->politica_subtitle;
+    
+        $pdf_url = Core::uploadPDF($request->file('archive'));
+
+        $array = json_decode($arr, true);
+
+        $politica = [
+            time() => [
+                'title' => $subtitle,
+                'pdf' => $pdf_url,
+                'route' =>  asset('uploads/documents') . '/' . $pdf_url
+            ]
+        ];
+
+        array_push($array, $politica);
+
+        return ['full' => $array, 'politica' => $politica];
+
+    }
+
 }
 
 

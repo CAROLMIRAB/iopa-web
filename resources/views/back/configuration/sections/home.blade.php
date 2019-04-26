@@ -12,18 +12,17 @@
     </div>
     
     <div class="col-12">
-        <form action="{{ route('core.save-home') }}" method="post" id="politicas_add" enctype="multipart/form-data" data-route="{{ route('core.min-politicas') }}">
-
+        <form action="{{ route('core.save-politica') }}" method="post" id="politicas" enctype="multipart/form-data" data-route="{{ route('core.min-politicas') }}">
             <div class="form-group">
                     <label for="specialty">{{ __('Especialidades') }}</label>
                     <select name="specialty[]" id="specialty" class="form-control" data-route="{{ route('specialty.find-specialties')}}"> 				
                             </select>
                     <p class="invalid-feedback specialty-error"></p>
             </div>
+            <input id="politica-slug" name="slug" value="specialty" class="form-control hidden" type="hidden">
         </form>
     </div>
     <div class="col-md-12">
-        <form action="{{ route('core.save-subpoliticas') }}" method="post" id="politicas_add" enctype="multipart/form-data" data-route="{{ route('core.min-politicas') }}">
             <div class="field_row row">
                 <div class="col-12">
                         <div style="height: 30px"> </div>
@@ -31,14 +30,14 @@
                     <hr class="my-4">
                 </div>
                 <div class="col-12">
-                  
+                        <form action="{{ route('core.save-subpolitica') }}" method="post" id="politica_add" enctype="multipart/form-data" data-route="{{ route('core.min-politica') }}">   
                     <div class="form-group form-group-sm">
-                        <label for="politicas-subtitle">{{ __('Archivo') }}</label>
-                        <input id="politicas-archive" name="archive" class="form-control" type="file" accept="application/pdf">
+                        <label for="politica-subtitle">{{ __('Archivo') }}</label>
+                        <input id="politica-archive" name="archive" class="form-control" type="file" accept="application/pdf">
                     </div>
                     <label for="politicas-subtitle">{{ __('Titulo de descarga') }}</label>
                     <div class="input-group input-group-sm mb-3">
-                        <input id="politicas-subtitle" name="politicas_subtitle" class="form-control">
+                        <input id="politicas-subtitle" name="politica_subtitle" class="form-control">
                         <div class="input-group-append">
                                 <button id="btn-addpoliticas" class="btn btn-icon btn-2 btn-primary btn-sm" type="button" data-loading-text="<i class='fa fa-spinner' aria-hidden='true'></i>Agregando...">
                                     <span class="btn-inner--icon">
@@ -46,12 +45,13 @@
                                     </span>
                                 </button>
                                 </div>
-                        <input id="politicas-slug" name="politicas_slug" value="politicas" class="form-control hidden" type="hidden">
+                        <input id="politica-slugg" name="slug" value="home" class="form-control hidden" type="hidden">
                     </div>
+                </form>
                 </div>
                
                 <div class="col-12">
-                    <table class="table align-items-center table-flush table-politicas" style="width: 100%">
+                    <table class="table align-items-center table-flush table-politica" style="width: 100%">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" width="25%">ARCHIVO</th>
@@ -81,7 +81,7 @@
                     </table>
                 </div>
             </div>
-        </form>
+        
     </div>
    
 </div>

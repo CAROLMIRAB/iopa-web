@@ -137,6 +137,11 @@
 
         Configuration.addEmailContact();
 
+        Configuration.addPdf();
+
+        Configuration.minTrPolitica();
+
+        Configuration.saveSpecialties();
 	});
 
 </script>

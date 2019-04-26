@@ -44,6 +44,21 @@ var Configuration = function () {
         return li;
     }
 
+    function politicasTr(route, name, title, ky) {
+        var tr = '<tr>';
+        tr += '<td>';
+        tr += ' <a href="' + route + '">' + name + '</a>';
+        tr += '</td>';
+        tr += '<td>';
+        tr += title;
+        tr += '</td>';
+        tr += '<td>';
+        tr += '<button class="btn btn-primary min-pol-tr btn-sm" data-key="' + ky + '"><i class="ni ni-fat-delete" style="font-size: 18px"></i> </button>'
+        tr += '</td>';
+        tr += '</tr>';
+        return tr;
+    }
+
     return {
         
         imagesUpSlide: function (image) {
@@ -483,5 +498,109 @@ var Configuration = function () {
 
         },
 
+        addPdf: function () {
+            var $form = $('#politicas_add');
+            $('#btn-addpoliticas').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("politicas_add"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    var title = '',
+                        route = '',
+                        pdf = '',
+                        key = '';
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        var json = JSON.parse(data.data);
+                        $.each(json, function (k, val) {
+                            key = k;
+                            title = val.title;
+                            route = val.route;
+                            pdf = val.pdf;
+                        });
+
+                        var tr = politicasTr(route, pdf, title, key);
+                        $('.table-politica > tbody').append(tr);
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addpoliticas').button('reset');
+                });
+                return false;
+            });
+        },
+
+        minTrPolitica: function () {
+            var wrapper = $('.table-politica > tbody');
+            $(wrapper).on('click', '.min-pol-tr', function (e) {
+                e.preventDefault();
+                var tr = $(this).parents('tr').index() - 1;
+                var slug = $('#politica-slugg').val();
+                $(this).parents('tr').remove();
+                $.ajax({
+                    type: 'post',
+                    url: $('#politica_add').data('route'),
+                    data: {
+                        index: $(this).data('key'),
+                        slug: slug
+                    },
+                    dataType: "json"
+                }).done(function (data) {
+                    if (data.status == 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                    if (data.status == 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#btn-addpolitica').button('reset');
+                });
+                return false;
+            });
+
+        },
+
+
+        saveSpecialties: function () {
+            var $form = $('#politicas');
+            $('#home-btn-save').click(function () {
+                $(this).button('loading');
+                var formData = new FormData(document.getElementById("politicas"));
+                $.ajax({
+                    type: 'post',
+                    url: $form.attr('action'),
+                    data: formData,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }).done(function (data) {
+                    if (data.status === 400) {
+                        toastr.error(data.message, '!Error!');
+                    }
+                    if (data.status === 200) {
+                        toastr.success(data.message, '!Exitoso!');
+                    }
+                }).fail(function (data) {
+                    toastr.error(data.message, '!Error!');
+                }).always(function () {
+                    $('#home-btn-save').button('reset');
+                });
+                return false;
+            });
+        },
     }
 }();

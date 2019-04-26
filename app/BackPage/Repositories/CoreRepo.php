@@ -30,4 +30,23 @@ class CoreRepo
         return $config;
     }
 
+    public function findConfigSlug($slug)
+    {
+        $config = Configuration::select('content', 'title')
+            ->where('slug', $slug)
+            ->first();
+
+           
+        return $config;
+    }
+
+    public function addPolitica($slug, $datarender)
+    {
+        $config = \DB::table('configurations')->where('slug', $slug)->update(
+            ['content' => $datarender]
+        );
+
+        return $config;
+    }
+
 }
