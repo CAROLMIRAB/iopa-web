@@ -43,6 +43,6 @@
 
 <div class="clearfix"></div>
     @include('front.home.posts', array('posts' => $posts))
-    @include('front.home.specialties'/*,  array('footerspecialties' => $footerspecialties)*/)
+    @include('front.home.specialties',  array('footerspecialties' => $footerspecialties))
     @include('front.home.partners')
 @endsection
