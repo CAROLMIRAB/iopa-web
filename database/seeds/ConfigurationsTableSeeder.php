@@ -105,8 +105,16 @@ class ConfigurationsTableSeeder extends Seeder
                 ],
                 [
                     'id' => 12,
+                    'title' => 'Configuracion Footer',
+                    'slug' => 'home',
+                    'content' => '[]',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ],
+                [
+                    'id' => 13,
                     'title' => 'Specialties Home',
-                    'slug' => 'specialties-home',
+                    'slug' => 'specialty',
                     'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
