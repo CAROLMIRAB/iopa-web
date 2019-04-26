@@ -11,6 +11,7 @@ use App\Office;
 use App\Surgery;
 use App\Agreement;
 use App\Specialty;
+use App\Configuration;
 
 class WebRepo
 {
@@ -152,6 +153,25 @@ class WebRepo
             ->get();
 
         return $regions;
+    }
+
+    public function showAllSpecialtiesWithId($data)
+    {
+        $specialty = Specialty::select('id', 'name', 'body','slug', 'status', 'created_at')
+            ->whereIn('id', $data)
+            ->orderBy('name', 'DESC')
+            ->get();
+        return $specialty;
+    }
+
+    public function findAllId()
+    {
+        $config = Configuration::select('title', 'content', 'slug')
+            ->where('id', 13)
+            ->orderBy('id')
+            ->first();
+
+        return $config;
     }
 
 }

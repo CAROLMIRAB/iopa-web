@@ -44,9 +44,14 @@
 					<h3>Revisa aquí</h3>
 					<div class="f-item f-links">
 						<div class="f-box">
-							<a href="#!" class="f-box-item"><i class="fa fa-circle"></i> Revisa nuestras políticas de privacidad.</a>
-							<a href="#!" class="f-box-item"><i class="fa fa-circle"></i> Revisa nuestro reglamento interno.</a>
-							<a href="#!" class="f-box-item"><i class="fa fa-circle"></i> Descarga nuestra boleta electrónica</a>
+								@if(!is_null($config[11]['home']['content']) && $config[11]['home']['content'] <> "")
+								@foreach ($config[11]['home']['content'] as $key => $item)
+                                @foreach ($item as $ky => $it)
+							<a href="{{ $it['route'] }}" class="f-box-item"><i class="fa fa-circle"></i>  {{ $it['title'] }}</a>
+						
+							@endforeach
+							@endforeach
+							@endif
 						</div>
 					</div>
 				</div>

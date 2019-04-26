@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\BackPage\Repositories\OfficeRepo;
 use App\BackPage\Repositories\CoreRepo;
+use App\BackPage\Repositories\SpecialtyRepo;
 use Illuminate\Support\ServiceProvider;
 use App\BackPage\Collections\CoreCollection;
 
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $repo = new OfficeRepo();
             $offices = $repo->showAllOffices();
-            
+
             $repoconf = new CoreRepo();
             $colleconf = new CoreCollection();
             $confdata = $repoconf->findAll(); 

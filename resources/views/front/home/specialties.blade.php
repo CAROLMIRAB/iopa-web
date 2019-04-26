@@ -5,21 +5,27 @@
           Especialidades
         </h3>
         <p>
+        
             {!! isset($config[6]['pages-description']['content']['page-specialty']) ? $config[6]['pages-description']['content']['page-specialty'] : '' !!}
         </p>
       </div>
 
       <div class="row row-especialidades">
+        @if(isset($footerspecialties) && !is_null($footerspecialties))
+        @foreach($footerspecialties as $item)
           <div class="col-sm-3">
             <div class="item-especialidad ">
               <a href="#!">
                 <img src="./assets/img/home/papilas.jpg" alt="Fotos de Papilas">
-                <h5>Fotos de Papilas</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h5>{{ $item->name }}</h5>
+              <p class="truncate">{{ $item->body }}</p>
                 <span class="ui-go">Ver más</span>
               </a>
             </div>
           </div>
+          @endforeach
+          @endif
+
           <div class="col-sm-3">
             <div class="item-especialidad " data-wow-delay=".3s">
               <a href="#!">

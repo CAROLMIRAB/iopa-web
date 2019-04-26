@@ -32,9 +32,11 @@ class HomeController extends Controller
      */
     public function home()
     {
+        $data = $this->webRepo->findAllId();
+        $footerspecialties = $this->webRepo->showAllSpecialtiesWithId(json_decode($data->content, true));
         $post = $this->webRepo->showPostHome();
         $posts = $this->webCollection->RenderPostsHome($post);
-        return view('front.home.index', compact('posts'));
+        return view('front.home.index', compact('posts', 'footerspecialties'));
     }
 
     public function reserve(Request $request)
