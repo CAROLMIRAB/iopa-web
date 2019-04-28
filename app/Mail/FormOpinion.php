@@ -13,6 +13,8 @@ class FormOpinion extends Mailable
 
     protected $form;
 
+   
+
     /**
      * Create a new message instance.
      *
@@ -21,6 +23,7 @@ class FormOpinion extends Mailable
     public function __construct($form)
     {
         $this->form = $form;
+        
     }
 
     /**

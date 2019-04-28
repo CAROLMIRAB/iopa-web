@@ -9,7 +9,9 @@ use App\FrontPage\Repositories\WebRepo;
 use App\FrontPage\Collections\WebCollection;
 use Yajra\DataTables\Facades\DataTables;
 use App\Mail\FormOpinion;
+use App\Mail\FormRequests;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Foundation\Http\FormRequest;
 
 class WebController extends Controller
 {
@@ -278,6 +280,23 @@ class WebController extends Controller
        $render = $this->postCollect->renderEmails($office->slug, $find);
      
        Mail::to($render)->send(new FormOpinion($request));
+
+       return redirect()->back();
+      
+    }
+
+     /**
+     * Send form Opinion
+     * 
+     */
+    public function sendRequest(Request $request)
+    {
+       $find = $this->postRepo->findConf('contact');
+       $office = $this->postRepo->findOfficeSlug($request->office);
+       $region =  $this->postRepo->showCommuneByName($request->region);
+       $render = $this->postCollect->renderEmails($office->slug, $find);
+     
+       Mail::to($render)->send(new FormRequests($request, $region));
 
        return redirect()->back();
       

@@ -7,18 +7,24 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class FormRequest extends Mailable
+class FormRequests extends Mailable
 {
     use Queueable, SerializesModels;
+
+    protected $form;
+
+    protected $region;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($form, $region)
     {
-        //
+        $this->form = $form;
+
+        $this->region = $region;
     }
 
     /**
@@ -28,6 +34,6 @@ class FormRequest extends Mailable
      */
     public function build()
     {
-        return $this->view('front.emails.requests');
+        return $this->view('front.emails.requests', ['form' => $this->form, 'region' => $this->region ]);
     }
 }

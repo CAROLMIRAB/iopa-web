@@ -15,7 +15,7 @@
         </div>
         <div class="row mt-40">
             <div class="col-md-12">
-            <form name="opinion" action="{{ route('contact.send-opinion') }}" method="POST">
+            <form name="opinion" action="{{ route('contact.send-opinion') }}" method="POST" class="needs-validation" novalidate>
                 <div class="ui-form contact-form">
                     <div class="form-loader hide">
                         <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
@@ -79,13 +79,16 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="correo">Correo (*)</label>
-                                        <input type="text" name="email" class="form-control">
+                                        <input type="text" name="email" id="email" class="form-control" required>
+                                        <div class="valid-feedback">
+                                                Looks good!
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="ui-label" for="residencia">Residencia (*)</label>
-                                        <input type="text" name="residencia" class="form-control">
+                                        <label class="ui-label" for="residencia" required>Residencia (*)</label>
+                                        <input type="text" name="residencia" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +99,7 @@
                                     <select name="region" id="" class="form-control region_chile" data-url="{{ route('contact.communes') }}">
                                     <option value="">Selecciona una opción</option>
                                     @foreach ($regions as $region)
-                                        <option value="{{ $region->name }}">{{ $region->name }}</option>
+                                        <option value="{{ $region->id }}">{{ $region->name }}</option>
                                     @endforeach
                                     </select>
                                     </div>

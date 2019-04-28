@@ -155,6 +155,16 @@ class WebRepo
         return $regions;
     }
 
+    public function showCommuneByName($region)
+    {
+            $regions = DB::table('regions')->select('id','name')
+            ->where('id', $region)
+            ->orderBy('name', 'ASC')
+            ->first();
+
+        return $regions;
+    }
+
     public function showAllSpecialtiesWithId($data)
     {
         $specialty = Specialty::select('id', 'name', 'body','slug', 'status', 'created_at')

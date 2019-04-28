@@ -157,6 +157,7 @@ mix.scripts([
     'node_modules/wow.js/dist/wow.min.js',
     'node_modules/slick-carousel/slick/slick.min.js',
     'plugins/succinct/jQuery.succinct.min.js',
+    'node_modules/jquery-validation/dist/jquery.validate.min.js',
     'plugins/rut/jquery.rut.min.js',
     'bower_components/datatables.net/js/jquery.dataTables.min.js'
 ], 'public/front/js/front.min.js').version();

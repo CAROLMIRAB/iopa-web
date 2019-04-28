@@ -15,6 +15,7 @@
 
         <div class="row mt-40">
             <div class="col-md-12">
+                <form name="request" id="form-request" action="{{ route('contact.send-request') }}" method="POST">
                 <div class="ui-form contact-form">
                     <div class="form-loader hide">
                         <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
@@ -83,7 +84,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="sucursales">Sucursal</label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="office" id="" class="form-control">
                         <option value="">Selecciona una opción</option>
                         @foreach($offices as $office)
                                         <option value="{{ $office->name }}">{{ $office->name }}</option>
@@ -144,7 +145,8 @@
                 </div>
             </div>
         </div>
-
+        {{ csrf_field() }}
+    </form>
 
     </div>
 </section>

@@ -294,8 +294,7 @@ var table = $('.datatable-exams').DataTable({
 });
 table.columns.adjust().draw();
 
-$(document).on('keyup', '#reserve-buscador', function () {
-$('.region_chile').on('change', function(e){
+$(document).on('change', '.region_chile', function (e) {
   var id = e.target.value;
   var url = $(this).data('url');
   $.ajax({
@@ -318,5 +317,58 @@ $('.region_chile').on('change', function(e){
   });
 });
 
-});
+$("#form-request").validate({
+  rules: {
+    name: {
+        required: true,
+        minlength: 2,
+        lettersonly: true
+    },
+    lastname: {
+        required: true,
+        minlength: 2,
+        lettersonly: true
+    },
+    phone: {
+        number: true,
+        minlength: 9
+
+    },
+    rut: {
+        required: true,
+        minlength: 6,
+        maxlength: 9
+    },
+    email: {
+      required: true,
+      email: true
+    },
+},
+messages: {
+    name: {
+        required: "El nombre es un campo requerido",
+        minlength: "Escriba un nombre más largo",
+        lettersonly: "Solo se permiten letras"
+    },
+    lastname: {
+        required: "El apellido es un campo requerido",
+        minlength: "Escriba un apellido más largo",
+        lettersonly: "Solo se permiten letras" 
+    },
+    phone: {
+        number: "Ingrese un teléfono válido",
+        minlength: "Ingrese un teléfono válido"
+    },
+    rut: {
+        required: "El rut es un campo requerido",
+        minlength: "No es un rut válido",
+        maxlength: "No es un rut válido",
+    },
+    email: "El email no es válido"
+},
+  submitHandler : function(form) {
+     
+      form.submit();
+  }
+  });
 
