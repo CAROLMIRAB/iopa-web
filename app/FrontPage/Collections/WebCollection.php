@@ -136,4 +136,21 @@ class WebCollection
     }
     return $dataarr;
   }
+
+  public function renderEmails($office, $emails)
+  {
+   $allemails = "";
+    $group = json_decode($emails->content, true);
+    foreach($group as $item => $cont){
+      foreach($cont as $it=> $con){
+      if($it == $office){
+       $allemails= $con;
+      }
+     }
+    }
+  
+    return $allemails;
+  }
+
+
 }

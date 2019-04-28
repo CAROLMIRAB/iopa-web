@@ -157,6 +157,16 @@ Route::post('comunas/', [
     'uses' => 'Front\WebController@allCommunes'
 ]);
 
+Route::post('enviar-opinion/', [
+    'as' => 'contact.send-request',
+    'uses' => 'Front\WebController@sendRequest'
+]);
+
+Route::post('enviar-solicitud/', [
+    'as' => 'contact.send-opinion',
+    'uses' => 'Front\WebController@sendOpinion'
+]);
+
 
 Auth::routes();
 

@@ -26,19 +26,19 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="name">Nombre</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="apellido">Apellido</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="lastname" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="rut">RUT</label>
-                                        <input type="text" placeholder="11.111.111-0" class="form-control">
+                                        <input type="text" name="rut" placeholder="11.111.111-0" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -46,20 +46,20 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="ui-label" for="telefono">Teléfono</label>
-                                        <input type="text" class="form-control">
+                                        <label class="ui-label" for="phone">Teléfono</label>
+                                        <input type="text" name="phone" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="correo">Correo</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="email" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="prevision">Previsión</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="prevision" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                         <select name="" id="" class="form-control comuna_chile">
                         <option value="">Selecciona una opción</option>
                         @foreach ($communes as $com)
-                                        <option value="{{ $com->id }}">{{ $com->name }}</option>
+                                        <option value="{{ $com->name }}">{{ $com->name }}</option>
                             @endforeach
                       </select>
                                     </div>
@@ -86,7 +86,7 @@
                                         <select name="" id="" class="form-control">
                         <option value="">Selecciona una opción</option>
                         @foreach($offices as $office)
-                                        <option value="{{ $office->id }}">{{ $office->name }}</option>
+                                        <option value="{{ $office->name }}">{{ $office->name }}</option>
                         @endforeach
                       </select>
                                     </div>
@@ -94,7 +94,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="ui-label" for="motivo">Motivo</label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="motivo" id="" class="form-control">
                           <option value="">Selecciona una opción</option>
                               <option value="Copia ficha clínica o receta médica">Historial Clínico Completo.</option>
                               <option value="Copia ficha clínica o receta médica">Registros Clínicos Consultas Médicas.</option>

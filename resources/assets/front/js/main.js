@@ -294,6 +294,7 @@ var table = $('.datatable-exams').DataTable({
 });
 table.columns.adjust().draw();
 
+$(document).on('keyup', '#reserve-buscador', function () {
 $('.region_chile').on('change', function(e){
   var id = e.target.value;
   var url = $(this).data('url');
@@ -309,7 +310,7 @@ $('.region_chile').on('change', function(e){
     $('.comuna_chile').empty();
     $('.comuna_chile').append('<option value="0" disable="true" selected="true">Seleccione una opción</option>');
     $.each( data, function( key, value ) {
-      console.log(key+"  " +value,name);
+      //console.log(key+"  " +value,name);
       $('.comuna_chile').append('<option value="'+ value.id +'">'+ value.name +'</option>');
     });
     
@@ -317,5 +318,5 @@ $('.region_chile').on('change', function(e){
   });
 });
 
-
+});
 

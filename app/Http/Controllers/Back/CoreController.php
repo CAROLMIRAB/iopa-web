@@ -8,6 +8,9 @@ use App\BackPage\Collections\CoreCollection;
 use App\BackPage\Repositories\CoreRepo;
 use App\BackPage\Repositories\OfficeRepo;
 use App\Core\Core;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FormOpinion;
+use App\Mail\FormRequest;
 
 class CoreController extends Controller
 {

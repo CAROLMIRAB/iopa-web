@@ -105,17 +105,17 @@ class CoreCollection
     public function renderContact($offices, $request)
     {
         $emails = [];
-        $contact = [];
         foreach($offices as $off){
+        $contact = [];
         $office = $off->slug; 
-       
+        
         foreach ($request->$office as $key => $n) {
             if (!is_null($request->$office[$key])) {
-               $emails[] =  [ 
-                   $office => $request->$office[$key]
-               ];
+               $contact[]= $request->$office[$key];
             }
         }
+
+        $emails[] = [$office => $contact];
     }
 
     return  json_encode($emails);

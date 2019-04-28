@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use App\FrontPage\Repositories\WebRepo;
 use App\FrontPage\Collections\WebCollection;
 use Yajra\DataTables\Facades\DataTables;
+use App\Mail\FormOpinion;
+use Illuminate\Support\Facades\Mail;
 
 class WebController extends Controller
 {
@@ -263,6 +265,22 @@ class WebController extends Controller
         $data = $this->postRepo->findAllAgreement();
         $agreement = $this->postCollect->renderData($data);
         return view('front.sections.agreements', compact('agreement'));
+    }
+
+    /**
+     * Send form Opinion
+     * 
+     */
+    public function sendOpinion(Request $request)
+    {
+       $find = $this->postRepo->findConf('contact');
+       $office = $this->postRepo->findOfficeSlug($request->office);
+       $render = $this->postCollect->renderEmails($office->slug, $find);
+     
+       Mail::to($render)->send(new FormOpinion($request));
+
+       return redirect()->back();
+      
     }
 
 }

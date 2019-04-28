@@ -174,4 +174,24 @@ class WebRepo
         return $config;
     }
 
+
+    public function findConf($slug)
+    {
+        $config = Configuration::select('title', 'content', 'slug')
+            ->where('slug', $slug)
+            ->orderBy('id')
+            ->first();
+
+        return $config;
+    }
+
+    public function findOfficeSlug($slug)
+    {
+      $offices = Office::select('name','slug')
+      ->where('name', $slug)
+      ->first();
+ 
+        return $offices;
+    }
+
 }
