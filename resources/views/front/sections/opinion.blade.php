@@ -15,7 +15,7 @@
         </div>
         <div class="row mt-40">
             <div class="col-md-12">
-            <form name="opinion" action="{{ route('contact.send-opinion') }}" method="POST" class="needs-validation" novalidate>
+            <form name="opinion" id="form-opinion" action="{{ route('contact.send-opinion') }}" method="POST" class="needs-validation" novalidate>
                 <div class="ui-form contact-form">
                     <div class="form-loader hide">
                         <i class="fa fa-circle-o-notch text-primary fa-spin fa-3x"></i>
