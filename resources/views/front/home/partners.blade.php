@@ -2,7 +2,7 @@
     <div class="container wow fadeInUp">
         <div class="inner-section text-center">
             <h3 class="inner-title">Previsiones</h3>
-            <p>Consequat posuere viverra fringilla volutpat parturient sociosqu tincidunt potenti, quis gravida Semper.</p>
+            <p>{!! isset($config[6]['pages-description']['content']['page-prevision']) ? $config[6]['pages-description']['content']['page-prevision'] : '' !!}</p>
         </div>
         <div class="row">
             <div class="col-sm-12">
