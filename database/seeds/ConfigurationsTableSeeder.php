@@ -118,6 +118,14 @@ class ConfigurationsTableSeeder extends Seeder
                     'content' => '[]',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
+                ],
+                [
+                    'id' => 14,
+                    'title' => 'Convenios Home',
+                    'slug' => 'convenio',
+                    'content' => '[]',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
                 ]
             ]);
         }

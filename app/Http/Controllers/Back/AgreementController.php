@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\BackPage\Repositories\AgreementRepo;
 use App\BackPage\Collections\AgreementCollection;
+use App\BackPage\Repositories\CoreRepo;
 use Yajra\DataTables\DataTables;
 use App\Core\Core;
 use Validator;
@@ -18,16 +19,18 @@ class AgreementController extends Controller
 
     private $agreementRepo;
     private $agreementCollection;
+    private $coreRepo;
 
     /**
      * Class construct 
      * 
      * @return void
      */
-    public function __construct(AgreementRepo $agreementRepo, AgreementCollection $agreementCollection)
+    public function __construct(AgreementRepo $agreementRepo, AgreementCollection $agreementCollection, CoreRepo $coreRepo)
     {
         $this->agreementRepo = $agreementRepo;
         $this->agreementCollection = $agreementCollection;
+        $this->coreRepo = $coreRepo;
     }
 
     public function viewAgreement()
@@ -428,6 +431,7 @@ class AgreementController extends Controller
         try {
             $convenios = is_null($request->list) ? '[]' : json_encode($request->list);
             $ges = $this->agreementRepo->changeConvenio($request->slug, $request->title, $request->description, $request->status, null, $convenios);
+            $conv = $this->coreRepo->changeConfiguration($request->slug, $convenios);
             
             return response()->json([
                 'status' => 200,
