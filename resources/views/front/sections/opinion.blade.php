@@ -80,9 +80,6 @@
                                     <div class="form-group">
                                         <label class="ui-label" for="correo">Correo (*)</label>
                                         <input type="text" name="email" id="email" class="form-control" required>
-                                        <div class="valid-feedback">
-                                                Looks good!
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">

@@ -343,6 +343,9 @@ $("#form-request").validate({
       required: true,
       email: true
     },
+    residencia: {
+      required: true
+    },
 },
 messages: {
     name: {
@@ -364,11 +367,82 @@ messages: {
         minlength: "No es un rut válido",
         maxlength: "No es un rut válido",
     },
-    email: "El email no es válido"
+    email: {
+      required: "El email no es válido",
+      email: "No es un email válido"
+    },
+    residencia: {
+      required: "Este campo es requerido"
+    },
 },
   submitHandler : function(form) {
      
       form.submit();
   }
   });
+
+  $("#form-opinion").validate({
+    rules: {
+      name: {
+          required: true,
+          minlength: 2,
+          lettersonly: true
+      },
+      lastname: {
+          required: true,
+          minlength: 2,
+          lettersonly: true
+      },
+      phone: {
+          number: true,
+          minlength: 9
+  
+      },
+      rut: {
+          required: true,
+          minlength: 6,
+          maxlength: 9
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      residencia: {
+        required: true
+      },
+  },
+  messages: {
+      name: {
+          required: "El nombre es un campo requerido",
+          minlength: "Escriba un nombre más largo",
+          lettersonly: "Solo se permiten letras"
+      },
+      lastname: {
+          required: "El apellido es un campo requerido",
+          minlength: "Escriba un apellido más largo",
+          lettersonly: "Solo se permiten letras" 
+      },
+      phone: {
+          number: "Ingrese un teléfono válido",
+          minlength: "Ingrese un teléfono válido"
+      },
+      rut: {
+          required: "El rut es un campo requerido",
+          minlength: "No es un rut válido",
+          maxlength: "No es un rut válido",
+      },
+      email: {
+        required: "El email no es válido",
+        email: "No es un email válido"
+      },
+      residencia: {
+        required: "Este campo es requerido"
+      },
+  },
+    submitHandler : function(form) {
+       
+        form.submit();
+    }
+    });
+  
 
