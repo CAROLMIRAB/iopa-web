@@ -7,18 +7,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <ul class="partners-caousel">
+                        @if(isset($config[13]['covenio']['content']))
+                        @foreach($convenio['content'] as $key => $item)
                     <li>
-                        <img src="{{ asset('img/partners/partner01.jpg') }}" alt="">
+                        <img src="{{ $item['img'] }}" alt="">
                     </li>
-                    <li>
-                        <img src="{{ asset('img/partners/partner02.jpg') }}" alt="">
-                    </li>
-                    <li>
-                        <img src="{{ asset('img/partners/partner03.jpg') }}" alt="">
-                    </li>
-                    <li>
-                        <img src="{{ asset('img/partners/partner04.jpg') }}" alt="">
-                    </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>
