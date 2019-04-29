@@ -94,7 +94,15 @@ $(document).ready(function () {
       $('#sendSuccess').removeClass('hide');
 
     }, 2000);
+
   });
+
+   /* $(document).on('click', '#submit-form', function () {
+      $(this).text('Enviando...');
+      $('#sendSuccess').addClass('hide');
+      $('.form-loader').removeClass('hide');
+      
+  });*/
 
   $('.truncate').succinct({
     size: 60
@@ -440,9 +448,7 @@ messages: {
       },
   },
     submitHandler : function(form) {
-       
         form.submit();
     }
-    });
-  
+});
 

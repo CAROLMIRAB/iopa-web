@@ -169,7 +169,7 @@
                                     <p class="text-muted"> (*) Son campos obligatorios que nos facilitarán responder su consulta o solicitud</p>
                                 </div>
                                 <div class="col-sm-4 text-right">
-                                    <button type="submit" class="btn btn-primary btn-lg" id="submit">Enviar mensaje</button>
+                                    <button type="submit" class="btn btn-primary btn-lg" id="submit-form">Enviar mensaje</button>
                                 </div>
                             </div>
                         </div>
