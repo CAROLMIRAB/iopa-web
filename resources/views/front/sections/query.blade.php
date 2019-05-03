@@ -30,7 +30,7 @@
                         @if(isset($config[9]['query']['content']))
                         <?php $i = 1; ?> @foreach ($config[9]['query']['content'] as $key => $item) @if($item['active'] == 'active')
                         <div class="item {{ ($i == 1) ? 'active' : '' }}">
-                            <img src="{{ $item['img'] }}" alt="..." class="center" />
+                            <img src="{{ asset("uploads/images/".$item['img']) }}" alt="..." class="center" />
                             <div class="carousel-caption">
                                 {!! $item['description'] !!}
                             </div>

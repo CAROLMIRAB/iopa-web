@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<div id="preloader_3"></div>
+	<!--<div id="preloader_3"></div>-->
 	@include('front.shared.header') 
 	
 	@yield('content')
@@ -37,9 +37,9 @@
 	  $(document).ready(function(){
 				$("#popup-principal").modal('show');
 			
-				window.onload = function() {
+				/*window.onload = function() {
 					$("#preloader_3").fadeOut("slow");
-				}
+				}*/
 		});
 
 
