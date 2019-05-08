@@ -71,10 +71,10 @@
 	});
 	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
 	$(document).ready(function(){
-	Surgery.slug();
-	Surgery.editHTML();
-	Surgery.imageUpload(image); 
-	Surgery.editSurgery();
+	Specialty.slug();
+	Specialty.editHTML();
+	Specialty.imageUpload(image); 
+	Specialty.editSpecialty();
 	Offices.selectOfficeEdit();
 	});
 

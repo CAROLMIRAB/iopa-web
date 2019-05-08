@@ -81,11 +81,13 @@ class ExamController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'slug' => 'required',
+                'code' => 'required',
                 'description' => 'required',
                 'image' => 'required'
             ], [
                 'slug.required' => __('Ha ocurrido un error publicando este artículo'),
                 'name.required' => __('El título es requerido'),
+                'code.required' => __('El título es requerido'),
                 'description.required' => __('Debe escribir una descripción para la examen'),
                 'image.required' => __('Debe agregar una imagen destacada') 
             ]);
@@ -111,15 +113,18 @@ class ExamController extends Controller
                 'description' => $request->description,
                 'preparation' => $request->preparation,
                 'indications' => $request->indications,
-                'file' => $image_url
+                'file' => $image_url,
+                'code' => $request->code
             );
 
+            if(isset($offices)){
             $offices = array_map(
                 function ($value) {
                     return (int)$value;
                 },
                 $offices
             );
+        }
 
             if (!empty($image_url)) {
                 $exam = $this->examRepo->createExam($data, $offices);

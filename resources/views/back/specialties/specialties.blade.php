@@ -40,7 +40,7 @@
 		}
 	});
 	$(function(){
-    Specialty.allSurgeries();
+    Specialty.allSpecialties();
     Specialty.changeStatus();
 	});
 

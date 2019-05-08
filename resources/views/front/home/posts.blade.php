@@ -29,11 +29,8 @@
                                         <h3>{{ $posts[0]->name }}</h3>
                                     </div>
                                 </figure>
-                                <div class="meta-date">
-                                    {{ $posts[0]->created }}
-                                </div>
                                 <div class="post-extract text-left">
-                                    {{ $posts[0]->excerpt }}[...]
+                                    {{ $posts[0]->excerpt }}
                                 </div>
                             </a>
                         </div>
@@ -44,7 +41,7 @@
                             @if(isset($posts[1]))
                             <li class="media">
                                 <div class="media-left">
-                                    <a href="{{ $posts[1]->slug }}">
+                                    <a href="{{ $posts[1]->route }}">
                                             <img class="media-object" src="{{ $posts[1]->image }}" alt="...">
 										</a>
                                 </div>
@@ -52,7 +49,7 @@
                                     <h4 class="media-heading">
                                         <a href="{{ $posts[1]->route }}"> {{ $posts[1]->name }}</a>
                                     </h4>
-                                    <p>{{ $posts[1]->created }}</p>
+                                    <p class="post-extract">{{ $posts[1]->excerpt }}</p>
                                 </div>
                             </li>
                             @endif
@@ -67,7 +64,7 @@
                                     <h4 class="media-heading">
                                         <a href="{{ $posts[2]->route }}"> {{ $posts[2]->name }}</a>
                                     </h4>
-                                    <p>{{ $posts[2]->created }}</p>
+                                    <p class="post-extract">{{ $posts[1]->excerpt }}</p>
                                 </div>
                             </li>
                             @endif
@@ -82,7 +79,7 @@
                                     <h4 class="media-heading">
                                         <a href="{{ $posts[3]->route }}"> {{ $posts[3]->name }}</a>
                                     </h4>
-                                    <p>{{ $posts[3]->created }}</p>
+                                    <p class="post-extract">{{ $posts[1]->excerpt }}</p>
                                 </div>
                             </li>
                             @endif
@@ -97,7 +94,7 @@
                                     <h4 class="media-heading">
                                         <a href="{{ $posts[4]->route }}"> {{ $posts[4]->name }}</a>
                                     </h4>
-                                    <p>{{ $posts[4]->created }}</p>
+                                    <p class="post-extract">{{ $posts[1]->excerpt }}</p>
                                 </div>
                             </li>
                             @endif

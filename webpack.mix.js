@@ -127,7 +127,8 @@ mix.scripts([
     'node_modules/toastr/toastr.js',
     'node_modules/jquery-validation/dist/jquery.validate.min.js',
     'bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js',
-    'node_modules/dropzone/dist/min/dropzone.min.js'
+    'node_modules/dropzone/dist/min/dropzone.min.js',
+    'plugins/rut/jquery.rut.min.js',
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([

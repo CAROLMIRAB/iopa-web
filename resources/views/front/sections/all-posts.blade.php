@@ -19,7 +19,7 @@
                     @foreach ($posts as $post)
                     <li class="media blog-preview">
                         <div class="media-left">
-                            <a href="#">
+                            <a href="{{ route('post.viewpost', $post->slug) }}">
                     @if($post->file)
                         <img src="{{ $post->image }}" class="media-object">
                     @endif
@@ -30,7 +30,7 @@
                                 @foreach ($post->tagsl as $item)
                                 <span class="post-tag">{{ $item }}</span> @endforeach
                             </div>
-                            <h4 class="media-heading"><a href="/post.html">{{ $post->name }}</a></h4>
+                            <h4 class="media-heading"><a href="{{ route('post.viewpost', $post->slug) }}">{{ $post->name }}</a></h4>
                             <div class="post-preview-meta">
                                 <span class="meta-date"> <i class="fa fa-clock-o"></i> {{ $post->created }}</span>
                             </div>

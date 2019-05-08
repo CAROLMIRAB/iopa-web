@@ -192,7 +192,7 @@ class SpecialtyController extends Controller
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha modificado la cirugía de forma correcta"
+                    'message' => "Ha modificado la especialidad de forma correcta"
                 ]);
 
             }

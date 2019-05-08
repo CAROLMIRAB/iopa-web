@@ -69,8 +69,8 @@ var Doctors = function () {
                     },
                     rut: {
                         required: true,
-                        minlength: 6,
-                        maxlength: 9
+                        minlength: 8,
+                        maxlength: 10
                     },
                     email: "email",
                     excerpt: "required",
@@ -143,6 +143,15 @@ var Doctors = function () {
             jQuery.validator.addMethod("lettersonly", function (value, element) {
                 return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
             }, "Letters and spaces only please");
+
+            $('#excerpt').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
+                    }
+                }
+            });
         },
 
         editDoctor: function () {
@@ -233,6 +242,15 @@ var Doctors = function () {
             jQuery.validator.addMethod("lettersonly", function (value, element) {
                 return this.optional(element) || /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
             }, "Letters and spaces only please");
+
+            $('#excerpt').summernote({
+                callbacks: {
+                    onChange: function (contents, $editable) {
+                        myElement.val(myElement.summernote('isEmpty') ? "" : contents);
+                        v.element(myElement);
+                    }
+                }
+            });
         },
 
         imageUploadDoctor: function (route) {

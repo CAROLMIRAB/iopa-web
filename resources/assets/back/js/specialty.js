@@ -182,7 +182,7 @@ var Specialty = function () {
         },
 
 
-        allSurgeries: function () {
+        allSpecialties: function () {
             var route = $('.datatable-specialties').data('route');
             var table = $('.datatable-specialties').DataTable({
                 "processing": true,

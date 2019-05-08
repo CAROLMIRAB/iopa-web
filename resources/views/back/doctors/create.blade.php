@@ -178,7 +178,7 @@
 	});
 
 	$(document).ready(function(){
-
+		$('#rut').rut({ formatOn: 'keyup', ignoreControlKeys: false, useThousandsSeparator: false, minimumLength: 8 });
 		Doctors.imageUploadDoctor("{{ route('doctor.storeimg') }}"); 
 		Doctors.eliminateMessages();
 		Doctors.createDoctor();

@@ -19,8 +19,8 @@ class CreateExamsTable extends Migration
             $table->string('code', 128);
             $table->string('slug', 128)->unique();
             $table->text('description');
-            $table->text('preparation');
-            $table->text('indications');
+            $table->text('preparation')->nullable();
+            $table->text('indications')->nullable();
             $table->string('file', 128)->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();

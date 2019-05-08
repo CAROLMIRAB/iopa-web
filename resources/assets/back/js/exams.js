@@ -43,7 +43,8 @@ var Exams = function () {
                         minlength: 5
                     },
                     description: "required",
-                    image: "required"
+                    image: "required",
+                    code: "required"
                 },
                 messages: {
                     name: {
@@ -51,7 +52,8 @@ var Exams = function () {
                         minlength: "Escriba un título más largo"
                     },
                     description: "No ha agregado contenido",
-                    image: "No ha agregado una imagen"
+                    image: "No ha agregado una imagen",
+                    code: "Este campo es requerido"
                 },
                 ignore: ":hidden, [contenteditable='true']:not([description])"
             });

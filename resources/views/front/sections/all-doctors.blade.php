@@ -69,12 +69,12 @@
                     <p>
                       <img
                         class=" img-fluid "
-                        src="{{ $doctor->image }}"
+                        src="https://msaf.com.fj/wp-content/uploads/2017/06/500x500.png"
                         alt="card image"
                       />
                     </p>
                     <h4 class="card-title">{{ $doctor->name." ".$doctor->lastname }}</h4>
-                    <p class="card-subtitle">Cirujano</p>
+                    <p class="card-subtitle">{{ $doctor->listspecialty }}</p>
                     <p class="card-text truncate" >
                       {!! $doctor->excerpt !!}
                     </p>
@@ -85,7 +85,7 @@
                 <div class="card">
                   <div class="card-body text-center mt-4">
                     <h4 class="card-title">{{ $doctor->name." ".$doctor->lastname }}</h4>
-                    <p class="card-subtitle">Cirujano</p>
+                    <p class="card-subtitle">{{ $doctor->listspecialty }}</p>
                     <p class="card-text">
                         {!! $doctor->excerpt !!}
                     </p>

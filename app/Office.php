@@ -38,7 +38,7 @@ class Office extends Model
 
     public function office_surgery()
     {
-        return $this->belongsToMany(Office::class, 'surgery_office');
+        return $this->belongsToMany(Surgery::class, 'surgery_office');
     }
 
     public function office_exam()

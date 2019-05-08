@@ -42,8 +42,11 @@ class WebRepo
 
     public function viewSurgerySlug($slug)
     {
-        $post = Surgery::select('name', 'slug', 'description', 'preparation', 'indications', 'status','file' )
-        ->where('slug', $slug)
+        $post = Surgery::select('surgeries.id','surgeries.name', 'surgeries.slug', 'description', 'preparation', 'indications', 'surgeries.status','surgeries.file' )
+        ->where('surgeries.slug', $slug)
+        ->with(array('surgery_office'=>function($query){
+            $query->select('name');
+          }))
         ->first();
         return $post;
     }
@@ -81,6 +84,8 @@ class WebRepo
       $doctors = Doctor::where('doctors.status', 'ACTIVE')
       ->with(array('doctor_office'=>function($query){
         $query->select('slug');
+      }))->with(array('doctor_specialty'=>function($query){
+        $query->select('name');
       }))->orderBy('name', 'ASC')->get();
  
         return $doctors;

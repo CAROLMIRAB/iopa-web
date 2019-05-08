@@ -7,7 +7,7 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="ui-blog-details">
           <figure class="ui-blog-cover">
-            <img src="{{ $surgery->file }}" alt="Portada">
+            <img src="{{ $surgery->image }}" alt="Portada">
           </figure>
           <ul class="ui-breadcrum">
             <li>
@@ -32,24 +32,26 @@
               <h2>{{ $surgery->name }}</h2>
 
               <p>{!! $surgery->description !!}</p>
-
+              
+              @if(!is_null($surgery->preparation))
               <h2>PREPARACIÓN</h2>
-
               <p>{!! $surgery->preparation!!}</p>
+              @endif
 
+              @if(!is_null($surgery->indications))
               <h2>INDICACIONES</h2>
-
               <p>{!! $surgery->indications !!}</p>
+              @endif
             </div>
 
             <ul class="ui-blog-tags">
               Puedes hacerte esta cirugía en:
-              <li>
-                Providencia
-              </li>
-              <li>
-                La Florida
-              </li>
+              @foreach ($surgery->surgery_office as $item)
+                            <li>
+                                {{ $item->name }}
+                            </li>
+               @endforeach
+              
             </ul>
 
           </div>

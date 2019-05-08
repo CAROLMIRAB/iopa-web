@@ -125,8 +125,7 @@
                         </div>
                     </div>
                     <div class="side-widged text-center">
-                        <a href="#!" class="btn btn-theme04">
-                        <img src="./assets/img/home/icon/reservar.png" width="30px" alt="">
+                        <a href="javascript:;" class="btn btn-theme04 --open-sys">
                       RESERVA TU HORA</a>
                     </div>
                 </aside>

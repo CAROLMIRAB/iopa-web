@@ -4,7 +4,7 @@ namespace App\FrontPage\Collections;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-
+use App\Surgery;
 
 class WebCollection
 {
@@ -55,9 +55,17 @@ class WebCollection
   {
     foreach ($doctors as $doctor) {
       $doctor->image = url('') . "/uploads/images/" . $doctor->file;
+
       foreach ($doctor->doctor_office as $item) {
         $doctor->listoffice .= $item->slug . " ";
       }
+
+      foreach ($doctor->doctor_specialty as $k => $it) {
+        if($k == 0){
+        $doctor->listspecialty = $it->name;
+        }
+      }
+
     }
     return  $doctors;
   }
@@ -88,7 +96,9 @@ class WebCollection
 
   public function renderSurgery($surgery)
   {
-
+    $route = route('surgery.viewsurgery', ['slug' => $surgery->slug]);
+    $surgery->image = url('') . "/uploads/images/" . $surgery->file;
+    $surgery->route = $route;
     return  $surgery;
   }
 

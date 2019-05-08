@@ -2,7 +2,7 @@
 @section('content')
 
 <section class="section-aranceles" id="top">
-    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <!--<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
         <div class="list-aranceles-sticky">
             <div class="list-group list-aranceles mt-40 mb-10">
         
@@ -32,7 +32,8 @@
             </div>
           </div>
       
-      </nav>
+      </nav>-->
+      
   <div class="container wow fadeIn" data-wow-delay=".1s">
      
     <div class="inner-section text-center">
@@ -41,11 +42,42 @@
       </h3>
     </div>
 
+    <div class="row row-filters">
+      <div class="col-md-12">
+          <div align="center">    
+      
+          @if($agreement[0]['fonasa']['status'] == 'ACTIVE')
+          <button class="btn btn-theme02 border filter-button" id="fonasa" data-filter="fonasa">FONASA</button>
+          @endif
+
+          @if($agreement[1]['isapres']['status'] == 'ACTIVE')
+          <button class="btn btn-theme02 border filter-button" id="isapres" data-filter="isapres">ISAPRES</button>
+        @endif
+
+        @if($agreement[2]['convenios']['status'] == 'ACTIVE')
+        <button class="btn btn-theme02 border filter-button" id="convenios" data-filter="isapres">CONVENIOS EMPRESA</button>
+        @endif
+
+        @if($agreement[3]['promociones']['status'] == 'ACTIVE')
+        <button class="btn btn-theme02 border filter-button" id="promociones" data-filter="isapres">PROMOCIONES</button>
+        @endif
+
+        @if($agreement[4]['aranceles']['status'] == 'ACTIVE')
+        <button class="btn btn-theme02 border filter-button" id="aranceles" data-filter="isapres">ARANCELES</button>
+        @endif
+
+        @if($agreement[5]['medios-pagos']['status'] == 'ACTIVE')
+        <button class="btn btn-theme02 border filter-button" id="medios" data-filter="isapres">MEDIOS DE PAGO</button>
+
+        @endif
+
+          </div>
+      </div>
+  </div>
+
     <div class="row row-aranceles mt-40">
        
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-9 offset-md-3">
+      <div class="col-md-12">
         <div class="ui-blog-body">
           <div class="ui-blog-content mt-10 mb-10">
 
