@@ -14,7 +14,7 @@
               <a href="{{ route('home') }}">Inicio</a>
             </li>
             <li>
-              <a href="{{ route('surgery.viewallspacialties') }}">Especialidades</a>
+              <a href="{{ route('specialty.viewallspecialties') }}">Especialidades</a>
             </li>
             <li class="active">
               {{ $specialty->slug }}
@@ -35,7 +35,7 @@
               
             </div>
 
-            
+
 
           </div>
         </div>
