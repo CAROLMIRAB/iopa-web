@@ -90,7 +90,7 @@ class WebController extends Controller
     public function viewFullSpecialty($slug)
     {
         $specialtydata = $this->postRepo->viewSpecialtySlug($slug);
-        $specialty = $this->postCollect->renderSpecialty($examdata);
+        $specialty = $this->postCollect->renderSpecialty($specialtydata);
         return view('front.sections.specialty', compact('specialty'));
     }
 
