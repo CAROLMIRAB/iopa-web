@@ -19,7 +19,7 @@ class DoctorCollection
             $date_create->setTimezone('America/Santiago');
             $doctor->created = $date_create->format('d/m/Y');
             $route = route('doctor.editview', ['slug' => $doctor->slug]);
-            $image= url('') . "/uploads/thumbnail/" . $doctor->file;
+            $image= url("/uploads/thumbnail/" . $doctor->file);
             $alldoctors->push([
                 'id' => $doctor->id,
                 'name' => $doctor->lastname.", ".$doctor->name,
@@ -37,7 +37,7 @@ class DoctorCollection
     public function editData($doctor)
     {
     
-        $doctor->image= url('') . "/uploads/images/" . $doctor->file;
+        $doctor->image= url("/uploads/images/" . $doctor->file);
         $doctor->slug_url = route('doctor.viewalldoctors') . "/" . $doctor->slug;
 
         return $doctor;

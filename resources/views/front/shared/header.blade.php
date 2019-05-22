@@ -22,7 +22,7 @@
 							<img src="{{ asset('img/logo-iopa220px.png') }}"  alt="Logo IOPA">
 						</a>
                     <ul class="list-social">
-                        @if(!is_null($config[3]['rrss']['content']['facebook']) && $config[3]['rrss']['content']['facebook'] <> "")
+                        @if(!is_null($config[3]['rrss']['content']['facebook']) && $config[3]['rrss']['content']['facebook'] != '')
                         <li>
                         <a href="{{ $config[3]['rrss']['content']['facebook'] }}" class="btn-social">
                                 <img src="{{ asset('img/rrss/icon-facebook.png') }}"  alt="Facebook">
@@ -30,7 +30,7 @@
                         </li>
                         @endif
                         
-                        @if(!is_null($config[3]['rrss']['content']['instagram']) && $config[3]['rrss']['content']['instagram']<>"")
+                        @if(!is_null($config[3]['rrss']['content']['instagram']) &&$config[3]['rrss']['content']['instagram'] != '')
                         <li>
                         <a href="{{ $config[3]['rrss']['content']['instagram'] }}" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-instagram.png') }}" alt="Instagram">
@@ -38,7 +38,7 @@
                         </li>
                         @endif
                         
-                        @if(!is_null($config[3]['rrss']['content']['youtube'])  && $config[3]['rrss']['content']['youtube']<>"")
+                        @if(!is_null($config[3]['rrss']['content']['youtube']) && $config[3]['rrss']['content']['youtube'] != '')
                         <li>
                             <a href="{{ $config[3]['rrss']['content']['youtube'] }}" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-youtube.png') }}"  alt="Youtube">
@@ -46,7 +46,7 @@
                         </li>
                         @endif
                        
-                        @if(!is_null($config[3]['rrss']['content']['callcenter']) && $config[3]['rrss']['content']['callcenter'])
+                        @if(!is_null($config[3]['rrss']['content']['callcenter']) && $config[3]['rrss']['content']['callcenter'] != '')
                         <li class="visible-xs"><a href="#!" class="btn-social">
 									<img src="{{ asset('img/rrss/icon-phone.png') }}" alt="Teléfono">
 								</a> </li>

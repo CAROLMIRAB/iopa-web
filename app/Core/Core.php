@@ -12,6 +12,8 @@ use App\Surgery;
 use App\Doctor;
 use App\Exam;
 use App\Specialty;
+use App\Image;
+use App\BackPage\Repositories\ImageRepo;
 
 class Core
 {
@@ -177,5 +179,21 @@ class Core
         $pdf_url = $input['pdfname'];
 
         return $pdf_url;
+    }
+
+    public static function saveImagesGallery($data)
+    {
+        $imageRepo = new ImageRepo;
+        $images = $imageRepo->saveImages(['name' => $data]);
+
+        return $images;
+    }
+
+    public static function imagesGallery()
+    {
+        $imageRepo = new ImageRepo;
+        $images = $imageRepo->allImages();
+
+        return $images;
     }
 }

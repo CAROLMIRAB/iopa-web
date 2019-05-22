@@ -108,6 +108,10 @@ $(document).ready(function () {
     size: 60
   });
 
+  $('.post-extract').succinct({
+    size: 100
+  });
+
 
 });
 

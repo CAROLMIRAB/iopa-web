@@ -47,6 +47,7 @@
                                 </div>
                         <input id="politica-slugg" name="slug" value="home" class="form-control hidden" type="hidden">
                     </div>
+                    {{ csrf_field() }}
                 </form>
                 </div>
                

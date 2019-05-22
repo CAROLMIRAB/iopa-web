@@ -131,7 +131,7 @@ class PostController extends Controller
             $tags = explode(",", $request->tags);
 
             if (!empty($request->imgBase64)) {
-                $image_url = Core::uploadImageB64($request->imgBase64);
+                $image_url = $request->imgBase64;
             }
 
             $data = array(
@@ -151,7 +151,7 @@ class PostController extends Controller
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha creado la noticia de forma correcta"
+                    'message' => "Se ha creado de forma correcta"
                 ]);
             }
 
@@ -201,10 +201,9 @@ class PostController extends Controller
             $tags = explode(",", $request->tags);
            
             if (!empty($request->imgBase64)) {
-                $image_url = Core::uploadImageB64($request->imgBase64);
+                $image_url = $request->imgBase64;
             }
 
-            if (!empty($image_url)) {
                 $data = array(
                     'category_id' => $request->category_id,
                     'name' => $request->name,
@@ -216,24 +215,14 @@ class PostController extends Controller
                     'tags' => json_encode($tags, JSON_UNESCAPED_UNICODE)
                 );
 
-            } else {
-                $data = array(
-                    'category_id' => $request->category_id,
-                    'name' => $request->name,
-                    'slug' => $request->slug,
-                    'excerpt' => $request->excerpt,
-                    'body' => $request->body,
-                    'status' => $request->status,
-                    'tags' => json_encode($tags, JSON_UNESCAPED_UNICODE)
-                );
-            }
+           
 
             if ($data) {
                 $post = $this->postRepo->editPostById($request->id_post, $data);
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha modificado la noticia de forma correcta"
+                    'message' => "Se ha editado de forma correcta"
                 ]);
             }
         } catch (\Exception $ex) {

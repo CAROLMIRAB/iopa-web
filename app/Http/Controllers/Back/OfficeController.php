@@ -109,7 +109,7 @@ class OfficeController extends Controller
             $image_url = "";
             
             if (!empty($request->imgBase64)) {
-                $image_url = Core::uploadImageB64($request->imgBase64);
+                $image_url = $request->imgBase64;
             }
 
             $data = array(
@@ -126,7 +126,7 @@ class OfficeController extends Controller
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha creado la sucursal de forma correcta"
+                    'message' => "Se ha creado de forma correcta"
                 ]);
             }
 
@@ -175,11 +175,9 @@ class OfficeController extends Controller
             $image_url = "";
             
             if (!empty($request->imgBase64)) {
-                $image_url = Core::uploadImageB64($request->imgBase64);
+                $image_url = $request->imgBase64;
             }
 
-
-            if (!empty($image_url)) {
                 $data = array(
                     'name' => $request->name,
                     'photo' => $image_url,
@@ -187,21 +185,14 @@ class OfficeController extends Controller
                     'address' => $request->address,
                     'phone' => $request->phone
                 );
-            } else {
-                $data = array(
-                    'name' => $request->name,
-                    'map' => $request->map,
-                    'address' => $request->address,
-                    'phone' => $request->phone
-                );
-            }
+
 
             if ($data) {
                 $office = $this->officeRepo->editOfficeById($request->id_office, $data);
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha creado la sucursal de forma correcta"
+                    'message' => "Se ha editado de forma correcta"
                 ]);
             }
 

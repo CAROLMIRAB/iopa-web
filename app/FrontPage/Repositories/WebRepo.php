@@ -172,7 +172,7 @@ class WebRepo
 
     public function showAllSpecialtiesWithId($data)
     {
-        $specialty = Specialty::select('id', 'name', 'body','slug', 'status', 'created_at')
+        $specialty = Specialty::select('id', 'file', 'name', 'body','slug', 'status', 'created_at')
             ->whereIn('id', $data)
             ->orderBy('name', 'DESC')
             ->get();

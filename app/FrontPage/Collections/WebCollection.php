@@ -18,7 +18,7 @@ class WebCollection
       $mydate = Carbon::setLocale('es');
       $mydate = Carbon::parse($item->created_at)->setTimezone('America/Santiago')->formatLocalized('Publicado el %d de %B, %Y');
       $route = route('post.viewpost', ['slug' => $item->slug]);
-      $item->image = url('') . "/uploads/images/" . $item->file;
+      $item->image = url("/uploads/images/" . $item->file);
       $item->created = $mydate;
       $item->route = $route;
       $item->tagsl = json_decode($item->tags);
@@ -34,7 +34,7 @@ class WebCollection
     $mydate = Carbon::setLocale('es');
     $mydate = Carbon::parse($post->created_at)->setTimezone('America/Santiago')->formatLocalized('Publicado el %d de %B, %Y');
     $route = route('post.viewpost', ['slug' => $post->slug]);
-    $post->image = url('') . "/uploads/images/" . $post->file;
+    $post->image = url("/uploads/images/" . $post->file);
     $post->created = $mydate;
     $post->route = $route;
     $post->tagsl = json_decode($post->tags);
@@ -46,7 +46,7 @@ class WebCollection
   public function renderExam($exam)
   {
 
-    $exam->image = url('') . "/uploads/images/" . $exam->file;
+    $exam->image = url("/uploads/images/" . $exam->file);
 
     return $exam;
   }
@@ -54,7 +54,7 @@ class WebCollection
   public function renderDoctors($doctors)
   {
     foreach ($doctors as $doctor) {
-      $doctor->image = url('') . "/uploads/images/" . $doctor->file;
+      $doctor->image = url("/uploads/images/" . $doctor->file);
 
       foreach ($doctor->doctor_office as $item) {
         $doctor->listoffice .= $item->slug . " ";
@@ -73,7 +73,7 @@ class WebCollection
   public function renderSpecialties($specialties)
   {
     foreach($specialties as $specialty){
-      $specialty->image = url('') . "/uploads/images/" . $specialty->file;
+      $specialty->image = url("/uploads/images/" . $specialty->file);
     }
     return  $specialties;
   }
@@ -81,7 +81,7 @@ class WebCollection
   public function renderExams($exams)
   {
     foreach ($exams as $exam) {
-      $exam->image = url('') . "/uploads/images/" . $exam->file;
+      $exam->image = url("/uploads/images/" . $exam->file);
       $route = route('exam.viewexam', ['slug' => $exam->slug]);
       $exam->route = $route;
       $listoffice = new Collection();
@@ -97,7 +97,7 @@ class WebCollection
   public function renderSurgery($surgery)
   {
     $route = route('surgery.viewsurgery', ['slug' => $surgery->slug]);
-    $surgery->image = url('') . "/uploads/images/" . $surgery->file;
+    $surgery->image = url("/uploads/images/" . $surgery->file);
     $surgery->route = $route;
     return  $surgery;
   }
@@ -107,7 +107,7 @@ class WebCollection
 
     foreach ($surgeries as $item) {
       $route = route('surgery.viewsurgery', ['slug' => $item->slug]);
-      $item->image = url('') . "/uploads/images/" . $item->file;
+      $item->image = url("/uploads/images/" . $item->file) ;
       $item->route = $route;
     }
 
@@ -119,9 +119,9 @@ class WebCollection
   {
     foreach ($offices as $office) {
       if (!is_null($office->photo)) {
-        $office->image = url('') . "/uploads/images/" . $office->photo;
+        $office->image = url("/uploads/images/" . $office->photo);
       } else {
-        $office->image = url('') . "/images/no-foto.png";
+        $office->image = url("/images/no-foto.png");
       }
     }
 

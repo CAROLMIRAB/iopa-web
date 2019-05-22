@@ -129,6 +129,7 @@ mix.scripts([
     'bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js',
     'node_modules/dropzone/dist/min/dropzone.min.js',
     'plugins/rut/jquery.rut.min.js',
+    'node_modules/clipboard/dist/clipboard.min.js'
 ], 'public/back/js/build.back.min.js').version();
 
 mix.scripts([

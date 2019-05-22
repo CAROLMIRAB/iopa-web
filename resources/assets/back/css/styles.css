@@ -627,3 +627,14 @@ textarea.form-control{
 .contact_offices{
   list-style: none;
 }
+
+.box-image-gallery-focus {
+  border: 3px solid rgba(17,172,200, 1);
+}
+
+.images-gallery{
+  height: 300px;
+  overflow-y: scroll;
+  border: 2px solid #42a8d0;
+}
+

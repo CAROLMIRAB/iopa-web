@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\BackPage\Collections\CoreCollection;
 use App\BackPage\Repositories\CoreRepo;
 use App\BackPage\Repositories\OfficeRepo;
+
 use App\Core\Core;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FormOpinion;
 use App\Mail\FormRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class CoreController extends Controller
 {
@@ -198,6 +200,83 @@ class CoreController extends Controller
             return $data;
         }
     }
+
+
+    public function uploadImage(Request $request)
+    {
+       
+            $image_url = Core::uploadImageB64($request->base64);
+            $images = Core::saveImagesGallery($image_url);
+            $imgurl = asset('uploads/images/'.$image_url);
+         
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado un slide de forma correcta",
+                'data' => [
+                    'imgurl' => $imgurl,
+                    'image' => $image_url
+
+                ]
+            ]);
+
+    }
+
+    public function galleryImages()
+    {       
+            
+            $images = Core::imagesGallery();
+            $imgcollect = $this->coreCollection->collectImage($images);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Todas las imágenes",
+                'data' => [
+                    'images' => $imgcollect
+                ]
+            ]);
+    }
+
+    public function galleryImagesAll()
+    {       
+            
+            $images = Core::imagesGallery();
+            $imgcollect = $this->coreCollection->collectImage($images);
+
+            return Datatables::of($imgcollect)->make(true);
+    }
+
+    public function saveImagesGallery(Request $request)
+    {
+        try {
+                   
+            $images = Core::saveImagesGallery($request);
+
+            return response()->json([
+                'status' => 200,
+                'title' => '¡Exitoso!',
+                'message' => "Ha agregado un slide de forma correcta",
+                'data' => [
+                    'images' => $images
+                ]
+            ]);
+
+        } catch (\Exception $ex) {
+           
+            $data = [
+                'status' => 400,
+                'title' => __('Publicación fallida'),
+                'message' => __('Ocurrió un error mientras se agregaba. Por favor intente nuevamente'),
+                'error' => $ex
+            ];
+
+            return $data;
+        }
+    }
+
+
 
     public function saveSlides(Request $request)
     {
@@ -425,5 +504,15 @@ class CoreController extends Controller
 
             return $data;
         }
+    }
+
+     /**
+     * Show all images view 
+     * 
+     * @return view
+     */
+    public function viewAllImages()
+    {
+        return view('back.core.images');
     }
 }

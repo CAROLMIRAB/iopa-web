@@ -1,4 +1,4 @@
-<article class="item-aranceles" id="aranceles">
+<article class="item-aranceles tab-pane fade show active" id="nav-arancel" role="tabpanel" aria-labelledby="nav-arancel-tab">
     <div class="item-aranceles-content">
         <div class="row">
             <div class="col-md-6">

@@ -34,7 +34,7 @@
                             <div class="post-preview-meta">
                                 <span class="meta-date"> <i class="fa fa-clock-o"></i> {{ $post->created }}</span>
                             </div>
-                            <div class="post-preview-extract">
+                            <div class="post-preview-extract truncate">
                                 {!! $post->excerpt !!}
                             </div>
                             <a href="{{ route('post.viewpost', $post->slug) }}" class="btn btn-primary btn-more">Leer más</a>

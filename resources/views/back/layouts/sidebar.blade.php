@@ -51,6 +51,11 @@
           <i class="ni ni-bullet-list-67 text-red"></i> Configuración
                 </a>
       </li>
+         <li class="nav-item">
+            <a class="nav-link" href="{{ route('core.view-all-images') }}">
+                  <i class="ni ni-collection text-primary"></i>Galería
+            </a>
+          </li>
     </ul>
     @if(Auth::user()->hasRole('admin'))
     <hr class="" style="width: 100%; margin-top: 0px; margin-bottom: 0px">

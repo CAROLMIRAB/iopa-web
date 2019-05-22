@@ -1,4 +1,4 @@
-<article class="item-aranceles" id="convenios">
+<article class="item-aranceles tab-pane fade" id="nav-convenio" role="tabpanel" aria-labelledby="nav-convenio-tab">
         <div class="item-aranceles-content">
           <div class="row">
             <div class="col-md-12">
@@ -12,7 +12,7 @@
                   @if(!empty($convenio['content'])) 
                   @foreach($convenio['content'] as $key => $item)
               <li class="list-convenios-item" >
-                  <img src="{{ $item['img'] }}" />
+                  <img src="{{ $item['img'] }}" class="img-responsive" />
               </li>
                   @endforeach 
               @endif

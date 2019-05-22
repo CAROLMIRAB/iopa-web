@@ -1,4 +1,4 @@
-<article class="item-aranceles" id="isapres">
+<article class="item-aranceles tab-pane fade" id="nav-isapre" role="tabpanel" aria-labelledby="nav-isapre-tab" >
         <div class="item-aranceles-content">
 
           <div class="row mt-20 mb-20">
@@ -21,7 +21,7 @@
                           <tr>
                               @foreach ($item as $ky => $it)
                               <td width="20%" >
-                                  <img src="{{ $it['image'] }}" width="100%">
+                                  <img src="{{ $it['image'] }}" class="img-responsive">
                               </td>
                               <td width="40%" style="white-space: normal">
                                   <ul>

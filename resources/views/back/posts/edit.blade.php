@@ -70,13 +70,12 @@
 						</select>
                 </div>
                 <div class="form-group">
-                    <label for="image">{{ __('Imagen') }}</label>
-                    <div id="image-preview" style="border: #619DC9 3px dashed; background-image: url('{{ $post->image }}'); background-size: cover; background-position: center center; ">
-                        <label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
-                        <input type="file" name="image" id="image" accept="image/png, image/jpeg" />
-                        <input type="hidden" class="imgBase64" name="imgBase64">
+                        <label for="image">{{ __('Imagen') }}</label>
+                        <div data-toggle="modal" data-target="#modal-gallery" id="image-preview" style="background: url('{{ $post->image }}'); background-size: cover; background-position: center center; ">
+                                <label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img/cloud-upload.png') }}" width="60" height="60"/></label>
+                        </div>
+                        <input type="hidden" id="imgBase64" class="imgBase64" name="imgBase64">
                     </div>
-                </div>
                 {{ csrf_field() }}
                 <input id="id_post" name="id_post" readonly hidden value="{{ $post->id }}" style="display: none">
             </div>
@@ -92,7 +91,7 @@
     	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		}
 	});
-	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
+	var image = "<img class='' src='{{ asset('back/img/cloud-upload.png') }}' width='60' height='60'/>";
 	$(document).ready(function(){
     Posts.editHTML();
     Posts.slug();

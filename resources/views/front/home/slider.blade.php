@@ -13,7 +13,7 @@
 				@if(isset($config[5]['slides']['content']['slides']))
 				<?php $i = 1; ?> @foreach ($config[5]['slides']['content']['slides'] as $key => $item) @if($item['active'] == 'active')
 			<div class="item {{ ($i == 1) ? 'active' : '' }}">
-				<img src="{{ asset('uploads/images') . '/' .$item['img'] }}" alt="Slider 01">
+				<img src="{{ asset('uploads/images/'.$item['img']) }}" alt="Slider 01">
 				<div class="carousel-layer">
                   @if(isset($item['title']) || isset($item['description']))
 					<div class="carousel-caption">

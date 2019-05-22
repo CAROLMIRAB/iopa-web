@@ -55,15 +55,27 @@
       </div>
     </div>
   </div>
+  @include('back.core.gallery')
   <!-- Argon Scripts -->
   <!-- Core -->
-  <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>-->
   <script src="{{ asset('back/js/build.back.min.js') }}"></script>
   <!-- Optional JS -->
   <script src="{{ asset('back/js/custom.back.min.js') }}"></script>
   
   <script>
+    Dropzone.autoDiscover = false;
+    $.ajaxSetup({
+		headers: {
+    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+    	$(document).ready(function(){
+    Core.gallery();
+	  Core.imagesGallery();
     Core.dropdown();
+
+	});
+ 	
   </script>
   @yield('scripts')
 </body>

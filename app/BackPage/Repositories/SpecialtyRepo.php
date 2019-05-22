@@ -41,7 +41,7 @@ class SpecialtyRepo
 
     public function showSpecialtySlug($slug)
     {
-        $specialty = Specialty::select('id', 'name', 'body', 'slug', 'status')
+        $specialty = Specialty::select('id', 'name', 'body', 'slug', 'file', 'status')
             ->where('slug', $slug)
             ->orderBy('id', 'DESC')
             ->first();

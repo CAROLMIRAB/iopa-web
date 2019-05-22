@@ -62,7 +62,7 @@ class AgreementCollection
 
         $isapre = [
             time() => [
-                'image' => asset('uploads/images') . '/' . $image_url,
+                'image' => asset('uploads/images/' . $image_url),
                 'ges' => $ges,
                 'account' => [
                     'title' => $account_title,
@@ -116,7 +116,7 @@ class AgreementCollection
             time() => [
                 'title' => $subtitle,
                 'pdf' => $pdf_url,
-                'route' =>  asset('uploads/documents') . '/' . $pdf_url
+                'route' =>  asset('uploads/documents/'.$pdf_url)
             ]
         ];
 

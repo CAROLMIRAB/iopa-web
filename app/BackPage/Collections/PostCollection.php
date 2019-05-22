@@ -38,7 +38,7 @@ class PostCollection
         $post->tag = str_replace('[', "", $post->tag);
         $post->tag = str_replace(']', "", $post->tag);
 
-        $post->image = url('') . "/uploads/images/" . $post->file;
+        $post->image = url("/uploads/images/" . $post->file) ;
         $post->slug_url = route('post.viewallposts') . "/" . $post->slug;
 
         return $post;

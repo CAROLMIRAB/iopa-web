@@ -215,7 +215,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
    });
 
 
-    
+        Route::get('galeria', [
+            'as' => 'core.view-all-images',
+            'uses' => 'Back\CoreController@viewAllImages'
+        ]);
 
     /************** ROUTES POST ******************/
     Route::group(['prefix' => 'noticias'], function () {
@@ -642,6 +645,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('save-rrss', [
             'as' => 'core.save-rrss',
             'uses' => 'Back\CoreController@saveRRSS'
+        ]);
+
+        Route::post('upload-image', [
+            'as' => 'core.upload-image64',
+            'uses' => 'Back\CoreController@uploadImage'
+        ]);
+
+        Route::post('gallery-images', [
+            'as' => 'core.gallery-images',
+            'uses' => 'Back\CoreController@galleryImages'
+        ]);
+
+        Route::get('gallery-images-all', [
+            'as' => 'core.gallery-images-all',
+            'uses' => 'Back\CoreController@galleryImagesAll'
+        ]);
+
+        Route::post('save-gallery-images', [
+            'as' => 'core.save-gallery-images',
+            'uses' => 'Back\CoreController@saveImagesGallery'
         ]);
        
     });

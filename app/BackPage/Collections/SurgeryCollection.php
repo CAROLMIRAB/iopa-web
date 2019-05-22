@@ -36,7 +36,7 @@ class SurgeryCollection
     public function editData($surgery)
     {
     
-        $surgery->image= url('') . "/uploads/images/" . $surgery->file;
+        $surgery->image= url("/uploads/images/" . $surgery->file);
         $surgery->slug_url = route('surgery.viewallsurgeries') . "/" . $surgery->slug;
 
         return $surgery;

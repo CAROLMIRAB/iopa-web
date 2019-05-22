@@ -135,7 +135,7 @@ class CoreCollection
             time() => [
                 'title' => $subtitle,
                 'pdf' => $pdf_url,
-                'route' =>  asset('uploads/documents') . '/' . $pdf_url
+                'route' =>  asset('uploads/documents/'. $pdf_url) 
             ]
         ];
 
@@ -143,6 +143,14 @@ class CoreCollection
 
         return ['full' => $array, 'politica' => $politica];
 
+    }
+
+    public function collectImage($images)
+    {
+        foreach($images as $item){
+            $item->imgurl = asset('uploads/images/'. $item->name);
+        }
+       return $images;
     }
 
 }

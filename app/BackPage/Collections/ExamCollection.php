@@ -37,7 +37,7 @@ class ExamCollection
 
     public function editData($exam)
     {
-        $exam->image= url('') . "/uploads/images/" . $exam->file;
+        $exam->image= url("/uploads/images/" . $exam->file); 
         $exam->slug_url = route('office.viewalloffices') . "/" . $exam->slug;
 
         return $exam;

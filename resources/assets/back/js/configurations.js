@@ -499,10 +499,10 @@ var Configuration = function () {
         },
 
         addPdf: function () {
-            var $form = $('#politicas_add');
+            var $form = $('#politica_add');
             $('#btn-addpoliticas').click(function () {
                 $(this).button('loading');
-                var formData = new FormData(document.getElementById("politicas_add"));
+                var formData = new FormData(document.getElementById("politica_add"));
                 $.ajax({
                     type: 'post',
                     url: $form.attr('action'),

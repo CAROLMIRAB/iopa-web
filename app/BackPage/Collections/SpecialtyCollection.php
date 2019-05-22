@@ -35,7 +35,7 @@ class SpecialtyCollection
     public function editData($specialty)
     {
     
-        $specialty->image= url('') . "/uploads/images/" . $specialty->file;
+        $specialty->image= url("/uploads/images/" . $specialty->file);
         $specialty->slug_url = route('specialty.viewallspecialties') . "/" . $specialty->slug;
 
         return $specialty;

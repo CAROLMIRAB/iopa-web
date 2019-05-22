@@ -1,4 +1,4 @@
-@if(!is_null($config[3]['rrss']['content']['whatsapp']) && $config[3]['rrss']['content']['whatsapp'])
+@if(!is_null($config[3]['rrss']['content']['whatsapp']) && $config[3]['rrss']['content']['whatsapp'] != '')
 <div class="bt-whatsme">
 	<a target="_blank" href="https://api.whatsapp.com/send?phone={{ trim(str_replace("", "+", $config[3]['rrss']['content']['whatsapp'])) }}&text=Hola!%20Quiero%20obtener%20mas%20información">
 		<svg class="whatsapp-figure" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -11,7 +11,7 @@
 			/>
 		  </g>
 		</svg>	
-	<span class="callme"> Escríbenos {{ $config[3]['rrss']['content']['whatsapp'] }}</span>
+	<span class="callme"> Escríbenos {{ isset($config[3]['rrss']['content']['whatsapp']) ? $config[3]['rrss']['content']['whatsapp'] : '' }}</span>
 </a>
 </div>
 @endif
@@ -44,7 +44,7 @@
 					<h3>Revisa aquí</h3>
 					<div class="f-item f-links">
 						<div class="f-box">
-								@if(!is_null($config[11]['home']['content']) && $config[11]['home']['content'] <> "")
+								@if(!is_null($config[11]['home']['content']) && $config[11]['home']['content'] != "")
 								@foreach ($config[11]['home']['content'] as $key => $item)
                                 @foreach ($item as $ky => $it)
 							<a href="{{ $it['route'] }}" class="f-box-item"><i class="fa fa-circle"></i>  {{ $it['title'] }}</a>
@@ -66,19 +66,19 @@
 					<div class="f-item ">
 						<div class="f-social-buttons">
 							<span>SÍGUENOS EN </span>
-							@if(!is_null($config[3]['rrss']['content']['facebook']) && $config[3]['rrss']['content']['facebook'] <> "")
+							@if(!is_null($config[3]['rrss']['content']['facebook']) && $config[3]['rrss']['content']['facebook'] != '')
 							<a href="{{ $config[3]['rrss']['content']['facebook'] }}" class="btn-social">
 									<img src="{{ asset("img/rrss/icon-facebook.png") }}" alt="Facebook">
 								</a>
 							@endif
 
-							@if(!is_null($config[3]['rrss']['content']['instagram']) && $config[3]['rrss']['content']['instagram'] != "")
+							@if(!is_null($config[3]['rrss']['content']['instagram']) && $config[3]['rrss']['content']['instagram'] != '')
 							<a href="{{ $config[3]['rrss']['content']['instagram'] }}" class="btn-social">
 									<img src="{{ asset("img/rrss/icon-instagram.png") }}" alt="Instagram">
 							</a>
 							@endif
 
-							@if(!is_null($config[3]['rrss']['content']['youtube']) && $config[3]['rrss']['content']['youtube'] <> "")
+							@if(!is_null($config[3]['rrss']['content']['youtube']) && $config[3]['rrss']['content']['youtube'] != '')
 						<a href="{{ $config[3]['rrss']['content']['youtube'] }}" class="btn-social">
 									<img src="{{ asset("img/rrss/icon-youtube.png") }}" alt="Youtube">
 								</a>

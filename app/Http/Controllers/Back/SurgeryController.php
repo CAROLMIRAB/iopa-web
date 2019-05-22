@@ -103,7 +103,7 @@ class SurgeryController extends Controller
             $image_url = "";
             
             if (!empty($request->imgBase64)) {
-                $image_url = Core::uploadImageB64($request->imgBase64);
+                $image_url = $request->imgBase64;
             }
 
             $data = array(
@@ -128,7 +128,7 @@ class SurgeryController extends Controller
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha creado la cirugía de forma correcta"
+                    'message' => "Se ha creado de forma correcta"
                 ]);
             }
 
@@ -177,7 +177,7 @@ class SurgeryController extends Controller
             $image_url = "";
             
             if (!empty($request->imgBase64)) {
-                $image_url = Core::uploadImageB64($request->imgBase64);
+                $image_url = $request->imgBase64;
             }
 
             $offices = array_map(
@@ -187,7 +187,6 @@ class SurgeryController extends Controller
                 $offices
             );
 
-            if (!empty($image_url)) {
                 $data = array(
                     'name' => $request->name,
                     'slug' => $request->slug,
@@ -198,17 +197,7 @@ class SurgeryController extends Controller
                     'file' => $image_url
                 );
 
-            } else {
-                $data = array(
-                    'name' => $request->name,
-                    'slug' => $request->slug,
-                    'description' => $request->description,
-                    'preparation' => $request->preparation,
-                    'indications' => $request->indications,
-                    'status' => $request->status
-
-                );
-            }
+            
 
             if ($data) {
     
@@ -217,7 +206,7 @@ class SurgeryController extends Controller
                 return response()->json([
                     'status' => 200,
                     'title' => '¡Exitoso!',
-                    'message' => "Ha modificado la cirugía de forma correcta"
+                    'message' => "Se ha editado de forma correcta"
                 ]);
 
             }

@@ -45,17 +45,14 @@
 	</div>
 	<div class="col-xl-4 mb-5 mb-xl-0">
 		<div class="card shadow">
-
 			<div class="card-body">
-
-				<div class="form-group">
-					<label for="image">{{ __('Imagen') }}</label>
-					<div id="image-preview" style="border: #619DC9 3px dashed;">
-						<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img') }}/cloud-upload.png" width="60" height="60"/></label>
-						<input type="file" name="image" id="image" accept="image/png, image/jpeg" />
-						<input type="hidden" class="imgBase64" name="imgBase64">
+					<div class="form-group">
+							<label for="image">{{ __('Imagen') }}</label>
+							<div data-toggle="modal" data-target="#modal-gallery" id="image-preview">
+									<label for="image-upload" id="image-label"><img class="" src="{{ asset('back/img/cloud-upload.png') }}" width="60" height="60"/></label>
+							</div>
+							<input type="hidden" id="imgBase64" class="imgBase64" name="imgBase64">
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -66,7 +63,7 @@
 @section('scripts')
 
 <script>
-	var image = "<img class='' src='{{ asset('back/img') }}/cloud-upload.png' width='60' height='60'/>";
+	var image = "<img class='' src='{{ asset('back/img/cloud-upload.png') }}' width='60' height='60'/>";
 
 	$(document).ready(function(){
 		Offices.slug();
