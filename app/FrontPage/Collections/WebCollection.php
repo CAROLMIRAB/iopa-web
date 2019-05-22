@@ -74,6 +74,7 @@ class WebCollection
   {
     foreach($specialties as $specialty){
       $specialty->image = url("/uploads/images/" . $specialty->file);
+      $specialty->route = route('exam.viewspecialty', ['slug' => $specialty->slug]);
     }
     return  $specialties;
   }
