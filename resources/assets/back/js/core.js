@@ -195,7 +195,7 @@ var Core = function () {
                     {
                         width: "80px",
                         render: function (data, type, row, meta) {
-                            var button = 'eliminar';
+                            var button = '';
                             
                             return button;
                         }
