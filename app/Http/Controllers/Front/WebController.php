@@ -51,7 +51,9 @@ class WebController extends Controller
     {
         $postdata = $this->postRepo->viewPostSlug($slug);
         $post = $this->postCollect->renderPost($postdata);
-        return view('front.sections.post', compact('post'));
+        $recentsdata = $this->postRepo->showPostHome();
+        $recents = $this->postCollect->renderPostsHome($recentsdata);
+        return view('front.sections.post', compact('post', 'recents'));
     }
 
        /**
@@ -75,7 +77,9 @@ class WebController extends Controller
     {
         $postdata = $this->postRepo->viewPostSlug($slug);
         $post = $this->postCollect->renderPost($postdata);
-        return view('front.sections.service', compact('service'));
+        $recentsdata = $this->postRepo->showPostHome();
+        $recents = $this->postCollect->renderPostsHome($recentsdata);
+        return view('front.sections.service', compact('post', 'recents'));
     }
 
     /**

@@ -16,7 +16,7 @@
                     @foreach ($posts as $post)
                     <li class="media blog-preview">
                         <div class="media-left">
-                            <a href="#">
+                            <a href="{{ route('post.viewservice', $post->slug) }}">
                     @if($post->file)
                         <img src="{{ $post->file }}" class="media-object">
                     @endif
@@ -28,14 +28,14 @@
                                     <span class="post-tag">{{ $item }}</span>
                                     @endforeach
                             </div>
-                            <h4 class="media-heading"><a href="/post.html">{{ $post->name }}</a></h4>
+                            <h4 class="media-heading"><a href="{{ route('post.viewservice', $post->slug) }}">{{ $post->name }}</a></h4>
                             <div class="post-preview-meta">
                                 <span class="meta-date"> <i class="fa fa-clock-o"></i> {{ $post->created }}</span>
                             </div>
                             <div class="post-preview-extract">
                                 {!! $post->excerpt !!}
                             </div>
-                            <a href="{{ route('post.viewpost', $post->slug) }}" class="btn btn-primary btn-more">Leer más</a>
+                            <a href="{{ route('post.viewservice', $post->slug) }}" class="btn btn-primary btn-more">Leer más</a>
                         </div>
                     </li>
                     @endforeach

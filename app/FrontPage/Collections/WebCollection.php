@@ -18,7 +18,7 @@ class WebCollection
       $mydate = Carbon::setLocale('es');
       $mydate = Carbon::parse($item->created_at)->setTimezone('America/Santiago')->formatLocalized('Publicado el %d de %B, %Y');
       $route = route('post.viewpost', ['slug' => $item->slug]);
-      $item->image = url("/uploads/images/" . $item->file);
+      $item->image = url("/uploads/thumbnail/" . $item->file);
       $item->created = $mydate;
       $item->route = $route;
       $item->tagsl = json_decode($item->tags);
