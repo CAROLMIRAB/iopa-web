@@ -18,7 +18,7 @@
           <a href="{{ $specialty->route }}">
             <img src="{{ $specialty->image }}" alt="">
             <h5>{{ $specialty->name }}</h5>
-            <p class="truncate">{{ $specialty->body }}</p>
+            <p class="truncate">{!! $specialty->body !!}</p>
           <span class="ui-go"><a href="{{ $specialty->route }}">Ver más</a></span>
           </a>
         </div>
