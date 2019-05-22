@@ -40,6 +40,14 @@ class WebRepo
         return $post;
     }
 
+    public function viewSpecialtySlug($slug)
+    {
+        $post = Specialty::select('id','name','slug','file')
+        ->where('slug', $slug)
+        ->first();
+        return $post;
+    }
+
     public function viewSurgerySlug($slug)
     {
         $post = Surgery::select('surgeries.id','surgeries.name', 'surgeries.slug', 'description', 'preparation', 'indications', 'surgeries.status','surgeries.file' )

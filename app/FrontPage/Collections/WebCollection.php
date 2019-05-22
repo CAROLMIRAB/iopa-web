@@ -51,6 +51,14 @@ class WebCollection
     return $exam;
   }
 
+  public function renderSpecialty($specialty)
+  {
+
+    $specialty->image = url("/uploads/images/" . $specialty->file);
+
+    return $specialty;
+  }
+
   public function renderDoctors($doctors)
   {
     foreach ($doctors as $doctor) {

@@ -83,6 +83,18 @@ class WebController extends Controller
     }
 
     /**
+     * View full specialty content
+     * 
+     * @return view
+     */
+    public function viewFullSpecialty($slug)
+    {
+        $specialtydata = $this->postRepo->viewSpecialtySlug($slug);
+        $specialty = $this->postCollect->renderSpecialty($examdata);
+        return view('front.sections.specialty', compact('specialty'));
+    }
+
+    /**
      * View full post content
      * 
      * @return view
